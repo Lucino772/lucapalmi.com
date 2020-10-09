@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css',_external=True) }}">
 </head>
 <body>
-    <h1>Flask website</h1>
+    <div class="container">
+        
+        <div id="main-section">
+            <div id="main-section-container">
+                <div class="group">
+                    <div class="logo-rounded">
+                        <img src="" alt="Logo">
+                    </div>
+                </div>
+                <div class="group">
+                    <div id="main-section-title">
+                        <h2>Hi, I'm <strong>Luca<br>Palmisano</strong></h2>
+                    </div>
+                    <div id="main-section-background" class="image-blur-border">
+                        <img src="{{ url_for('static',filename='images/medium/background_2.png',_external=True) }}" alt="Background">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 </body>
 </html>
