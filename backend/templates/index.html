@@ -5,30 +5,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <!-- Theme color for mobile browser -->
+    <meta name="theme-color" content="black" />
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css',_external=True) }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='uikit/uikit.min.css',_external=True) }}">
+    <!-- Javascript -->
+    <script src="{{ url_for('static',filename='uikit/uikit.min.js',_external=True) }}"></script>
+    <script src="{{ url_for('static',filename='uikit/uikit-icons.min.js',_external=True) }}"></script>
+    <script src="{{ url_for('static',filename='js/clamp.min.js',_external=True) }}"></script>
 </head>
 <body>
+
     <div class="container">
-        
-        <div id="main-section">
-            <div id="main-section-container">
-                <div class="group">
-                    <div class="logo-rounded">
-                        <img src="" alt="Logo">
-                    </div>
+        <!-- Main Section -->
+        <div class="uk-section uk-flex uk-flex-center uk-flex-middle" style="background: black; height: 100%;">
+            <div class="uk-border-circle" style="background: white; width: 300px; height: 300px;" uk-scrollspy="cls: uk-animation-scale-up">
+                <img class="uk-border-circle" data-src="{{ url_for('static',filename='images/small/logo_lite.jpg',_external=True) }}" alt="Logo" uk-img>
+            </div>
+        </div>
+
+        <!-- About Me  Section -->
+        <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-flex-column uk-visible@m" style="height: 100%" uk-scrollspy="cls: uk-animation-fade">
+            <div class="section-title uk-margin-medium-bottom uk-margin-medium-top">
+                <h2>About Me</h2>
+                <hr>
+            </div>
+            <div class="uk-column-1-2@m" style="height: 100%; max-width: 1200px;">
+                <div class="image-blur-border uk-position-relative" style="height: 100%; overflow: hidden;">
+                    <img data-src="{{ url_for('static',filename='images/small/background_2_lite.png',_external=True) }}" alt="Background" style="width: 100%; height: 100%; object-fit: cover; object-position: top right;" uk-img>
                 </div>
-                <div class="group">
-                    <div id="main-section-title">
-                        <h2>Hi, I'm <strong>Luca<br>Palmisano</strong></h2>
-                    </div>
-                    <div id="main-section-background" class="image-blur-border">
-                        <img src="{{ url_for('static',filename='images/medium/background_2.png',_external=True) }}" alt="Background">
-                    </div>
+                <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-column" style="height: 100%;">
+                    <p class="uk-dropcap uk-text-light uk-text-emphasis" style="width: 100%; font-size: 20px; line-height: 30px; overflow-y: auto; padding: 0px 50px;"><span>Bonjour, moi c’est <strong>Luca Palmisano</strong></span>. Le mec a gauche c’est moi, bon a part qu’il a pas de bouton sur ca tronche. Bref, j’ai 18 ans et ca fait maintenant plusieurs annees que je fais de la programmation (pour etre exacte j’ai commence a l’age de 12-13 ans).
+                        <br><br>
+                        A part ca je suis quelqu’un qui adore rigoler, d’ailleurs si vous avez une petite blague je suis preneur. Je sais aussi reste profesionel, pas d’inquietude a ce niveau la ! 
+                        <br><br>
+                        J’ai appris a programmer de mes propres moyens. J’ai constament essayer de decouvrir de nouvelles choses et je le fait toujours au jour d’aujourd’hui.</p>
                 </div>
             </div>
         </div>
         
+        <!-- About Me Section (Tablet and Phone) -->
+        <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-flex-column uk-visible uk-hidden@m" uk-scrollspy="cls: uk-animation-fade">
+            <div class="section-title uk-margin-medium-bottom uk-margin-small-top">
+                <h2>About Me</h2>
+                <hr>
+            </div>
+            <div style="height: 100%; max-width: 550px;">
+                <div class="image-blur-border uk-position-relative uk-margin-medium-bottom" style="width: 100%; overflow: hidden;">
+                    <img data-src="{{ url_for('static',filename='images/small/background_2_edit.png',_external=True) }}" alt="Background" style="width: 100%; height: 100%; object-fit: cover; object-position: top right;" uk-img>
+                </div>
+                <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-column" style="height: 100%;">
+                    <p class="uk-text-light uk-text-emphasis uk-text-center" style="width: 100%; font-size: 20px; line-height: 30px; overflow-y: auto; padding: 0px 30px;"><span>Bonjour, moi c’est <strong>Luca Palmisano</strong></span>. Le mec a gauche c’est moi, bon a part qu’il a pas de bouton sur ca tronche. Bref, j’ai 18 ans et ca fait maintenant plusieurs annees que je fais de la programmation (pour etre exacte j’ai commence a l’age de 12-13 ans).
+                        <br><br>
+                        A part ca je suis quelqu’un qui adore rigoler, d’ailleurs si vous avez une petite blague je suis preneur. Je sais aussi reste profesionel, pas d’inquietude a ce niveau la ! 
+                        <br><br>
+                        J’ai appris a programmer de mes propres moyens. J’ai constament essayer de decouvrir de nouvelles choses et je le fait toujours au jour d’aujourd’hui.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills section -->
+        <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-flex-column" style="min-height: 100%;" uk-scrollspy="cls: uk-animation-fade">
+            <div class="section-title">
+                <h2>My Skills</h2>
+                <hr>
+            </div>
+            <div class="uk-grid-medium uk-child-width-1-2@s uk-child-width-1-3@m" style="height: 100%; max-width: 1200px; padding: 20px;" uk-grid="masonry: true" uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 250">
+                <div class="uk-flex uk-flex-center">
+                    <div class="uk-card uk-card-body uk-flex uk-flex-center uk-flex-column" style="width: 100%;">
+                        <h4 class="uk-text-lead uk-text-center uk-text-center">Python</h4>
+                        <img style="align-self: center; max-height: 100px;" src="{{ url_for('static',filename='images/medium/skills/python_logo.png') }}" alt="Python">
+                        <p class="toClamp" style="max-height: 75px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce condimentum molestie odio ac malesuada. Praesent nisi ex, rhoncus posuere imperdiet in, lacinia sit amet orci. Quisque convallis nunc erat, a luctus lorem pulvinar in. Aliquam auctor purus magna, viverra commodo ex ultrices non. Donec mattis mi ut euismod tristique. Vestibulum. </p>
+                        <div class="uk-flex uk-flex-center" style="justify-content: space-evenly;">
+                            <a class="uk-text-emphasis uk-button uk-button-text uk-button uk-button-text" href="">Github</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="">Blog</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-flex uk-flex-center">
+                    <div class="uk-card uk-card-body uk-flex uk-flex-center uk-flex-column" style="width: 100%;">
+                        <h4 class="uk-text-lead uk-text-center">Node.Js</h4>
+                        <img style="align-self: center; max-height: 100px;" src="{{ url_for('static',filename='images/medium/skills/node_js_logo.png') }}" alt="Node.Js">
+                        <p class="toClamp" style="max-height: 75px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </p>
+                        <div class="uk-flex uk-flex-center" style="justify-content: space-evenly;">
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="">Github</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="">Blog</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-flex uk-flex-center">
+                    <div class="uk-card uk-card-body uk-flex uk-flex-center uk-flex-column" style="width: 100%;">
+                        <h4 class="uk-text-lead uk-text-center">React</h4>
+                        <img style="align-self: center; max-height: 100px;" src="{{ url_for('static',filename='images/medium/skills/react_logo.png') }}" alt="React">
+                        <p class="toClamp" style="max-height: 75px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="uk-flex uk-flex-center" style="justify-content: space-evenly;">
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="">Github</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="">Blog</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-flex uk-flex-center">
+                    <div class="uk-card uk-card-body uk-flex uk-flex-center uk-flex-column" style="width: 100%;">
+                        <h4 class="uk-text-lead uk-text-center">Mongo DB</h4>
+                        <img style="align-self: center; max-height: 100px;" src="{{ url_for('static',filename='images/medium/skills/mongo_db_logo.png') }}" alt="Mongo DB">
+                        <p class="toClamp" style="max-height: 75px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="uk-flex uk-flex-center" style="justify-content: space-evenly;">
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="">Github</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="">Blog</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-flex uk-flex-center">
+                    <div class="uk-card uk-card-body uk-flex uk-flex-center uk-flex-column" style="width: 100%;">
+                        <h4 class="uk-text-lead uk-text-center">Docker</h4>
+                        <img style="align-self: center; max-height: 100px;" src="{{ url_for('static',filename='images/medium/skills/docker_logo.png') }}" alt="Docker">
+                        <p class="toClamp" style="max-height: 75px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <div class="uk-flex uk-flex-center" style="justify-content: space-evenly;">
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="">Github</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="">Blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="uk-section" style="background: black; height: 100%;">
+            <div class="uk-flex uk-flex-around uk-flex-column" style="height: 100%; width: 100%;">
+                <div class="uk-flex uk-flex-center uk-flex-column uk-margin-large-bottom" uk-scrollspy="cls:uk-animation-fade">
+                    <h2 class="title-m uk-text-center">Website design</h2>
+                    <h3 class="title-s uk-text-center">Luca Pamisano</h3>
+                    <div class="socials uk-flex uk-flex-center">
+                        <a title="Check my stackoverflow profile" href="https://stackoverflow.com/users/13569159/lucino772?tab=profile" target="blank_"><img src="{{ url_for('static',filename='images/icon/socials/stack_overflow_icon.svg',_external=True) }}" alt="stack_overflow"></a>
+                        <a title="Check my github profile" href="https://github.com/Lucino772" target="blank_"><img src="{{ url_for('static',filename='images/icon/socials/github_icon.svg',_external=True) }}" alt="github"></a>
+                        <a title="Check my instagram profile" href="https://www.instagram.com/lucapalmi772/" target="blank_"><img src="{{ url_for('static',filename='images/icon/socials/instagram_icon.svg',_external=True) }}" alt="instagram"></a>
+                        <a title="Check my fiverr profile" href="https://www.fiverr.com/lucino772" target="blank_"><img src="{{ url_for('static',filename='images/icon/socials/fiverr_icon.png',_external=True) }}" alt="fiverr"></a>
+                    </div>
+                </div>
+
+                <div class="uk-flex uk-flex-center uk-flex-column" uk-scrollspy="cls:uk-animation-fade">
+                    <h2 class="title-m uk-text-center">Images</h2>
+                    <h3 class="title-s uk-text-center">
+                        <a class="uk-link-muted" style="color: white;" title="Check fabiano's instagram account" href="https://www.instagram.com/fabianopalmisano/" target="blank_">@fabianopalmisano</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+<script>
+const toClampElements = document.querySelectorAll('.toClamp')
+toClampElements.forEach(elem => {
+    $clamp(elem,{clamp: 'auto'})
+});
+</script>
 </html>
