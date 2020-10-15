@@ -7,6 +7,8 @@
     height: 200px;
 
     border-radius: 50%;
+
+    background: white;
 }
 
 .logo-rounded > img {
@@ -45,3 +47,4 @@
         linear-gradient(to left,rgba(255, 255, 255, 0) 50%, white 100%);
     z-index: 10;
 }
+
