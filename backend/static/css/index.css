@@ -28,7 +28,7 @@ html, body {
     text-align: center;
 }
 
-.section-title > h2 {
+.section-title > h1 {
     position: relative;
 
     display: inline;
