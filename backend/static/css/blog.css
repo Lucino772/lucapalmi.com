@@ -2,3 +2,22 @@
 @import url('/static/css/vars.css');
 @import url('/static/css/images.css');
 
+* {
+    font-family: var(--f-family) !important;
+}
+
+html, body {
+    width: 100%;
+    height: 100vh;
+
+    scroll-behavior: smooth;
+}
+
+.container {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    background: white;
+}
