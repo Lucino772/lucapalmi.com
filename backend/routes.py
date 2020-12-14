@@ -6,6 +6,10 @@ routes = Blueprint("routes",__name__)
 def index():
     return render_template("index.html")
 
+@routes.route("/blog")
+def blog():
+    return render_template("blog.html")
+
 
 @routes.route("/robots.txt")
 @routes.route("/sitemap.xml")

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Luca Palmisano - Coding</title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/icon/icon.ico',_external=True) }}" type="image/x-icon">
+    <meta name="description" content="Hi, I'm Luca Palmisano. I've been in coding since 2014. I can easily work with programs such as python, html, css javascrpt."> 
+    <meta name="keywords" content="Coding, Python, Javascript, HTML, CSS, Luca Palmisano">
+
+    <meta property="og:title" content="Luca Palmisano - Coding" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Hi, I'm Luca Palmisano. I've been in coding since 2014. I can easily work with programs such as python, html, css javascrpt.">
+    <meta property="og:url" content="{{ url_for('routes.index',_external=True) }}" />
+    <meta property="og:image" content="{{ url_for('static',filename='images/small/logo_lite.jpg',_external=True) }}" />
+    <meta property="og:site_name" content="Luca Palmisano">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PalmisanoLuca1">
+    <meta name="twitter:title" content="Luca Palmisano - Coding">
+    <meta name="twitter:description" content="Welcome to my website">
+    <meta name="twitter:image" content="{{ url_for('static',filename='images/small/logo_lite.jpg',_external=True) }}">
+
+    <!-- Theme color for mobile browser -->
+    <meta name="theme-color" content="black" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/blog.css',_external=True) }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='uikit/uikit.min.css',_external=True) }}">
+    <!-- Javascript -->
+    <script src="{{ url_for('static',filename='uikit/uikit.min.js',_external=True) }}"></script>
+    <script src="{{ url_for('static',filename='uikit/uikit-icons.min.js',_external=True) }}"></script>
+    <script src="{{ url_for('static',filename='js/clamp.min.js',_external=True) }}"></script>
+</head>
+<body>
+    <h1>This is the blog</h1>
+</html>
