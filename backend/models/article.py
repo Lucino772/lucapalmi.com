@@ -1,6 +1,6 @@
 from mongoengine import *
 
-class Post(Document):
+class Article(Document):
     title = StringField(max_length=255,required=True)
     thumbnail = URLField(require=True)
     content = StringField(required=True)

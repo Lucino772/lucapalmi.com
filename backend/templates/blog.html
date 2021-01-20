@@ -53,9 +53,9 @@
                 <div class="uk-panel uk-width-1-1 uk-width-1-2@m">
                     <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="height: 100%;" uk-scrollspy="target: > a; cls: uk-animation-fade; delay: 100">
                         <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="width: 100%; background: white; padding: 20px;" uk-scrollspy="cls: uk-animation-fade;">
-                            <img src="{{ last_post.thumbnail }}" alt="Background" style="margin-bottom: 30px; border-radius: 10px; width: 100%;">
-                            <h1 style="font-size: 2rem; font-weight: normal; margin: 0; margin-bottom: 30px;">{{ last_post.title }}</h1>
-                            <a href="{{ url_for('routes.post', id=last_post.id,_external=True) }}" style="background: black; border-radius: 20px; padding: 13px 30px; color: white; font-weight: bold; text-decoration: none;">
+                            <img src="{{ last_article.thumbnail }}" alt="Background" style="margin-bottom: 30px; border-radius: 10px; width: 100%;">
+                            <h1 style="font-size: 2rem; font-weight: normal; margin: 0; margin-bottom: 30px;">{{ last_article.title }}</h1>
+                            <a href="{{ url_for('routes.article', id=last_article.id,_external=True) }}" style="background: black; border-radius: 20px; padding: 13px 30px; color: white; font-weight: bold; text-decoration: none;">
                                 <img src="{{ url_for('static', filename='svg/book.svg',_external=True) }}" alt="read_post">
                                 Read post
                             </a>
@@ -70,11 +70,11 @@
             <div class="uk-container uk-margin-top" style="max-width: 1150px; padding: 0px 50px;">
                 <h1 class="uk-heading-medium" style="font-weight: bold; text-align: center; color: black;">Other posts</h1>
                 <div class="uk-section uk-flex uk-flex-center uk-flex-wrap" style="width: 100%; margin: 0;" uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 100">
-                    {% for post in posts %}
+                    {% for article in articles %}
                     <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="width: 320px; background: white; padding: 20px; margin: 10px; border: 1px solid #CCCCCC; border-radius: 10px;">
-                        <img src="{{ post.thumbnail }}" alt="Background" style="margin-bottom: 30px; border-radius: 10px; width: 100%;">
-                        <h1 style="font-size: 1.625rem; font-weight: normal; margin: 0; margin-bottom: 30px; ">{{ post.title }}</h1>
-                        <a href="{{ url_for('routes.post', id=post.id,_external=True) }}" style="background: black; border-radius: 20px; padding: 13px 30px; color: white; font-weight: bold; text-decoration: none;">
+                        <img src="{{ article.thumbnail }}" alt="Background" style="margin-bottom: 30px; border-radius: 10px; width: 100%;">
+                        <h1 style="font-size: 1.625rem; font-weight: normal; margin: 0; margin-bottom: 30px; ">{{ article.title }}</h1>
+                        <a href="{{ url_for('routes.article', id=article.id,_external=True) }}" style="background: black; border-radius: 20px; padding: 13px 30px; color: white; font-weight: bold; text-decoration: none;">
                             <img src="{{ url_for('static', filename='svg/book.svg',_external=True) }}" alt="read_post">
                             Read post
                         </a>

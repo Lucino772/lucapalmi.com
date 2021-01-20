@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, send_from_directory, current_app, url_for
-from .models.post import Post
+from .models.article import Article
 import os
 import uuid
 
@@ -12,16 +12,16 @@ def index():
 ## BLOG ##
 @routes.route("/blog")
 def blog():
-    posts = Post.objects().order_by('-created_at')
-    last_post = None
-    if len(posts) > 0:
-        last_post = posts[0]
-    return render_template("blog.html",posts=posts,last_post=last_post)
+    articles = Article.objects().order_by('-created_at')
+    last_article = None
+    if len(articles) > 0:
+        last_article = articles[0]
+    return render_template("blog.html",articles=articles,last_article=last_article)
 
 @routes.route('/blog/<id>')
-def post(id):
-    post = Post.objects(id=id).first()
-    return render_template("post.html",post=post)
+def article(id):
+    article = Article.objects(id=id).first()
+    return render_template("article.html",article=article)
 
 
 ## OTHER ##
