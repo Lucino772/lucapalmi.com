@@ -5,11 +5,13 @@ from .routes import routes
 
 def create_app():
     app = Flask(__name__)
-    db = MongoEngine(app)
-
+    
     app.config['MONGODB_SETTINGS'] = {
-        'host': os.getenv('app_dbhost')
+        'host': os.getenv('app_dbhost'),
+        'alias': 'blog'
     }
+
+    db = MongoEngine(app)
 
     app.register_blueprint(routes)
 
