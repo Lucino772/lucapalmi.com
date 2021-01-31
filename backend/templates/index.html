@@ -83,7 +83,7 @@
         </div>
 
         <!-- Skills section -->
-        <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-flex-column" style="min-height: 100%;" uk-scrollspy="cls: uk-animation-fade">
+        <div class="uk-section uk-flex uk-flex-left uk-flex-middle uk-flex-column" style="min-height: 100%;" uk-scrollspy="cls: uk-animation-fade">
             <div class="section-title">
                 <h1>My Skills</h1>
                 <hr>
@@ -93,54 +93,32 @@
                     <div class="uk-card uk-card-body uk-flex uk-flex-center uk-flex-column" style="width: 100%;">
                         <h4 class="uk-text-lead uk-text-center uk-text-center">Python</h4>
                         <img style="align-self: center; max-height: 100px;" src="{{ url_for('static',filename='images/medium/skills/python_logo.png') }}" alt="Python">
-                        <p class="toClamp" style="height: 75px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce condimentum molestie odio ac malesuada. Praesent nisi ex, rhoncus posuere imperdiet in, lacinia sit amet orci. Quisque convallis nunc erat, a luctus lorem pulvinar in. Aliquam auctor purus magna, viverra commodo ex ultrices non. Donec mattis mi ut euismod tristique. Vestibulum. </p>
+                        <p class="toClamp" style="height: 75px; text-align: center;">I started python in 2018. Today it's the langage I use the most among all my project.</p>
                         <div class="uk-flex uk-flex-center" style="justify-content: space-evenly;">
-                            <a class="uk-text-emphasis uk-button uk-button-text uk-button uk-button-text" href="" title="Show python project on github">Github</a>
-                            <a class="uk-text-emphasis uk-button uk-button-text" href="" title="Show python project on blog">Blog</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text uk-button uk-button-text" href="https://github.com/Lucino772" title="Show python project on github">Github</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="{{ url_for('routes.blog',_external=True) }}" title="Show python project on blog">Blog</a>
                         </div>
                     </div>
                 </div>
                 <div class="uk-flex uk-flex-center">
                     <div class="uk-card uk-card-body uk-flex uk-flex-center uk-flex-column" style="width: 100%;">
-                        <h4 class="uk-text-lead uk-text-center">Node.Js</h4>
+                        <h4 class="uk-text-lead uk-text-center">Javascript</h4>
                         <img style="align-self: center; max-height: 100px;" src="{{ url_for('static',filename='images/medium/skills/node_js_logo.png') }}" alt="Node.Js">
-                        <p class="toClamp" style="height: 75px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </p>
+                        <p class="toClamp" style="height: 75px; text-align: center;">Javascript was the first programming langage I learned. I dont use it in a lot of project but still it's one of my favorite programming langage after Python.</p>
                         <div class="uk-flex uk-flex-center" style="justify-content: space-evenly;">
-                            <a class="uk-text-emphasis uk-button uk-button-text" href="" title="Show node.js project on github">Github</a>
-                            <a class="uk-text-emphasis uk-button uk-button-text" href="" title="Show node.js project on github">Blog</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="https://github.com/Lucino772" title="Show node.js project on github">Github</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="{{ url_for('routes.blog',_external=True) }}" title="Show node.js project on blog">Blog</a>
                         </div>
                     </div>
                 </div>
                 <div class="uk-flex uk-flex-center">
                     <div class="uk-card uk-card-body uk-flex uk-flex-center uk-flex-column" style="width: 100%;">
-                        <h4 class="uk-text-lead uk-text-center">React</h4>
-                        <img style="align-self: center; max-height: 100px;" src="{{ url_for('static',filename='images/medium/skills/react_logo.png') }}" alt="React">
-                        <p class="toClamp" style="height: 75px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="uk-flex uk-flex-center" style="justify-content: space-evenly;">
-                            <a class="uk-text-emphasis uk-button uk-button-text" href="" title="Show react project on github">Github</a>
-                            <a class="uk-text-emphasis uk-button uk-button-text" href="" title="Show react project on github">Blog</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="uk-flex uk-flex-center">
-                    <div class="uk-card uk-card-body uk-flex uk-flex-center uk-flex-column" style="width: 100%;">
-                        <h4 class="uk-text-lead uk-text-center">Mongo DB</h4>
-                        <img style="align-self: center; max-height: 100px;" src="{{ url_for('static',filename='images/medium/skills/mongo_db_logo.png') }}" alt="Mongo DB">
-                        <p class="toClamp" style="height: 75px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="uk-flex uk-flex-center" style="justify-content: space-evenly;">
-                            <a class="uk-text-emphasis uk-button uk-button-text" href="" title="Show mongo db project on github">Github</a>
-                            <a class="uk-text-emphasis uk-button uk-button-text" href="" title="Show mongo db project on github">Blog</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="uk-flex uk-flex-center">
-                    <div class="uk-card uk-card-body uk-flex uk-flex-center uk-flex-column" style="width: 100%;">
-                        <h4 class="uk-text-lead uk-text-center">Docker</h4>
+                        <h4 class="uk-text-lead uk-text-center">Analysis</h4>
                         <img style="align-self: center; max-height: 100px;" src="{{ url_for('static',filename='images/medium/skills/docker_logo.png') }}" alt="Docker">
-                        <p class="toClamp" style="height: 75px; text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <p class="toClamp" style="height: 75px; text-align: center;">I love analysing data. It a skill I'm always trying to improve, I've done a lot of projects in which I had to analyse data and trying to create an output with it.</p>
                         <div class="uk-flex uk-flex-center" style="justify-content: space-evenly;">
-                            <a class="uk-text-emphasis uk-button uk-button-text" href="" title="Show docker project on github">Github</a>
-                            <a class="uk-text-emphasis uk-button uk-button-text" href="" title="Show docker project on github">Blog</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="https://github.com/Lucino772" title="Show docker project on github">Github</a>
+                            <a class="uk-text-emphasis uk-button uk-button-text" href="{{ url_for('routes.blog',_external=True) }}" title="Show docker project on blog">Blog</a>
                         </div>
                     </div>
                 </div>
