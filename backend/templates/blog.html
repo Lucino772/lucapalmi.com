@@ -42,33 +42,12 @@
             <h1 class="uk-heading-medium" style="color: white; letter-spacing: 25px; text-align: center;" uk-scrollspy="cls: uk-animation-fade">Welcome to my blog</h1>
         </div>
 
-        <!-- Main Post -->
-        <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-flex-column" style="max-width: 1150px; margin: 0 auto;">
-            <div uk-grid style="padding: 0px 50px;">
-                <div class="uk-panel uk-width-1-1 uk-width-1-2@m uk-flex uk-flex-center uk-flex-middle uk-flex-column" >
-                    <div style="width: 100%; background: white; padding: 20px;" uk-scrollspy="cls: uk-animation-fade;">
-                        <h1 class="uk-heading-medium" style="font-weight: bold;">Checkout my last post</h1>
-                    </div>
-                </div>
-                <div class="uk-panel uk-width-1-1 uk-width-1-2@m">
-                    <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="height: 100%;" uk-scrollspy="target: > a; cls: uk-animation-fade; delay: 100">
-                        <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="width: 100%; background: white; padding: 20px;" uk-scrollspy="cls: uk-animation-fade;">
-                            <img src="{{ last_article.thumbnail }}" alt="Background" style="margin-bottom: 30px; border-radius: 10px; width: 100%;">
-                            <h1 style="font-size: 2rem; font-weight: normal; margin: 0; margin-bottom: 30px;">{{ last_article.title }}</h1>
-                            <a href="{{ url_for('routes.article', id=last_article.id,_external=True) }}" style="background: black; border-radius: 20px; padding: 13px 30px; color: white; font-weight: bold; text-decoration: none;">
-                                <img src="{{ url_for('static', filename='svg/book.svg',_external=True) }}" alt="read_post">
-                                Read post
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <!-- Other Posts -->
         <div class="posts-background">
             <div class="uk-container uk-margin-top" style="max-width: 1150px; padding: 0px 50px;">
-                <h1 class="uk-heading-medium" style="font-weight: bold; text-align: center; color: black;">Other posts</h1>
+                <h1 class="uk-heading-medium" style="font-weight: bold; text-align: center; color: black;">Articles</h1>
                 <div class="uk-section uk-flex uk-flex-center uk-flex-wrap" style="width: 100%; margin: 0;" uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 100">
                     {% for article in articles %}
                     <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="width: 320px; background: white; padding: 20px; margin: 10px; border: 1px solid #CCCCCC; border-radius: 10px;">
@@ -76,7 +55,7 @@
                         <h1 style="font-size: 1.625rem; font-weight: normal; margin: 0; margin-bottom: 30px; ">{{ article.title }}</h1>
                         <a href="{{ url_for('routes.article', id=article.id,_external=True) }}" style="background: black; border-radius: 20px; padding: 13px 30px; color: white; font-weight: bold; text-decoration: none;">
                             <img src="{{ url_for('static', filename='svg/book.svg',_external=True) }}" alt="read_post">
-                            Read post
+                            Read article
                         </a>
                     </div>
                     {% endfor %}
