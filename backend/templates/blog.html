@@ -26,41 +26,25 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static',filename='css/blog.css',_external=True) }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='uikit/uikit.min.css',_external=True) }}">
-    <!-- Javascript -->
-    <script src="{{ url_for('static',filename='uikit/uikit.min.js',_external=True) }}"></script>
-    <script src="{{ url_for('static',filename='uikit/uikit-icons.min.js',_external=True) }}"></script>
-    <script src="{{ url_for('static',filename='js/clamp.min.js',_external=True) }}"></script>
 </head>
 <body>
     <div class="container">
-        <!-- Main Section -->
-        <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-flex-column" style="background: black; height: 100%;">
-            <div class="uk-border-circle" style="background: white; width: 300px; height: 300px;" uk-scrollspy="cls: uk-animation-scale-up">
-                <img class="uk-border-circle" src="{{ url_for('static',filename='images/small/logo_lite.jpg',_external=True) }}" alt="Logo">
-            </div>
-            <h1 class="uk-heading-medium" style="color: white; letter-spacing: 25px; text-align: center;" uk-scrollspy="cls: uk-animation-fade">Welcome to my blog</h1>
-        </div>
-
-
-
-        <!-- Other Posts -->
-        <div class="posts-background">
-            <div class="uk-container uk-margin-top" style="max-width: 1150px; padding: 0px 50px;">
-                <h1 class="uk-heading-medium" style="font-weight: bold; text-align: center; color: black;">Articles</h1>
-                <div class="uk-section uk-flex uk-flex-center uk-flex-wrap" style="width: 100%; margin: 0;" uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 100">
-                    {% for article in articles %}
-                    <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="width: 320px; background: white; padding: 20px; margin: 10px; border: 1px solid #CCCCCC; border-radius: 10px;">
-                        <img src="{{ article.thumbnail }}" alt="Background" style="margin-bottom: 30px; border-radius: 10px; width: 100%;">
-                        <h1 style="font-size: 1.625rem; font-weight: normal; margin: 0; margin-bottom: 30px; ">{{ article.title }}</h1>
-                        <a href="{{ url_for('routes.article', id=article.id,_external=True) }}" style="background: black; border-radius: 20px; padding: 13px 30px; color: white; font-weight: bold; text-decoration: none;">
-                            <img src="{{ url_for('static', filename='svg/book.svg',_external=True) }}" alt="read_post">
-                            Read article
-                        </a>
-                    </div>
-                    {% endfor %}
+        <header>
+            <img src="{{ url_for('static',filename='images/small/logo_lite.jpg',_external=True) }}" alt="Logo">
+        </header>
+        <section class="articles">
+            {% for article in articles %}
+            <article>
+                <div class="article__thumbnail">
+                    <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvZ3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1296&q=60" alt="blog image">
                 </div>
-            </div>
-        </div>
+                <div class="article__content">
+                    <h2><a href="">{{ article.title }}</a></h2>
+                    <p>{{ article.content[:200]|safe }}</p>
+                    <p>Luca Palmisano - {{ article.created_at }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
     </div>
 </html>
