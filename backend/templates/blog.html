@@ -39,7 +39,7 @@
                     <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvZ3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1296&q=60" alt="blog image">
                 </div>
                 <div class="article__content">
-                    <h2><a href="">{{ article.title }}</a></h2>
+                    <h2><a href="{{ url_for('routes.article',id=article.id,_external=True) }}">{{ article.title }}</a></h2>
                     <p>{{ article.content[:200]|safe }}</p>
                     <p>Luca Palmisano - {{ article.created_at }}</p>
                 </div>

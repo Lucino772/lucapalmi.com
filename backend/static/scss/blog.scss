@@ -20,6 +20,11 @@ header {
 
         object-fit: cover;
         border-radius: 50%;
+
+        @media only screen and (max-width: 720px) {
+            width: 75px;
+            height: 75px;
+        }
     }
 }
 
@@ -49,10 +54,21 @@ article {
     justify-content: center;
     align-items: center;
 
+    @media only screen and (max-width: 720px) {
+        flex-direction: column;
+        width: 300px;
+        height: auto;
+    }
+
     .article__thumbnail {
         position: relative;
         width: 40%;
         height: 100%;
+
+        @media only screen and (max-width: 720px) {
+            width: 100%;
+            height: 230px;
+        }
         
         img {
             position: absolute;
@@ -78,12 +94,14 @@ article {
         align-items: flex-start;
 
         h2,a {
+            width: 100%;
             color: white;
             text-decoration: none;
             font-size: 30px;
         }
 
         p {
+            width: 100%;
             font-size: 20px;
             line-height: normal;
             color: white;
@@ -92,6 +110,24 @@ article {
 
         p:last-child {
             font-weight: 400;
+        }
+
+        @media only screen and (max-width: 720px) {
+            width: 100%;
+            height: auto;
+            padding: 0 15px;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 15px;
+            
+            h2,a {
+                font-size: 25px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-top: 10px;
+            }
         }
     }
 }
