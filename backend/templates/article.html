@@ -26,20 +26,38 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static',filename='css/article.css',_external=True) }}">
-    <link rel="stylesheet" href="{{ url_for('static',filename='uikit/uikit.min.css',_external=True) }}">
     <!-- Javascript -->
-    <script src="{{ url_for('static',filename='uikit/uikit.min.js',_external=True) }}"></script>
-    <script src="{{ url_for('static',filename='uikit/uikit-icons.min.js',_external=True) }}"></script>
-    <script src="{{ url_for('static',filename='js/clamp.min.js',_external=True) }}"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/decoupled-document/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/decoupled-document/ckeditor.js"></script> -->
 </head>
 <body>
     <div class="container">
-        <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-flex-column" style="max-width: 700px; padding: 30px 10px; margin: 0 auto; width: 100%;">
-            <div id="content" class="ck-content" style="width: 100%;">
-                {{ article.content|safe }}
+        <header>
+            <img src="{{ url_for('static',filename='images/small/logo_lite.jpg',_external=True) }}" alt="Logo">
+        </header>
+        <article>
+            <h1>Financial statement with Python</h1>
+            <div class="article__image">
+                <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Image">
             </div>
-        </div>
+            <section>
+                <h2>What is a financial statement ?</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a ut facilisis dictum elit. Nam eleifend quam commodo hendrerit malesuada praesent cursus vitae. Tellus vel mauris platea suspendisse id nibh orci tristique. Sed vitae, feugiat aliquet egestas gravida nisl mauris cursus. Venenatis turpis aliquam venenatis quis sed mus ultricies orci. Aliquet tellus lacus consectetur augue in aliquet consectetur. Semper fames facilisi eget nullam tellus eu ligula.</p>
+            </section>
+            <section>
+                <h2>Why do we use Python ?</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a ut facilisis dictum elit. Nam eleifend quam commodo hendrerit malesuada praesent cursus vitae. Tellus vel mauris platea suspendisse id nibh orci tristique. Sed vitae, feugiat aliquet egestas gravida nisl mauris </p>
+            </section>
+            <section>
+                <h2>Let’s code it !</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem tellus egestas eu pulvinar volutpat faucibus. Magna nec vel venenatis dictumst nibh ut. Est vivamus blandit massa sed sagittis cursus eget ut. Tristique molestie aliquet id vitae pulvinar faucibus dictum tincidunt et. Proin netus urna amet eu sodales eget pellentesque tortor. Pharetra nunc in platea eget turpis. Vel volutpat in viverra proin rutrum tellus magna. Quis risus turpis aliquet elementum quis. Aenean pharetra, fermentum, id amet. Fames vitae tellus sapien arcu, sed. Fermentum eget ornare gravida consequat, eu vel lacus. Diam amet, auctor mattis arcu ipsum libero vitae. Pharetra, quis at tincidunt ultrices sapien.
+                    Ridiculus mus eget donec porttitor non. Cursus sollicitudin diam ornare ut nunc proin dictum. Interdum id id lectus erat commodo malesuada dui. Diam ornare quam pulvinar porttitor ac metus nibh fermentum in. Ornare nisl eu vitae diam nisl.
+                    Eget malesuada nec viverra a, vel et enim mauris enim. Mauris tortor leo eget platea sed pretium penatibus lacus. Ipsum posuere non egestas aenean fames laoreet cras. Consequat tortor, commodo sem mi amet, arcu nisl ut aliquam. Euismod habitasse mattis sociis eros, vestibulum. Mattis duis mauris, nulla non fusce nulla. Nunc elementum ipsum gravida morbi pellentesque. Nunc, arcu tincidunt magna elit magna enim id tristique. Sapien enim sem fringilla pharetra adipiscing blandit. Augue etiam metus, a egestas luctus id cras. Et, vitae nam ut ultrices ac, luctus.</p>
+            </section>
+            <section>
+                <h2>Conclusion</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a ut facilisis dictum elit. Nam eleifend quam commodo hendrerit malesuada praesent cursus vitae. Tellus vel mauris platea suspendisse id nibh orci tristique. Sed vitae, feugiat aliquet egestas gravida nisl mauris </p>
+            </section>
+        </article>
     </div>
 </body>
 </html>
