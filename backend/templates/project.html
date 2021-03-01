@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Luca Palmisano - Coding</title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/icon/icon.ico',_external=True) }}" type="image/x-icon">
+    <meta name="description" content="Hi, I'm Luca Palmisano. I've been in coding since 2014. I can easily work with programs such as python, html, css javascrpt."> 
+    <meta name="keywords" content="Coding, Python, Javascript, HTML, CSS, Luca Palmisano">
+
+    <!-- Social Media -->
+    <meta property="og:title" content="Luca Palmisano - Coding" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Hi, I'm Luca Palmisano. I've been in coding since 2014. I can easily work with programs such as python, html, css javascrpt.">
+    <meta property="og:url" content="{{ url_for('routes.index',_external=True) }}" />
+    <meta property="og:image" content="{{ url_for('static',filename='images/small/logo_lite.jpg',_external=True) }}" />
+    <meta property="og:site_name" content="Luca Palmisano">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PalmisanoLuca1">
+    <meta name="twitter:title" content="Luca Palmisano - Coding">
+    <meta name="twitter:description" content="Welcome to my website">
+    <meta name="twitter:image" content="{{ url_for('static',filename='images/small/logo_lite.jpg',_external=True) }}">
+
+    <!-- Theme color for mobile browser -->
+    <meta name="theme-color" content="black" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/project.css',_external=True) }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static',filename='images/small/logo_lite.jpg',_external=True) }}" alt="Logo">
+        </header>
+
+        <section class="project">
+            <h1>Project name</h1>
+            <div class="project__info">
+                <div class="project__description">
+                    <div class="project__thumbnail">
+                        <img src="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Project name">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a ut facilisis dictum elit. Nam eleifend quam commodo hendrerit malesuada praesent cursus vitae. Tellus vel mauris platea suspendisse id nibh orci tristique. Sed vitae, feugiat aliquet egestas gravida nisl mauris cursus. Venenatis turpis aliquam venenatis quis sed mus ultricies orci. Aliquet tellus lacus consectetur augue in aliquet consectetur. Semper fames facilisi eget nullam tellus eu ligula.</p>
+                </div>
+                <div class="project__extrainfo">
+                    <div>
+                        <h2>Technologies</h2>
+                        <ul>
+                            <li>Python</li>
+                            <li>Javascript</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Website</h2>
+                        <a href="https://www.lucapalmi.com">www.lucapalmi.com</a>
+                    </div>
+                    <div>
+                        <h2>Source</h2>
+                        <a href="#">View source</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

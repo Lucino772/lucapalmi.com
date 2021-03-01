@@ -9,6 +9,11 @@ routes = Blueprint("routes",__name__)
 def index():
     return render_template("index.html")
 
+## Projects ##
+@routes.route("/project/<id>")
+def project(id=None):
+    return render_template("project.html")
+
 ## BLOG ##
 @routes.route("/blog")
 def blog():
