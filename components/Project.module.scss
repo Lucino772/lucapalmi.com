@@ -1,0 +1,94 @@
+@use "sass:math";
+
+.pc-container {
+    position: relative;
+
+    max-width: 900px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+
+    grid-gap: 10px;
+}
+
+.pr-container {
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    grid-gap: 10px;
+}
+
+.pi-container {
+    position: relative;
+    background: green;
+
+    width: 100%;
+    padding-bottom: 56.25%;
+
+    border: 2px solid white;
+
+    &-1-2 {
+        width: 50%;
+        padding-bottom: 61.81%;
+    }
+}
+
+.pi-content {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    color: white;
+
+    h2 {
+        padding: 10px 0px;
+
+        font-size: 30px;
+        font-weight: 600;
+    }
+}
+
+.pi-links {
+    position: relative;
+    margin-top: 10px;
+
+    a {
+        color: white;
+        text-decoration: none;
+
+        font-size: 20px;
+        font-weight: 400;
+
+        margin-right: 20px;
+
+        &:last-child {
+            margin-right: 0px;
+        }
+    }
+
+    p {
+        font-size: 20px;
+        font-weight: 400;
+
+        font-style: italic;
+    }
+}
