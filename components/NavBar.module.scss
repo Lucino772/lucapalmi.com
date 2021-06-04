@@ -1,0 +1,66 @@
+.container {
+    position: relative;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 30px;
+}
+
+.logo {
+    position: relative;
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+}
+
+.logo-invisible {
+    @extend .logo;
+
+    visibility: hidden;
+}
+
+.nav {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        position: relative;
+        font-size: 20px;
+        color: white;
+        font-weight: 400;
+        text-decoration: none;
+
+        margin-right: 20px;
+    }
+
+    a:last-child {
+        margin-right: 0px;
+    }
+
+    a:after {
+        content: '';
+        position: absolute;
+        
+        left: 5%;
+        bottom: 0;
+
+        width: 0%;
+        height: 2px;
+        background: white;
+
+        transition: width 200ms;
+    }
+
+    a:hover {
+        &:after {
+            width: 75%;
+        }
+    }
+}

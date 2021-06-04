@@ -1,0 +1,60 @@
+
+.container {
+    position: absolute;
+
+    top: 50%;
+    right: 25%;
+
+    transform: translate(50%, -50%);
+
+    p {
+        font-size: 50px;
+        font-weight: 600;
+        color: white;
+
+        margin-bottom: 20px;
+
+        &:nth-child(2) {
+            padding-left: 30px;
+        }
+    }
+}
+
+.socials {
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 25px;
+
+    a {
+        position: relative;
+        display: inline-block;
+        margin-right: 20px;
+
+        opacity: 0.8;
+        transition: opacity 200ms;
+    
+        &:hover {
+            opacity: 1;
+        }
+
+        &:last-child {
+            margin-right: 0px;
+        }
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+
+        width: 75%;
+        height: 1px;
+        
+        top: 0px;
+
+        background: white;
+    }
+}
