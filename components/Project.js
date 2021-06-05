@@ -119,8 +119,8 @@ const ProjectItemLinks = styled.div`
 export function ProjectItem(props) {
     const variants = {
         initial: { opacity: 0 },
-        enter: { opacity: 1, transition: { duration: 0.3, delay: props.delay } },
-        exit: { opacity: 0, transition: { duration: 0.3, delay: props.delay } }
+        enter: { opacity: 1, transition: { duration: 0.3, delay: props.enterDelay } },
+        exit: { opacity: 0, transition: { duration: 0.3 } }
     }
 
     
@@ -138,8 +138,12 @@ export function ProjectItem(props) {
     )
 }
 
+ProjectItem.defaultProps = {
+    enterDelay: 0,
+}
+
 ProjectItem.propTypes = {
-    delay: PropTypes.number,
+    enterDelay: PropTypes.number,
     portrait: PropTypes.bool,
     title: PropTypes.string,
     image: PropTypes.string,

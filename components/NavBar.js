@@ -69,7 +69,7 @@ export default function NavBar(props) {
     const logoVariants = {
         initial: { opacity: 0, scale: 0 },
         enter: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-        exit: { opacity: 0, scale: 0, transition: { duration: 0.3 } }
+        exit: { opacity: 0, scale: 0, transition: { duration: 0.3, delay: props.exitDelay } }
     }
     const logoProps = props.hideLogo ? {style: { visibility: "hidden" }} : { initial: "initial", animate: "enter", exit: "exit", variants: logoVariants}
 
@@ -92,9 +92,11 @@ export default function NavBar(props) {
 }
 
 NavBar.defaultProps = {
-    hideLogo: false
+    hideLogo: false,
+    exitDelay: 0
 }
 
 NavBar.propTypes = {
-    hideLogo: PropTypes.bool
+    hideLogo: PropTypes.bool,
+    exitDelay: PropTypes.number
 } 
