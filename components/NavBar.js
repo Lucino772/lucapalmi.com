@@ -6,19 +6,12 @@ import styles from "./NavBar.module.scss";
 
 export default function NavBar(props) {
     const logoClassName = props.hideLogo ? "logo-invisible" : "logo"
-    const logoProps = props.hideLogo ? {} : {
-        initial: {
-            opacity: 0,
-            scale: 0
-        },
-        animate: {
-            opacity: 1,
-            scale: 1
-        },
-        transition: {
-            duration: 0.2
-        }
+    const logoVariants = {
+        initial: { opacity: 0, scale: 0 },
+        enter: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+        exit: { opacity: 0, scale: 0, transition: { duration: 0.3 } }
     }
+    const logoProps = props.hideLogo ? {} : { initial: "initial", animate: "enter", exit: "exit", variants: logoVariants}
 
     return (
         <div className={styles.container}>

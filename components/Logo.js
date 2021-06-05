@@ -4,7 +4,13 @@ import { motion } from "framer-motion";
 import styles from "./Logo.module.scss";
 
 
-export default function Logo(props) {    
+export default function Logo(props) {
+    const variants = {
+        initial: { opacity: 0, x: "-100%", y: "-50%", rotateZ: "0deg" },
+        enter: { opacity: 1, x: "-50%", rotateZ: "-15deg", transition: { duration: 0.3 } },
+        exit: { opacity: 0, transition: { duration: 0.2 } }
+    }
+    
     return (
         <motion.img 
             src="/images/logo.jpg" 
@@ -12,9 +18,10 @@ export default function Logo(props) {
             className={styles.logo} 
             width={props.width} 
             height={props.height} 
-            initial={{ opacity: 0, x: "-100%", y: "-50%", rotateZ: "0deg" }} 
-            animate={{ opacity: 1, x: "-50%", y: "-50%", rotateZ: "-15deg" }}
-            transition={{ delay: 0.1 }} />
+            initial="initial" 
+            animate="enter"
+            exit="exit"
+            variants={variants} />
     )
 }
 

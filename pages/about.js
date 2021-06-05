@@ -6,7 +6,7 @@ export default function About() {
     return (
         <>
             <NavBar hideLogo />
-            <Logo useRotate />
+            <Logo />
             <AboutText />
         </>
     )
