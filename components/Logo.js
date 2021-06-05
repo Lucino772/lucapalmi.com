@@ -17,8 +17,9 @@ export default function Logo(props) {
             alt="Logo" 
             className={styles.logo} 
             width={props.width} 
-            height={props.height} 
-            initial="initial" 
+            height={props.height}
+            style={{opacity: 0, x: "-50%", y: "-50%", rotateZ: "0deg"}}
+            initial="initial"
             animate="enter"
             exit="exit"
             variants={variants} />
