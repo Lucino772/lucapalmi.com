@@ -6,7 +6,7 @@ export default function Index() {
     return (
         <>
             <NavBar hideLogo />
-            <Logo useRotate />
+            <Logo />
             <Welcome />
         </>
     )
