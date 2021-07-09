@@ -1,10 +1,13 @@
 import NavBar from "../components/NavBar";
 import {ProjectContainer, ProjectItem, ProjectRow} from "../components/Project";
 import { Scrollbars } from "react-custom-scrollbars";
+import SiteInConstruction from "../components/SiteInConstruction";
+
 
 export default function Projects() {
     return (
         <Scrollbars universal autoHeight autoHeightMin="100vh">
+            <SiteInConstruction />
             <div style={{paddingBottom: 100}}>
                 <NavBar exitDelay={0.2} />
                 <ProjectContainer>
