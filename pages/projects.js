@@ -1,5 +1,5 @@
 import NavBar from "../components/NavBar";
-import {ProjectContainer, ProjectItem, ProjectRow} from "../components/Project";
+import { ProjectContainer, ProjectItem, ProjectRow } from "../components/Project";
 import { Scrollbars } from "react-custom-scrollbars";
 import SiteInConstruction from "../components/SiteInConstruction";
 

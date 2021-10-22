@@ -1,15 +1,5 @@
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import styled from "styled-components";
-
-const LogoImg = styled(motion.img)`
-    position: absolute;
-
-    border-radius: 50%;
-
-    left: 25%;
-    top: 50%;
-`
 
 export default function Logo(props) {
     const variants = {
@@ -18,15 +8,16 @@ export default function Logo(props) {
         exit: { opacity: 0, transition: { duration: 0.2 } }
     }
 
-    return <LogoImg 
-        src="/images/logo.jpg" 
-        alt="Logo" 
-        width={props.width} 
-        height={props.height} 
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        variants={variants} />
+    return <motion.img 
+                className="absolute border rounded-full left-[25%] top-[50%]" 
+                src="/images/logo.jpg" 
+                alt="Logo"
+                width={props.width}
+                height={props.height}
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                variants={variants} />
 }
 
 

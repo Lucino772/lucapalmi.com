@@ -19,3 +19,106 @@ body {
 
     overflow-x: hidden;
 }
+
+@layer components {
+    .about-p {
+        @apply relative text-xl font-normal leading-6 mt-3;
+        &:nth-child(1) {
+            @apply pl-4;
+        }
+        &:nth-child(2) {
+            @apply pl-6;
+        }
+        &:nth-child(3) {
+            @apply pl-8;
+        }
+    }
+
+    .welcome-text {
+        @apply text-5xl font-semibold text-white mb-5;
+        &:nth-child(2) {
+            @apply pl-8;
+        }
+    }
+
+    .socials {
+        @apply relative flex justify-center items-center pt-6;
+    
+        .social-link {
+            @apply relative inline-block mr-5;
+            &:last-child {
+                @apply mr-0;
+            }
+        }
+
+        &:before {
+            content: '';
+            @apply absolute w-3/4 h-[1px] top-0 bg-white;
+        }
+    }
+
+    .nav-link {
+        @apply relative text-xl text-white font-normal no-underline mr-5;
+
+        &:last-child {
+            @apply mr-0;
+        }
+
+        &:after {
+            content: '';
+            @apply absolute left-[5%] bottom-0 w-0 h-[2px] bg-white;
+            transition: width 200ms;
+        }
+
+        &:hover {
+            &:after {
+                @apply w-3/4;
+            }
+        }
+    }
+
+    .projects-container {
+        @apply relative max-w-4xl my-0 mx-auto flex flex-col 
+                justify-start items-center gap-2;
+
+        .project-row {
+            @apply relative w-full flex flex-row justify-center
+                    items-center gap-2;
+        }
+        
+        .project-item {
+            @apply relative bg-green-900 w-full pb-[56.25%]
+                    border-2 border-solid border-white;
+        }
+
+        .project-item-portrait {
+            @apply w-1/2 pb-[61.81%];
+        }
+
+        .project-item-content {
+            @apply absolute left-0 bottom-0 w-full p-2 flex
+                    flex-col justify-center items-center 
+                    bg-black bg-opacity-50 text-white;
+
+            h2 {
+                @apply py-2 px-0 text-3xl font-semibold;
+            }
+        }
+
+        .project-item-links {
+            @apply relative mt-2;
+
+            a {
+                @apply text-white no-underline text-xl font-normal mr-5;
+                
+                &:last-child {
+                    @apply mr-0;
+                }
+            }
+
+            p {
+                @apply text-xl font-normal italic;
+            }
+        }
+    }
+}
