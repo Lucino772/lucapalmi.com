@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 
 export default function Logo(props) {
     const variants = {
-        initial: { opacity: 0, x: "-100%", y: "-50%", rotateZ: "0deg" },
-        enter: { opacity: 1, x: "-50%", rotateZ: "-15deg", transition: { duration: 0.3 } },
+        initial: { opacity: 0, x: "-100%", rotateZ: "0deg" },
+        enter: { opacity: 1, x: 0, rotateZ: "-15deg", transition: { duration: 0.3 } },
         exit: { opacity: 0, transition: { duration: 0.2 } }
     }
 
     return <motion.img 
-                className="absolute border rounded-full left-[25%] top-[50%]" 
+                className="relative border rounded-full hidden md:block" 
                 src="/images/logo.jpg" 
                 alt="Logo"
                 width={props.width}

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function NavBar(props) {
     const logoVariants = {
@@ -8,12 +10,20 @@ export default function NavBar(props) {
         enter: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
         exit: { opacity: 0, scale: 0, transition: { duration: 0.3, delay: props.exitDelay } }
     }
-    const logoProps = props.hideLogo ? {style: { visibility: "hidden" }} : { initial: "initial", animate: "enter", exit: "exit", variants: logoVariants}
 
     return (
-        <div className="relative w-full flex justify-between items-center py-4 px-7">
-            <motion.img className="relative w-[75px] h-[75px] rounded-full" src="/images/logo.jpg" alt="Logo" {...logoProps} />
-            <nav className="relative flex justify-center items-center">
+        <div className="relative w-full max-w-6xl flex justify-between items-center py-4 px-7 mx-auto">
+            <motion.img 
+                className="relative w-[50px] h-[50px] md:w-[75px] md:h-[75px] rounded-full visible md:invisible"
+                src="/images/logo.jpg"
+                alt="Logo"
+                initial="initial"
+                animate="enter"
+                exit="exit" 
+                variants={logoVariants}
+                style={props.showLogo ? {visibility: 'visible'}: {}} />
+            
+            <nav className="relative justify-center items-center hidden md:flex">
                 <Link href="/">
                     <a className="nav-link">Home</a>
                 </Link>
@@ -24,6 +34,8 @@ export default function NavBar(props) {
                     <a className="nav-link">Projects</a>
                 </Link>
             </nav>
+            
+            <FontAwesomeIcon className="block md:hidden" icon={faBars} color="white" size="2x" fixedWidth />
         </div>
     )
 }

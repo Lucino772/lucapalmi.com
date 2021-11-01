@@ -19,7 +19,7 @@ export default function Welcome() {
     }
     
     return (
-        <div className="absolute top-[50%] right-[25%] translate-x-1/2 -translate-y-1/2">
+        <div className="relative">
             <motion.p className="welcome-text" initial="initial" animate="enter" exit="exit" variants={titleVariants} custom={{ delay: 0 }}>Welcome, I'm</motion.p>
             <motion.h1 className="welcome-text" initial="initial" animate="enter" exit="exit" variants={titleVariants} custom={{ delay: 0.2 }}>Luca Palmisano</motion.h1>
             <motion.div className="socials" exit="containerExit" variants={linkVariants}>

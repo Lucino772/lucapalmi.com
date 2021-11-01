@@ -17,20 +17,20 @@ body {
 
     background: linear-gradient(80deg, #242424 50%, #272727 50%);
 
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 @layer components {
     .about-p {
         @apply relative text-xl font-normal leading-6 mt-3;
         &:nth-child(1) {
-            @apply pl-4;
+            @apply md:pl-4;
         }
         &:nth-child(2) {
-            @apply pl-6;
+            @apply md:pl-6;
         }
         &:nth-child(3) {
-            @apply pl-8;
+            @apply md:pl-8;
         }
     }
 
@@ -78,46 +78,41 @@ body {
     }
 
     .projects-container {
-        @apply relative max-w-4xl my-0 mx-auto flex flex-col 
-                justify-start items-center gap-2;
-
-        .project-row {
-            @apply relative w-full flex flex-row justify-center
-                    items-center gap-2;
-        }
+        @apply relative max-w-4xl my-0 mx-auto px-5
+                grid gap-4 grid-cols-1 md:grid-cols-2;
         
         .project-item {
-            @apply relative bg-green-900 w-full pb-[56.25%]
-                    border-2 border-solid border-white;
+            @apply relative w-full p-5 rounded-lg shadow-xl;
+            background: #242424;
         }
 
-        .project-item-portrait {
-            @apply w-1/2 pb-[61.81%];
-        }
-
-        .project-item-content {
-            @apply absolute left-0 bottom-0 w-full p-2 flex
-                    flex-col justify-center items-center 
-                    bg-black bg-opacity-50 text-white;
+        .project-item-header {
+            @apply flex justify-between items-center;
+            img { 
+                @apply w-16 h-16 object-cover rounded-lg;
+            }
 
             h2 {
-                @apply py-2 px-0 text-3xl font-semibold;
+                @apply text-white py-2 px-0 text-xl font-semibold;
+            }
+        }
+
+
+        .project-item-content {
+            @apply mt-5;
+            p { 
+                @apply text-white;
             }
         }
 
         .project-item-links {
-            @apply relative mt-2;
-
+            @apply mt-5 flex gap-5;
             a {
-                @apply text-white no-underline text-xl font-normal mr-5;
-                
-                &:last-child {
-                    @apply mr-0;
-                }
+                @apply text-white no-underline font-normal;
             }
 
             p {
-                @apply text-xl font-normal italic;
+                @apply font-normal italic;
             }
         }
     }

@@ -15,7 +15,7 @@ export default function AboutText() {
     }
 
     return (
-        <div className="absolute top-[50%] right-[25%] text-white max-w-[400px] flex flex-col justify-center -translate-y-1/2 translate-x-1/2">
+        <div className="relative text-white max-w-[400px] flex flex-col justify-center px-6 md:px-0">
             <motion.h1 className="relative text-5xl font-semibold" initial="initial" animate="enter" exit="exit" variants={h1Variants} >About</motion.h1>
             <div>
                 <motion.p className="about-p" custom={{ delay: 0.2 }} initial="initial" animate="enter" exit="exit" variants={pVariants} >My name is Luca Palmisano. I’m 18 years old and I’m currently studying computer science at university.</motion.p>
