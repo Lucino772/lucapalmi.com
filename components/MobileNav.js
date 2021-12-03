@@ -1,7 +1,5 @@
 import Link from "next/link"
-import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -9,9 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function MobileNav({ open = false, close = null }) {    
     const containerVariants = {
-        initial: { opacity: 0, scale: 1, y: '-100%' },
-        enter: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.3 } },
-        exit: { opacity: 0, scale: 1, y: '-100%', transition: { duration: 0.3, delay: 0.2 } }
+        initial: { opacity: 0, scale: 1, x: '100%' },
+        enter: { opacity: 1, scale: 1, x: 0, transition: { duration: 0.2 } },
+        exit: { opacity: 0, scale: 1, x: '100%', transition: { duration: 0.2, delay: 0.1 } }
     }
 
     return (
