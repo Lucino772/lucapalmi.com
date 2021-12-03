@@ -45,7 +45,7 @@ body {
         @apply relative flex justify-center items-center pt-6;
     
         .social-link {
-            @apply relative inline-block mr-5;
+            @apply relative inline-block mr-8;
             &:last-child {
                 @apply mr-0;
             }
