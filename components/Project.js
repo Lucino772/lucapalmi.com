@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub} from "@fortawesome/free-brands-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 
 import { motion } from "framer-motion";
 
@@ -31,7 +32,8 @@ export function ProjectItem(props) {
                 <div className="project-item-links">
                     {props.github_url !== undefined ? <a href={props.github_url} target="_blank"><FontAwesomeIcon icon={faGithub} color="white" fixedWidth />Github</a> : null }
                     {props.project_url !== undefined ? <a href={props.project_url} target="_blank"><FontAwesomeIcon icon={faEye} color="white" fixedWidth />Project</a> : null }
-                    {props.github_url || props.project_url ? null : <p>No links provided</p>}
+                    {props.docs_url !== undefined ? <a href={props.docs_url} target="_blank"><FontAwesomeIcon icon={faBook} color="white" fixedWidth />Docs</a> : null }
+                    {props.github_url || props.project_url || props.docs_url ? null : <p>No links provided</p>}
                 </div>
             </div>
         </motion.div>

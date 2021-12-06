@@ -12,7 +12,7 @@ export default function Projects() {
                 <NavBar showLogo exitDelay={0.2} />
                 <ProjectContainer>
                     {projects.map((project, i) => (
-                        <ProjectItem enterDelay={0.1 + (0.2 * i)} title={project.title} image={project.thumbnail} description={project.description} github_url={project.links.github} project_url={project.links.url} />
+                        <ProjectItem key={i} enterDelay={0.1 + (0.2 * i)} title={project.title} image={project.thumbnail} description={project.description} github_url={project.links.github} project_url={project.links.url} docs_url={project.links.docs} />
                     ))}
                 </ProjectContainer>
             </div>
