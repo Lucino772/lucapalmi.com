@@ -109,6 +109,9 @@ body {
             @apply mt-5 flex gap-5;
             a {
                 @apply text-white no-underline font-normal;
+                > * {
+                    @apply mr-1;
+                }
             }
 
             p {
