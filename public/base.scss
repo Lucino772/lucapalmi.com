@@ -82,12 +82,12 @@ body {
                 grid gap-4 grid-cols-1 md:grid-cols-2;
         
         .project-item {
-            @apply relative w-full p-5 rounded-lg shadow-xl;
+            @apply relative w-full p-5 rounded-lg shadow-xl flex flex-col;
             background: #242424;
         }
 
         .project-item-header {
-            @apply flex justify-between items-center;
+            @apply relative flex justify-between items-center;
             img { 
                 @apply w-16 h-16 object-cover rounded-lg;
             }
@@ -99,7 +99,7 @@ body {
 
 
         .project-item-content {
-            @apply mt-5;
+            @apply relative h-full mt-5 flex flex-col justify-between;
             p { 
                 @apply text-white;
             }
