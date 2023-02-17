@@ -32,15 +32,9 @@ export default function NavBar(props: Props = { showLogo: false, exitDelay: 0 })
                     style={props.showLogo ? {visibility: 'visible'}: {}} />
                 
                 <nav className="relative justify-center items-center hidden md:flex">
-                    <Link href="/">
-                        <a className="nav-link">Home</a>
-                    </Link>
-                    <Link href="/about">
-                        <a className="nav-link">About</a>
-                    </Link>
-                    <Link href="/projects">
-                        <a className="nav-link">Projects</a>
-                    </Link>
+                    <Link className="nav-link" href="/">Home</Link>
+                    <Link className="nav-link" href="/about">About</Link>
+                    <Link className="nav-link" href="/projects">Projects</Link>
                 </nav>
                 
                 <FontAwesomeIcon onClick={() => setMobileMenuOpen(true)} className="block md:hidden hover:cursor-pointer" icon={faBars} color="white" size="2x" fixedWidth />

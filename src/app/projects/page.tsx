@@ -1,8 +1,10 @@
-import NavBar from "../components/NavBar";
-import { ProjectContainer, ProjectItem } from "../components/Project";
+"use client"
+
+import NavBar from "../../components/NavBar";
+import { ProjectContainer, ProjectItem } from "../../components/Project";
 import { Scrollbars } from "react-custom-scrollbars";
 
-import projects from "./projects.json";
+import projects from "../../projects.json";
 
 
 export default function Projects() {
@@ -12,7 +14,7 @@ export default function Projects() {
                 <NavBar showLogo exitDelay={0.2} />
                 <ProjectContainer>
                     {projects.map((project, i) => (
-                        <ProjectItem key={i} enterDelay={0.1 + (0.2 * i)} title={project.title} image={project.thumbnail} description={project.description} github_url={project.links.github} project_url={project.links.url} docs_url={project.links.docs} />
+                        <ProjectItem key={i} enterDelay={0.1 + (0.2 * i)} title={project.title} image={project.thumbnail} description={project.description} github_url={project.links.github} project_url={project.links.url || ""} docs_url={project.links.docs || ""} portrait={false} />
                     ))}
                 </ProjectContainer>
             </div>

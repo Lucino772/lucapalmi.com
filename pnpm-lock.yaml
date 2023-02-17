@@ -8,6 +8,7 @@ specifiers:
   '@next/font': 13.1.6
   '@types/node': 18.14.0
   '@types/react': 18.0.28
+  '@types/react-custom-scrollbars': ^4.0.10
   '@types/react-dom': 18.0.11
   autoprefixer: ^10.4.13
   eslint: 8.34.0
@@ -45,6 +46,7 @@ dependencies:
   typescript: 4.9.5
 
 devDependencies:
+  '@types/react-custom-scrollbars': 4.0.10
   autoprefixer: 10.4.13_postcss@8.4.21
   postcss: 8.4.21
   sass: 1.58.2
@@ -546,7 +548,12 @@ packages:
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: false
+
+  /@types/react-custom-scrollbars/4.0.10:
+    resolution: {integrity: sha512-1T430E+usndUjymkXB8k/zGpWehggircq/QaQMuFLMJceccAcD9vcmbUXF1LjeVP/+P4wI/bad6BF1E+7IGlqA==}
+    dependencies:
+      '@types/react': 18.0.28
+    dev: true
 
   /@types/react-dom/18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
@@ -560,11 +567,9 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.1.1
-    dev: false
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
-    dev: false
 
   /@typescript-eslint/parser/5.52.0_7kw3g6rralp5ps6mg3uyzz6azm:
     resolution: {integrity: sha512-e2KiLQOZRo4Y0D/b+3y08i3jsekoSkOYStROYmPUnGMEoA0h+k2qOH5H6tcjIc68WDvGwH+PaOrP1XRzLJ6QlA==}
@@ -958,7 +963,6 @@ packages:
 
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
-    dev: false
 
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}

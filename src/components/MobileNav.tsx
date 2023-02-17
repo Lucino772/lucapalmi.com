@@ -25,15 +25,9 @@ export default function MobileNav(props: Props = { open: false }) {
             animate={props.open ? "enter": "exit"}>
 
                 <nav className="h-1/2 flex flex-col justify-evenly items-center gap-5">
-                    <Link href="/">
-                        <a className="text-2xl tracking-widest text-black">Home</a>
-                    </Link>
-                    <Link href="/about">
-                        <a className="text-2xl tracking-widest text-black">About</a>
-                    </Link>
-                    <Link href="/projects">
-                        <a className="text-2xl tracking-widest text-black">Projects</a>
-                    </Link>
+                    <Link className="text-2xl tracking-widest text-black" href="/">Home</Link>
+                    <Link className="text-2xl tracking-widest text-black" href="/about">About</Link>
+                    <Link className="text-2xl tracking-widest text-black" href="/projects">Projects</Link>
                 </nav>
 
                 <FontAwesomeIcon onClick={() => props.close !== undefined ? props.close() : null} className="absolute right-4 top-4 block hover:cursor-pointer" icon={faTimes} color="black" size="2x" fixedWidth />

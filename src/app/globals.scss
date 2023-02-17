@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  background: linear-gradient(80deg, #242424 50%, #272727 50%);
+
+  overflow: hidden;
+}
+
+@layer components {
+  .about-p {
+      @apply relative text-xl font-normal leading-6 mt-3;
+      &:nth-child(1) {
+          @apply md:pl-4;
+      }
+      &:nth-child(2) {
+          @apply md:pl-6;
+      }
+      &:nth-child(3) {
+          @apply md:pl-8;
+      }
+  }
+
+  .welcome-text {
+      @apply text-5xl font-semibold text-white mb-5;
+      &:nth-child(2) {
+          @apply md:pl-8;
+      }
+  }
+
+  .socials {
+      @apply relative flex justify-center items-center pt-6;
+  
+      .social-link {
+          @apply relative inline-block mr-8;
+          &:last-child {
+              @apply mr-0;
+          }
+      }
+
+      &:before {
+          content: '';
+          @apply absolute w-3/4 h-[1px] top-0 bg-white;
+      }
+  }
+
+  .nav-link {
+      @apply relative text-xl text-white font-normal no-underline mr-5;
+
+      &:last-child {
+          @apply mr-0;
+      }
+
+      &:after {
+          content: '';
+          @apply absolute left-[5%] bottom-0 w-0 h-[2px] bg-white;
+          transition: width 200ms;
+      }
+
+      &:hover {
+          &:after {
+              @apply w-3/4;
+          }
+      }
+  }
+
+  .projects-container {
+      @apply relative max-w-4xl my-0 mx-auto px-5
+              grid gap-4 grid-cols-1 md:grid-cols-2;
+      
+      .project-item {
+          @apply relative w-full p-5 rounded-lg shadow-xl flex flex-col;
+          background: #242424;
+      }
+
+      .project-item-header {
+          @apply relative flex justify-between items-center;
+          img { 
+              @apply w-16 h-16 object-cover rounded-lg;
+          }
+
+          h2 {
+              @apply text-white py-2 px-0 text-xl font-semibold;
+          }
+      }
+
+
+      .project-item-content {
+          @apply relative h-full mt-5 flex flex-col justify-between;
+          p { 
+              @apply text-white;
+          }
+      }
+
+      .project-item-links {
+          @apply mt-5 flex gap-5;
+          a {
+              @apply text-white no-underline font-normal;
+              > * {
+                  @apply mr-1;
+              }
+          }
+
+          p {
+              @apply font-normal italic;
+          }
+      }
+  }
+}
