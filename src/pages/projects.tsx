@@ -1,10 +1,10 @@
 "use client"
 
-import NavBar from "../../components/NavBar";
-import { ProjectContainer, ProjectItem } from "../../components/Project";
+import NavBar from "../components/NavBar";
+import { ProjectContainer, ProjectItem } from "../components/Project";
 import { Scrollbars } from "react-custom-scrollbars";
 
-import projects from "../../projects.json";
+import projects from "../projects.json";
 
 
 export default function Projects() {
