@@ -5,7 +5,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 
-import { motion, Variants } from "framer-motion";
+import { m as motion, Variants } from "framer-motion";
 import Image from "next/image";
 
 export function ProjectContainer({ children }: { children: React.ReactNode }) {

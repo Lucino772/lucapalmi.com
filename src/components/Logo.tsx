@@ -1,4 +1,4 @@
-import { motion, Variants } from "framer-motion";
+import { m as motion, Variants } from "framer-motion";
 
 type Props = {
   width: number;
