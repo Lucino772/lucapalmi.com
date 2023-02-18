@@ -39,13 +39,22 @@ export default function NavBar(
         />
 
         <nav className="relative justify-center items-center hidden md:flex">
-          <Link className="nav-link" href="/">
+          <Link
+            className="relative text-xl text-white font-normal no-underline mr-5 after:content-[''] after:absolute after:left-[5%] after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:duration-200 hover:after:w-3/4"
+            href="/"
+          >
             Home
           </Link>
-          <Link className="nav-link" href="/about">
+          <Link
+            className="relative text-xl text-white font-normal no-underline mr-5 after:content-[''] after:absolute after:left-[5%] after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:duration-200 hover:after:w-3/4"
+            href="/about"
+          >
             About
           </Link>
-          <Link className="nav-link" href="/projects">
+          <Link
+            className="relative text-xl text-white font-normal no-underline mr-0 after:content-[''] after:absolute after:left-[5%] after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:duration-200 hover:after:w-3/4"
+            href="/projects"
+          >
             Projects
           </Link>
         </nav>

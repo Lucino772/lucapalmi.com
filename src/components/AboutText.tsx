@@ -35,7 +35,7 @@ export default function AboutText() {
       </motion.h1>
       <div>
         <motion.p
-          className="about-p"
+          className="relative text-xl font-normal leading-6 mt-3 md:pl-4"
           custom={{ delay: 0.2 }}
           initial="initial"
           animate="enter"
@@ -46,7 +46,7 @@ export default function AboutText() {
           computer science at university.
         </motion.p>
         <motion.p
-          className="about-p"
+          className="relative text-xl font-normal leading-6 mt-3 md:pl-6"
           custom={{ delay: 0.35 }}
           initial="initial"
           animate="enter"
@@ -59,7 +59,7 @@ export default function AboutText() {
           of information technology.
         </motion.p>
         <motion.p
-          className="about-p"
+          className="relative text-xl font-normal leading-6 mt-3 md:pl-8"
           custom={{ delay: 0.5 }}
           initial="initial"
           animate="enter"

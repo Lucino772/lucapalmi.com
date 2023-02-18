@@ -33,7 +33,7 @@ export default function Welcome() {
   return (
     <div className="relative">
       <motion.p
-        className="welcome-text"
+        className="text-5xl font-semibold text-white mb-5"
         initial="initial"
         animate="enter"
         exit="exit"
@@ -43,7 +43,7 @@ export default function Welcome() {
         Welcome, I&lsquo;m
       </motion.p>
       <motion.h1
-        className="welcome-text"
+        className="text-5xl font-semibold text-white mb-5 md:pl-8"
         initial="initial"
         animate="enter"
         exit="exit"
@@ -53,13 +53,13 @@ export default function Welcome() {
         Luca Palmisano
       </motion.h1>
       <motion.div
-        className="socials"
+        className="relative flex justify-center items-center pt-6 before:content-[''] before:absolute before:w-3/4 before:h-[1px] before:top-0 before:bg-white"
         exit="containerExit"
         variants={linkVariants}
       >
         <motion.a
           target="_blank"
-          className="social-link"
+          className="relative inline-block mr-8"
           initial="linkInit"
           animate="linkEnter"
           exit="linkExit"
@@ -76,7 +76,7 @@ export default function Welcome() {
         </motion.a>
         <motion.a
           target="_blank"
-          className="social-link"
+          className="relative inline-block mr-8"
           initial="linkInit"
           animate="linkEnter"
           exit="linkExit"
@@ -88,7 +88,7 @@ export default function Welcome() {
         </motion.a>
         <motion.a
           target="_blank"
-          className="social-link"
+          className="relative inline-block mr-0"
           initial="linkInit"
           animate="linkEnter"
           exit="linkExit"

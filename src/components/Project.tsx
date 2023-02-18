@@ -9,7 +9,11 @@ import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
 export function ProjectContainer({ children }: { children: React.ReactNode }) {
-  return <div className="projects-container">{children}</div>;
+  return (
+    <div className="relative max-w-4xl my-0 mx-auto px-5 grid gap-4 grid-cols-1 md:grid-cols-2">
+      {children}
+    </div>
+  );
 }
 
 type Props = {
@@ -37,39 +41,77 @@ export function ProjectItem(props: Props) {
 
   return (
     <motion.div
-      className="project-item"
+      className="relative w-full p-5 rounded-lg shadow-xl flex flex-col bg-[#242424]"
       variants={variants}
       initial="initial"
       animate="enter"
       exit="exit"
     >
-      <div className="project-item-header">
-        <Image src={props.image} alt="project-cover" width={64} height={64} />
-        <h2>{props.title}</h2>
+      <div className="relative flex justify-between items-center">
+        <Image
+          src={props.image}
+          alt="project-cover"
+          width={64}
+          height={64}
+          className="w-16 h-16 object-cover rounded-lg"
+        />
+        <h2 className="text-white py-2 px-0 text-xl font-semibold">
+          {props.title}
+        </h2>
       </div>
-      <div className="project-item-content">
-        <p>{props.description}</p>
-        <div className="project-item-links">
+      <div className="relative h-full mt-5 flex flex-col justify-between">
+        <p className="text-white">{props.description}</p>
+        <div className="mt-5 flex gap-5">
           {props.github_url !== undefined ? (
-            <a href={props.github_url} target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faGithub} color="white" fixedWidth />
+            <a
+              className="text-white no-underline font-normal"
+              href={props.github_url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FontAwesomeIcon
+                className="mr-1"
+                icon={faGithub}
+                color="white"
+                fixedWidth
+              />
               Github
             </a>
           ) : null}
           {props.project_url !== undefined ? (
-            <a href={props.project_url} target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faEye} color="white" fixedWidth />
+            <a
+              className="text-white no-underline font-normal"
+              href={props.project_url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FontAwesomeIcon
+                className="mr-1"
+                icon={faEye}
+                color="white"
+                fixedWidth
+              />
               Project
             </a>
           ) : null}
           {props.docs_url !== undefined ? (
-            <a href={props.docs_url} target="_blank" rel="noreferrer">
-              <FontAwesomeIcon icon={faBook} color="white" fixedWidth />
+            <a
+              className="text-white no-underline font-normal"
+              href={props.docs_url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FontAwesomeIcon
+                className="mr-1"
+                icon={faBook}
+                color="white"
+                fixedWidth
+              />
               Docs
             </a>
           ) : null}
           {props.github_url || props.project_url || props.docs_url ? null : (
-            <p>No links provided</p>
+            <p className="font-normal italic">No links provided</p>
           )}
         </div>
       </div>
