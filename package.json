@@ -8,6 +8,16 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucino772/lucapalmi.com.git"
+  },
+  "author": "Lucino772",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lucino772/lucapalmi.com/issues"
+  },
+  "homepage": "https://github.com/Lucino772/lucapalmi.com#readme",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
