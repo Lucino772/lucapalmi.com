@@ -63,6 +63,7 @@ export default function Welcome() {
           custom={{ delay: 0.3 }}
           variants={linkVariants}
           href="https://stackoverflow.com/users/13569159/lucino772"
+          title="stackoverflow"
         >
           <StackoverflowIcon color="white" width={32} height={32} />
         </motion.a>
@@ -75,6 +76,7 @@ export default function Welcome() {
           custom={{ delay: 0.4 }}
           variants={linkVariants}
           href="https://github.com/Lucino772"
+          title="github"
         >
           <GithubIcon color="white" width={32} height={32} />
         </motion.a>
@@ -87,6 +89,7 @@ export default function Welcome() {
           custom={{ delay: 0.5 }}
           variants={linkVariants}
           href="https://www.instagram.com/lucapalmi772/"
+          title="instagram"
         >
           <InstagramIcon color="white" width={32} height={32} />
         </motion.a>
