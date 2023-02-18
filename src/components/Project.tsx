@@ -19,9 +19,9 @@ type Props = {
     image: string,
     portrait: boolean,
     description: string,
-    github_url: string,
-    project_url: string,
-    docs_url: string
+    github_url?: string,
+    project_url?: string,
+    docs_url?: string
 };
 
 export function ProjectItem(props: Props) {
@@ -38,7 +38,7 @@ export function ProjectItem(props: Props) {
     return (
         <motion.div className="project-item" variants={variants} initial="initial" animate="enter" exit="exit" >
             <div className="project-item-header">
-                <Image src={props.image} alt="project-cover" />
+                <Image src={props.image} alt="project-cover" width={64} height={64} />
                 <h2>{props.title}</h2>
             </div>
             <div className="project-item-content">
