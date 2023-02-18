@@ -20,7 +20,7 @@ export default function Welcome() {
 
     return (
         <div className="relative">
-            <motion.p className="welcome-text" initial="initial" animate="enter" exit="exit" variants={titleVariants} custom={{ delay: 0 }}>Welcome, I'm</motion.p>
+            <motion.p className="welcome-text" initial="initial" animate="enter" exit="exit" variants={titleVariants} custom={{ delay: 0 }}>Welcome, I&lsquo;m</motion.p>
             <motion.h1 className="welcome-text" initial="initial" animate="enter" exit="exit" variants={titleVariants} custom={{ delay: 0.2 }}>Luca Palmisano</motion.h1>
             <motion.div className="socials" exit="containerExit" variants={linkVariants}>
                 <motion.a target="_blank" className="social-link" initial="linkInit" animate="linkEnter" exit="linkExit" custom={{ delay: 0.3 }} variants={linkVariants} href="https://stackoverflow.com/users/13569159/lucino772"><FontAwesomeIcon icon={faStackOverflow} color="white" size="2x" fixedWidth /></motion.a>

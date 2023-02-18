@@ -6,6 +6,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 
 
 export function ProjectContainer({ children }: { children: React.ReactNode }) {
@@ -37,15 +38,15 @@ export function ProjectItem(props: Props) {
     return (
         <motion.div className="project-item" variants={variants} initial="initial" animate="enter" exit="exit" >
             <div className="project-item-header">
-                <img src={props.image} />
+                <Image src={props.image} alt="project-cover" />
                 <h2>{props.title}</h2>
             </div>
             <div className="project-item-content">
                 <p>{props.description}</p>
                 <div className="project-item-links">
-                    {props.github_url !== undefined ? <a href={props.github_url} target="_blank"><FontAwesomeIcon icon={faGithub} color="white" fixedWidth />Github</a> : null }
-                    {props.project_url !== undefined ? <a href={props.project_url} target="_blank"><FontAwesomeIcon icon={faEye} color="white" fixedWidth />Project</a> : null }
-                    {props.docs_url !== undefined ? <a href={props.docs_url} target="_blank"><FontAwesomeIcon icon={faBook} color="white" fixedWidth />Docs</a> : null }
+                    {props.github_url !== undefined ? <a href={props.github_url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} color="white" fixedWidth />Github</a> : null }
+                    {props.project_url !== undefined ? <a href={props.project_url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faEye} color="white" fixedWidth />Project</a> : null }
+                    {props.docs_url !== undefined ? <a href={props.docs_url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faBook} color="white" fixedWidth />Docs</a> : null }
                     {props.github_url || props.project_url || props.docs_url ? null : <p>No links provided</p>}
                 </div>
             </div>
