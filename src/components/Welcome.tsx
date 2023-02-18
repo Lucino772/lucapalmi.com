@@ -1,11 +1,8 @@
 import { m as motion, Variants } from "framer-motion";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInstagram,
-  faGithub,
-  faStackOverflow,
-} from "@fortawesome/free-brands-svg-icons";
+import GithubIcon from "../../public/svg/github.svg";
+import StackoverflowIcon from "../../public/svg/stackoverflow.svg";
+import InstagramIcon from "../../public/svg/instagram.svg";
 
 export default function Welcome() {
   const titleVariants: Variants = {
@@ -67,12 +64,7 @@ export default function Welcome() {
           variants={linkVariants}
           href="https://stackoverflow.com/users/13569159/lucino772"
         >
-          <FontAwesomeIcon
-            icon={faStackOverflow}
-            color="white"
-            size="2x"
-            fixedWidth
-          />
+          <StackoverflowIcon color="white" width={32} height={32} />
         </motion.a>
         <motion.a
           target="_blank"
@@ -84,7 +76,7 @@ export default function Welcome() {
           variants={linkVariants}
           href="https://github.com/Lucino772"
         >
-          <FontAwesomeIcon icon={faGithub} color="white" size="2x" fixedWidth />
+          <GithubIcon color="white" width={32} height={32} />
         </motion.a>
         <motion.a
           target="_blank"
@@ -96,12 +88,7 @@ export default function Welcome() {
           variants={linkVariants}
           href="https://www.instagram.com/lucapalmi772/"
         >
-          <FontAwesomeIcon
-            icon={faInstagram}
-            color="white"
-            size="2x"
-            fixedWidth
-          />
+          <InstagramIcon color="white" width={32} height={32} />
         </motion.a>
       </motion.div>
     </div>

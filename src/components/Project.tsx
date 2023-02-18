@@ -1,9 +1,8 @@
 import React from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { faBook } from "@fortawesome/free-solid-svg-icons";
+import GithubIcon from "../../public/svg/github.svg";
+import EyeIcon from "../../public/svg/eye.svg";
+import BookIcon from "../../public/svg/book.svg";
 
 import { m as motion, Variants } from "framer-motion";
 import Image from "next/image";
@@ -64,49 +63,39 @@ export function ProjectItem(props: Props) {
         <div className="mt-5 flex gap-5">
           {props.github_url !== undefined ? (
             <a
-              className="text-white no-underline font-normal"
+              className="text-white no-underline font-normal flex justify-center items-center"
               href={props.github_url}
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon
-                className="mr-1"
-                icon={faGithub}
+              <GithubIcon
                 color="white"
-                fixedWidth
+                className="mr-1"
+                width={20}
+                height={20}
               />
               Github
             </a>
           ) : null}
           {props.project_url !== undefined ? (
             <a
-              className="text-white no-underline font-normal"
+              className="text-white no-underline font-normal flex justify-center items-center"
               href={props.project_url}
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon
-                className="mr-1"
-                icon={faEye}
-                color="white"
-                fixedWidth
-              />
+              <EyeIcon color="white" className="mr-1" width={20} height={20} />
               Project
             </a>
           ) : null}
           {props.docs_url !== undefined ? (
             <a
-              className="text-white no-underline font-normal"
+              className="text-white no-underline font-normal flex justify-center items-center"
               href={props.docs_url}
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon
-                className="mr-1"
-                icon={faBook}
-                color="white"
-                fixedWidth
-              />
+              <BookIcon color="white" className="mr-1" width={20} height={20} />
               Docs
             </a>
           ) : null}

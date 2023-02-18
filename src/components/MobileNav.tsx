@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { m as motion, Variants } from "framer-motion";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CloseIcon from "../../public/svg/close.svg";
 
 type Props = {
   open: boolean;
@@ -41,13 +40,12 @@ export default function MobileNav(props: Props = { open: false }) {
         </Link>
       </nav>
 
-      <FontAwesomeIcon
-        onClick={() => (props.close !== undefined ? props.close() : null)}
+      <CloseIcon
         className="absolute right-4 top-4 block hover:cursor-pointer"
-        icon={faTimes}
         color="black"
-        size="2x"
-        fixedWidth
+        width={32}
+        height={32}
+        onClick={() => (props.close !== undefined ? props.close() : null)}
       />
     </motion.div>
   );

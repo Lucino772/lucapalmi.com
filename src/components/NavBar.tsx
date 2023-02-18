@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { m as motion } from "framer-motion";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import MenuIcon from "../../public/svg/menu.svg";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
 
@@ -59,13 +58,12 @@ export default function NavBar(
           </Link>
         </nav>
 
-        <FontAwesomeIcon
+        <MenuIcon
           onClick={() => setMobileMenuOpen(true)}
           className="block md:hidden hover:cursor-pointer"
-          icon={faBars}
           color="white"
-          size="2x"
-          fixedWidth
+          width={32}
+          height={32}
         />
       </div>
       <MobileNav open={mobileMenuOpen} close={() => setMobileMenuOpen(false)} />

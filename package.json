@@ -20,10 +20,6 @@
   },
   "homepage": "https://github.com/Lucino772/lucapalmi.com#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.3.0",
-    "@fortawesome/free-brands-svg-icons": "^6.3.0",
-    "@fortawesome/free-solid-svg-icons": "^6.3.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "@next/font": "13.1.6",
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",
@@ -39,6 +35,7 @@
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
     "@types/react-custom-scrollbars": "^4.0.10",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
