@@ -1,4 +1,5 @@
-import { m as motion, Variants } from "framer-motion";
+import { Variants } from "framer-motion";
+import MotionNextImage from "./MotionNextImage";
 
 type Props = {
   width: number;
@@ -18,9 +19,9 @@ export default function Logo(props: Props = { width: 312, height: 312 }) {
   };
 
   return (
-    <motion.img
+    <MotionNextImage
       className="relative border rounded-full hidden md:block"
-      src="/images/logo.jpg"
+      src="/images/logo.webp"
       alt="Logo"
       width={props.width}
       height={props.height}

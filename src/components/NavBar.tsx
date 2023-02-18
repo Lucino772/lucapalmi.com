@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { m as motion } from "framer-motion";
 import MenuIcon from "../../public/svg/menu.svg";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
+import MotionNextImage from "./MotionNextImage";
 
 type Props = {
   showLogo: boolean;
@@ -26,9 +26,9 @@ export default function NavBar(
   return (
     <>
       <div className="relative w-full max-w-6xl flex justify-between items-center py-4 px-7 mx-auto">
-        <motion.img
+        <MotionNextImage
           className="relative w-[50px] h-[50px] md:w-[75px] md:h-[75px] rounded-full visible md:invisible"
-          src="/images/logo.jpg"
+          src="/images/logo.webp"
           alt="Logo"
           initial="initial"
           animate="enter"
