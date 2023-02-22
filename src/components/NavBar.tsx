@@ -34,6 +34,8 @@ export default function NavBar(
           animate="enter"
           exit="exit"
           variants={logoVariants}
+          width={50}
+          height={50}
           style={props.showLogo ? { visibility: "visible" } : {}}
         />
 
