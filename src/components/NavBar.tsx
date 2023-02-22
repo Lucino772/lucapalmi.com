@@ -27,7 +27,7 @@ export default function NavBar(
     <>
       <div className="relative w-full max-w-6xl flex justify-between items-center py-4 px-7 mx-auto">
         <MotionNextImage
-          className="relative w-[50px] h-[50px] md:w-[75px] md:h-[75px] rounded-full visible md:invisible"
+          className="relative w-[50px] h-[50px] rounded-full visible md:invisible"
           src="/images/logo.webp"
           alt="Logo"
           initial="initial"
