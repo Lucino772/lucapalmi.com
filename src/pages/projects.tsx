@@ -32,6 +32,7 @@ export default function Projects(props: Props) {
             <ProjectItem
               key={i}
               enterDelay={0.1 + 0.2 * i}
+              slug={project.slug}
               title={project.meta.title}
               image={project.meta.thumbnail}
               description={project.meta.description}

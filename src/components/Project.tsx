@@ -6,6 +6,7 @@ import BookIcon from "../../public/svg/book.svg";
 
 import { m as motion, Variants } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export function ProjectContainer({ children }: { children: React.ReactNode }) {
   return (
@@ -17,6 +18,7 @@ export function ProjectContainer({ children }: { children: React.ReactNode }) {
 
 type Props = {
   enterDelay?: number;
+  slug: string;
   title: string;
   image: string;
   portrait: boolean;
@@ -54,9 +56,11 @@ export function ProjectItem(props: Props) {
           height={64}
           className="w-16 h-16 object-cover rounded-lg"
         />
-        <h2 className="text-white py-2 px-0 text-xl font-semibold">
-          {props.title}
-        </h2>
+        <Link href={`/projects/${props.slug}`}>
+          <h2 className="text-white py-2 px-0 text-xl font-semibold">
+            {props.title}
+          </h2>
+        </Link>
       </div>
       <div className="relative h-full mt-5 flex flex-col justify-between">
         <p className="text-white">{props.description}</p>
