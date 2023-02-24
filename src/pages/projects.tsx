@@ -1,10 +1,25 @@
+import * as fs from "fs/promises";
+
 import NavBar from "../components/NavBar";
 import { ProjectContainer, ProjectItem } from "../components/Project";
 import { Scrollbars } from "react-custom-scrollbars";
 
-import projects from "../projects.json";
+type Props = {
+  projects: {
+    title: string;
+    description: string;
+    thumbnail: string;
+    links: {
+      github?: string;
+      url?: string;
+      docs?: string;
+    };
+  }[];
+};
 
-export default function Projects() {
+export default function Projects(props: Props) {
+  const { projects } = props;
+
   return (
     <Scrollbars universal autoHeight autoHeightMin="100vh">
       <div style={{ paddingBottom: 100 }}>
@@ -27,4 +42,16 @@ export default function Projects() {
       </div>
     </Scrollbars>
   );
+}
+
+export async function getStaticProps() {
+  const files = await fs.readdir("_projects");
+  const projects = await Promise.all(
+    files.map(async (filename) => {
+      const project = await import(`_projects/${filename}`);
+      return project.meta;
+    })
+  );
+
+  return { props: { projects } };
 }

@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/Lucino772/lucapalmi.com#readme",
   "dependencies": {
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
     "@next/font": "13.1.6",
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",
