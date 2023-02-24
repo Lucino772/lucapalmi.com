@@ -1,0 +1,10 @@
+---
+title: "PyMojang python module"
+thumbnail: "/images/projects/pymojang.webp"
+description: "PyMojang is a python wrapper around the Mojang API and Mojang Authentication API."
+links:
+  github: "https://github.com/Lucino772/pymojang"
+  docs: "https://pymojang.lucapalmi.com/"
+---
+
+# Hello World !

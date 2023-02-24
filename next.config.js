@@ -7,16 +7,6 @@ const nextConfig = {
       issuer: /\.[jt]sx?$/,
       use: ["@svgr/webpack"],
     });
-    config.module.rules.push({
-      test: /\.mdx?$/,
-      use: [
-        {
-          loader: "@mdx-js/loader",
-          /** @type {import('@mdx-js/loader').Options} */
-          options: {},
-        },
-      ],
-    });
 
     return config;
   },

@@ -20,8 +20,6 @@
   },
   "homepage": "https://github.com/Lucino772/lucapalmi.com#readme",
   "dependencies": {
-    "@mdx-js/loader": "^2.3.0",
-    "@mdx-js/react": "^2.3.0",
     "@next/font": "13.1.6",
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",
@@ -29,10 +27,13 @@
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "framer-motion": "^9.0.4",
+    "gray-matter": "^4.0.3",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "18.2.0",
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.2",
     "sharp": "^0.31.3",
     "typescript": "4.9.5"
   },

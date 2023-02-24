@@ -1,4 +1,5 @@
 import * as fs from "fs/promises";
+import matter from "gray-matter";
 
 import NavBar from "../components/NavBar";
 import { ProjectContainer, ProjectItem } from "../components/Project";
@@ -7,8 +8,8 @@ import { Scrollbars } from "react-custom-scrollbars";
 type Props = {
   projects: {
     title: string;
-    description: string;
     thumbnail: string;
+    description: string;
     links: {
       github?: string;
       url?: string;
@@ -48,8 +49,9 @@ export async function getStaticProps() {
   const files = await fs.readdir("_projects");
   const projects = await Promise.all(
     files.map(async (filename) => {
-      const project = await import(`_projects/${filename}`);
-      return project.meta;
+      const fileBuffer = await fs.readFile(`_projects/${filename}`);
+      const { data } = matter(fileBuffer);
+      return data;
     })
   );
 
