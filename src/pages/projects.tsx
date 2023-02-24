@@ -1,20 +1,22 @@
-import * as fs from "fs/promises";
-import matter from "gray-matter";
-
 import NavBar from "../components/NavBar";
 import { ProjectContainer, ProjectItem } from "../components/Project";
 import { Scrollbars } from "react-custom-scrollbars";
+import { getProjects } from "@/lib/projects";
 
 type Props = {
   projects: {
-    title: string;
-    thumbnail: string;
-    description: string;
-    links: {
-      github?: string;
-      url?: string;
-      docs?: string;
+    meta: {
+      title: string;
+      thumbnail: string;
+      description: string;
+      links: {
+        github?: string;
+        url?: string;
+        docs?: string;
+      };
     };
+    content: string;
+    slug: string;
   }[];
 };
 
@@ -30,12 +32,12 @@ export default function Projects(props: Props) {
             <ProjectItem
               key={i}
               enterDelay={0.1 + 0.2 * i}
-              title={project.title}
-              image={project.thumbnail}
-              description={project.description}
-              github_url={project.links.github}
-              project_url={project.links.url}
-              docs_url={project.links.docs}
+              title={project.meta.title}
+              image={project.meta.thumbnail}
+              description={project.meta.description}
+              github_url={project.meta.links.github}
+              project_url={project.meta.links.url}
+              docs_url={project.meta.links.docs}
               portrait={false}
             />
           ))}
@@ -46,14 +48,5 @@ export default function Projects(props: Props) {
 }
 
 export async function getStaticProps() {
-  const files = await fs.readdir("_projects");
-  const projects = await Promise.all(
-    files.map(async (filename) => {
-      const fileBuffer = await fs.readFile(`_projects/${filename}`);
-      const { data } = matter(fileBuffer);
-      return data;
-    })
-  );
-
-  return { props: { projects } };
+  return { props: { projects: await getProjects() } };
 }
