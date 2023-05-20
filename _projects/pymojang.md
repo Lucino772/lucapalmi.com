@@ -5,6 +5,8 @@ description: "PyMojang is a python wrapper around the Mojang API and Mojang Auth
 links:
   github: "https://github.com/Lucino772/pymojang"
   docs: "https://pymojang.lucapalmi.com/"
+techs:
+  - python
 ---
 
 # Hello World !

@@ -4,29 +4,27 @@ import { getProject, getProjects } from "@/lib/projects";
 import Scrollbars from "react-custom-scrollbars";
 
 import GithubIcon from "../../../public/svg/github.svg";
-import EyeIcon from "../../../public/svg/eye.svg";
+import WebIcon from "../../../public/svg/web.svg";
 import BookIcon from "../../../public/svg/book.svg";
 import Image from "next/image";
 import TechStack from "@/components/TechStack";
+import { ProjectMeta } from "@/lib/types";
 
-export default function Project({
-  meta,
-  content,
-}: {
-  meta: {
-    [key: string]: any
-  };
-  content: any;
-}) {
+type Props = {
+  meta: ProjectMeta,
+  content: string
+}
+
+export default function Project({ meta, content }: Props) {
   console.log(meta)
   return (
     <Scrollbars universal autoHeight autoHeightMin="100vh">
       <div style={{ paddingBottom: 100 }}>
         <NavBar showLogo exitDelay={0.2} />
         <div className="relative max-w-4xl my-0 mx-auto px-5 flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h1 className="text-white text-5xl">{ meta.title }</h1>
-            <div className="flex flex-row divide-x divide-neutral-300">
+          <div className="flex flex-col gap-2">
+            <h1 className="text-white text-5xl">{meta.title}</h1>
+            <div className="flex flex-row divide-x-2 divide-neutral-300">
               {meta.links.github !== undefined && (
                 <a className="text-neutral-300 no-underline font-normal flex justify-center items-center px-4 first:pl-0" href={meta.links.github} target="_blank" rel="noreferrer">
                   <GithubIcon
@@ -51,7 +49,7 @@ export default function Project({
               )}
               {meta.links.url !== undefined && (
                 <a className="text-neutral-300 no-underline font-normal flex justify-center items-center px-4 first:pl-0" href={meta.links.url} target="_blank" rel="noreferrer">
-                  <EyeIcon
+                  <WebIcon
                     color="rgb(212 212 212)"
                     className="mr-1"
                     width={20}
@@ -70,12 +68,9 @@ export default function Project({
             className="w-full aspect-video object-cover rounded-lg drop-shadow"
           />
           <div className="flex flex-row gap-5">
-              <TechStack icon="/images/tech/nextjs.webp" label="Next.js" />
-              <TechStack icon="/images/tech/python.webp" label="Python"/>
-              <TechStack icon="/images/tech/tailwindcss.webp" label="Tailwind"/>
-              <TechStack icon="/images/tech/vercel.webp" label="Vercel"/>
+            {meta.techs.map((name) => <TechStack key={name} name={name} />)}
           </div>
-          <div dangerouslySetInnerHTML={{ __html: content }} />
+          <div className="prose prose-lg prose-pre:p-0 dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: content }} />
         </div>
       </div>
     </Scrollbars>
