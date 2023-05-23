@@ -1,4 +1,5 @@
 import { ProjectMeta } from "@/lib/types";
+import { m as motion, Variants } from "framer-motion";
 import Image from "next/image";
 import ProjectHeader from "./ProjectHeader";
 import ProjectTechs from "./ProjectTechs";
@@ -9,8 +10,17 @@ type Props = {
 }
 
 const ProjectView = ({ meta, content }: Props) => {
+    const variants: Variants = {
+        initial: { opacity: 0 },
+        enter: {
+          opacity: 1,
+          transition: { duration: 0.3 },
+        },
+        exit: { opacity: 0, transition: { duration: 0.3 } },
+      };
+
     return (
-        <div className="relative max-w-4xl my-0 mx-auto px-5 flex flex-col gap-6">
+        <motion.div className="relative max-w-4xl my-0 mx-auto px-5 flex flex-col gap-6" variants={variants} initial="initial" animate="enter" exit="exit">
             <ProjectHeader meta={meta} />
             <Image
                 src={meta.thumbnail}
@@ -21,7 +31,7 @@ const ProjectView = ({ meta, content }: Props) => {
             />
             <ProjectTechs meta={meta} />
             <div className="prose prose-lg prose-pre:p-0 dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: content }} />
-        </div>
+        </motion.div>
     )
 };
 
