@@ -1,8 +1,8 @@
 import { m as motion, Variants } from "framer-motion";
 
-import GithubIcon from "../../public/svg/github.svg";
-import StackoverflowIcon from "../../public/svg/stackoverflow.svg";
-import InstagramIcon from "../../public/svg/instagram.svg";
+import GithubIcon from "@/assets/svg/github.svg";
+import StackoverflowIcon from "@/assets/svg/stackoverflow.svg";
+import InstagramIcon from "@/assets/svg/instagram.svg";
 
 export default function Welcome() {
   const titleVariants: Variants = {

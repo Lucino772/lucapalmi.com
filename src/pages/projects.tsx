@@ -2,19 +2,11 @@ import NavBar from "../components/NavBar";
 import { ProjectContainer, ProjectItem } from "../components/Project";
 import { Scrollbars } from "react-custom-scrollbars";
 import { getProjects } from "@/lib/projects";
+import { ProjectMeta } from "@/lib/types";
 
 type Props = {
   projects: {
-    meta: {
-      title: string;
-      thumbnail: string;
-      description: string;
-      links: {
-        github?: string;
-        url?: string;
-        docs?: string;
-      };
-    };
+    meta: ProjectMeta;
     content: string;
     slug: string;
   }[];
@@ -33,13 +25,7 @@ export default function Projects(props: Props) {
               key={i}
               enterDelay={0.1 + 0.2 * i}
               slug={project.slug}
-              title={project.meta.title}
-              image={project.meta.thumbnail}
-              description={project.meta.description}
-              github_url={project.meta.links.github}
-              project_url={project.meta.links.url}
-              docs_url={project.meta.links.docs}
-              portrait={false}
+              project={project.meta}
             />
           ))}
         </ProjectContainer>
