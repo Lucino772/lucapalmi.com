@@ -4,7 +4,7 @@ import { getProject, getProjects } from "@/lib/projects";
 import Scrollbars from "react-custom-scrollbars";
 
 import { ProjectMeta } from "@/lib/types";
-import ProjectView from "@/components/projects/view/ProjectView";
+import { ProjectView } from "@/components/projects";
 
 type Props = {
   meta: ProjectMeta,

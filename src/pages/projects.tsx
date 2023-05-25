@@ -1,8 +1,8 @@
 import NavBar from "../components/NavBar";
-import { ProjectContainer, ProjectItem } from "../components/Project";
 import { Scrollbars } from "react-custom-scrollbars";
 import { getProjects } from "@/lib/projects";
 import { ProjectMeta } from "@/lib/types";
+import { ProjectList } from "@/components/projects";
 
 type Props = {
   projects: {
@@ -19,16 +19,7 @@ export default function Projects(props: Props) {
     <Scrollbars universal autoHeight autoHeightMin="100vh">
       <div style={{ paddingBottom: 100 }}>
         <NavBar showLogo exitDelay={0.2} />
-        <ProjectContainer>
-          {projects.map((project, i) => (
-            <ProjectItem
-              key={i}
-              enterDelay={0.1 + 0.2 * i}
-              slug={project.slug}
-              project={project.meta}
-            />
-          ))}
-        </ProjectContainer>
+        <ProjectList projects={projects} />
       </div>
     </Scrollbars>
   );
