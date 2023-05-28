@@ -28,7 +28,7 @@ The website is built with [Next.js] and [Tailwind CSS][TailwindCSS]. I decided t
 
 The website was initially deployed on [DigitalOcean][HostWebsiteOnDigitalOcean] where I had to manage the server myself and It was too much work for a simple website like this one. I then moved to [Vercel][HostWebsiteOnVercel] where I don’t need to worry about the server anymore and the website is deployed automatically.
 
-### References:
+### References
 Design being a visual thing (obviously!), a lot of the research that I did led to videos on youtube, here is a list of some youtube channel, that I still follow to this day, which helped me in discovering technologies in the frontend world:
 - [Fireship][FireshipYT]
 - [DesignCourse][DesignCourseYT]
