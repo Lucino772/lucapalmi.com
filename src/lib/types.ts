@@ -4,7 +4,7 @@ type Technologies = typeof technologies;
 
 type ProjectMeta = {
   title: string;
-  thumbnail: string;
+  thumbnail: any;
   description: string;
   links: {
     [key: string]: string;

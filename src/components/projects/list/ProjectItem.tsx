@@ -41,10 +41,10 @@ const ProjectItem = ({ slug, project, enterDelay }: Props) => {
       <div className="relative flex w-full flex-col rounded-lg border-2 border-transparent bg-[#242424] p-5 shadow-md transition-all hover:scale-[1.01] hover:border-[#4169E1]">
         <div className="relative flex items-center justify-between">
           <Image
-            src={project.thumbnail}
+            src={`https:${project.thumbnail.fields.file.url}`}
             alt="project-cover"
-            width={64}
-            height={64}
+            width={project.thumbnail.fields.file.details.image.width}
+            height={project.thumbnail.fields.file.details.image.height}
             className="h-16 w-16 rounded-lg object-cover"
           />
           <h2 className="px-0 py-2 text-xl font-semibold text-white">
