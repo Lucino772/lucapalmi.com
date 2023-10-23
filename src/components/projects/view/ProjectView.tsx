@@ -3,10 +3,11 @@ import { m as motion, Variants } from "framer-motion";
 import Image from "next/image";
 import ProjectHeader from "./ProjectHeader";
 import ProjectTechs from "./ProjectTechs";
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 type Props = {
     meta: ProjectMeta,
-    content: string
+    content: MDXRemoteSerializeResult<Record<string, unknown>, Record<string, unknown>>
 }
 
 const ProjectView = ({ meta, content }: Props) => {
@@ -30,7 +31,9 @@ const ProjectView = ({ meta, content }: Props) => {
                 className="w-full aspect-video object-cover rounded-lg drop-shadow"
             />
             <ProjectTechs meta={meta} />
-            <div className="prose prose-lg prose-pre:p-0 dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: content }} />
+            <div className="prose prose-lg prose-pre:p-0 dark:prose-invert max-w-none">
+                <MDXRemote {...content} />
+            </div>
         </motion.div>
     )
 };

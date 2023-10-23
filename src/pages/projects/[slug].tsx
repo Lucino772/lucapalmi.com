@@ -1,14 +1,15 @@
 import NavBar from "@/components/NavBar";
-import { markdown2html } from "@/lib/markdown";
+import { serialize } from "next-mdx-remote/serialize";
 import { getProject, getProjects } from "@/lib/projects";
 import Scrollbars from "react-custom-scrollbars";
 
 import { ProjectMeta } from "@/lib/types";
 import { ProjectView } from "@/components/projects";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 type Props = {
   meta: ProjectMeta,
-  content: string
+  content: MDXRemoteSerializeResult<Record<string, unknown>, Record<string, unknown>>
 }
 
 export default function Project({ meta, content }: Props) {
@@ -38,7 +39,7 @@ export async function getStaticProps({
   params: { slug: string };
 }) {
   const project = await getProject(slug);
-  const markdown = await markdown2html(project.content);
+  const markdown = await serialize(project.content, { parseFrontmatter: false });
   return {
     props: {
       meta: project.meta,

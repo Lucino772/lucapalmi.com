@@ -19,7 +19,7 @@ async function getProjects(): Promise<GetProjectReturn[]> {
         path.join(_PROJECT_DIRECTORY, filename)
       );
       const { data: meta, content } = matter(fileBuffer);
-      return { meta, content, slug: filename.replace(/\.md$/, "") } as GetProjectReturn;
+      return { meta, content, slug: filename.replace(/\.mdx$/, "") } as GetProjectReturn;
     })
   );
 
@@ -27,9 +27,9 @@ async function getProjects(): Promise<GetProjectReturn[]> {
 }
 
 async function getProject(slug: string): Promise<GetProjectReturn> {
-  const realSlug = slug.replace(/\.md$/, "");
+  const realSlug = slug.replace(/\.mdx$/, "");
   const fileBuffer = await fs.readFile(
-    path.join(_PROJECT_DIRECTORY, `${realSlug}.md`)
+    path.join(_PROJECT_DIRECTORY, `${realSlug}.mdx`)
   );
   const { data: meta, content } = matter(fileBuffer);
   return { meta, content, slug: realSlug } as GetProjectReturn;
