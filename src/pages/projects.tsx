@@ -6,6 +6,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import { getProjects } from "@/lib/projects";
 import { ProjectMeta } from "@/lib/types";
 import { ProjectList } from "@/components/projects";
+import rehypeHighlight from "rehype-highlight";
 
 type Props = {
   projects: {
@@ -33,7 +34,12 @@ export async function getStaticProps() {
       await getProjects()
     ).map(async (project) => {
       const source = await fs.readFile(project.filename, { encoding: "utf-8" });
-      const markdown = await serialize(source, { parseFrontmatter: true });
+      const markdown = await serialize(source, {
+        parseFrontmatter: true,
+        mdxOptions: {
+          rehypePlugins: [rehypeHighlight],
+        },
+      });
       return {
         meta: markdown.frontmatter as ProjectMeta,
         slug: project.slug,

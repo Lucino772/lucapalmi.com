@@ -24,7 +24,6 @@ async function getProjects(): Promise<GetProjectReturn[]> {
 
 async function getProject(slug: string): Promise<GetProjectReturn> {
   const realSlug = slug.replace(/\.mdx$/, "");
-  console.log(realSlug);
   return {
     filename: path.join(_PROJECT_DIRECTORY, `${realSlug}.mdx`),
     slug: realSlug,

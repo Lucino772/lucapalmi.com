@@ -1,4 +1,5 @@
 import * as fs from "fs/promises";
+import rehypeHighlight from "rehype-highlight";
 
 import NavBar from "@/components/NavBar";
 import { serialize } from "next-mdx-remote/serialize";
@@ -45,7 +46,12 @@ export async function getStaticProps({
 }) {
   const project = await getProject(slug);
   const source = await fs.readFile(project.filename, { encoding: "utf-8" });
-  const markdown = await serialize(source, { parseFrontmatter: true });
+  const markdown = await serialize(source, {
+    parseFrontmatter: true,
+    mdxOptions: {
+      rehypePlugins: [rehypeHighlight],
+    },
+  });
   return {
     props: {
       meta: markdown.frontmatter as ProjectMeta,
