@@ -2,49 +2,26 @@
   "name": "lucapalmi.com",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@7.27.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Lucino772/lucapalmi.com.git"
-  },
-  "author": "Lucino772",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Lucino772/lucapalmi.com/issues"
-  },
-  "homepage": "https://github.com/Lucino772/lucapalmi.com#readme",
   "dependencies": {
-    "@next/font": "13.1.6",
-    "@types/node": "18.14.0",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
-    "eslint": "8.34.0",
-    "eslint-config-next": "13.1.6",
-    "framer-motion": "^9.0.4",
-    "highlight.js": "^11.8.0",
-    "next": "13.1.6",
-    "next-mdx-remote": "^4.4.1",
-    "react": "18.2.0",
-    "react-custom-scrollbars": "^4.2.1",
-    "react-dom": "18.2.0",
-    "rehype-highlight": "^6.0.0",
-    "sharp": "^0.31.3",
-    "typescript": "4.9.5"
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "13.5.6"
   },
   "devDependencies": {
-    "@svgr/webpack": "^6.5.1",
-    "@tailwindcss/typography": "^0.5.9",
-    "@types/react-custom-scrollbars": "^4.0.10",
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.31",
-    "prettier": "^2.8.4",
-    "sass": "^1.58.2",
-    "tailwindcss": "^3.2.7"
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10",
+    "postcss": "^8",
+    "tailwindcss": "^3",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.6"
   }
 }
