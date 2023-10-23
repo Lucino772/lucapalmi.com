@@ -44,7 +44,7 @@ export default function AboutText() {
           exit="exit"
           variants={pVariants}
         >
-          My name is Luca Palmisano. I’m 20 years old and I’m currently studying
+          My name is Luca Palmisano. I'm 20 years old and I'm currently studying
           computer science at university.
         </motion.p>
         <motion.p
@@ -55,7 +55,7 @@ export default function AboutText() {
           exit="exit"
           variants={pVariants}
         >
-          I’ve been coding for several years now. Through the years, what was
+          I've been coding for several years now. Through the years, what was
           once a hobby has became a passion. I have always been interested in
           discovering new things and this has helped me to expand my knowledge
           of information technology.
@@ -68,9 +68,9 @@ export default function AboutText() {
           exit="exit"
           variants={pVariants}
         >
-          Besides that I am enjoying living a student’s life, having fun with my
-          friends, playing games, etc.Well, there you have it, this is me! This
-          is who I am!{" "}
+          Besides that I am enjoying living a student's life, having fun with my
+          friends, playing games, etc. Well, there you have it, this is me! This
+          is who I am!
         </motion.p>
       </div>
     </div>
