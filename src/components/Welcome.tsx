@@ -1,3 +1,5 @@
+"use client"
+
 import { m as motion, Variants } from "framer-motion";
 
 import GithubIcon from "@/assets/svg/github.svg";

@@ -1,3 +1,5 @@
+"use client"
+
 import { m as motion } from "framer-motion";
 
 export default function SiteInConstruction() {

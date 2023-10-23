@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import * as technologies from "@/lib/technologies.json";
 import { Technologies } from "@/lib/types";

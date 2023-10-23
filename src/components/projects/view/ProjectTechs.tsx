@@ -1,3 +1,5 @@
+"use client"
+
 import TechStack from "@/components/TechStack";
 import { ProjectMeta } from "@/lib/types";
 

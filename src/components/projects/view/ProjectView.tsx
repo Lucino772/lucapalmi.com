@@ -1,3 +1,5 @@
+"use client"
+
 import { ProjectMeta } from "@/lib/types";
 import { m as motion, Variants } from "framer-motion";
 import Image from "next/image";

@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import { m as motion, Variants } from "framer-motion";
 import CloseIcon from "@/assets/svg/close.svg";

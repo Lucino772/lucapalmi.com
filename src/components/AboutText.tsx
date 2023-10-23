@@ -1,3 +1,5 @@
+"use client"
+
 import { m as motion, Variants } from "framer-motion";
 
 export default function AboutText() {

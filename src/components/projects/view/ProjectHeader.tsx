@@ -1,3 +1,5 @@
+"use client"
+
 import { ProjectMeta } from "@/lib/types";
 
 import GithubIcon from "@/assets/svg/github.svg";

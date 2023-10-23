@@ -1,3 +1,5 @@
+"use client"
+
 import { ProjectMeta } from "@/lib/types";
 import ProjectItem from "./ProjectItem";
 

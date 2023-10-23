@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import MenuIcon from "@/assets/svg/menu.svg";
 import MobileNav from "./MobileNav";
