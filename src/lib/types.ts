@@ -1,7 +1,3 @@
-import * as technologies from "@/lib/technologies.json";
-
-type Technologies = typeof technologies;
-
 type ProjectMeta = {
   title: string;
   thumbnail: any;
@@ -9,7 +5,7 @@ type ProjectMeta = {
   links: {
     [key: string]: string;
   };
-  techs: (keyof Technologies)[];
+  techs: any[];
 };
 
-export type { ProjectMeta, Technologies };
+export type { ProjectMeta };

@@ -1,6 +1,3 @@
-import * as fs from "fs/promises";
-import { serialize } from "next-mdx-remote/serialize";
-
 import NavBar from "@/components/NavBar";
 import { ProjectMeta } from "@/lib/types";
 import { ProjectList } from "@/components/projects";

@@ -10,8 +10,8 @@ type Props = {
 const ProjectTechs = ({ meta }: Props) => {
   return (
     <div className="flex flex-row gap-5">
-      {meta.techs.map((name) => (
-        <TechStack key={name} name={name} />
+      {meta.techs.map((technology) => (
+        <TechStack key={technology.fields.slug} technology={technology} />
       ))}
     </div>
   );

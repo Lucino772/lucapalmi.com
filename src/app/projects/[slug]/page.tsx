@@ -1,4 +1,3 @@
-import * as fs from "fs/promises";
 import rehypeHighlight from "rehype-highlight";
 
 import NavBar from "@/components/NavBar";
@@ -24,7 +23,7 @@ async function getProjectInfo(slug: string) {
     title: project?.fields.title,
     description: project?.fields.description,
     links: project?.fields.links,
-    techs: [],
+    techs: project?.fields.technologies,
     thumbnail: project?.fields.thumbnail
   } as ProjectMeta;
 

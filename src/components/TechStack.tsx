@@ -1,16 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import * as technologies from "@/lib/technologies.json";
-import { Technologies } from "@/lib/types";
 
 type Props = {
-  name: keyof Technologies;
+  technology: any;
   size?: "normal" | "small";
 };
 
-export default function TechStack({ name, size }: Props) {
-  const { label, image, alt } = technologies[name];
+export default function TechStack({ technology, size }: Props) {
   if (size === undefined) size = "normal";
 
   return (
@@ -19,10 +16,10 @@ export default function TechStack({ name, size }: Props) {
       style={{ background: "#1d1d1d" }}
     >
       <Image
-        src={image}
-        alt={alt}
-        width={size === "normal" ? 32 : 28}
-        height={size === "normal" ? 32 : 28}
+        src={`https:${technology.fields.icon.fields.file.url}`}
+        alt={technology.fields.slug}
+        width={technology.fields.icon.fields.file.details.image.width}
+        height={technology.fields.icon.fields.file.details.image.width}
         className={`${
           size === "normal" ? "h-8 w-8" : "h-7 w-7"
         } rounded-full object-cover`}
@@ -30,7 +27,7 @@ export default function TechStack({ name, size }: Props) {
       <span
         className={`${size === "normal" ? "text-base" : "text-sm"} text-white`}
       >
-        {label}
+        {technology.fields.name}
       </span>
     </div>
   );
