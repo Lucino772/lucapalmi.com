@@ -1,3 +1,6 @@
+import * as fs from "fs/promises";
+import { serialize } from "next-mdx-remote/serialize";
+
 import NavBar from "../components/NavBar";
 import { Scrollbars } from "react-custom-scrollbars";
 import { getProjects } from "@/lib/projects";
@@ -7,7 +10,6 @@ import { ProjectList } from "@/components/projects";
 type Props = {
   projects: {
     meta: ProjectMeta;
-    content: string;
     slug: string;
   }[];
 };
@@ -26,5 +28,17 @@ export default function Projects(props: Props) {
 }
 
 export async function getStaticProps() {
-  return { props: { projects: await getProjects() } };
+  const projects = await Promise.all(
+    (
+      await getProjects()
+    ).map(async (project) => {
+      const source = await fs.readFile(project.filename, { encoding: "utf-8" });
+      const markdown = await serialize(source, { parseFrontmatter: true });
+      return {
+        meta: markdown.frontmatter as ProjectMeta,
+        slug: project.slug,
+      };
+    })
+  );
+  return { props: { projects } };
 }

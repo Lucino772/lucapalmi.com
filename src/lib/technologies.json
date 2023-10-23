@@ -1,22 +1,22 @@
 {
-    "nextjs": {
-        "image": "/images/tech/nextjs.webp",
-        "label": "Next.js",
-        "alt": "Next.js"
-    },
-    "python": {
-        "image": "/images/tech/python.webp",
-        "label": "Python",
-        "alt": "Python"
-    },
-    "tailwind": {
-        "image": "/images/tech/tailwindcss.webp",
-        "label": "Tailwind",
-        "alt": "Tailwind"
-    },
-    "vercel": {
-        "image": "/images/tech/vercel.webp",
-        "label": "Vercel",
-        "alt": "Vercel"
-    }
+  "nextjs": {
+    "image": "/images/tech/nextjs.webp",
+    "label": "Next.js",
+    "alt": "Next.js"
+  },
+  "python": {
+    "image": "/images/tech/python.webp",
+    "label": "Python",
+    "alt": "Python"
+  },
+  "tailwind": {
+    "image": "/images/tech/tailwindcss.webp",
+    "label": "Tailwind",
+    "alt": "Tailwind"
+  },
+  "vercel": {
+    "image": "/images/tech/vercel.webp",
+    "label": "Vercel",
+    "alt": "Vercel"
+  }
 }
