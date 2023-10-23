@@ -3,10 +3,21 @@ import rehypeHighlight from "rehype-highlight";
 
 import NavBar from "@/components/NavBar";
 import { serialize } from "next-mdx-remote/serialize";
-import { getProject } from "@/lib/projects";
+import { getProjects, getProject } from "@/lib/projects";
 
 import { ProjectMeta } from "@/lib/types";
 import { ProjectView } from "@/components/projects";
+
+export async function generateStaticParams() {
+  const projects = await Promise.all(
+    (await getProjects()).map(async (project) => {
+      return {
+        slug: project.slug,
+      };
+    }),
+  );
+  return projects;
+}
 
 async function getProjectInfo(slug: string) {
   const project = await getProject(slug);
@@ -20,7 +31,6 @@ async function getProjectInfo(slug: string) {
   return {
     meta: markdown.frontmatter as ProjectMeta,
     content: markdown,
-    slug: project.slug,
   };
 }
 
