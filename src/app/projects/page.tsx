@@ -7,13 +7,6 @@ import { ProjectMeta } from "@/lib/types";
 import { ProjectList } from "@/components/projects";
 import rehypeHighlight from "rehype-highlight";
 
-type Props = {
-  projects: {
-    meta: ProjectMeta;
-    slug: string;
-  }[];
-};
-
 async function getProjectsInfo() {
   const projects = await Promise.all(
     (await getProjects()).map(async (project) => {
@@ -33,7 +26,7 @@ async function getProjectsInfo() {
   return projects;
 }
 
-export default async function Projects(props: Props) {
+export default async function Projects() {
   const projects = await getProjectsInfo();
 
   return (
