@@ -16,9 +16,7 @@ type Props = {
 
 async function getProjectsInfo() {
   const projects = await Promise.all(
-    (
-      await getProjects()
-    ).map(async (project) => {
+    (await getProjects()).map(async (project) => {
       const source = await fs.readFile(project.filename, { encoding: "utf-8" });
       const markdown = await serialize(source, {
         parseFrontmatter: true,
@@ -30,7 +28,7 @@ async function getProjectsInfo() {
         meta: markdown.frontmatter as ProjectMeta,
         slug: project.slug,
       };
-    })
+    }),
   );
   return projects;
 }

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { ProjectMeta } from "@/lib/types";
 import { m as motion, Variants } from "framer-motion";
@@ -38,20 +38,20 @@ const ProjectItem = ({ slug, project, enterDelay }: Props) => {
       animate="enter"
       exit="exit"
     >
-      <div className="relative w-full p-5 rounded-lg shadow-md flex flex-col bg-[#242424] transition-all border-2 border-transparent hover:border-[#4169E1] hover:scale-[1.01]">
-        <div className="relative flex justify-between items-center">
+      <div className="relative flex w-full flex-col rounded-lg border-2 border-transparent bg-[#242424] p-5 shadow-md transition-all hover:scale-[1.01] hover:border-[#4169E1]">
+        <div className="relative flex items-center justify-between">
           <Image
             src={project.thumbnail}
             alt="project-cover"
             width={64}
             height={64}
-            className="w-16 h-16 object-cover rounded-lg"
+            className="h-16 w-16 rounded-lg object-cover"
           />
-          <h2 className="text-white py-2 px-0 text-xl font-semibold">
+          <h2 className="px-0 py-2 text-xl font-semibold text-white">
             {project.title}
           </h2>
         </div>
-        <div className="relative h-full mt-5 flex flex-col gap-2 justify-between">
+        <div className="relative mt-5 flex h-full flex-col justify-between gap-2">
           <p className="text-white">{project.description}</p>
         </div>
       </div>

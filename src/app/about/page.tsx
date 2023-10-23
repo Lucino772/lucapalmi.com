@@ -6,7 +6,7 @@ export default function About() {
   return (
     <>
       <NavBar showLogo={false} exitDelay={0} />
-      <div className="absolute w-full left-0 right-0 top-[50%] -translate-y-1/2 flex justify-evenly items-center overflow-hidden">
+      <div className="absolute left-0 right-0 top-[50%] flex w-full -translate-y-1/2 items-center justify-evenly overflow-hidden">
         <Logo width={312} height={312} />
         <AboutText />
       </div>

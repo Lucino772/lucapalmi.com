@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import MenuIcon from "@/assets/svg/menu.svg";
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default function NavBar(
-  props: Props = { showLogo: false, exitDelay: 0 }
+  props: Props = { showLogo: false, exitDelay: 0 },
 ) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const logoVariants = {
@@ -27,9 +27,9 @@ export default function NavBar(
 
   return (
     <>
-      <div className="relative w-full max-w-6xl flex justify-between items-center py-4 px-7 mx-auto">
+      <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-7 py-4">
         <MotionNextImage
-          className="relative w-[50px] h-[50px] rounded-full visible md:invisible"
+          className="visible relative h-[50px] w-[50px] rounded-full md:invisible"
           src="/images/logo.webp"
           alt="Logo"
           initial="initial"
@@ -41,21 +41,21 @@ export default function NavBar(
           style={props.showLogo ? { visibility: "visible" } : {}}
         />
 
-        <nav className="relative justify-center items-center hidden md:flex">
+        <nav className="relative hidden items-center justify-center md:flex">
           <Link
-            className="relative text-xl text-white font-normal no-underline mr-5 after:content-[''] after:absolute after:left-[5%] after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:duration-200 hover:after:w-3/4"
+            className="relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-[2px] after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
             href="/"
           >
             Home
           </Link>
           <Link
-            className="relative text-xl text-white font-normal no-underline mr-5 after:content-[''] after:absolute after:left-[5%] after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:duration-200 hover:after:w-3/4"
+            className="relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-[2px] after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
             href="/about"
           >
             About
           </Link>
           <Link
-            className="relative text-xl text-white font-normal no-underline mr-0 after:content-[''] after:absolute after:left-[5%] after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:duration-200 hover:after:w-3/4"
+            className="relative mr-0 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-[2px] after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
             href="/projects"
           >
             Projects
@@ -64,7 +64,7 @@ export default function NavBar(
 
         <MenuIcon
           onClick={() => setMobileMenuOpen(true)}
-          className="block md:hidden hover:cursor-pointer"
+          className="block hover:cursor-pointer md:hidden"
           color="white"
           width={32}
           height={32}

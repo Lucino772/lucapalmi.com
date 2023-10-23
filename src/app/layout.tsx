@@ -1,6 +1,6 @@
-import type { Metadata } from 'next'
-import { Josefin_Sans } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from "next";
+import { Josefin_Sans } from "next/font/google";
+import "./globals.css";
 import "highlight.js/styles/github-dark-dimmed.css";
 
 const josefin = Josefin_Sans({
@@ -10,13 +10,13 @@ const josefin = Josefin_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'lucapalmi.com - fullstack developer',
-}
+  title: "lucapalmi.com - fullstack developer",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -24,5 +24,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }

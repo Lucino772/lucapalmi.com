@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { ProjectMeta } from "@/lib/types";
 import { m as motion, Variants } from "framer-motion";
@@ -27,7 +27,7 @@ const ProjectView = ({ meta, content }: Props) => {
 
   return (
     <motion.div
-      className="relative max-w-4xl my-0 mx-auto px-5 flex flex-col gap-6"
+      className="relative mx-auto my-0 flex max-w-4xl flex-col gap-6 px-5"
       variants={variants}
       initial="initial"
       animate="enter"
@@ -39,10 +39,10 @@ const ProjectView = ({ meta, content }: Props) => {
         alt="project-cover"
         width={1000}
         height={1000}
-        className="w-full aspect-video object-cover rounded-lg drop-shadow"
+        className="aspect-video w-full rounded-lg object-cover drop-shadow"
       />
       <ProjectTechs meta={meta} />
-      <div className="prose prose-lg prose-pre:p-0 dark:prose-invert max-w-none">
+      <div className="prose prose-lg max-w-none dark:prose-invert prose-pre:p-0">
         <MDXRemote {...content} />
       </div>
     </motion.div>

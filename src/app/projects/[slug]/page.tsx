@@ -20,11 +20,15 @@ async function getProjectInfo(slug: string) {
   return {
     meta: markdown.frontmatter as ProjectMeta,
     content: markdown,
-    slug: project.slug
+    slug: project.slug,
   };
 }
 
-export default async function Project({ params }: { params: { slug: string } }) {
+export default async function Project({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { meta, content } = await getProjectInfo(params.slug);
   return (
     <div style={{ paddingBottom: 100 }}>

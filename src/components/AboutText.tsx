@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { m as motion, Variants } from "framer-motion";
 
@@ -25,7 +25,7 @@ export default function AboutText() {
   };
 
   return (
-    <div className="relative text-white max-w-[400px] flex flex-col justify-center px-6 md:px-0">
+    <div className="relative flex max-w-[400px] flex-col justify-center px-6 text-white md:px-0">
       <motion.h1
         className="relative text-5xl font-semibold"
         initial="initial"
@@ -37,7 +37,7 @@ export default function AboutText() {
       </motion.h1>
       <div>
         <motion.p
-          className="relative text-xl font-normal leading-6 mt-3 md:pl-4"
+          className="relative mt-3 text-xl font-normal leading-6 md:pl-4"
           custom={{ delay: 0.2 }}
           initial="initial"
           animate="enter"
@@ -48,7 +48,7 @@ export default function AboutText() {
           computer science at university.
         </motion.p>
         <motion.p
-          className="relative text-xl font-normal leading-6 mt-3 md:pl-6"
+          className="relative mt-3 text-xl font-normal leading-6 md:pl-6"
           custom={{ delay: 0.35 }}
           initial="initial"
           animate="enter"
@@ -61,7 +61,7 @@ export default function AboutText() {
           of information technology.
         </motion.p>
         <motion.p
-          className="relative text-xl font-normal leading-6 mt-3 md:pl-8"
+          className="relative mt-3 text-xl font-normal leading-6 md:pl-8"
           custom={{ delay: 0.5 }}
           initial="initial"
           animate="enter"
