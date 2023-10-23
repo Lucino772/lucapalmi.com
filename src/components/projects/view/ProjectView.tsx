@@ -35,10 +35,10 @@ const ProjectView = ({ meta, content }: Props) => {
     >
       <ProjectHeader meta={meta} />
       <Image
-        src={meta.thumbnail}
+        src={`https:${meta.thumbnail.fields.file.url}`}
         alt="project-cover"
-        width={1000}
-        height={1000}
+        width={meta.thumbnail.fields.file.details.image.width}
+        height={meta.thumbnail.fields.file.details.image.height}
         className="aspect-video w-full rounded-lg object-cover drop-shadow"
       />
       <ProjectTechs meta={meta} />
