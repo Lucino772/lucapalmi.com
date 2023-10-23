@@ -1,3 +1,5 @@
+"use client";
+
 import { ProjectMeta } from "@/lib/types";
 
 import GithubIcon from "@/assets/svg/github.svg";
@@ -11,11 +13,11 @@ type Props = {
 const ProjectHeader = ({ meta }: Props) => {
   return (
     <div className="flex flex-col gap-2">
-      <h1 className="text-white text-5xl">{meta.title}</h1>
+      <h1 className="text-5xl text-white">{meta.title}</h1>
       <div className="flex flex-row gap-4">
         {meta.links.github !== undefined && (
           <a
-            className="text-neutral-300 no-underline font-normal flex justify-center items-center"
+            className="flex items-center justify-center font-normal text-neutral-300 no-underline"
             href={meta.links.github}
             target="_blank"
             rel="noreferrer"
@@ -31,7 +33,7 @@ const ProjectHeader = ({ meta }: Props) => {
         )}
         {meta.links.docs !== undefined && (
           <a
-            className="text-neutral-300 no-underline font-normal flex justify-center items-center"
+            className="flex items-center justify-center font-normal text-neutral-300 no-underline"
             href={meta.links.docs}
             target="_blank"
             rel="noreferrer"
@@ -47,7 +49,7 @@ const ProjectHeader = ({ meta }: Props) => {
         )}
         {meta.links.url !== undefined && (
           <a
-            className="text-neutral-300 no-underline font-normal flex justify-center items-center"
+            className="flex items-center justify-center font-normal text-neutral-300 no-underline"
             href={meta.links.url}
             target="_blank"
             rel="noreferrer"

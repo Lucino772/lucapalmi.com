@@ -16,7 +16,7 @@ async function getProjects(): Promise<GetProjectReturn[]> {
         filename: path.join(_PROJECT_DIRECTORY, filename),
         slug: filename.replace(/\.mdx$/, ""),
       } as GetProjectReturn;
-    })
+    }),
   );
 
   return projects;

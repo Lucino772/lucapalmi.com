@@ -1,3 +1,5 @@
+"use client";
+
 import { Variants } from "framer-motion";
 import MotionNextImage from "./MotionNextImage";
 
@@ -20,7 +22,7 @@ export default function Logo(props: Props = { width: 312, height: 312 }) {
 
   return (
     <MotionNextImage
-      className="relative border rounded-full hidden md:block"
+      className="relative hidden rounded-full border md:block"
       src="/images/logo.webp"
       alt="Logo"
       width={props.width}

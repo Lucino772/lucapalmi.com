@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { m as motion, Variants } from "framer-motion";
 import CloseIcon from "@/assets/svg/close.svg";
@@ -21,14 +23,14 @@ export default function MobileNav(props: Props = { open: false }) {
 
   return (
     <motion.div
-      className="fixed left-0 right-0 top-0 bottom-0 w-full h-screen 
-                     bg-white z-50 flex flex-col justify-center items-center"
+      className="fixed bottom-0 left-0 right-0 top-0 z-50 flex 
+                     h-screen w-full flex-col items-center justify-center bg-white"
       variants={containerVariants}
       initial="initial"
       exit="exit"
       animate={props.open ? "enter" : "exit"}
     >
-      <nav className="h-1/2 flex flex-col justify-evenly items-center gap-5">
+      <nav className="flex h-1/2 flex-col items-center justify-evenly gap-5">
         <Link className="text-2xl tracking-widest text-black" href="/">
           Home
         </Link>

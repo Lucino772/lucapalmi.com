@@ -1,3 +1,5 @@
+"use client";
+
 import { m as motion } from "framer-motion";
 
 export default function SiteInConstruction() {
@@ -8,9 +10,9 @@ export default function SiteInConstruction() {
   };
 
   return (
-    <div className="fixed z-50 bottom-0 left-0 right-0 p-2 flex items-center justify-start md:justify-end">
+    <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-start p-2 md:justify-end">
       <motion.div
-        className="py-5 flex justify-center items-center w-full md:px-12 md:w-auto text-xl font-bold bg-black bg-opacity-70 text-white rounded-lg"
+        className="flex w-full items-center justify-center rounded-lg bg-black bg-opacity-70 py-5 text-xl font-bold text-white md:w-auto md:px-12"
         initial="initial"
         animate="enter"
         exit="exit"

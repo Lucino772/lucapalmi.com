@@ -1,3 +1,5 @@
+"use client";
+
 import { ProjectMeta } from "@/lib/types";
 import ProjectItem from "./ProjectItem";
 
@@ -10,7 +12,7 @@ type Props = {
 
 const ProjectList = ({ projects }: Props) => {
   return (
-    <div className="relative max-w-4xl my-0 mx-auto px-5 grid gap-4 grid-cols-1 md:grid-cols-2">
+    <div className="relative mx-auto my-0 grid max-w-4xl grid-cols-1 gap-4 px-5 md:grid-cols-2">
       {projects.map((project, i) => (
         <ProjectItem
           key={i}
