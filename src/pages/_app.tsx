@@ -1,4 +1,16 @@
 import "@/styles/globals.scss";
+// import 'highlight.js/styles/base16/chalk.css';
+// import 'highlight.js/styles/base16/default-dark.css';
+// import 'highlight.js/styles/base16/framer.css';
+// import 'highlight.js/styles/base16/onedark.css';
+// import 'highlight.js/styles/felipec.css';
+import "highlight.js/styles/github-dark-dimmed.css";
+// import 'highlight.js/styles/hybrid.css';
+// import 'highlight.js/styles/nord.css';
+// import 'highlight.js/styles/obsidian.css';
+// import 'highlight.js/styles/stackoverflow-dark.css';
+// import 'highlight.js/styles/vs2015.css';
+
 import type { AppProps } from "next/app";
 import { LazyMotion } from "framer-motion";
 

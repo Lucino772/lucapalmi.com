@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { m as motion, Variants } from "framer-motion";
-import CloseIcon from "../../public/svg/close.svg";
+import CloseIcon from "@/assets/svg/close.svg";
 
 type Props = {
   open: boolean;

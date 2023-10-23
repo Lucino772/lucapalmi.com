@@ -1,30 +1,50 @@
+import * as fs from "fs/promises";
+import { serialize } from "next-mdx-remote/serialize";
+
 import NavBar from "../components/NavBar";
-import { ProjectContainer, ProjectItem } from "../components/Project";
 import { Scrollbars } from "react-custom-scrollbars";
+import { getProjects } from "@/lib/projects";
+import { ProjectMeta } from "@/lib/types";
+import { ProjectList } from "@/components/projects";
+import rehypeHighlight from "rehype-highlight";
 
-import projects from "../projects.json";
+type Props = {
+  projects: {
+    meta: ProjectMeta;
+    slug: string;
+  }[];
+};
 
-export default function Projects() {
+export default function Projects(props: Props) {
+  const { projects } = props;
+
   return (
     <Scrollbars universal autoHeight autoHeightMin="100vh">
       <div style={{ paddingBottom: 100 }}>
         <NavBar showLogo exitDelay={0.2} />
-        <ProjectContainer>
-          {projects.map((project, i) => (
-            <ProjectItem
-              key={i}
-              enterDelay={0.1 + 0.2 * i}
-              title={project.title}
-              image={project.thumbnail}
-              description={project.description}
-              github_url={project.links.github}
-              project_url={project.links.url}
-              docs_url={project.links.docs}
-              portrait={false}
-            />
-          ))}
-        </ProjectContainer>
+        <ProjectList projects={projects} />
       </div>
     </Scrollbars>
   );
+}
+
+export async function getStaticProps() {
+  const projects = await Promise.all(
+    (
+      await getProjects()
+    ).map(async (project) => {
+      const source = await fs.readFile(project.filename, { encoding: "utf-8" });
+      const markdown = await serialize(source, {
+        parseFrontmatter: true,
+        mdxOptions: {
+          rehypePlugins: [rehypeHighlight],
+        },
+      });
+      return {
+        meta: markdown.frontmatter as ProjectMeta,
+        slug: project.slug,
+      };
+    })
+  );
+  return { props: { projects } };
 }

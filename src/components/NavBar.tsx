@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MenuIcon from "../../public/svg/menu.svg";
+import MenuIcon from "@/assets/svg/menu.svg";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
 import MotionNextImage from "./MotionNextImage";
