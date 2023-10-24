@@ -11,9 +11,9 @@ export async function generateStaticParams() {
   return await Promise.all(
     (await getAllProjects()).items.map(async (project) => {
       return {
-        slug: project.fields.slug as string
-      }
-    })
+        slug: project.fields.slug as string,
+      };
+    }),
   );
 }
 
@@ -24,7 +24,7 @@ async function getProjectInfo(slug: string) {
     description: project?.fields.description,
     links: project?.fields.links,
     techs: project?.fields.technologies,
-    thumbnail: project?.fields.thumbnail
+    thumbnail: project?.fields.thumbnail,
   } as ProjectMeta;
 
   const markdown = await serialize(project?.fields.content!, {

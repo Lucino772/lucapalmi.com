@@ -2,7 +2,7 @@ import NavBar from "@/components/NavBar";
 import { ProjectMeta } from "@/lib/types";
 import { ProjectList } from "@/components/projects";
 
-import { getAllProjects } from "@/lib/cms"
+import { getAllProjects } from "@/lib/cms";
 
 async function getProjectsInfo() {
   return await Promise.all(
@@ -13,11 +13,11 @@ async function getProjectsInfo() {
           description: project.fields.description,
           links: project.fields.links,
           techs: [],
-          thumbnail: project.fields.thumbnail
+          thumbnail: project.fields.thumbnail,
         } as ProjectMeta,
-        slug: project.fields.slug as string
-      }
-    })
+        slug: project.fields.slug as string,
+      };
+    }),
   );
 }
 
