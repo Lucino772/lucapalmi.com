@@ -3,7 +3,7 @@ import { createClient, EntryFieldTypes } from "contentful";
 const spaceId: string = process.env.CONTENTFUL_SPACE as string;
 const token: string = process.env.CONTENTFUL_TOKEN as string;
 
-type TechnologyEntrySkeleton = {
+export type TechnologyEntrySkeleton = {
   contentTypeId: "technology";
   fields: {
     name: EntryFieldTypes.Text;
@@ -12,7 +12,7 @@ type TechnologyEntrySkeleton = {
   };
 };
 
-type ProjectEntrySkeleton = {
+export type ProjectEntrySkeleton = {
   contentTypeId: "project";
   fields: {
     title: EntryFieldTypes.Text;
@@ -37,18 +37,21 @@ function getClient() {
 export async function getAllProjects() {
   const client = getClient();
 
-  return await client.getEntries<ProjectEntrySkeleton>({
-    content_type: "project",
-  });
+  return await client.withoutUnresolvableLinks.getEntries<ProjectEntrySkeleton>(
+    {
+      content_type: "project",
+    },
+  );
 }
 
 export async function getProject(slug: string) {
   const client = getClient();
 
-  const projects = await client.getEntries<ProjectEntrySkeleton>({
-    content_type: "project",
-    "fields.slug": slug,
-  });
+  const projects =
+    await client.withoutUnresolvableLinks.getEntries<ProjectEntrySkeleton>({
+      content_type: "project",
+      "fields.slug": slug,
+    });
 
   return projects.items.at(0);
 }
