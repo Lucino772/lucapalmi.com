@@ -19,7 +19,8 @@ export type ProjectEntrySkeleton = {
     slug: EntryFieldTypes.Text;
     thumbnail: EntryFieldTypes.AssetLink;
     description: EntryFieldTypes.Text;
-    links: EntryFieldTypes.Object<Record<string, string>>;
+    github: EntryFieldTypes.Text;
+    website: EntryFieldTypes.Text;
     technologies: EntryFieldTypes.Array<
       EntryFieldTypes.EntryLink<TechnologyEntrySkeleton>
     >;
