@@ -1,24 +1,24 @@
 "use client";
 
-import { ProjectMeta } from "@/lib/types";
-
 import GithubIcon from "@/assets/svg/github.svg";
 import WebIcon from "@/assets/svg/web.svg";
 import BookIcon from "@/assets/svg/book.svg";
+import { ProjectEntrySkeleton } from "@/lib/cms";
+import { Entry } from "contentful";
 
 type Props = {
-  meta: ProjectMeta;
+  project: Entry<ProjectEntrySkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>;
 };
 
-const ProjectHeader = ({ meta }: Props) => {
+const ProjectHeader = ({ project }: Props) => {
   return (
     <div className="flex flex-col gap-2">
-      <h1 className="text-5xl text-white">{meta.title}</h1>
+      <h1 className="text-5xl text-white">{project.fields.title}</h1>
       <div className="flex flex-row gap-4">
-        {meta.links.github !== undefined && (
+        {project.fields.links.github !== undefined && (
           <a
             className="flex items-center justify-center font-normal text-neutral-300 no-underline"
-            href={meta.links.github}
+            href={project.fields.links.github}
             target="_blank"
             rel="noreferrer"
           >
@@ -31,10 +31,10 @@ const ProjectHeader = ({ meta }: Props) => {
             <span className="h-[20px]">Source Code</span>
           </a>
         )}
-        {meta.links.docs !== undefined && (
+        {project.fields.links.docs !== undefined && (
           <a
             className="flex items-center justify-center font-normal text-neutral-300 no-underline"
-            href={meta.links.docs}
+            href={project.fields.links.docs}
             target="_blank"
             rel="noreferrer"
           >
@@ -47,10 +47,10 @@ const ProjectHeader = ({ meta }: Props) => {
             <span className="h-[20px]">Documentation</span>
           </a>
         )}
-        {meta.links.url !== undefined && (
+        {project.fields.links.url !== undefined && (
           <a
             className="flex items-center justify-center font-normal text-neutral-300 no-underline"
-            href={meta.links.url}
+            href={project.fields.links.url}
             target="_blank"
             rel="noreferrer"
           >

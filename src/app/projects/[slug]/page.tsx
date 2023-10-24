@@ -1,7 +1,6 @@
 import rehypeHighlight from "rehype-highlight";
 import { serialize } from "next-mdx-remote/serialize";
 
-import { ProjectMeta } from "@/lib/types";
 import { ProjectView } from "@/components/projects";
 import { getAllProjects, getProject } from "@/lib/cms";
 import { notFound } from "next/navigation";
@@ -20,14 +19,6 @@ async function getProjectInfo(slug: string) {
   const project = await getProject(slug);
   if (project === undefined) notFound();
 
-  const meta = {
-    title: project.fields.title,
-    description: project.fields.description,
-    links: project.fields.links,
-    techs: project.fields.technologies,
-    thumbnail: project.fields.thumbnail,
-  } as ProjectMeta;
-
   const markdown = await serialize(project.fields.content!, {
     parseFrontmatter: false,
     mdxOptions: {
@@ -36,7 +27,7 @@ async function getProjectInfo(slug: string) {
   });
 
   return {
-    meta: meta,
+    project: project,
     content: markdown,
   };
 }
@@ -46,6 +37,6 @@ export default async function Project({
 }: {
   params: { slug: string };
 }) {
-  const { meta, content } = await getProjectInfo(params.slug);
-  return <ProjectView meta={meta} content={content} />;
+  const { project, content } = await getProjectInfo(params.slug);
+  return <ProjectView project={project} content={content} />;
 }
