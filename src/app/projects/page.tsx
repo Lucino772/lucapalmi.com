@@ -1,4 +1,3 @@
-import NavBar from "@/components/NavBar";
 import { ProjectMeta } from "@/lib/types";
 import { ProjectList } from "@/components/projects";
 
@@ -23,11 +22,5 @@ async function getProjectsInfo() {
 
 export default async function Projects() {
   const projects = await getProjectsInfo();
-
-  return (
-    <div style={{ paddingBottom: 100 }}>
-      <NavBar showLogo exitDelay={0.2} />
-      <ProjectList projects={projects} />
-    </div>
-  );
+  return <ProjectList projects={projects} />;
 }
