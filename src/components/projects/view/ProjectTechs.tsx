@@ -1,17 +1,18 @@
 "use client";
 
 import TechStack from "@/components/TechStack";
-import { ProjectMeta } from "@/lib/types";
+import { ProjectEntrySkeleton } from "@/lib/cms";
+import { Entry } from "contentful";
 
 type Props = {
-  meta: ProjectMeta;
+  project: Entry<ProjectEntrySkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>;
 };
 
-const ProjectTechs = ({ meta }: Props) => {
+const ProjectTechs = ({ project }: Props) => {
   return (
     <div className="flex flex-row gap-5">
-      {meta.techs.map((name) => (
-        <TechStack key={name} name={name} />
+      {project.fields.technologies.map((technology) => (
+        <TechStack key={technology?.fields.slug} technology={technology!} />
       ))}
     </div>
   );
