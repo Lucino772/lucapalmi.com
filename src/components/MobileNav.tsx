@@ -19,7 +19,7 @@ export default function MobileNav(props: Props = { open: false }) {
   return (
     <div
       className={cn(
-        "fixed bottom-0 top-0 z-50 flex h-screen w-full flex-col items-center justify-center bg-white transition-all duration-200",
+        "fixed bottom-0 top-0 z-50 flex h-screen w-full flex-col items-center justify-center bg-white transition-all duration-200 md:hidden",
         {
           "right-0": props.open,
           "-right-full": !props.open,
