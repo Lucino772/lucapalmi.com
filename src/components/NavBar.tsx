@@ -5,6 +5,7 @@ import MenuIcon from "@/assets/svg/menu.svg";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
 import Image from "next/image";
+import GithubIcon from "@/assets/svg/github.svg";
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,11 +35,19 @@ export default function NavBar() {
             About
           </Link>
           <Link
-            className="relative mr-0 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-[2px] after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
+            className="relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-[2px] after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
             href="/projects"
           >
             Projects
           </Link>
+          <a
+            target="_blank"
+            className="relative inline-block"
+            href="https://github.com/Lucino772"
+            title="github"
+          >
+            <GithubIcon color="white" width={24} height={24} />
+          </a>
         </nav>
 
         <MenuIcon
