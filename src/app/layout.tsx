@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import "highlight.js/styles/github-dark-dimmed.css";
+import NavBar from "@/components/NavBar";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={josefin.className} style={{ overflow: "auto" }}>
+        <NavBar />
         {children}
       </body>
     </html>

@@ -4,41 +4,20 @@ import Link from "next/link";
 import MenuIcon from "@/assets/svg/menu.svg";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
-import MotionNextImage from "./MotionNextImage";
+import Image from "next/image";
 
-type Props = {
-  showLogo: boolean;
-  exitDelay: number;
-};
-
-export default function NavBar(
-  props: Props = { showLogo: false, exitDelay: 0 },
-) {
+export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const logoVariants = {
-    initial: { opacity: 0, scale: 0 },
-    enter: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-    exit: {
-      opacity: 0,
-      scale: 0,
-      transition: { duration: 0.3, delay: props.exitDelay },
-    },
-  };
 
   return (
     <>
       <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-7 py-4">
-        <MotionNextImage
-          className="visible relative h-[50px] w-[50px] rounded-full md:invisible"
+        <Image
+          className="visible relative h-[50px] w-[50px] animate-fade-in rounded-full"
           src="/images/logo.webp"
           alt="Logo"
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          variants={logoVariants}
           width={50}
           height={50}
-          style={props.showLogo ? { visibility: "visible" } : {}}
         />
 
         <nav className="relative hidden items-center justify-center md:flex">

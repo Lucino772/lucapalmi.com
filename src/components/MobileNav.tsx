@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { m as motion, Variants } from "framer-motion";
 import CloseIcon from "@/assets/svg/close.svg";
+import { useCallback } from "react";
+import { cn } from "@/lib/cn";
 
 type Props = {
   open: boolean;
@@ -10,34 +11,41 @@ type Props = {
 };
 
 export default function MobileNav(props: Props = { open: false }) {
-  const containerVariants: Variants = {
-    initial: { opacity: 0, scale: 1, x: "100%" },
-    enter: { opacity: 1, scale: 1, x: 0, transition: { duration: 0.2 } },
-    exit: {
-      opacity: 0,
-      scale: 1,
-      x: "100%",
-      transition: { duration: 0.2, delay: 0.1 },
-    },
-  };
+  const handleClose = useCallback(() => {
+    if (props.close === undefined) return;
+    props.close();
+  }, [props.close]);
 
   return (
-    <motion.div
-      className="fixed bottom-0 left-0 right-0 top-0 z-50 flex 
-                     h-screen w-full flex-col items-center justify-center bg-white"
-      variants={containerVariants}
-      initial="initial"
-      exit="exit"
-      animate={props.open ? "enter" : "exit"}
+    <div
+      className={cn(
+        "fixed bottom-0 top-0 z-50 flex h-screen w-full flex-col items-center justify-center bg-white transition-all duration-200",
+        {
+          "right-0": props.open,
+          "-right-full": !props.open,
+        },
+      )}
     >
       <nav className="flex h-1/2 flex-col items-center justify-evenly gap-5">
-        <Link className="text-2xl tracking-widest text-black" href="/">
+        <Link
+          onClick={handleClose}
+          className="text-2xl tracking-widest text-black"
+          href="/"
+        >
           Home
         </Link>
-        <Link className="text-2xl tracking-widest text-black" href="/about">
+        <Link
+          onClick={handleClose}
+          className="text-2xl tracking-widest text-black"
+          href="/about"
+        >
           About
         </Link>
-        <Link className="text-2xl tracking-widest text-black" href="/projects">
+        <Link
+          onClick={handleClose}
+          className="text-2xl tracking-widest text-black"
+          href="/projects"
+        >
           Projects
         </Link>
       </nav>
@@ -47,8 +55,8 @@ export default function MobileNav(props: Props = { open: false }) {
         color="black"
         width={32}
         height={32}
-        onClick={() => (props.close !== undefined ? props.close() : null)}
+        onClick={handleClose}
       />
-    </motion.div>
+    </div>
   );
 }

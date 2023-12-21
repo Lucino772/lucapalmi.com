@@ -8,7 +8,18 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "fade-in": "fade 300ms ease-in-out normal forwards",
+      },
+
+      keyframes: {
+        fade: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };
