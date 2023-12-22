@@ -8,13 +8,3 @@
   box-sizing: border-box;
   color-scheme: dark;
 }
-
-body {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-
-  background: linear-gradient(80deg, #242424 50%, #272727 50%);
-
-  overflow: hidden;
-}

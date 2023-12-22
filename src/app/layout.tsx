@@ -23,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={cn("box-border", josefin.className)}
+        className={cn(
+          "relative h-screen w-full overflow-hidden bg-[#272727] to-50% md:bg-gradient-80deg md:from-[#242424] md:from-50% md:to-[#272727]",
+          josefin.className,
+        )}
         style={{ overflow: "auto" }}
       >
         <NavBar />

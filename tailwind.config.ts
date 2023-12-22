@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "gradient-80deg": "linear-gradient(80deg, var(--tw-gradient-stops))",
+      },
+
       animation: {
         "fade-in": "fade 300ms ease-in-out normal forwards",
       },

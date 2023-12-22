@@ -6,34 +6,18 @@ export default function Index() {
   return (
     <>
       {/* Background Image */}
-      <div
-        className="absolute left-1/2 top-1/2 -z-10 h-screen w-screen max-w-6xl -translate-x-1/2 -translate-y-1/2 overflow-hidden"
-        style={{
-          background: "linear-gradient(80deg, #242424 50%, #272727 50%)",
-        }}
-      >
-        <div className="absolute right-7 top-32 w-1/2 xl:top-60">
+      <div className="absolute left-1/2 top-1/2 -z-10 h-screen w-screen max-w-6xl -translate-x-1/2 -translate-y-1/2 overflow-hidden">
+        <div className="absolute h-full w-full md:right-7 md:top-32 md:h-auto md:w-1/2 xl:top-60">
           <Image
-            className="relative w-full animate-fade-in object-cover object-top"
+            className="relative h-full w-full animate-fade-in object-cover object-top md:h-auto"
             src={desktopDimmed}
             alt="Desktop"
             width={500}
             priority={true}
           />
-          <div
-            className="absolute bottom-0 left-0 right-0 top-0"
-            style={{
-              background:
-                "linear-gradient(to top, #272727 10%, transparent 30%)",
-            }}
-          ></div>
+          <div className="absolute bottom-0 left-0 right-0 top-0 bg-[#272727] bg-opacity-60 bg-gradient-to-t from-[#272727] from-10% to-transparent to-50% md:bg-transparent"></div>
         </div>
-        <div
-          className="absolute h-full w-full"
-          style={{
-            background: "linear-gradient(80deg, #242424 50%, transparent 50%)",
-          }}
-        ></div>
+        <div className="absolute hidden h-full w-full bg-gradient-80deg from-[#242424] from-50% to-transparent to-50% md:block"></div>
       </div>
 
       {/* Hero Section */}
