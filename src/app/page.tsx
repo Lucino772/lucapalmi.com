@@ -28,7 +28,7 @@ export default function Index() {
               Hi, my name is Luca Palmisano
             </h1>
             <p className="mt-1 animate-[fade_200ms_300ms_ease-out_normal_forwards] text-2xl font-normal opacity-0">
-              {"I'm a fullstack developper"}
+              {"I'm a fullstack developer"}
             </p>
           </div>
           <div className="relative mt-5 flex flex-row justify-start gap-5 pl-5">
