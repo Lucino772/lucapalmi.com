@@ -9,6 +9,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#242424",
+        secondary: "#272727",
+        "accent-blue": "#4169E1",
+      },
+
       backgroundImage: {
         "gradient-80deg": "linear-gradient(80deg, var(--tw-gradient-stops))",
       },
