@@ -3,6 +3,7 @@ import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import "highlight.js/styles/github-dark-dimmed.css";
 import NavBar from "@/components/NavBar";
+import { cn } from "@/lib/cn";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -21,7 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={josefin.className} style={{ overflow: "auto" }}>
+      <body
+        className={cn("box-border", josefin.className)}
+        style={{ overflow: "auto" }}
+      >
         <NavBar />
         {children}
       </body>

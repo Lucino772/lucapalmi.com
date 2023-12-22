@@ -10,19 +10,19 @@ type Props = {
   close?: () => void;
 };
 
-export default function MobileNav(props: Props = { open: false }) {
+export default function MobileNav({ open, close }: Props = { open: false }) {
   const handleClose = useCallback(() => {
-    if (props.close === undefined) return;
-    props.close();
-  }, [props.close]);
+    if (close === undefined) return;
+    close();
+  }, [close]);
 
   return (
     <div
       className={cn(
         "fixed bottom-0 top-0 z-50 flex h-screen w-full flex-col items-center justify-center bg-white transition-all duration-200 md:hidden",
         {
-          "right-0": props.open,
-          "-right-full": !props.open,
+          "right-0": open,
+          "-right-full": !open,
         },
       )}
     >

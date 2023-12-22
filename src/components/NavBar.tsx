@@ -6,6 +6,7 @@ import MobileNav from "./MobileNav";
 import { useState } from "react";
 import Image from "next/image";
 import GithubIcon from "@/assets/svg/github.svg";
+import logo from "../../public/images/logo.webp";
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,10 +16,10 @@ export default function NavBar() {
       <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-7 py-4">
         <Image
           className="visible relative h-[50px] w-[50px] animate-fade-in rounded-full"
-          src="/images/logo.webp"
+          src={logo}
           alt="Logo"
           width={50}
-          height={50}
+          priority={true}
         />
 
         <nav className="relative hidden items-center justify-center md:flex">
