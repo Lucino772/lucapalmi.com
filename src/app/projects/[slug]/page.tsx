@@ -6,37 +6,37 @@ import { getAllProjects, getProject } from "@/lib/cms";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-  return await Promise.all(
-    (await getAllProjects()).items.map(async (project) => {
-      return {
-        slug: project.fields.slug as string,
-      };
-    }),
-  );
+    return await Promise.all(
+        (await getAllProjects()).items.map(async (project) => {
+            return {
+                slug: project.fields.slug as string,
+            };
+        }),
+    );
 }
 
 async function getProjectInfo(slug: string) {
-  const project = await getProject(slug);
-  if (project === undefined) notFound();
+    const project = await getProject(slug);
+    if (project === undefined) notFound();
 
-  const markdown = await serialize(project.fields.content!, {
-    parseFrontmatter: false,
-    mdxOptions: {
-      rehypePlugins: [rehypeHighlight],
-    },
-  });
+    const markdown = await serialize(project.fields.content!, {
+        parseFrontmatter: false,
+        mdxOptions: {
+            rehypePlugins: [rehypeHighlight],
+        },
+    });
 
-  return {
-    project: project,
-    content: markdown,
-  };
+    return {
+        project: project,
+        content: markdown,
+    };
 }
 
 export default async function Project({
-  params,
+    params,
 }: {
-  params: { slug: string };
+    params: { slug: string };
 }) {
-  const { project, content } = await getProjectInfo(params.slug);
-  return <ProjectView project={project} content={content} />;
+    const { project, content } = await getProjectInfo(params.slug);
+    return <ProjectView project={project} content={content} />;
 }
