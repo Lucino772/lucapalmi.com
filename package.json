@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "clsx": "^2.0.0",
-    "contentful": "^10.6.15",
+    "contentful": "^10.6.16",
     "framer-motion": "10.16.16",
     "highlight.js": "11.9.0",
     "next": "14.0.4",
