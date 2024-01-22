@@ -12,7 +12,7 @@
     "format:fix": "prettier --write ."
   },
   "dependencies": {
-    "clsx": "^2.0.0",
+    "clsx": "^2.1.0",
     "contentful": "^10.6.16",
     "framer-motion": "10.16.16",
     "highlight.js": "11.9.0",
