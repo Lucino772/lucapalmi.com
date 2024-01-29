@@ -14,7 +14,7 @@
   "dependencies": {
     "clsx": "^2.1.0",
     "contentful": "^10.6.19",
-    "framer-motion": "10.16.16",
+    "framer-motion": "11.0.3",
     "highlight.js": "11.9.0",
     "next": "14.0.4",
     "next-mdx-remote": "4.4.1",
