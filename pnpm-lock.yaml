@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.1.0
     version: 2.1.0
   contentful:
-    specifier: ^10.8.7
-    version: 10.8.7
+    specifier: ^10.8.8
+    version: 10.8.8
   framer-motion:
     specifier: 11.0.14
     version: 11.0.14(react-dom@18.2.0)(react@18.2.0)
@@ -2383,8 +2383,8 @@ packages:
       p-throttle: 4.1.1
     dev: false
 
-  /contentful@10.8.7:
-    resolution: {integrity: sha512-BkHspZUmeaqCkJXljBJBZ+WnMVU/3N1rYIxVuwH3X/0Q88zF8hb02dsZupmecm5LOHSYWg7lKKrbKit6Q0JL2A==}
+  /contentful@10.8.8:
+    resolution: {integrity: sha512-6U749MMiqPScrvGx3qv8aIeIvmbq1epB6YqxklJhrJY+Y+mtHNLDR2QiID21oO4ornQWdJh2tWY250BRMScdmA==}
     engines: {node: '>=18'}
     dependencies:
       '@contentful/rich-text-types': 16.3.0
