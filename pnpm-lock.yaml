@@ -12,8 +12,8 @@ dependencies:
     specifier: ^10.8.8
     version: 10.8.8
   framer-motion:
-    specifier: 11.0.14
-    version: 11.0.14(react-dom@18.2.0)(react@18.2.0)
+    specifier: 11.1.7
+    version: 11.1.7(react-dom@18.2.0)(react@18.2.0)
   highlight.js:
     specifier: 11.9.0
     version: 11.9.0
@@ -3212,8 +3212,8 @@ packages:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
     dev: true
 
-  /framer-motion@11.0.14(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-RFjo2hB1MTW0EWsHQaXgVn0AEUDGxAs0ZL2vVjTTJJu3N7wFiLkmqTn5ysLjL+qKZ9jvfpKXDb9waN9AyLqk8g==}
+  /framer-motion@11.1.7(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-cW11Pu53eDAXUEhv5hEiWuIXWhfkbV32PlgVISn7jRdcAiVrJ1S03YQQ0/DzoswGYYwKi4qYmHHjCzAH52eSdQ==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0
