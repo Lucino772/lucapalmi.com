@@ -5,8 +5,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import { getAllProjects, getProject } from "@/lib/cms";
 import { notFound } from "next/navigation";
 import TechStack from "@/components/TechStack";
-import GithubIcon from "@/assets/svg/github.svg";
-import WebIcon from "@/assets/svg/web.svg";
+import { GithubIcon, GlobeIcon } from "lucide-react";
 
 export async function generateStaticParams() {
     return await Promise.all(
@@ -58,9 +57,7 @@ export default async function Project({
                         >
                             <GithubIcon
                                 color="rgb(212 212 212)"
-                                className="mr-1"
-                                width={20}
-                                height={20}
+                                className="mr-1 h-5 w-5"
                             />
                             <span className="h-[20px]">GitHub</span>
                         </a>
@@ -72,11 +69,9 @@ export default async function Project({
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <WebIcon
+                            <GlobeIcon
                                 color="rgb(212 212 212)"
-                                className="mr-1"
-                                width={20}
-                                height={20}
+                                className="mr-1 h-5 w-5"
                             />
                             <span className="h-[20px]">Website</span>
                         </a>

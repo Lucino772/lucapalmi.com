@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import MenuIcon from "@/assets/svg/menu.svg";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
 import Image from "next/image";
-import GithubIcon from "@/assets/svg/github.svg";
 import logo from "../../public/images/logo.webp";
+import { GithubIcon, MenuIcon } from "lucide-react";
 
 export default function NavBar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -47,16 +46,14 @@ export default function NavBar() {
                         href="https://github.com/Lucino772"
                         title="github"
                     >
-                        <GithubIcon color="white" width={24} height={24} />
+                        <GithubIcon color="white" className="h-6 w-6" />
                     </a>
                 </nav>
 
                 <MenuIcon
                     onClick={() => setMobileMenuOpen(true)}
-                    className="block hover:cursor-pointer md:hidden"
+                    className="block h-8 w-8 hover:cursor-pointer md:hidden"
                     color="white"
-                    width={32}
-                    height={32}
                 />
             </div>
             <MobileNav
