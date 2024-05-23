@@ -1,5 +1,3 @@
-"use client";
-
 import ProjectItem from "./ProjectItem";
 import { Entry } from "contentful";
 import { ProjectEntrySkeleton } from "@/lib/cms";

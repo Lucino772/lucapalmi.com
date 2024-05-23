@@ -1,8 +1,5 @@
-"use client";
-
 import { ProjectEntrySkeleton } from "@/lib/cms";
 import { Entry } from "contentful";
-import { m as motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
@@ -12,35 +9,21 @@ type Props = {
     project: Entry<ProjectEntrySkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>;
 };
 
-const MotionLink = motion(Link);
-
 const ProjectItem = ({ project, enterDelay }: Props) => {
     const delay = useMemo(() => {
         if (enterDelay === undefined) return 0;
-        return enterDelay;
+        return enterDelay * 1000;
     }, [enterDelay]);
 
     const {
         fields: { thumbnail, title, slug, description },
     } = project;
 
-    const variants: Variants = {
-        initial: { opacity: 0 },
-        enter: {
-            opacity: 1,
-            transition: { duration: 0.3, delay: delay },
-        },
-        exit: { opacity: 0, transition: { duration: 0.3 } },
-    };
-
     return (
-        <MotionLink
+        <Link
             href={`/projects/${slug}`}
-            className="flex"
-            variants={variants}
-            initial="initial"
-            animate="enter"
-            exit="exit"
+            className="flex animate-[fade_300ms_ease-in-out_normal_forwards] opacity-0"
+            style={{ animationDelay: `${delay}ms` }}
         >
             <div className="relative flex w-full flex-col rounded-lg border-2 border-transparent bg-[#242424] p-5 shadow-md transition-all hover:scale-[1.01] hover:border-[#4169E1]">
                 <div className="relative flex items-center justify-between">
@@ -68,7 +51,7 @@ const ProjectItem = ({ project, enterDelay }: Props) => {
                     <p className="text-white">{description}</p>
                 </div>
             </div>
-        </MotionLink>
+        </Link>
     );
 };
 
