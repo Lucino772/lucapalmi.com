@@ -1,8 +1,5 @@
-"use client";
-
 import GithubIcon from "@/assets/svg/github.svg";
 import WebIcon from "@/assets/svg/web.svg";
-import BookIcon from "@/assets/svg/book.svg";
 import { ProjectEntrySkeleton } from "@/lib/cms";
 import { Entry } from "contentful";
 

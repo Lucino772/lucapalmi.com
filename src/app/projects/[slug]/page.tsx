@@ -1,5 +1,5 @@
 import rehypeHighlight from "rehype-highlight";
-import { serialize } from "next-mdx-remote/serialize";
+import { compileMDX } from "next-mdx-remote/rsc";
 
 import { ProjectView } from "@/components/projects";
 import { getAllProjects, getProject } from "@/lib/cms";
@@ -19,16 +19,19 @@ async function getProjectInfo(slug: string) {
     const project = await getProject(slug);
     if (project === undefined) notFound();
 
-    const markdown = await serialize(project.fields.content!, {
-        parseFrontmatter: false,
-        mdxOptions: {
-            rehypePlugins: [rehypeHighlight],
+    const { content } = await compileMDX({
+        source: project.fields.content!,
+        options: {
+            parseFrontmatter: false,
+            mdxOptions: {
+                rehypePlugins: [rehypeHighlight],
+            },
         },
     });
 
     return {
         project: project,
-        content: markdown,
+        content: content,
     };
 }
 

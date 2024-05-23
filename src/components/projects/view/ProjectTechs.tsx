@@ -1,5 +1,3 @@
-"use client";
-
 import TechStack from "@/components/TechStack";
 import { ProjectEntrySkeleton } from "@/lib/cms";
 import { Entry } from "contentful";
