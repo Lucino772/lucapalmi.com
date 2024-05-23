@@ -1,7 +1,4 @@
-"use client";
-
-import { Variants } from "framer-motion";
-import MotionNextImage from "./MotionNextImage";
+import Image from "next/image";
 
 type Props = {
     width: number;
@@ -9,28 +6,13 @@ type Props = {
 };
 
 export default function Logo(props: Props = { width: 312, height: 312 }) {
-    const variants: Variants = {
-        initial: { opacity: 0, x: "-100%", rotateZ: "0deg" },
-        enter: {
-            opacity: 1,
-            x: 0,
-            rotateZ: "-15deg",
-            transition: { duration: 0.3 },
-        },
-        exit: { opacity: 0, transition: { duration: 0.2 } },
-    };
-
     return (
-        <MotionNextImage
-            className="relative hidden rounded-full border md:block"
+        <Image
+            className="relative hidden animate-[logo-in_300ms_0ms_ease-in-out_normal_forwards] rounded-full border opacity-0 md:block"
             src="/images/logo.webp"
             alt="Logo"
             width={props.width}
             height={props.height}
-            initial="initial"
-            animate="enter"
-            exit="exit"
-            variants={variants}
         />
     );
 }

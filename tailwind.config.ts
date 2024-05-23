@@ -33,6 +33,30 @@ const config: Config = {
                     "0%": { transform: "scaleY(0)" },
                     "100%": { transform: "scaleY(1)" },
                 },
+                "logo-in": {
+                    "0%": {
+                        opacity: "0",
+                        transform: "translateX(-100%) rotateZ(0deg)",
+                    },
+                    "100%": {
+                        opacity: "1",
+                        transform: "translateX(0) rotateZ(-15deg)",
+                    },
+                },
+                "about-h1": {
+                    "0%": { opacity: "0", transform: "translateX(-10px)" },
+                    "100%": { opacity: "1", transform: "translateX(0)" },
+                },
+                "about-p": {
+                    "0%": {
+                        opacity: "0",
+                        transform: "translateX(-10px) skew(0deg)",
+                    },
+                    "100%": {
+                        opacity: "1",
+                        transform: "translateX(0) skew(5deg)",
+                    },
+                },
             },
         },
     },
