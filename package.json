@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "contentful": "^10.11.3",
+    "contentful": "^10.11.7",
     "highlight.js": "11.9.0",
     "lucide-react": "^0.383.0",
     "next": "14.2.3",
