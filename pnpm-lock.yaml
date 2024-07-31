@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.1.1
     version: 2.1.1
   contentful:
-    specifier: ^10.12.13
-    version: 10.12.13
+    specifier: ^10.12.15
+    version: 10.12.15
   highlight.js:
     specifier: 11.10.0
     version: 11.10.0
@@ -2421,8 +2421,8 @@ packages:
       p-throttle: 4.1.1
     dev: false
 
-  /contentful@10.12.13:
-    resolution: {integrity: sha512-AyPedQXyln3y81uUHBIP+gaQZ0r1ZBEzW5Vuh31f+XaFoonEyrxvFbozxQLFIMKxmTrmbywmXCtt1dc13PUpDQ==}
+  /contentful@10.12.15:
+    resolution: {integrity: sha512-jDlMmbsHI1G/SAVceHbTtZdhwfNuArDvfZSjgVj6tfzRjza3QBORBUoxVAISl2+Hkh6nvtrPr7Ku1xswH44afw==}
     engines: {node: '>=18'}
     dependencies:
       '@contentful/content-source-maps': 0.6.0
