@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.1.1
     version: 2.1.1
   contentful:
-    specifier: ^10.12.15
-    version: 10.12.15
+    specifier: ^10.13.1
+    version: 10.13.1
   highlight.js:
     specifier: 11.10.0
     version: 11.10.0
@@ -2404,8 +2404,8 @@ packages:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
 
-  /contentful-resolve-response@1.8.1:
-    resolution: {integrity: sha512-VXGK2c8dBIGcRCknqudKmkDr2PzsUYfjLN6hhx71T09UzoXOdA/c0kfDhsf/BBCBWPWcLaUgaJEFU0lCo45TSg==}
+  /contentful-resolve-response@1.9.0:
+    resolution: {integrity: sha512-LtgPx/eREpHXOX82od48zFZbFhXzYw/NfUoYK4Qf1OaKpLzmYPE4cAY4aD+rxVgnMM5JN/mQaPCsofUlJRYEUA==}
     engines: {node: '>=4.7.2'}
     dependencies:
       fast-copy: 2.1.7
@@ -2421,14 +2421,14 @@ packages:
       p-throttle: 4.1.1
     dev: false
 
-  /contentful@10.12.15:
-    resolution: {integrity: sha512-jDlMmbsHI1G/SAVceHbTtZdhwfNuArDvfZSjgVj6tfzRjza3QBORBUoxVAISl2+Hkh6nvtrPr7Ku1xswH44afw==}
+  /contentful@10.13.1:
+    resolution: {integrity: sha512-GczP0vSWzZGKllzUOsUnCHTKuW92E9oR44uGrLdA7cpel75gJqSB2KpVBV1KT4oaUQn773MAU/J6tWNqCYadfw==}
     engines: {node: '>=18'}
     dependencies:
       '@contentful/content-source-maps': 0.6.0
       '@contentful/rich-text-types': 16.3.0
       axios: 1.6.8
-      contentful-resolve-response: 1.8.1
+      contentful-resolve-response: 1.9.0
       contentful-sdk-core: 8.1.0
       json-stringify-safe: 5.0.1
       type-fest: 4.5.0
