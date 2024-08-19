@@ -45,7 +45,7 @@ devDependencies:
     version: 0.5.14(tailwindcss@3.4.9)
   '@types/node':
     specifier: ^22
-    version: 22.2.0
+    version: 22.4.0
   '@types/react':
     specifier: ^18
     version: 18.3.3
@@ -1868,10 +1868,10 @@ packages:
     resolution: {integrity: sha512-AuHIyzR5Hea7ij0P9q7vx7xu4z0C28ucwjAZC0ja7JhINyCnOw8/DnvAPQQ9TfOlCtZAmCERKQX9+o1mgQhuOQ==}
     dev: false
 
-  /@types/node@22.2.0:
-    resolution: {integrity: sha512-bm6EG6/pCpkxDf/0gDNDdtDILMOHgaQBVOJGdwsqClnxA3xL6jtMv76rLBc006RVMWbmaf0xbmom4Z/5o2nRkQ==}
+  /@types/node@22.4.0:
+    resolution: {integrity: sha512-49AbMDwYUz7EXxKU/r7mXOsxwFr4BYbvB7tWYxVuLdb2ibd30ijjXINSMAHiEEZk5PCRBmW1gUeisn2VMKt3cQ==}
     dependencies:
-      undici-types: 6.13.0
+      undici-types: 6.19.6
     dev: true
 
   /@types/prop-types@15.7.9:
@@ -5512,8 +5512,8 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
-  /undici-types@6.13.0:
-    resolution: {integrity: sha512-xtFJHudx8S2DSoujjMd1WeWvn7KKWFRESZTMeL1RptAYERu29D6jphMjjY+vn96jvN3kVPDNxU/E13VTaXj6jg==}
+  /undici-types@6.19.6:
+    resolution: {integrity: sha512-e/vggGopEfTKSvj4ihnOLTsqhrKRN3LeO6qSN/GxohhuRv8qH9bNQ4B8W7e/vFL+0XTnmHPB4/kegunZGA4Org==}
     dev: true
 
   /unicode-canonical-property-names-ecmascript@2.0.0:
