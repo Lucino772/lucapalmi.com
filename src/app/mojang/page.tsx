@@ -47,7 +47,7 @@ export default function Page() {
         <div className="h-full">
             <Canvas
                 flat
-                gl={{ antialias: false }}
+                gl={{ antialias: true }}
                 shadows
                 camera={{ far: 5000 }}
             >
