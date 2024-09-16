@@ -12,6 +12,11 @@
     "format:fix": "prettier --write ."
   },
   "dependencies": {
+    "@react-spring/three": "^9.7.4",
+    "@react-three/drei": "^9.111.3",
+    "@react-three/fiber": "^8.17.6",
+    "@react-three/postprocessing": "^2.16.2",
+    "@types/three": "^0.167.2",
     "clsx": "^2.1.1",
     "contentful": "^10.15.0",
     "highlight.js": "11.10.0",
@@ -21,7 +26,8 @@
     "react": "^18",
     "react-dom": "^18",
     "rehype-highlight": "7.0.0",
-    "tailwind-merge": "^2.5.2"
+    "tailwind-merge": "^2.5.2",
+    "three": "^0.167.1"
   },
   "devDependencies": {
     "@svgr/webpack": "8.1.0",
