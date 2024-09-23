@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.1.1
     version: 2.1.1
   contentful:
-    specifier: ^10.15.1
-    version: 10.15.1
+    specifier: ^11.0.2
+    version: 11.0.2
   highlight.js:
     specifier: 11.10.0
     version: 11.10.0
@@ -1372,8 +1372,8 @@ packages:
       json-pointer: 0.6.2
     dev: false
 
-  /@contentful/rich-text-types@16.3.0:
-    resolution: {integrity: sha512-OfQmAu5bxE0CgQA3WlUleVej+ifFG/iXmB2DmUl4EyWyFue1aiIvfjxQhcDRSH4n1jUNMJ6L1wInZL8uV5m3TQ==}
+  /@contentful/rich-text-types@16.8.5:
+    resolution: {integrity: sha512-q18RJuJCOuYveGiCIjE5xLCQc5lZ3L2Qgxrlg/H2YEobDFqdtmklazRi1XwEWaK3tMg6yVXBzKKkQfLB4qW14A==}
     engines: {node: '>=6.0.0'}
     dev: false
 
@@ -2543,12 +2543,12 @@ packages:
       qs: 6.13.0
     dev: false
 
-  /contentful@10.15.1:
-    resolution: {integrity: sha512-vPgQvpzqWHauroXrhPOW03iz/ZVqZrv6BX2Fk/vMOlMMB7a+zrhUWAuUjY9WFDVMRcAwPhZF2Lvey6Nvyyd6sQ==}
+  /contentful@11.0.2:
+    resolution: {integrity: sha512-kqOr227fO/J06vtGC0S3Y2FzQ7+aNk5zDFBIdDvr+fIGML4eISxHJy+7ulYzXRgRdJBjbFfF7yItz0rD8z0FYg==}
     engines: {node: '>=18'}
     dependencies:
       '@contentful/content-source-maps': 0.11.1
-      '@contentful/rich-text-types': 16.3.0
+      '@contentful/rich-text-types': 16.8.5
       axios: 1.7.4
       contentful-resolve-response: 1.9.0
       contentful-sdk-core: 8.3.1
