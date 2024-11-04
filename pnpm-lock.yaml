@@ -45,7 +45,7 @@ devDependencies:
     version: 0.5.15(tailwindcss@3.4.14)
   '@types/node':
     specifier: ^22
-    version: 22.8.1
+    version: 22.8.7
   '@types/react':
     specifier: ^18
     version: 18.3.11
@@ -1872,8 +1872,8 @@ packages:
     resolution: {integrity: sha512-AuHIyzR5Hea7ij0P9q7vx7xu4z0C28ucwjAZC0ja7JhINyCnOw8/DnvAPQQ9TfOlCtZAmCERKQX9+o1mgQhuOQ==}
     dev: false
 
-  /@types/node@22.8.1:
-    resolution: {integrity: sha512-k6Gi8Yyo8EtrNtkHXutUu2corfDf9su95VYVP10aGYMMROM6SAItZi0w1XszA6RtWTHSVp5OeFof37w0IEqCQg==}
+  /@types/node@22.8.7:
+    resolution: {integrity: sha512-LidcG+2UeYIWcMuMUpBKOnryBWG/rnmOHQR5apjn8myTQcx3rinFRn7DcIFhMnS0PPFSC6OafdIKEad0lj6U0Q==}
     dependencies:
       undici-types: 6.19.8
     dev: true
