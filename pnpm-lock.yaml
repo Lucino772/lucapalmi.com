@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.1.1
     version: 2.1.1
   contentful:
-    specifier: ^11.1.4
-    version: 11.1.4
+    specifier: ^11.2.1
+    version: 11.2.1
   highlight.js:
     specifier: 11.10.0
     version: 11.10.0
@@ -1365,8 +1365,8 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
-  /@contentful/content-source-maps@0.11.1:
-    resolution: {integrity: sha512-dLNhz5NVxhnq2K+O+VfOiGB+JR53qRTD/TmSZxLsYJm+kQObSSziI4lVUlqEm7OBFmRnOW4hgR6woGylrfYuyA==}
+  /@contentful/content-source-maps@0.11.6:
+    resolution: {integrity: sha512-kiP0LcqAMj+Kvt+sLpI1KlqSh2isGkQXRulTEwKZGorXDTbSN3rWfFo/4ysHk2CvlWyF1NotNkB4Thz6LNiHTQ==}
     dependencies:
       '@vercel/stega': 0.1.2
       json-pointer: 0.6.2
@@ -2543,11 +2543,11 @@ packages:
       qs: 6.13.0
     dev: false
 
-  /contentful@11.1.4:
-    resolution: {integrity: sha512-mkXOkU/lrce8VlMf3ndXojxnOFqYymebKKP/tcBrA56jyZOldSI8/yLBMI/7YCdnivsGsR4VgPCaNZZ8aNI+fA==}
+  /contentful@11.2.1:
+    resolution: {integrity: sha512-bYOmCtG8pwCnQ4dqIVd+UjzuU3I9EylHOKPFyDOJkQX4uuvkndfQCqmzKm7uJGk5t4zV7gFyvsV5TY+pEwQNvQ==}
     engines: {node: '>=18'}
     dependencies:
-      '@contentful/content-source-maps': 0.11.1
+      '@contentful/content-source-maps': 0.11.6
       '@contentful/rich-text-types': 16.8.5
       axios: 1.7.4
       contentful-resolve-response: 1.9.0
