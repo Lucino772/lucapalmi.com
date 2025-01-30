@@ -40,9 +40,10 @@ async function getProjectInfo(slug: string) {
 export default async function Project({
     params,
 }: {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }) {
-    const { project, content } = await getProjectInfo(params.slug);
+    const { slug } = await params;
+    const { project, content } = await getProjectInfo(slug);
     return (
         <div className="relative mx-auto my-0 flex max-w-4xl animate-[fade_300ms_ease-in-out_normal_forwards] flex-col gap-6 px-5">
             <div className="flex flex-col gap-2">
