@@ -17,9 +17,10 @@ import {
     ToneMapping,
 } from "@react-three/postprocessing";
 // import { Scene } from '@/components/Scene';
-import { Room } from "@/components/Room";
+// import { Room } from "@/components/Room";
+import { Room } from "@/components/Room2";
 import { Model } from "@/components/Model";
-// import { Book } from "@/components/Book"
+import { Book } from "@/components/Book"
 import { Torch } from "@/components/Torch";
 import {
     AmbientLight,
@@ -33,6 +34,7 @@ import {
     PointLightHelper,
     SpotLight,
     SpotLightHelper,
+    Vector3,
 } from "three";
 
 function Loader() {
@@ -41,7 +43,7 @@ function Loader() {
 }
 
 export default function Page() {
-    const [lightOn, setLightOn] = useState(true);
+    const [lightOn, setLightOn] = useState(false);
 
     return (
         <div className="h-full">
@@ -50,9 +52,10 @@ export default function Page() {
                 gl={{ antialias: true }}
                 shadows
                 camera={{ far: 5000 }}
+                className="cursor-minecraft-sword"
             >
-                <axesHelper args={[5]} />
-                <gridHelper />
+                {/* <axesHelper args={[5]} /> */}
+                {/* <gridHelper /> */}
                 <Stats />
                 <color attach="background" args={["#252530"]} />
                 {/* <color attach="background" args={["#FFFF"]} /> */}
@@ -82,7 +85,7 @@ export default function Page() {
                         bias={0.001}
                     />
                 </AccumulativeShadows>
-                {/* <EffectComposer multisampling={4}>
+                <EffectComposer multisampling={4}>
                     <Bloom mipmapBlur luminanceThreshold={1} />
                     <ToneMapping
                         adaptive
@@ -92,7 +95,7 @@ export default function Page() {
                         averageLuminance={1.0}
                         adaptationRate={1.0}
                     />
-                </EffectComposer> */}
+                </EffectComposer>
 
                 <CameraControls />
             </Canvas>

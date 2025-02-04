@@ -10,7 +10,7 @@ import * as THREE from "three";
 
 export function Model({ onToggle, ...props }) {
     const { nodes, materials } = useGLTF("assets/MinecraftLever.glb");
-    const [active, setActive] = useState(true);
+    const [active, setActive] = useState(false);
     const { rotation } = useSpring({
         rotation: active ? [0, 0, 1.573] : [0, 0, 0.573],
     });
