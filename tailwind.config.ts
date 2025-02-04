@@ -9,6 +9,10 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            cursor: {
+                'minecraft-sword': 'url(/images/minecraft-diamond-sword.png), auto',
+            },
+
             colors: {
                 primary: "#242424",
                 secondary: "#272727",
