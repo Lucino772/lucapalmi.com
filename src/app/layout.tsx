@@ -24,13 +24,14 @@ export default function RootLayout({
         <html lang="en" className="dark">
             <body
                 className={cn(
-                    "bg-secondary md:bg-gradient-80deg md:from-primary md:to-secondary relative flex h-screen w-full flex-col items-center overflow-hidden to-50% md:from-50%",
+                    "relative h-screen w-full overflow-auto",
                     josefin.className,
                 )}
-                style={{ overflow: "auto" }}
             >
-                <NavBar />
-                {children}
+                <div className="bg-secondary md:from-primary md:to-secondary relative z-0 flex min-h-full w-full flex-col items-center to-50% md:bg-linear-80 md:from-50%">
+                    <NavBar />
+                    {children}
+                </div>
             </body>
         </html>
     );

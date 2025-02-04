@@ -7,11 +7,6 @@
     --color-primary: #242424;
     --color-secondary: #272727;
     --color-accent-blue: #4169e1;
-
-    --background-image-gradient-80deg: linear-gradient(
-        80deg,
-        var(--tw-gradient-stops)
-    );
 }
 
 /*

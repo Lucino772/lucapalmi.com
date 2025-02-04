@@ -9,7 +9,7 @@ export default function Index() {
             <div className="absolute top-1/2 left-1/2 -z-10 h-screen w-screen max-w-6xl -translate-x-1/2 -translate-y-1/2 overflow-hidden">
                 <div className="absolute h-full w-full md:top-32 md:right-7 md:h-auto md:w-1/2 xl:top-60">
                     <Image
-                        className="animate-fade-in relative h-full w-full object-cover object-top md:h-auto"
+                        className="relative h-full w-full animate-[fade_800ms_ease-out_normal_forwards] object-cover object-top md:h-auto"
                         src={desktopDimmed}
                         alt="Desktop"
                         width={500}
@@ -17,7 +17,7 @@ export default function Index() {
                     />
                     <div className="bg-secondary bg-opacity-60 from-secondary absolute top-0 right-0 bottom-0 left-0 bg-linear-to-t from-10% to-transparent to-50% md:bg-transparent"></div>
                 </div>
-                <div className="bg-gradient-80deg from-primary absolute hidden h-full w-full from-50% to-transparent to-50% md:block"></div>
+                <div className="from-primary absolute hidden h-full w-full bg-linear-80 from-50% to-transparent to-50% md:block"></div>
             </div>
 
             {/* Hero Section */}
