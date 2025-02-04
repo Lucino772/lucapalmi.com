@@ -19,7 +19,7 @@ export default function MobileNav({ open, close }: Props = { open: false }) {
     return (
         <div
             className={cn(
-                "fixed bottom-0 top-0 z-50 flex h-screen w-full flex-col items-center justify-center bg-white transition-all duration-200 md:hidden",
+                "fixed top-0 bottom-0 z-50 flex h-screen w-full flex-col items-center justify-center bg-white transition-all duration-200 md:hidden",
                 {
                     "right-0": open,
                     "-right-full": !open,
@@ -51,7 +51,7 @@ export default function MobileNav({ open, close }: Props = { open: false }) {
             </nav>
 
             <XIcon
-                className="absolute right-4 top-4 block h-8 w-8 hover:cursor-pointer"
+                className="absolute top-4 right-4 block h-8 w-8 hover:cursor-pointer"
                 color="black"
                 onClick={handleClose}
             />

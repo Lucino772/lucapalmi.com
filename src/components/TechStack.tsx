@@ -18,7 +18,7 @@ export default function TechStack({ technology, size }: Props) {
 
     return (
         <div
-            className="flex flex-row items-center justify-center gap-2 rounded-3xl px-2 py-2 drop-shadow"
+            className="flex flex-row items-center justify-center gap-2 rounded-3xl px-2 py-2 drop-shadow-sm"
             style={{ background: "#1d1d1d" }}
         >
             {technology.fields.icon !== undefined && (

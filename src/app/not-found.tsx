@@ -11,19 +11,19 @@ export default function NotFound() {
             </h2>
             <div className="mt-2 flex flex-row gap-2">
                 <Link
-                    className="text-[#4169E1] text-opacity-80 transition duration-100 hover:text-opacity-100"
+                    className="text-opacity-80 hover:text-opacity-100 text-[#4169E1] transition duration-100"
                     href="/"
                 >
                     Home
                 </Link>
                 <Link
-                    className="text-[#4169E1] text-opacity-80 transition duration-100 hover:text-opacity-100"
+                    className="text-opacity-80 hover:text-opacity-100 text-[#4169E1] transition duration-100"
                     href="/about"
                 >
                     About
                 </Link>
                 <Link
-                    className="text-[#4169E1] text-opacity-80 transition duration-100 hover:text-opacity-100"
+                    className="text-opacity-80 hover:text-opacity-100 text-[#4169E1] transition duration-100"
                     href="/projects"
                 >
                     Projects

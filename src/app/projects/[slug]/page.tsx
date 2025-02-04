@@ -91,11 +91,11 @@ export default async function Project({
                         project.fields.thumbnail.fields.file?.details.image
                             ?.height
                     }
-                    className="aspect-video w-full rounded-lg object-cover drop-shadow"
+                    className="aspect-video w-full rounded-lg object-cover drop-shadow-sm"
                 />
             )}
             {project.fields.thumbnail === undefined && (
-                <div className="flex aspect-video w-full items-center justify-center rounded-lg bg-white drop-shadow">
+                <div className="flex aspect-video w-full items-center justify-center rounded-lg bg-white drop-shadow-sm">
                     Error
                 </div>
             )}
@@ -107,7 +107,7 @@ export default async function Project({
                     />
                 ))}
             </div>
-            <div className="prose prose-lg max-w-none dark:prose-invert prose-pre:p-0">
+            <div className="prose prose-lg dark:prose-invert prose-pre:p-0 max-w-none">
                 {content}
             </div>
         </div>

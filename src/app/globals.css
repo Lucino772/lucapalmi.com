@@ -1,10 +1,89 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    color-scheme: dark;
+@custom-variant dark (&:is(.dark *));
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --color-primary: #242424;
+    --color-secondary: #272727;
+    --color-accent-blue: #4169e1;
+
+    --background-image-gradient-80deg: linear-gradient(
+        80deg,
+        var(--tw-gradient-stops)
+    );
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        color-scheme: dark;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes scale-y {
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes logo-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%) rotateZ(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotateZ(-15deg);
+    }
+}
+@keyframes about-h1 {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes about-p {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px) skew(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) skew(5deg);
+    }
 }

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function About() {
     return (
-        <div className="absolute left-0 right-0 top-[50%] flex w-full -translate-y-1/2 items-center justify-evenly overflow-hidden">
+        <div className="absolute top-[50%] right-0 left-0 flex w-full -translate-y-1/2 items-center justify-evenly overflow-hidden">
             <Image
                 className="relative hidden animate-[logo-in_300ms_0ms_ease-in-out_normal_forwards] rounded-full border opacity-0 md:block"
                 src="/images/logo.webp"
@@ -15,13 +15,13 @@ export default function About() {
                     About
                 </h1>
                 <div>
-                    <p className="relative mt-3 animate-[about-p_500ms_200ms_ease-in-out_normal_forwards] text-xl font-normal leading-6 opacity-0 md:pl-4">
+                    <p className="relative mt-3 animate-[about-p_500ms_200ms_ease-in-out_normal_forwards] text-xl leading-6 font-normal opacity-0 md:pl-4">
                         {`My name is Luca Palmisano. I'm 20 years old and I'm currently studying computer science at university.`}
                     </p>
-                    <p className="relative mt-3 animate-[about-p_500ms_350ms_ease-in-out_normal_forwards] text-xl font-normal leading-6 opacity-0 md:pl-6">
+                    <p className="relative mt-3 animate-[about-p_500ms_350ms_ease-in-out_normal_forwards] text-xl leading-6 font-normal opacity-0 md:pl-6">
                         {`I've been coding for several years now. Through the years, what was once a hobby has became a passion. I have always been interested in discovering new things and this has helped me to expand my knowledge of information technology.`}
                     </p>
-                    <p className="relative mt-3 animate-[about-p_500ms_500ms_ease-in-out_normal_forwards] text-xl font-normal leading-6 opacity-0 md:pl-8">
+                    <p className="relative mt-3 animate-[about-p_500ms_500ms_ease-in-out_normal_forwards] text-xl leading-6 font-normal opacity-0 md:pl-8">
                         {`Besides that I am enjoying living a student's life, having fun with my friends, playing games, etc. Well, there you have it, this is me! This is who I am!`}
                     </p>
                 </div>

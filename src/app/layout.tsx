@@ -24,7 +24,7 @@ export default function RootLayout({
         <html lang="en" className="dark">
             <body
                 className={cn(
-                    "relative h-screen w-full overflow-hidden bg-secondary to-50% md:bg-gradient-80deg md:from-primary md:from-50% md:to-secondary",
+                    "bg-secondary md:bg-gradient-80deg md:from-primary md:to-secondary relative flex h-screen w-full flex-col items-center overflow-hidden to-50% md:from-50%",
                     josefin.className,
                 )}
                 style={{ overflow: "auto" }}

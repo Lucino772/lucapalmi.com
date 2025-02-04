@@ -14,7 +14,7 @@ export default function NavBar() {
         <>
             <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-7 py-4">
                 <Image
-                    className="visible relative h-[50px] w-[50px] animate-fade-in rounded-full"
+                    className="visible relative h-[50px] w-[50px] animate-[fade_200ms_0ms_ease-out_normal_forwards] rounded-full"
                     src={logo}
                     alt="Logo"
                     width={50}
