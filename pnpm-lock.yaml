@@ -47,7 +47,7 @@ importers:
         version: 4.0.3
       '@tailwindcss/typography':
         specifier: ^0.5.16
-        version: 0.5.16(tailwindcss@4.0.3)
+        version: 0.5.16(tailwindcss@4.0.9)
       '@types/node':
         specifier: ^22.13.1
         version: 22.13.1
@@ -76,8 +76,8 @@ importers:
         specifier: ^0.6.11
         version: 0.6.11(prettier@3.5.2)
       tailwindcss:
-        specifier: ^4.0.3
-        version: 4.0.3
+        specifier: ^4.0.9
+        version: 4.0.9
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
@@ -2909,6 +2909,9 @@ packages:
   tailwindcss@4.0.3:
     resolution: {integrity: sha512-ImmZF0Lon5RrQpsEAKGxRvHwCvMgSC4XVlFRqmbzTEDb/3wvin9zfEZrMwgsa3yqBbPqahYcVI6lulM2S7IZAA==}
 
+  tailwindcss@4.0.9:
+    resolution: {integrity: sha512-12laZu+fv1ONDRoNR9ipTOpUD7RN9essRVkX36sjxuRUInpN7hIiHN4lBd/SIFjbISvnXzp8h/hXzmU8SQQYhw==}
+
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
@@ -4222,13 +4225,13 @@ snapshots:
       postcss: 8.5.3
       tailwindcss: 4.0.3
 
-  '@tailwindcss/typography@0.5.16(tailwindcss@4.0.3)':
+  '@tailwindcss/typography@0.5.16(tailwindcss@4.0.9)':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 4.0.3
+      tailwindcss: 4.0.9
 
   '@trysound/sax@0.2.0': {}
 
@@ -6556,6 +6559,8 @@ snapshots:
   tailwind-merge@3.0.1: {}
 
   tailwindcss@4.0.3: {}
+
+  tailwindcss@4.0.9: {}
 
   tapable@2.2.1: {}
 
