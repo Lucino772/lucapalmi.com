@@ -16,7 +16,7 @@
     "contentful": "^11.5.2",
     "highlight.js": "11.11.1",
     "lucide-react": "^0.474.0",
-    "next": "15.2.3",
+    "next": "15.5.2",
     "next-mdx-remote": "5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
