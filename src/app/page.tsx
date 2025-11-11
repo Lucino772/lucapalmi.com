@@ -15,7 +15,7 @@ export default function Index() {
                         width={500}
                         priority={true}
                     />
-                    <div className="bg-secondary bg-opacity-60 from-secondary absolute top-0 right-0 bottom-0 left-0 bg-linear-to-t from-10% to-transparent to-50% md:bg-transparent"></div>
+                    <div className="bg-opacity-60 from-secondary absolute top-0 right-0 bottom-0 left-0 bg-linear-to-t from-10% to-transparent to-50% md:bg-transparent"></div>
                 </div>
                 <div className="from-primary absolute hidden h-full w-full bg-linear-80 from-50% to-transparent to-50% md:block"></div>
             </div>
