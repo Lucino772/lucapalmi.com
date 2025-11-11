@@ -8,13 +8,12 @@ const nextConfig = {
 
         return config;
     },
-    experimental: {
-        turbo: {
-            rules: {
-                "*.svg": {
-                    loaders: ["@svgr/webpack"],
-                    as: "*.js",
-                },
+    transpilePackages: ["next-mdx-remote"],
+    turbopack: {
+        rules: {
+            "*.svg": {
+                loaders: ["@svgr/webpack"],
+                as: "*.js",
             },
         },
     },
