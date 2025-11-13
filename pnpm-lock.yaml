@@ -39,6 +39,12 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
     devDependencies:
+      '@eslint/eslintrc':
+        specifier: ^3.3.1
+        version: 3.3.1
+      '@eslint/js':
+        specifier: ^9.39.1
+        version: 9.39.1
       '@svgr/webpack':
         specifier: 8.1.0
         version: 8.1.0(typescript@5.7.3)
@@ -64,8 +70,8 @@ importers:
         specifier: 16.0.1
         version: 16.0.1(@typescript-eslint/parser@8.46.4(eslint@9.39.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.39.1(jiti@2.4.2))(typescript@5.7.3)
       eslint-config-prettier:
-        specifier: ^10.0.1
-        version: 10.0.1(eslint@9.39.1(jiti@2.4.2))
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@9.39.1(jiti@2.4.2))
       postcss:
         specifier: ^8.5.3
         version: 8.5.3
@@ -1851,8 +1857,8 @@ packages:
       typescript:
         optional: true
 
-  eslint-config-prettier@10.0.1:
-    resolution: {integrity: sha512-lZBts941cyJyeaooiKxAtzoPHTN+GbQTJFAIdQbRhA4/8whaAraEh47Whw/ZFfrjNSnlAxqfm9i0XVAEkULjCw==}
+  eslint-config-prettier@10.1.8:
+    resolution: {integrity: sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -5435,7 +5441,7 @@ snapshots:
       - eslint-plugin-import-x
       - supports-color
 
-  eslint-config-prettier@10.0.1(eslint@9.39.1(jiti@2.4.2)):
+  eslint-config-prettier@10.1.8(eslint@9.39.1(jiti@2.4.2)):
     dependencies:
       eslint: 9.39.1(jiti@2.4.2)
 

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useMemo } from "react";
 import { cn } from "@/lib/cn";
 import { XIcon } from "lucide-react";
 
