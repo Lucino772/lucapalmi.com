@@ -14,7 +14,7 @@ export default async function Projects() {
                     key={i}
                 >
                     <div className="bg-primary relative flex w-full flex-col rounded-lg border-2 border-transparent p-5 shadow-md transition-all hover:scale-[1.01] hover:border-[#4169E1]">
-                        <div className="relative flex items-center justify-between">
+                        <div className="relative flex items-center justify-between gap-2">
                             {project.fields.thumbnail !== undefined && (
                                 <Image
                                     src={`https:${project.fields.thumbnail.fields.file?.url}`}
@@ -35,12 +35,12 @@ export default async function Projects() {
                                     Error
                                 </div>
                             )}
-                            <h2 className="font-headings px-0 py-2 text-xl font-semibold text-white">
+                            <h2 className="font-headings px-0 py-2 text-lg font-semibold text-white md:text-xl">
                                 {project.fields.title}
                             </h2>
                         </div>
                         <div className="relative mt-5 flex h-full flex-col justify-between gap-2">
-                            <p className="font-content text-white">
+                            <p className="font-content text-xs text-white md:text-base">
                                 {project.fields.description}
                             </p>
                         </div>
