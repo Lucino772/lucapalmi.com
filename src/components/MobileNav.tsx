@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { cn } from "@/lib/cn";
 import { XIcon } from "lucide-react";
 
@@ -11,11 +11,7 @@ type Props = {
 };
 
 export default function MobileNav({ open, close }: Props = { open: false }) {
-    const handleClose = useCallback(() => {
-        if (close === undefined) return;
-        close();
-    }, [close]);
-
+    const handleClose = close !== undefined ? close : () => null;
     return (
         <div
             className={cn(
