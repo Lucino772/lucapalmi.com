@@ -11,12 +11,9 @@ type Props = {
         "WITHOUT_UNRESOLVABLE_LINKS",
         string
     >;
-    size?: "normal" | "small";
 };
 
-export default function TechStack({ technology, size }: Props) {
-    if (size === undefined) size = "normal";
-
+export default function TechStack({ technology }: Props) {
     return (
         <div
             className="flex flex-row items-center justify-center gap-2 rounded-3xl px-2 py-2 drop-shadow-sm"
@@ -32,29 +29,15 @@ export default function TechStack({ technology, size }: Props) {
                     height={
                         technology.fields.icon.fields.file?.details.image?.width
                     }
-                    className={`${
-                        size === "normal" ? "h-8 w-8" : "h-7 w-7"
-                    } rounded-full object-cover`}
+                    className="size-7 rounded-full object-cover md:size-8"
                 />
             )}
             {technology.fields.icon === undefined && (
-                <div
-                    className={`${
-                        size === "normal" ? "h-8 w-8" : "h-7 w-7"
-                    } flex items-center justify-center rounded-full bg-white text-xs`}
-                >
+                <div className="flex size-7 items-center justify-center rounded-full bg-white text-xs md:size-8">
                     Error
                 </div>
             )}
-            <span
-                className={cn(
-                    {
-                        "text-base": size === "normal",
-                        "text-sm": size !== "normal",
-                    },
-                    "font-content text-white",
-                )}
-            >
+            <span className="font-content text-sm text-white md:text-base">
                 {technology.fields.name}
             </span>
         </div>

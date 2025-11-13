@@ -10,8 +10,16 @@ export const metadata: Metadata = {
 import { Inconsolata, Cascadia_Code } from "next/font/google";
 import { cn } from "@/lib/cn";
 
-const inconsolata = Inconsolata({ variable: "--font-inconsolata",  subsets: ['latin'], display: 'swap' });
-const cascadiaCode = Cascadia_Code({ variable: "--font-cascadia-code", subsets: ['latin'], display: 'swap' });
+const inconsolata = Inconsolata({
+    variable: "--font-inconsolata",
+    subsets: ["latin"],
+    display: "swap",
+});
+const cascadiaCode = Cascadia_Code({
+    variable: "--font-cascadia-code",
+    subsets: ["latin"],
+    display: "swap",
+});
 
 export default function RootLayout({
     children,
@@ -21,7 +29,11 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={cn("dark antialiased", inconsolata.variable, cascadiaCode.variable)}
+            className={cn(
+                "dark antialiased",
+                inconsolata.variable,
+                cascadiaCode.variable,
+            )}
         >
             <body className="relative h-screen w-full overflow-auto">
                 <div className="bg-secondary md:from-primary md:to-secondary relative z-0 flex min-h-full w-full flex-col items-center to-50% md:bg-linear-80 md:from-50%">

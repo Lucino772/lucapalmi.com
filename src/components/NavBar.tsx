@@ -12,14 +12,16 @@ export default function NavBar() {
 
     return (
         <>
-            <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-7 py-4">
-                <Image
-                    className="visible relative h-[50px] w-[50px] animate-[fade_200ms_0ms_ease-out_normal_forwards] rounded-full"
-                    src={logo}
-                    alt="Logo"
-                    width={50}
-                    priority={true}
-                />
+            <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+                <Link href="/">
+                    <Image
+                        className="visible relative size-8 animate-[fade_200ms_0ms_ease-out_normal_forwards] rounded-full md:size-10"
+                        src={logo}
+                        alt="Logo"
+                        width={50}
+                        priority={true}
+                    />
+                </Link>
 
                 <nav className="font-content relative hidden items-center justify-center md:flex">
                     <Link

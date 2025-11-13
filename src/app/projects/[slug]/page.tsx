@@ -45,9 +45,9 @@ export default async function Project({
     const { slug } = await params;
     const { project, content } = await getProjectInfo(slug);
     return (
-        <div className="relative mx-auto my-0 flex max-w-4xl animate-[fade_300ms_ease-in-out_normal_forwards] flex-col gap-6 px-5">
-            <div className="flex flex-col gap-2">
-                <h1 className="font-headings text-5xl text-white">
+        <div className="relative mx-auto my-0 flex max-w-4xl animate-[fade_300ms_ease-in-out_normal_forwards] flex-col gap-6 px-6">
+            <div className="flex flex-col gap-2 md:gap-4">
+                <h1 className="font-headings text-3xl text-white md:text-5xl">
                     {project.fields.title}
                 </h1>
                 <div className="font-content flex flex-row gap-4">
@@ -106,7 +106,7 @@ export default async function Project({
                     Error
                 </div>
             )}
-            <div className="flex flex-row gap-5">
+            <div className="flex flex-row flex-wrap gap-5">
                 {project.fields.technologies.map((technology) => (
                     <TechStack
                         key={technology?.fields.slug}
@@ -114,7 +114,7 @@ export default async function Project({
                     />
                 ))}
             </div>
-            <div className="prose prose-lg dark:prose-invert prose-pre:p-0 prose-headings:font-headings font-content max-w-none">
+            <div className="prose md:prose-xl dark:prose-invert prose-pre:p-0 prose-headings:font-headings font-content max-w-none">
                 {content}
             </div>
         </div>
