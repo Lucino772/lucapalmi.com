@@ -13,7 +13,7 @@ export default async function Projects() {
                     style={{ animationDelay: `${(0.1 + 0.2 * i) * 1000}ms` }}
                     key={i}
                 >
-                    <div className="relative flex w-full flex-col rounded-lg border-2 border-transparent bg-[#242424] p-5 shadow-md transition-all hover:scale-[1.01] hover:border-[#4169E1]">
+                    <div className="bg-primary relative flex w-full flex-col rounded-lg border-2 border-transparent p-5 shadow-md transition-all hover:scale-[1.01] hover:border-[#4169E1]">
                         <div className="relative flex items-center justify-between">
                             {project.fields.thumbnail !== undefined && (
                                 <Image

@@ -4,7 +4,6 @@ import { TechnologyEntrySkeleton } from "@/lib/cms";
 import { Entry } from "contentful";
 import Image from "next/image";
 
-import { cn } from "@/lib/cn";
 type Props = {
     technology: Entry<
         TechnologyEntrySkeleton,
