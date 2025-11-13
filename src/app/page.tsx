@@ -22,16 +22,16 @@ export default function Index() {
 
             {/* Hero Section */}
             <div className="absolute top-1/2 left-1/2 w-screen max-w-6xl -translate-x-1/2 -translate-y-1/2">
-                <div className="relative ml-7 max-w-80">
+                <div className="relative ml-7 max-w-96">
                     <div className="border-accent-blue origin-top animate-[scale-y_200ms_ease-out_normal_forwards] border-l-2 pl-5">
-                        <h1 className="animate-[fade_200ms_200ms_ease-out_normal_forwards] text-[2.375rem]/[normal] font-bold opacity-0">
+                        <h1 className="font-headings animate-[fade_200ms_200ms_ease-out_normal_forwards] text-[2.375rem]/[normal] font-bold opacity-0">
                             Hi, my name is Luca Palmisano
                         </h1>
-                        <p className="mt-1 animate-[fade_200ms_300ms_ease-out_normal_forwards] text-2xl font-normal opacity-0">
+                        <p className="font-content mt-1 animate-[fade_200ms_300ms_ease-out_normal_forwards] text-2xl font-normal text-white/75 opacity-0">
                             {"I'm a fullstack developer"}
                         </p>
                     </div>
-                    <div className="relative mt-5 flex flex-row justify-start gap-5 pl-5">
+                    <div className="font-content relative mt-5 flex flex-row justify-start gap-5 pl-5">
                         <Link
                             href="/about"
                             className="border-accent-blue bg-accent-blue hover:text-opacity-80 animate-[fade_200ms_500ms_ease-out_normal_forwards] rounded-md border-2 px-3 py-2 text-base font-semibold text-white opacity-0 transition-colors hover:cursor-pointer"

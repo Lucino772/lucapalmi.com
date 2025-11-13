@@ -1,28 +1,37 @@
-import Image from "next/image";
-
 export default function About() {
     return (
         <div className="absolute top-[50%] right-0 left-0 flex w-full -translate-y-1/2 items-center justify-evenly overflow-hidden">
-            <Image
-                className="relative hidden animate-[logo-in_300ms_0ms_ease-in-out_normal_forwards] rounded-full border opacity-0 md:block"
-                src="/images/logo.webp"
-                alt="Logo"
-                width={312}
-                height={312}
-            />
-            <div className="relative flex max-w-[400px] flex-col justify-center px-6 text-white md:px-0">
-                <h1 className="relative animate-[about-h1_200ms_0ms_ease-in-out_normal_forwards] text-5xl font-semibold opacity-0">
+            <div className="relative flex max-w-[700px] flex-col justify-center px-6 text-white md:px-0">
+                <h1 className="font-headings relative animate-[about-h1_200ms_0ms_ease-in-out_normal_forwards] text-5xl font-semibold opacity-0">
                     About
                 </h1>
-                <div>
-                    <p className="relative mt-3 animate-[about-p_500ms_200ms_ease-in-out_normal_forwards] text-xl leading-6 font-normal opacity-0 md:pl-4">
-                        {`My name is Luca Palmisano. I'm 20 years old and I'm currently studying computer science at university.`}
+                <div className="font-content text-white/75">
+                    <p className="relative mt-3 animate-[about-h1_300ms_100ms_ease-in-out_normal_forwards] text-xl font-normal opacity-0">
+                        I've always liked making things. When I was younger,
+                        that meant Lego worlds taking over the living room and
+                        endless Minecraft worlds built block by block. The
+                        appeal was simple: you could start with nothing, apply
+                        imagination and logic, and end up with something that
+                        felt like yours.
                     </p>
-                    <p className="relative mt-3 animate-[about-p_500ms_350ms_ease-in-out_normal_forwards] text-xl leading-6 font-normal opacity-0 md:pl-6">
-                        {`I've been coding for several years now. Through the years, what was once a hobby has became a passion. I have always been interested in discovering new things and this has helped me to expand my knowledge of information technology.`}
+                    <p className="relative mt-3 animate-[about-h1_300ms_200ms_ease-in-out_normal_forwards] text-xl font-normal opacity-0">
+                        Software became the natural extension of that. It has
+                        the same open-ended space, just without the part where
+                        you step on a brick at 2 AM. I've been coding since I
+                        was young enough that printing text on a screen felt
+                        like a magic trick. Over time, what started as “let's
+                        see what this does” gradually turned into a way of
+                        understanding the world: patterns, abstractions, the
+                        quiet logic behind messy problems.
                     </p>
-                    <p className="relative mt-3 animate-[about-p_500ms_500ms_ease-in-out_normal_forwards] text-xl leading-6 font-normal opacity-0 md:pl-8">
-                        {`Besides that I am enjoying living a student's life, having fun with my friends, playing games, etc. Well, there you have it, this is me! This is who I am!`}
+                    <p className="relative mt-3 animate-[about-h1_300ms_300ms_ease-in-out_normal_forwards] text-xl font-normal opacity-0">
+                        Outside of code, I tend to follow ideas the way some
+                        people follow hiking trails: out of curiosity more than
+                        destination. I like learning in the broad sense and
+                        letting curiosity set the pace. I value good
+                        conversations, good friends, and the occasional
+                        late-night gaming session that lasts longer than planned
+                        but feels entirely justified.
                     </p>
                 </div>
             </div>

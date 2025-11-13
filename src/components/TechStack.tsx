@@ -4,6 +4,7 @@ import { TechnologyEntrySkeleton } from "@/lib/cms";
 import { Entry } from "contentful";
 import Image from "next/image";
 
+import { cn } from "@/lib/cn";
 type Props = {
     technology: Entry<
         TechnologyEntrySkeleton,
@@ -46,9 +47,13 @@ export default function TechStack({ technology, size }: Props) {
                 </div>
             )}
             <span
-                className={`${
-                    size === "normal" ? "text-base" : "text-sm"
-                } text-white`}
+                className={cn(
+                    {
+                        "text-base": size === "normal",
+                        "text-sm": size !== "normal",
+                    },
+                    "font-content text-white",
+                )}
             >
                 {technology.fields.name}
             </span>

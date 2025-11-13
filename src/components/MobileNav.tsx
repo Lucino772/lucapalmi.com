@@ -26,7 +26,7 @@ export default function MobileNav({ open, close }: Props = { open: false }) {
                 },
             )}
         >
-            <nav className="flex h-1/2 flex-col items-center justify-evenly gap-5">
+            <nav className="font-content flex h-1/2 flex-col items-center justify-evenly gap-5">
                 <Link
                     onClick={handleClose}
                     className="text-2xl tracking-widest text-black"

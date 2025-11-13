@@ -35,12 +35,12 @@ export default async function Projects() {
                                     Error
                                 </div>
                             )}
-                            <h2 className="px-0 py-2 text-xl font-semibold text-white">
+                            <h2 className="font-headings px-0 py-2 text-xl font-semibold text-white">
                                 {project.fields.title}
                             </h2>
                         </div>
                         <div className="relative mt-5 flex h-full flex-col justify-between gap-2">
-                            <p className="text-white">
+                            <p className="font-content text-white">
                                 {project.fields.description}
                             </p>
                         </div>

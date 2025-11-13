@@ -7,6 +7,9 @@
     --color-primary: #242424;
     --color-secondary: #272727;
     --color-accent-blue: #4169e1;
+
+    --font-headings: var(--font-cascadia-code);
+    --font-content: var(--font-inconsolata);
 }
 
 /*
@@ -75,10 +78,8 @@
 @keyframes about-p {
     0% {
         opacity: 0;
-        transform: translateX(-10px) skew(0deg);
     }
     100% {
         opacity: 1;
-        transform: translateX(0) skew(5deg);
     }
 }
