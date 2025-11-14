@@ -1,58 +1,68 @@
-import { createClient, EntryFieldTypes } from "contentful";
+import fs from "fs";
+import path from "path";
+import React from "react";
 
-const spaceId: string = process.env.CONTENTFUL_SPACE as string;
-const token: string = process.env.CONTENTFUL_TOKEN as string;
+import { z } from "zod";
 
-export type TechnologyEntrySkeleton = {
-    contentTypeId: "technology";
-    fields: {
-        name: EntryFieldTypes.Text;
-        slug: EntryFieldTypes.Text;
-        icon: EntryFieldTypes.AssetLink;
-    };
-};
+const projectSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+    github: z.url().optional(),
+    website: z.url().optional(),
+    thumbnail: z
+        .object({
+            src: z.string(),
+            width: z.number(),
+            height: z.number(),
+        })
+        .optional(),
+    technologies: z.array(
+        z.object({
+            name: z.string(),
+            slug: z.string(),
+            icon: z
+                .object({
+                    src: z.string(),
+                    width: z.number(),
+                    height: z.number(),
+                })
+                .optional(),
+        }),
+    ),
+});
 
-export type ProjectEntrySkeleton = {
-    contentTypeId: "project";
-    fields: {
-        title: EntryFieldTypes.Text;
-        slug: EntryFieldTypes.Text;
-        thumbnail: EntryFieldTypes.AssetLink;
-        description: EntryFieldTypes.Text;
-        github: EntryFieldTypes.Text;
-        website: EntryFieldTypes.Text;
-        technologies: EntryFieldTypes.Array<
-            EntryFieldTypes.EntryLink<TechnologyEntrySkeleton>
-        >;
-        content: EntryFieldTypes.Text;
-    };
-};
+export type Project = z.infer<typeof projectSchema>;
 
-function getClient() {
-    return createClient({
-        space: spaceId,
-        accessToken: token,
-    });
-}
-
-export async function getAllProjects() {
-    const client = getClient();
-
-    return await client.withoutUnresolvableLinks.getEntries<ProjectEntrySkeleton>(
-        {
-            content_type: "project",
-        },
+export async function getProjects(): Promise<
+    {
+        filename: string;
+        metadata: Project;
+        slug: string;
+    }[]
+> {
+    const projectsDir = path.join(process.cwd(), "src/content/projects");
+    return await Promise.all(
+        fs
+            .readdirSync(projectsDir)
+            .map((val) => ({
+                _import: import(`@/content/projects/${val}`),
+                filename: val,
+            }))
+            .map(({ _import, filename }) =>
+                _import.then((val) => ({
+                    filename: filename,
+                    metadata: projectSchema.parse(val.metadata),
+                    slug: path.parse(filename).name,
+                })),
+            ),
     );
 }
 
-export async function getProject(slug: string) {
-    const client = getClient();
-
-    const projects =
-        await client.withoutUnresolvableLinks.getEntries<ProjectEntrySkeleton>({
-            content_type: "project",
-            "fields.slug": slug,
-        });
-
-    return projects.items.at(0);
+export async function getProject(
+    slug: string,
+): Promise<{ Content: () => React.JSX.Element; metadata: Project }> {
+    return await import(`@/content/projects/${slug}.mdx`).then((v) => ({
+        Content: v.default,
+        metadata: projectSchema.parse(v.metadata),
+    }));
 }

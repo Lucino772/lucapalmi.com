@@ -1,60 +1,27 @@
-import Image from "next/image";
-import rehypeHighlight from "rehype-highlight";
-import { compileMDX } from "next-mdx-remote/rsc";
-
-import { getAllProjects, getProject } from "@/lib/cms";
-import { notFound } from "next/navigation";
 import TechStack from "@/components/TechStack";
+import Image from "next/image";
 import { GlobeIcon } from "lucide-react";
+import { getProject, getProjects } from "@/lib/cms";
 
-export async function generateStaticParams() {
-    return await Promise.all(
-        (await getAllProjects()).items.map(async (project) => {
-            return {
-                slug: project.fields.slug as string,
-            };
-        }),
-    );
-}
-
-async function getProjectInfo(slug: string) {
-    const project = await getProject(slug);
-    if (project === undefined) notFound();
-
-    const { content } = await compileMDX({
-        source: project.fields.content!,
-        options: {
-            parseFrontmatter: false,
-            mdxOptions: {
-                rehypePlugins: [rehypeHighlight],
-            },
-        },
-    });
-
-    return {
-        project: project,
-        content: content,
-    };
-}
-
-export default async function Project({
+export default async function Page({
     params,
 }: {
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
-    const { project, content } = await getProjectInfo(slug);
+    const { Content, metadata: project } = await getProject(slug);
+
     return (
         <div className="relative mx-auto my-0 flex max-w-4xl animate-[fade_300ms_ease-in-out_normal_forwards] flex-col gap-6 px-6">
             <div className="flex flex-col gap-2 md:gap-4">
                 <h1 className="font-headings text-3xl text-white md:text-5xl">
-                    {project.fields.title}
+                    {project.title}
                 </h1>
                 <div className="font-content flex flex-row gap-4">
-                    {project.fields.github !== undefined && (
+                    {project.github !== undefined && (
                         <a
                             className="flex items-center justify-center font-normal text-neutral-300 no-underline"
-                            href={project.fields.github}
+                            href={project.github}
                             target="_blank"
                             rel="noreferrer"
                         >
@@ -70,10 +37,10 @@ export default async function Project({
                             <span className="h-5">GitHub</span>
                         </a>
                     )}
-                    {project.fields.website !== undefined && (
+                    {project.website !== undefined && (
                         <a
                             className="flex items-center justify-center font-normal text-neutral-300 no-underline"
-                            href={project.fields.website}
+                            href={project.website}
                             target="_blank"
                             rel="noreferrer"
                         >
@@ -86,37 +53,42 @@ export default async function Project({
                     )}
                 </div>
             </div>
-            {project.fields.thumbnail !== undefined && (
-                <Image
-                    src={`https:${project.fields.thumbnail.fields.file?.url}`}
-                    alt="project-cover"
-                    width={
-                        project.fields.thumbnail.fields.file?.details.image
-                            ?.width
-                    }
-                    height={
-                        project.fields.thumbnail.fields.file?.details.image
-                            ?.height
-                    }
-                    className="aspect-video w-full rounded-lg object-cover drop-shadow-sm"
-                />
+            {project.thumbnail !== undefined && (
+                <div className="overflow-hidden rounded-lg drop-shadow-sm">
+                    <Image
+                        src={project.thumbnail.src}
+                        alt="project-cover"
+                        width={project.thumbnail.width}
+                        height={project.thumbnail.height}
+                        className="aspect-video w-full object-cover transition-transform duration-700 hover:scale-[101%]"
+                    />
+                </div>
             )}
-            {project.fields.thumbnail === undefined && (
-                <div className="flex aspect-video w-full items-center justify-center rounded-lg bg-white drop-shadow-sm">
+            {project.thumbnail === undefined && (
+                <div className="font-headings flex aspect-video w-full items-center justify-center rounded-lg bg-white text-black drop-shadow-sm">
                     Error
                 </div>
             )}
             <div className="flex flex-row flex-wrap gap-5">
-                {project.fields.technologies.map((technology) => (
-                    <TechStack
-                        key={technology?.fields.slug}
-                        technology={technology!}
-                    />
+                {project.technologies.map((technology) => (
+                    <TechStack key={technology.slug} {...technology!} />
                 ))}
             </div>
-            <div className="prose md:prose-xl dark:prose-invert prose-pre:p-0 prose-headings:font-headings font-content max-w-none">
-                {content}
+            <div className="prose md:prose-lg dark:prose-invert prose-pre:p-0 prose-headings:font-headings font-content max-w-none">
+                <Content />
             </div>
         </div>
     );
 }
+
+export async function generateStaticParams() {
+    return await Promise.all(
+        (await getProjects()).map(async (project) => {
+            return {
+                slug: project.slug as string,
+            };
+        }),
+    );
+}
+
+export const dynamicParams = false;
