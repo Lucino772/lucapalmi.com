@@ -31,5 +31,8 @@ const nextConfig = {
 
 const withMDX = createMDX({
     extension: /\.(md|mdx)$/,
+    options: {
+        rehypePlugins: ["rehype-highlight"],
+    },
 });
 export default withMDX(nextConfig);
