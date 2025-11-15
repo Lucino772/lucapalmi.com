@@ -10,6 +10,23 @@ const nextConfig = {
 
         return config;
     },
+
+    // Includes rewrites for PostHog
+    async rewrites() {
+        return [
+            {
+                source: "/m3tr1c5/static/:path*",
+                destination: "https://eu-assets.i.posthog.com/static/:path*",
+            },
+            {
+                source: "/m3tr1c5/:path*",
+                destination: "https://eu.i.posthog.com/:path*",
+            },
+        ];
+    },
+    // This is required to support PostHog trailing slash API requests
+    skipTrailingSlashRedirect: true,
+
     transpilePackages: ["next-mdx-remote"],
     turbopack: {
         rules: {
