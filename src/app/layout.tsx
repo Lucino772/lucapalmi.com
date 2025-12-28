@@ -36,7 +36,7 @@ export default function RootLayout({
             )}
         >
             <body className="relative h-screen w-full overflow-auto">
-                <div className="bg-secondary md:from-primary md:to-secondary relative z-0 flex min-h-full w-full flex-col items-center to-50% md:bg-linear-80 md:from-50%">
+                <div className="bg-secondary relative z-0 flex min-h-full w-full flex-col items-center">
                     <NavBar />
                     {children}
                 </div>
