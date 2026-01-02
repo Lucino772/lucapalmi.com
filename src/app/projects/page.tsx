@@ -14,7 +14,7 @@ export default async function Projects() {
                     style={{ animationDelay: `${(0.1 + 0.2 * i) * 1000}ms` }}
                     key={i}
                 >
-                    <div className="bg-primary relative flex w-full flex-col rounded-lg border-2 border-transparent p-5 shadow-md transition-all hover:scale-[1.01] hover:border-[#4169E1]">
+                    <div className="bg-primary relative flex w-full flex-col rounded-sm border-2 border-[#292936] p-5 shadow-md transition-all hover:scale-[1.01] hover:border-[#4169E1]">
                         <div className="relative flex items-center justify-between gap-2">
                             {project.metadata.thumbnail !== undefined && (
                                 <Image
@@ -33,6 +33,18 @@ export default async function Projects() {
                             <h2 className="font-headings px-0 py-2 text-lg font-semibold text-white md:text-xl">
                                 {project.metadata.title}
                             </h2>
+                        </div>
+                        <div className="relative mt-5 flex flex-row items-center gap-2">
+                            {project.metadata.technologies
+                                .slice(0, 3)
+                                .map((item) => (
+                                    <div
+                                        key={item.slug}
+                                        className="font-content rounded-lg bg-[#4169E1] px-1.5 py-0.5 text-xs shadow md:text-sm"
+                                    >
+                                        {item.name}
+                                    </div>
+                                ))}
                         </div>
                         <div className="relative mt-5 flex h-full flex-col justify-between gap-2">
                             <p className="font-content text-xs text-white md:text-base">
