@@ -14,10 +14,7 @@ type Props = {
 
 export default function TechStack({ name, slug, icon }: Props) {
     return (
-        <div
-            className="flex flex-row items-center justify-center gap-2 rounded-3xl px-2 py-2 drop-shadow-sm"
-            style={{ background: "#1d1d1d" }}
-        >
+        <div className="bg-primary flex flex-row items-center justify-center gap-2 rounded-sm border-2 border-[#292936] px-2 py-2 shadow-md transition-all hover:border-[#4169E1]">
             {icon !== undefined && (
                 <Image
                     src={icon.src}
