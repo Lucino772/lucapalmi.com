@@ -32,15 +32,15 @@ export default function NavBar() {
                     </Link>
                     <Link
                         className="relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-0.5 after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
-                        href="/about"
-                    >
-                        About
-                    </Link>
-                    <Link
-                        className="relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-0.5 after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
                         href="/projects"
                     >
                         Projects
+                    </Link>
+                    <Link
+                        className="relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-0.5 after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
+                        href="/articles"
+                    >
+                        Blog
                     </Link>
                     <a
                         target="_blank"
