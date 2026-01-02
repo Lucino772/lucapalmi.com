@@ -23,7 +23,7 @@ export default function Index() {
 
             {/* Hero Section */}
             <div className="absolute top-1/2 left-1/2 w-screen max-w-6xl -translate-x-1/2 -translate-y-1/2">
-                <div className="relative ml-7 max-w-[344px]">
+                <div className="relative ml-7 max-w-86">
                     <div className="border-accent-blue origin-top animate-[scale-y_200ms_ease-out_normal_forwards] border-l-2 pl-5">
                         <h1 className="font-headings animate-[fade_200ms_200ms_ease-out_normal_forwards] text-[2.375rem]/[normal] font-bold opacity-0">
                             Hi, my name is Luca Palmisano

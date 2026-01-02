@@ -1,0 +1,311 @@
+import cover from "@/content/images/abstract/fragmented-marble-with-vibrant-neon-strokes.png";
+import { Callout } from "@/components/callout";
+
+export const metadata = {
+    title: "From Imperative Qt to State-Driven UI Composition",
+    subtitle:
+        "Building desktop UIs with Python is deceptively simple, until it isn't.",
+    createdAt: new Date(2026, 1, 2),
+    tags: ["Python", "UI", "Qt"],
+    readingTime: 6 * 60,
+    cover: {
+        data: cover,
+        kind: "ai-generated",
+        prompt: "An abstract, artistic illustration featuring a classical marble statue partially overlaid with modern graphic elements: neon brush strokes, subtle digital glitches, geometric shapes, and expressive graffiti-like marks. The composition feels layered and intentional, blending old and new visual languages. Muted background with vibrant accents. Editorial art style, high-detail illustration, no text, no logos, no UI elements, no futuristic sci-fi look.",
+    },
+};
+
+## Introduction
+
+Qt is a solid, feature-complete toolkit. But as applications grow, with asynchronous work, derived state, and multiple views of the same data, the code quickly becomes hard to reason about. Logic gets scattered across signal handlers, state is hidden inside widgets, and changing one thing often means updating several others.
+
+This isn't a problem specific to Qt. It's the cost of **imperative** UI code. State changes and UI updates are manually coordinated, and the burden of keeping them in sync falls entirely on the developer.
+
+In this post, I explore an alternative: **bind UI directly to state** using a small reactive core, then build toward a more declarative and composable model. We'll start from a traditional PySide example, push the idea step by step, examine its trade-offs, and finish with a lightweight experimental framework on top of Qt.
+
+<Callout type="note">
+    This is not a replacement for Qt or QML, but an exploration of how ideas
+    from modern frontend development translate to Python desktop UIs.
+</Callout>
+
+## PySide and the limits of imperative UI code
+
+PySide is widely used to build and extend real-world Qt applications, particularly in the VFX industry, where tools like Nuke, Flame, Houdini, and Blender expose Python-based UI APIs.
+
+Consider the following example: a simple counter implemented using common PySide patterns.
+
+```python
+from PySide6 import QtWidgets
+
+count = 0
+
+app = QtWidgets.QApplication()
+window = QtWidgets.QMainWindow()
+
+widget = QtWidgets.QWidget()
+layout = QtWidgets.QVBoxLayout()
+widget.setLayout(layout)
+
+label = QtWidgets.QLabel("Count: 0")
+layout.addWidget(label)
+
+def _increment_count():
+    global count
+    count += 1
+    label.setText(f"Count: {count}")
+
+button = QtWidgets.QPushButton("Click Me!")
+button.clicked.connect(_increment_count)
+layout.addWidget(button)
+
+window.setCentralWidget(widget)
+window.show()
+app.exec()
+```
+
+This code is perfectly acceptable for a trivial example. The issue is not correctness, but **how this approach holds up as state and interactions grow**.
+
+As soon as more than one widget depends on the same piece of state, that state has to be shared across callbacks. Each update is something you have to remember to do manually, in the right place, at the right time. **There is no single place in the code that describes what the UI should look like for a given state**. That relationship only emerges by following a series of imperative updates spread across callbacks.
+
+## Binding UI to state
+
+One way to address this is to make the relationship between state and UI explicit. Modern frontend frameworks converge on a simple idea: **the UI is a function of state**.
+
+Instead of issuing commands that update widgets, the developer describes what the UI should look like for a given state, and the framework keeps it in sync. In practice, this means callbacks update state rather than widgets, and UI updates follow automatically from state changes.
+
+To apply this idea in Python, we first need a way to represent values that can change over time. One common solution is the **Observer** pattern.
+
+For this experiment, I built a small reactive core inspired by existing libraries such as `reactivex`, but intentionally limited to UI state propagation. The goal is not general-purpose reactivity, but a minimal set of primitives for expressing state that changes over time.
+
+At a high level, the interface looks like this:
+
+```python
+class Disposable(Protocol):
+    def dispose(self) -> None: ...
+
+class Observable(Protocol[T]):
+    def apply(
+        self, func: Callable[[Observable[T]], Observable[U]]
+    ) -> Observable[U]: ...
+    def subscribe(self, func: Callable[[T], None]) -> Disposable: ...
+
+class Observer(Protocol[U]):
+    def push(self, val: U) -> None: ...
+
+class Subject(Observable[T]):
+    def push(self, val: T | Callable[[T], T]) -> None: ...
+```
+
+An `Observable` represents a piece of state that can change over time. UI elements can subscribe to it to react to updates.
+A `Subject` is a writable observable: it holds state and allows pushing either a new value or a function that derives a new value from the previous one.
+
+With this in place, we can rewrite the counter example by **binding the UI directly to state**:
+
+```python
+from PySide6 import QtWidgets
+from <reactive_library> import Subject
+
+count = Subject(0)
+
+app = QtWidgets.QApplication()
+window = QtWidgets.QMainWindow()
+
+widget = QtWidgets.QWidget()
+layout = QtWidgets.QVBoxLayout()
+widget.setLayout(layout)
+
+label = QtWidgets.QLabel()
+count.subscribe(lambda cnt: label.setText(f"Count: {cnt}"))
+layout.addWidget(label)
+
+button = QtWidgets.QPushButton("Click Me!")
+button.clicked.connect(lambda: count.push(lambda prev: prev + 1))
+layout.addWidget(button)
+
+window.setCentralWidget(widget)
+window.show()
+app.exec()
+```
+
+This version makes the relationship between state and UI explicit: the label simply reflects the current value of `count`, and callbacks update state rather than widgets.
+
+However, this is still fundamentally **imperative Qt code**. Widgets are created and wired manually, and while state is cleaner, composing larger interfaces remains awkward.
+
+## Toward composability
+
+Even with reactive state, UI construction in Qt remains entirely imperative. Widgets are created and configured through setters and signals, so updates require holding references and invoking the right methods at the right time. Declarative UI systems take a different approach by emphasizing composability: **complex interfaces are assembled from smaller pieces rather than modified in place**.
+
+One way to experiment with composability in Qt is to invert this relationship and construct widgets directly from observables.
+
+For example, we can define lightweight wrappers around Qt widgets that accept observables directly:
+
+```python
+class QLabel(QtWidgets.QLabel):
+    def __init__(self, text: Observable[str]) -> None:
+        super().__init__()
+        text.subscribe(self.setText)
+```
+
+The label no longer manages state. It simply reflects whatever value flows through the observable.
+
+Extending this idea to layouts and containers allows us to describe UI structure declaratively:
+
+```python
+class QVBoxLayout(QtWidgets.QVBoxLayout):
+    def __init__(self, children: Observable[list[QtWidgets.QWidget]]) -> None:
+        super().__init__()
+        children.subscribe(self._update_children)
+
+    def _update_children(self, children):
+        while self.count():
+            self.takeAt(0)
+        for child in children:
+            self.addWidget(child)
+```
+
+<Callout type="note">
+    This layout implementation is intentionally simple. It rebuilds the layout
+    whenever the children observable changes, which may remove and reinsert
+    widgets. In a production system, you would want a more careful
+    reconciliation strategy. Here, the goal is to illustrate composability
+    rather than optimize widget lifecycles.
+</Callout>
+
+Using these building blocks, the counter example becomes:
+
+```python
+widget = QWidget(
+    layout=Subject(
+        QVBoxLayout(
+            children=Subject(
+                [
+                    QLabel(count.apply(fn.map_(lambda cnt: f"Count: {cnt}"))),
+                    QPushButton(
+                        Subject("Click Me!"),
+                        lambda: count.push(lambda prev: prev + 1),
+                    ),
+                ]
+            )
+        )
+    )
+)
+```
+
+Instead of updating widgets directly, all UI changes go through state, and the interface is derived from that state. This leads to a more consistent structure, but it also means writing Qt code differently than usual and accepting that user actions update state first, and widgets update as a consequence.
+
+## Component abstraction
+
+Pushing this idea further leads naturally to a lightweight component model: reusable units that package structure and behaviour around explicit state and can be composed consistently.
+
+<Callout type="note">
+    In this context, a <i>component</i> is not a widget or a subclass. It is a
+    function that returns another function, which produces UI objects when
+    invoked. That output may be a widget, a layout, or nothing at all.
+    Components can therefore encapsulate structure, behavior, or pure logic,
+    without being forced into Qt's widget hierarchy.
+</Callout>
+
+This experiment resulted in a small framework called **`qtcompose`**. Its goal is not to replace Qt or hide its APIs, but to provide a declarative construction layer on top of it while remaining interoperable with traditional PySide code.
+
+Here is the same counter example expressed using these higher-level primitives:
+
+```python
+from PySide6 import QtWidgets
+from qtcompose.rx import Subject, fn
+from qtcompose.ui import (
+    QBoxLayoutItem,
+    QLabel,
+    QMainWindow,
+    QPushButton,
+    QVBoxLayout,
+    QWidget,
+)
+
+app = QtWidgets.QApplication()
+
+count = Subject(0)
+
+window = QMainWindow(
+    children=Subject(
+        QWidget(
+            layout=Subject(
+                QVBoxLayout(
+                    children=Subject(
+                        [
+                            QBoxLayoutItem.Child(
+                                QLabel(
+                                    text=fn.pipe(
+                                        count,
+                                        fn.map_(lambda cnt: f"Count: {cnt}")
+                                    )
+                                )
+                            ),
+                            QBoxLayoutItem.Child(
+                                QPushButton(
+                                    text=Subject("Click Me!"),
+                                    on_click=Subject(
+                                        lambda _: count.push(
+                                            lambda prev: prev + 1
+                                        )
+                                    ),
+                                )
+                            ),
+                        ]
+                    )
+                )
+            )
+        )
+    )
+)()
+
+window.show()
+app.exec()
+```
+
+At this point, UI structure, state flow, and composition follow the same rules throughout the codebase. Components no longer manage their own updates, **they describe how they relate to state and to each other**.
+
+This example only scratches the surface. Designing a component model on top of Qt raises deeper questions around lifecycles, ownership, subscriptions, and how much of Qt's API should be exposed or abstracted.
+
+Those questions deserve more space than this post allows. I'll explore them in a follow-up article focused specifically on `qtcompose`: its design goals, core primitives, and the trade-offs behind its API.
+
+## Opting out of the abstraction
+
+One common concern with declarative or reactive layers is the “framework trap”: once adopted, it becomes difficult to escape the abstraction when you need fine-grained control, performance optimizations, or access to toolkit-specific features.
+
+In `qtcompose`, components are designed to stay close to Qt's model rather than replace it. They do not introduce a separate rendering layer or runtime. Instead, components **directly produce Qt objects**. A component such as `QPushButton` is effectively a function that returns another function, which returns a `QtWidgets.QPushButton` when invoked. There is no virtual DOM, no custom renderer, and no hidden widget hierarchy, making it possible to freely mix reactive and imperative Qt code.
+
+As a result, PySide widgets can be freely mixed with reactive components, and reactive UI can be introduced incrementally, one panel or feature at a time. If a component abstraction becomes limiting, it is always possible to drop back to standard PySide code.
+
+For example, a plain PySide widget can be embedded directly in a composed layout:
+
+```python
+def create_button():
+	button = QtWidgets.QPushButton("Raw Qt button")
+	# imperative setup: properties, signals, custom behavior
+	return button
+
+ui = QWidget(
+    layout=Subject(
+        QVBoxLayout(
+            children=Subject([
+                QBoxLayoutItem.Child(QLabel(text=Subject("Hello"))),
+                QBoxLayoutItem.Child(create_button),
+            ])
+        )
+    )
+)
+```
+
+Opting out of the abstraction does not come for free. Mixing imperative and reactive updates can introduce **multiple sources of truth** if not done carefully. If a widget property is driven by an observable, changing it imperatively may be overwritten by the next reactive update.
+
+A useful rule of thumb is:
+
+> Use imperative PySide for leaf-level customization (painting, focus behavior, Qt-specific quirks), and reactive state for application-level structure and data flow.
+
+## Conclusion
+
+Qt remains a powerful and flexible toolkit for building desktop applications. But as UI state grows more complex, imperative patterns begin to strain under their own weight.
+
+By treating the UI as a function of state and borrowing ideas from reactive and declarative systems, it's possible to explore alternative ways of structuring Qt applications, where state relationships are made explicit and UI updates follow from them.
+
+Whether that trade-off is worthwhile depends on the shape of the problem being solved. This post does not argue for a single correct approach, but for expanding the design space of Python desktop UIs, and for questioning some of the assumptions we take for granted when building them.
