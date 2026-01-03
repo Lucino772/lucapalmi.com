@@ -6,7 +6,12 @@
 @theme {
     --color-primary: #242424;
     --color-secondary: #272727;
-    --color-accent-blue: #4169e1;
+    --color-accent-blue: hsl(225, 72.73%, 56.86%);
+    --color-accent-dark-blue: color-mix(
+        in oklab,
+        var(--color-accent-blue) 45%,
+        transparent
+    );
 
     --font-headings: var(--font-cascadia-code);
     --font-content: var(--font-inconsolata);

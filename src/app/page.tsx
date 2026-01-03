@@ -34,16 +34,16 @@ export default function Index() {
                     </div>
                     <div className="font-content relative mt-5 flex flex-row justify-start gap-5 pl-5">
                         <Link
-                            href="/about"
-                            className="border-accent-blue bg-accent-blue hover:text-opacity-80 animate-[fade_200ms_500ms_ease-out_normal_forwards] rounded-md border-2 px-3 py-2 text-base font-semibold text-white opacity-0 transition-colors hover:cursor-pointer"
+                            href="/projects"
+                            className="border-accent-blue bg-accent-blue animate-[fade_200ms_500ms_ease-out_normal_forwards] rounded-md border-2 px-3 py-2 text-base font-semibold text-white/90 opacity-0 transition-colors hover:cursor-pointer hover:text-white"
                         >
-                            Learn more
+                            View my work
                         </Link>
                         <Link
-                            href="/projects"
-                            className="border-accent-blue hover:text-opacity-80 animate-[fade_200ms_600ms_ease-out_normal_forwards] rounded-md border-2 px-3 py-2 text-base font-semibold text-white opacity-0 transition-colors hover:cursor-pointer"
+                            href="/articles"
+                            className="border-accent-dark-blue hover:border-accent-blue animate-[fade_200ms_600ms_ease-out_normal_forwards] rounded-md border-2 px-3 py-2 text-base font-semibold text-white/90 opacity-0 transition-colors hover:cursor-pointer hover:text-white"
                         >
-                            Projects
+                            Blog
                         </Link>
                     </div>
                 </div>
