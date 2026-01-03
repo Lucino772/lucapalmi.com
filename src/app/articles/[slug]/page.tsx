@@ -13,7 +13,7 @@ export default async function Page({
 
     return (
         <div className="relative mx-auto my-0 flex max-w-4xl animate-[fade_300ms_ease-in-out_normal_forwards] flex-col gap-6 px-6">
-            <div className="prose md:prose-lg dark:prose-invert prose-pre:p-0 prose-headings:font-headings font-content prose-pre:border-2 prose-pre:border-[#4169E1]/40 mt-5 max-w-none">
+            <div className="prose md:prose-lg dark:prose-invert prose-pre:p-0 prose-headings:font-headings font-content prose-pre:border-2 prose-pre:border-[#4169E1]/40 prose-a:after:content-['_↗'] prose-a:text-[#7b97ea] prose-a:no-underline mt-5 max-w-none">
                 <div className="not-prose mb-5 flex flex-row items-center justify-between">
                     <div className="flex flex-row items-center gap-2">
                         {article.tags.map((item) => (
