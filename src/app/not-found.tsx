@@ -9,24 +9,24 @@ export default function NotFound() {
             <h2 className="font-content text-lg text-gray-300">
                 {`Sorry, the page you're looking for doesn't exist.`}
             </h2>
-            <div className="font-content mt-2 flex flex-row gap-2">
+            <div className="font-content mt-2 flex flex-row justify-center gap-5">
                 <Link
-                    className="text-opacity-80 hover:text-opacity-100 text-[#4169E1] transition duration-100"
+                    className="text-[#7b97ea]/80 transition duration-100 hover:text-[#7b97ea]"
                     href="/"
                 >
                     Home
                 </Link>
                 <Link
-                    className="text-opacity-80 hover:text-opacity-100 text-[#4169E1] transition duration-100"
-                    href="/about"
-                >
-                    About
-                </Link>
-                <Link
-                    className="text-opacity-80 hover:text-opacity-100 text-[#4169E1] transition duration-100"
+                    className="text-[#7b97ea]/80 transition duration-100 hover:text-[#7b97ea]"
                     href="/projects"
                 >
                     Projects
+                </Link>
+                <Link
+                    className="text-[#7b97ea]/80 transition duration-100 hover:text-[#7b97ea]"
+                    href="/projects"
+                >
+                    Blog
                 </Link>
             </div>
         </div>
