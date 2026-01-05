@@ -29,7 +29,14 @@ export default async function Page({
                         <div className="flex flex-row items-center gap-2">
                             <CalendarIcon className="size-4" />
                             <span>
-                                {article.createdAt.toLocaleDateString()}
+                                {article.createdAt.toLocaleDateString(
+                                    undefined,
+                                    {
+                                        day: "numeric",
+                                        month: "long",
+                                        year: "numeric",
+                                    },
+                                )}
                             </span>
                         </div>
                         {article.readingTime !== undefined && (

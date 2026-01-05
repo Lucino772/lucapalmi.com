@@ -30,7 +30,14 @@ export default async function Articles() {
                             <div className="flex flex-row items-center gap-2">
                                 <CalendarIcon className="size-4" />
                                 <span>
-                                    {article.metadata.createdAt.toLocaleDateString()}
+                                    {article.metadata.createdAt.toLocaleDateString(
+                                        undefined,
+                                        {
+                                            day: "numeric",
+                                            month: "short",
+                                            year: "numeric",
+                                        },
+                                    )}
                                 </span>
                             </div>
                             {article.metadata.readingTime !== undefined && (
