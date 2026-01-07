@@ -35,7 +35,7 @@ export default function Index() {
                         /> */}
                         <div className="flex flex-col gap-1">
                             <p className="font-content text-xs font-normal text-white/75 sm:text-base">
-                                👋 Hi there, I'm
+                                {`👋 Hi there, I'm`}
                             </p>
                             <h1 className="font-headings text-base font-bold sm:text-3xl">
                                 Luca Palmisano
@@ -116,14 +116,14 @@ export default function Index() {
                     {/* What next ? */}
                     <div className="sm:bg-primary border-x-none relative flex animate-[fade_300ms_300ms_ease-out_normal_forwards] flex-col gap-2 rounded-none border-[#4169E1]/20 bg-transparent p-0 opacity-0 transition-all first:rounded-t-sm last:rounded-b-sm sm:border-x-2 sm:border-t-0 sm:border-b-2 sm:p-5 sm:shadow-md sm:first:border-t-2">
                         <h2 className="font-headings text-sm font-bold sm:text-base">
-                            If you're curious
+                            {`If you're curious`}
                         </h2>
                         <div className="font-content flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-5">
                             <Link
                                 href="/projects"
                                 className="border-accent-blue bg-accent-blue animate-[fade_200ms_400ms_ease-out_normal_forwards] rounded-md border-2 px-3 py-2 text-xs font-semibold text-white/90 opacity-0 transition-colors hover:cursor-pointer hover:text-white sm:text-sm"
                             >
-                                See what I've built 🛠️
+                                {`See what I've built 🛠️`}
                             </Link>
                             <Link
                                 href="/articles"
