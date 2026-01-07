@@ -32,16 +32,16 @@ export default function MobileNav({ open, close }: Props = { open: false }) {
                 <Link
                     onClick={handleClose}
                     className="text-2xl tracking-widest text-black"
-                    href="/about"
+                    href="/projects"
                 >
-                    About
+                    Projects
                 </Link>
                 <Link
                     onClick={handleClose}
                     className="text-2xl tracking-widest text-black"
-                    href="/projects"
+                    href="/articles"
                 >
-                    Projects
+                    Blog
                 </Link>
             </nav>
 
