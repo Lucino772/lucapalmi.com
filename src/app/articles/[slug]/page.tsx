@@ -2,6 +2,47 @@ import Image from "next/image";
 import { getArticle, getArticles } from "@/lib/cms";
 import { CalendarIcon, ClockIcon } from "lucide-react";
 import { AiImageDescription } from "@/components/ai-image-description";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const { metadata: article } = await getArticle(slug);
+
+    return {
+        title: `${article.title} | Luca Palmisano`,
+        description: article.subtitle,
+        keywords: article.tags,
+        openGraph: {
+            title: article.title,
+            description: article.subtitle,
+            images: [
+                {
+                    url: article.cover.data.src,
+                    width: article.cover.data.width,
+                    height: article.cover.data.height,
+                    alt: `${article.title} cover image`,
+                },
+            ],
+            type: "article",
+            publishedTime: article.createdAt.toISOString(),
+            authors: ["Luca Palmisano"],
+            tags: article.tags,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: article.title,
+            description: article.subtitle,
+            images: [article.cover.data.src],
+        },
+        alternates: {
+            canonical: `https://lucapalmi.com/articles/${slug}`,
+        },
+    };
+}
 
 export default async function Page({
     params,
@@ -55,7 +96,7 @@ export default async function Page({
                     <div className="aspect-video overflow-hidden rounded-lg shadow-sm">
                         <Image
                             src={article.cover.data.src}
-                            alt="article-cover"
+                            alt={`${article.title} - ${article.subtitle}`}
                             width={article.cover.data.width}
                             height={article.cover.data.height}
                             className="h-full w-full object-cover transition-transform duration-700 hover:scale-[101%]"

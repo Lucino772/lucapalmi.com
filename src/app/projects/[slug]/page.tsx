@@ -1,6 +1,46 @@
 import TechStack from "@/components/TechStack";
 import Image from "next/image";
 import { getProject, getProjects } from "@/lib/cms";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const { metadata: project } = await getProject(slug);
+
+    return {
+        title: `${project.title} | Luca Palmisano`,
+        description: project.description,
+        keywords: project.technologies.map((tech) => tech.name),
+        openGraph: {
+            title: project.title,
+            description: project.description,
+            images: project.thumbnail
+                ? [
+                      {
+                          url: project.thumbnail.src,
+                          width: project.thumbnail.width,
+                          height: project.thumbnail.height,
+                          alt: `${project.title} thumbnail`,
+                      },
+                  ]
+                : [],
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: project.title,
+            description: project.description,
+            images: project.thumbnail ? [project.thumbnail.src] : [],
+        },
+        alternates: {
+            canonical: `https://lucapalmi.com/projects/${slug}`,
+        },
+    };
+}
 
 export default async function Page({
     params,
@@ -68,7 +108,7 @@ export default async function Page({
                 <div className="overflow-hidden rounded-lg shadow-sm">
                     <Image
                         src={project.thumbnail.src}
-                        alt="project-cover"
+                        alt={`${project.title} project showcase`}
                         width={project.thumbnail.width}
                         height={project.thumbnail.height}
                         className="aspect-video w-full object-cover transition-transform duration-700 hover:scale-[101%]"

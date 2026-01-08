@@ -26,6 +26,8 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "rehype-highlight": "7.0.2",
+    "schema-dts": "^1.1.5",
+    "serialize-javascript": "^7.0.2",
     "tailwind-merge": "^3.4.0",
     "zod": "^4.1.13"
   },
@@ -38,6 +40,7 @@
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^18.3.7",
+    "@types/serialize-javascript": "^5.0.4",
     "eslint": "^9.39.2",
     "eslint-config-next": "16.0.6",
     "eslint-config-prettier": "^10.1.8",

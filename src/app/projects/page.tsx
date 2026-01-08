@@ -19,7 +19,7 @@ export default async function Projects() {
                             {project.metadata.thumbnail !== undefined && (
                                 <Image
                                     src={project.metadata.thumbnail.src}
-                                    alt="project-cover"
+                                    alt={`${project.metadata.title} project thumbnail`}
                                     width={project.metadata.thumbnail.width}
                                     height={project.metadata.thumbnail.height}
                                     className="h-16 w-16 rounded-lg object-cover"

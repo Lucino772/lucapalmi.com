@@ -19,7 +19,7 @@ export default async function Articles() {
                         <div className="absolute inset-px aspect-video rounded-sm">
                             <Image
                                 src={article.metadata.cover.data.src}
-                                alt="article-cover"
+                                alt={`${article.metadata.title} - ${article.metadata.subtitle}`}
                                 width={article.metadata.cover.data.width}
                                 height={article.metadata.cover.data.height}
                                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-[101%]"
