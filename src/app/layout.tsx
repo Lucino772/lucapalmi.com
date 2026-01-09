@@ -86,7 +86,7 @@ const cascadiaCode = Cascadia_Code({
     display: "swap",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode;
@@ -100,15 +100,10 @@ export default function RootLayout({
                 cascadiaCode.variable,
             )}
         >
+            <head>
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }} />
+            </head>
             <body className="relative h-screen w-full overflow-auto">
-                <section>
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: serialize(jsonLd),
-                        }}
-                    />
-                </section>
                 <div className="bg-secondary relative z-0 flex min-h-full w-full flex-col items-center">
                     <NavBar />
                     {children}
