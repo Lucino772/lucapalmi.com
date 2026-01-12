@@ -101,7 +101,10 @@ export default async function RootLayout({
             )}
         >
             <head>
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }} />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
+                />
             </head>
             <body className="relative h-screen w-full overflow-auto">
                 <div className="bg-secondary relative z-0 flex min-h-full w-full flex-col items-center">
