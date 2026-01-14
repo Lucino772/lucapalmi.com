@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { cn } from "@/lib/cn";
-import { XIcon } from "lucide-react";
+import { ChevronRightIcon, XIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 type Props = {
     open: boolean;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export default function MobileNav({ open, close }: Props = { open: false }) {
+    const currentPath = usePathname();
     const handleClose = close !== undefined ? close : () => null;
     return (
         <div
@@ -24,23 +26,32 @@ export default function MobileNav({ open, close }: Props = { open: false }) {
             <nav className="font-content flex h-1/2 flex-col items-center justify-evenly gap-5">
                 <Link
                     onClick={handleClose}
-                    className="text-2xl tracking-widest text-black"
+                    className="flex flex-row items-center gap-2 text-2xl tracking-widest text-black"
                     href="/"
                 >
+                    {currentPath === "/" && (
+                        <ChevronRightIcon className="size-5" color="black" />
+                    )}
                     Home
                 </Link>
                 <Link
                     onClick={handleClose}
-                    className="text-2xl tracking-widest text-black"
+                    className="flex flex-row items-center gap-2 text-2xl tracking-widest text-black"
                     href="/projects"
                 >
+                    {currentPath === "/projects" && (
+                        <ChevronRightIcon className="size-5" color="black" />
+                    )}
                     Projects
                 </Link>
                 <Link
                     onClick={handleClose}
-                    className="text-2xl tracking-widest text-black"
+                    className="flex flex-row items-center gap-2 text-2xl tracking-widest text-black"
                     href="/articles"
                 >
+                    {currentPath === "/articles" && (
+                        <ChevronRightIcon className="size-5" color="black" />
+                    )}
                     Blog
                 </Link>
             </nav>

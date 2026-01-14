@@ -6,9 +6,12 @@ import { useState } from "react";
 import Image from "next/image";
 import logo from "../../public/images/logo.webp";
 import { MenuIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/cn";
 
 export default function NavBar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const currentPath = usePathname();
 
     return (
         <>
@@ -25,19 +28,34 @@ export default function NavBar() {
 
                 <nav className="font-content relative hidden items-center justify-center md:flex">
                     <Link
-                        className="relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-0.5 after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
+                        className={cn(
+                            "relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-0.5 after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4",
+                            {
+                                "after:w-3/4": currentPath === "/",
+                            },
+                        )}
                         href="/"
                     >
                         Home
                     </Link>
                     <Link
-                        className="relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-0.5 after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
+                        className={cn(
+                            "relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-0.5 after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4",
+                            {
+                                "after:w-3/4": currentPath === "/projects",
+                            },
+                        )}
                         href="/projects"
                     >
                         Projects
                     </Link>
                     <Link
-                        className="relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-0.5 after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4"
+                        className={cn(
+                            "relative mr-5 text-xl font-normal text-white no-underline after:absolute after:bottom-0 after:left-[5%] after:h-0.5 after:w-0 after:bg-white after:duration-200 after:content-[''] hover:after:w-3/4",
+                            {
+                                "after:w-3/4": currentPath === "/articles",
+                            },
+                        )}
                         href="/articles"
                     >
                         Blog
