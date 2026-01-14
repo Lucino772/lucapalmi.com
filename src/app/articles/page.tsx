@@ -2,13 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { getArticles } from "@/lib/cms";
 import { CalendarIcon, ClockIcon } from "lucide-react";
+import { toSorted } from "@/lib/utils";
 
 export default async function Articles() {
     const articles = await getArticles();
 
     return (
         <div className="relative mx-auto my-0 grid max-w-4xl grid-cols-1 gap-4 px-5 md:grid-cols-2">
-            {articles.map((article, i) => (
+            {toSorted(
+                articles,
+                (article) => article.metadata.createdAt,
+                false,
+            ).map((article, i) => (
                 <Link
                     href={`/articles/${article.slug}`}
                     className="flex animate-[fade_300ms_ease-in-out_normal_forwards] opacity-0"

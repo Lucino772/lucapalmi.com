@@ -1,21 +1,30 @@
 import thumbnail from "@/content/images/pymojang/cover.webp";
 import python from "@/content/images/technologies/python.png";
 
+import Technologies from "@/components/technologies";
+
 export const metadata = {
-    title: "PyMojang python module",
-    github: "https://github.com/Lucino772/pymojang",
-    website: "https://pymojang.lucapalmi.com/",
-    thumbnail: thumbnail,
-    description:
+    title: "Case Study: PyMojang python package",
+    subtitle:
         "PyMojang is a python wrapper around the Mojang API and Mojang Authentication API.",
-    technologies: [
+    createdAt: new Date(2025, 10, 14),
+    tags: ["Case Study", "Python"],
+    readingTime: 3 * 60,
+    cover: {
+        data: thumbnail,
+        kind: "ai-generated",
+        prompt: "A cinematic Minecraft-style render with digital glitch and distortion elements. The camera is positioned behind and slightly above Steve on the right, looking down toward the Enderman on the left who stands on the PyPI logo (stacked white, blue, and yellow cubes). The Enderman holds a glowing blue-and-yellow block about to place it onto the logo, symbolizing the “PyMojang” package. The scene is set in a bright white void, but the lighting and atmosphere are infused with subtle glitch effects, pixel distortions, chromatic aberration, scanline textures, and data-stream particles around the glowing block. The style should resemble digital-glitch art fused with Minecraft cinematic realism, evoking technology, creation, and open-source energy. Render with cinematic depth, soft reflections, and a clean yet electrified aesthetic — like a futuristic coding world visualized through Minecraft.",
+    },
+};
+
+<Technologies
+    technologies={[
         {
             name: "Python",
-            slug: "python",
             icon: python,
         },
-    ],
-};
+    ]}
+/>
 
 ### Description
 

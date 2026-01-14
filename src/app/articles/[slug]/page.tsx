@@ -29,6 +29,7 @@ export async function generateMetadata({
             ],
             type: "article",
             publishedTime: article.createdAt.toISOString(),
+            modifiedTime: article.updatedAt?.toISOString(),
             authors: ["Luca Palmisano"],
             tags: article.tags,
         },
@@ -56,7 +57,7 @@ export default async function Page({
         <div className="relative mx-auto my-0 flex max-w-4xl animate-[fade_300ms_ease-in-out_normal_forwards] flex-col gap-6 px-6">
             <div className="prose md:prose-lg dark:prose-invert prose-pre:p-0 prose-headings:font-headings font-content prose-pre:border-2 prose-pre:border-[#4169E1]/40 prose-a:after:content-['_↗'] prose-a:text-[#7b97ea] prose-a:no-underline mt-5 max-w-none">
                 <div className="not-prose mb-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
-                    <div className="flex flex-row items-center gap-2">
+                    <div className="flex flex-row items-center flex-wrap gap-2">
                         {article.tags.map((item) => (
                             <div
                                 key={item}
@@ -92,7 +93,7 @@ export default async function Page({
                 </div>
                 <h1 className="mb-0!">{article.title}</h1>
                 <p className="mt-1!">{article.subtitle}</p>
-                <div className="not-prose flex flex-col gap-4">
+                <div className="not-prose mb-5 flex flex-col gap-4">
                     <div className="aspect-video overflow-hidden rounded-lg shadow-sm">
                         <Image
                             src={article.cover.data.src}

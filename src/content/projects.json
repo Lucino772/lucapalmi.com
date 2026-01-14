@@ -1,0 +1,39 @@
+{
+    "featured": [
+        {
+            "title": "Personal Website",
+            "article": "lucapalmi-com-website",
+            "type": "website",
+            "links": {
+                "github": "https://github.com/Lucino772/lucapalmi.com",
+                "website": "https://lucapalmi.com"
+            },
+            "description": "A static website build with Next.js. It serve as a portfolio to showcase my work.",
+            "tags": ["Vercel", "Tailwind", "Next.js", "Contentful"]
+        },
+        {
+            "title": "PyMojang package",
+            "article": "pymojang-python-module",
+            "type": "package",
+            "links": {
+                "github": "https://github.com/Lucino772/pymojang"
+            },
+            "description": "PyMojang is a python wrapper around the Mojang API and Mojang Authentication API.",
+            "tags": ["Python"]
+        }
+    ],
+    "others": [
+        {
+            "title": "QtCompose",
+            "url": "https://github.com/Lucino772/qtcompose"
+        },
+        {
+            "title": "Miss A brick",
+            "url": "https://github.com/Lucino772/missabrick"
+        },
+        {
+            "title": "brikk",
+            "url": "https://github.com/Lucino772/brikk"
+        }
+    ]
+}

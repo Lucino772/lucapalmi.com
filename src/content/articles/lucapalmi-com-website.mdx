@@ -4,36 +4,41 @@ import tailwind from "@/content/images/technologies/tailwind.png";
 import nextjs from "@/content/images/technologies/nextjs.png";
 import contentful from "@/content/images/technologies/contentful.png";
 
+import Technologies from "@/components/technologies";
+
 export const metadata = {
-    title: "lucapalmi.com website",
-    github: "https://github.com/Lucino772/lucapalmi.com",
-    website: "https://lucapalmi.com",
-    thumbnail: thumbnail,
-    description:
+    title: "Case Study: Personal Website",
+    subtitle:
         "A static website build with Next.js. It serve as a portfolio to showcase my work.",
-    technologies: [
+    createdAt: new Date(2025, 10, 14),
+    tags: ["Case Study", "Vercel", "Tailwind", "Next.js", "Contentful"],
+    readingTime: 4 * 60,
+    cover: {
+        data: thumbnail,
+        kind: "internal",
+    },
+};
+
+<Technologies
+    technologies={[
         {
             name: "Vercel",
-            slug: "vercel",
             icon: vercel,
         },
         {
             name: "Tailwind",
-            slug: "tailwind",
             icon: tailwind,
         },
         {
             name: "Next.js",
-            slug: "next-js",
             icon: nextjs,
         },
         {
             name: "Contentful",
-            slug: "contentful",
             icon: contentful,
         },
-    ],
-};
+    ]}
+/>
 
 ### Description
 
