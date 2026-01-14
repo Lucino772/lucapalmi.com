@@ -23,15 +23,18 @@ export default function MobileNav({ open, close }: Props = { open: false }) {
                 },
             )}
         >
-            <nav className="font-content flex h-1/2 flex-col items-center justify-evenly gap-5">
+            <nav className="font-content flex h-1/2 w-full flex-col items-start justify-evenly gap-5 pl-5">
                 <Link
                     onClick={handleClose}
                     className="flex flex-row items-center gap-2 text-2xl tracking-widest text-black"
                     href="/"
                 >
-                    {currentPath === "/" && (
-                        <ChevronRightIcon className="size-5" color="black" />
-                    )}
+                    <ChevronRightIcon
+                        className={cn("size-5", {
+                            invisible: currentPath !== "/",
+                        })}
+                        color="black"
+                    />
                     Home
                 </Link>
                 <Link
@@ -39,9 +42,12 @@ export default function MobileNav({ open, close }: Props = { open: false }) {
                     className="flex flex-row items-center gap-2 text-2xl tracking-widest text-black"
                     href="/projects"
                 >
-                    {currentPath === "/projects" && (
-                        <ChevronRightIcon className="size-5" color="black" />
-                    )}
+                    <ChevronRightIcon
+                        className={cn("size-5", {
+                            invisible: currentPath !== "/projects",
+                        })}
+                        color="black"
+                    />
                     Projects
                 </Link>
                 <Link
@@ -49,9 +55,12 @@ export default function MobileNav({ open, close }: Props = { open: false }) {
                     className="flex flex-row items-center gap-2 text-2xl tracking-widest text-black"
                     href="/articles"
                 >
-                    {currentPath === "/articles" && (
-                        <ChevronRightIcon className="size-5" color="black" />
-                    )}
+                    <ChevronRightIcon
+                        className={cn("size-5", {
+                            invisible: currentPath !== "/articles",
+                        })}
+                        color="black"
+                    />
                     Blog
                 </Link>
             </nav>
