@@ -93,7 +93,7 @@ export default async function Projects() {
                             <div className="mt-5 flex flex-row items-center justify-between">
                                 <Link
                                     href={`/articles/${project.article}`}
-                                    className="group bg-secondary flex flex-row items-center gap-2 border-2 border-[#292936] px-2 py-1 text-white/80 shadow transition-all hover:text-white"
+                                    className="group bg-secondary flex flex-row items-center gap-2 border-2 border-[#292936] px-2 py-1 text-xs text-white/80 shadow transition-all hover:text-white md:text-base"
                                 >
                                     Read case study
                                     <svg
@@ -106,7 +106,7 @@ export default async function Projects() {
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="size-4 transition-transform group-hover:scale-115"
+                                        className="size-3 transition-transform group-hover:scale-115 md:size-4"
                                     >
                                         <path d="M13 5H19V11" />
                                         <path d="M19 5L5 19" />
@@ -169,7 +169,7 @@ export default async function Projects() {
                 {projects.others.map((project, i) => (
                     <a
                         href={project.url}
-                        className="flex animate-[fade_300ms_ease-in-out_normal_forwards] opacity-0"
+                        className="flex animate-[fade_300ms_ease-in-out_normal_forwards] text-sm opacity-0 md:text-base"
                         style={{
                             animationDelay: `${(0.1 + 0.2 * i) * 1000}ms`,
                         }}
