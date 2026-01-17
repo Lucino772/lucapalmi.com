@@ -34,7 +34,7 @@ export default async function Articles() {
                         <div className="from-primary relative flex flex-row items-center justify-between bg-linear-to-b to-transparent p-2">
                             <div className="flex flex-row items-center gap-2">
                                 <CalendarIcon className="size-4" />
-                                <span>
+                                <span className="font-content">
                                     {article.metadata.createdAt.toLocaleDateString(
                                         undefined,
                                         {
@@ -48,7 +48,7 @@ export default async function Articles() {
                             {article.metadata.readingTime !== undefined && (
                                 <div className="flex flex-row items-center gap-2">
                                     <ClockIcon className="size-4" />
-                                    <span>
+                                    <span className="font-content">
                                         {(
                                             article.metadata.readingTime / 60
                                         ).toFixed(0)}{" "}

@@ -61,7 +61,7 @@ export default async function Page({
                         {article.tags.map((item) => (
                             <div
                                 key={item}
-                                className="font-content rounded-lg bg-[#4169E1] px-1.5 py-0.5 text-xs shadow md:text-sm"
+                                className="font-content rounded-lg bg-[#4169E1] px-1.5 py-0.5 text-xs text-white shadow md:text-sm"
                             >
                                 {item}
                             </div>

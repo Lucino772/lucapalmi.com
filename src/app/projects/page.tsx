@@ -93,7 +93,7 @@ export default async function Projects() {
                             <div className="mt-5 flex flex-row items-center justify-between">
                                 <Link
                                     href={`/articles/${project.article}`}
-                                    className="group bg-secondary flex flex-row items-center gap-2 border-2 border-[#292936] px-2 py-1 text-xs text-white/80 shadow transition-all hover:text-white md:text-base"
+                                    className="group bg-secondary font-content flex flex-row items-center gap-2 border-2 border-[#292936] px-2 py-1 text-xs text-white/80 shadow transition-all hover:text-white md:text-base"
                                 >
                                     Read case study
                                     <svg
