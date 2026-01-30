@@ -1,5 +1,5 @@
 onlyBuiltDependencies:
-  - core-js
-  - protobufjs
-  - sharp
-  - unrs-resolver
+    - core-js
+    - protobufjs
+    - sharp
+    - unrs-resolver
