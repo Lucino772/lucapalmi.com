@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
-    "packages": ["nodejs@20.18.2", "pnpm@10.14.0"],
+    "packages": ["nodejs@20.18.2", "pnpm@10.28.0"],
     "env": {},
     "shell": {
         "init_hook": ["pnpm install"],

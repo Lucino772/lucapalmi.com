@@ -2,7 +2,15 @@
   "name": "lucapalmi.com",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.28.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "core-js",
+      "protobufjs",
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
