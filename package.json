@@ -48,7 +48,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^25.0.9",
     "@types/react": "^19.2.8",
-    "@types/react-dom": "^18.3.7",
+    "@types/react-dom": "^19.2.3",
     "@types/serialize-javascript": "^5.0.4",
     "eslint": "^9.39.2",
     "eslint-config-next": "16.1.4",
