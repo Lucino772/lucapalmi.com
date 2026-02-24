@@ -47,7 +47,7 @@
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^25.2.3",
-    "@types/react": "^19.2.8",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/serialize-javascript": "^5.0.4",
     "eslint": "^9.39.2",
