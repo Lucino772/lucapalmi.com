@@ -57,8 +57,8 @@ importers:
         specifier: ^1.1.5
         version: 1.1.5
       serialize-javascript:
-        specifier: ^7.0.2
-        version: 7.0.2
+        specifier: ^7.0.3
+        version: 7.0.3
       tailwind-merge:
         specifier: ^3.4.1
         version: 3.4.1
@@ -3154,8 +3154,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  serialize-javascript@7.0.2:
-    resolution: {integrity: sha512-Y/agDAqbUWRYFWLF5pMT9Rb8wN5ERPMbQH7oq6R+4YgFdMNO4+ELo4PjFCW3H+2CbXirPr/XUgYT+3iXJfTbZQ==}
+  serialize-javascript@7.0.3:
+    resolution: {integrity: sha512-h+cZ/XXarqDgCjo+YSyQU/ulDEESGGf8AMK9pPNmhNSl/FzPl6L8pMp1leca5z6NuG6tvV/auC8/43tmovowww==}
     engines: {node: '>=20.0.0'}
 
   set-function-length@1.2.2:
@@ -7100,7 +7100,7 @@ snapshots:
 
   semver@7.7.4: {}
 
-  serialize-javascript@7.0.2: {}
+  serialize-javascript@7.0.3: {}
 
   set-function-length@1.2.2:
     dependencies:
