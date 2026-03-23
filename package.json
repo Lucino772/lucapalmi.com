@@ -37,7 +37,7 @@
     "rehype-highlight": "7.0.2",
     "schema-dts": "^1.1.5",
     "serialize-javascript": "^7.0.4",
-    "tailwind-merge": "^3.4.1",
+    "tailwind-merge": "^3.5.0",
     "zod": "^4.1.13"
   },
   "devDependencies": {
