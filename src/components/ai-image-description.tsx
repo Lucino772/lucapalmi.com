@@ -11,7 +11,11 @@ export const AiImageDescription = ({ prompt }: { prompt: string }) => {
     const [open, setOpen] = useState(false);
 
     return (
-        <Collapsible open={open} onOpenChange={setOpen}>
+        <Collapsible
+            className="follow-body-font"
+            open={open}
+            onOpenChange={setOpen}
+        >
             <CollapsibleTrigger className="flex cursor-pointer flex-row items-center gap-1 text-sm opacity-75 transition-opacity duration-300 hover:opacity-100">
                 {open ? (
                     <ChevronDownIcon className="size-4" />

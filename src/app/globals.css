@@ -29,8 +29,13 @@ html[data-body-font="literata"] .prose {
     font-family: var(--font-literata);
 }
 
-/* Keep chrome inside articles (dates, tags, covers) in the site font */
-html[data-body-font] .prose :where(.not-prose, .not-prose *) {
+/* Keep chrome inside articles (dates, tags, covers) in the site font,
+   except elements opting back in via .follow-body-font */
+html[data-body-font]
+    .prose
+    :where(.not-prose, .not-prose *):not(
+        :where(.follow-body-font, .follow-body-font *)
+    ) {
     font-family: var(--font-inconsolata);
 }
 
