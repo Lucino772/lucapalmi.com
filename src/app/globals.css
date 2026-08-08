@@ -17,6 +17,18 @@
     --font-content: var(--font-inconsolata);
 }
 
+html[data-body-font="plex"] .prose {
+    font-family: var(--font-ibm-plex-sans);
+}
+
+html[data-body-font="inter"] .prose {
+    font-family: var(--font-inter);
+}
+
+html[data-body-font="literata"] .prose {
+    font-family: var(--font-literata);
+}
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still

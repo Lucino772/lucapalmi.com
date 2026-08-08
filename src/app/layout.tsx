@@ -3,9 +3,16 @@ import "./globals.css";
 import "highlight.js/styles/github-dark-dimmed.css";
 import NavBar from "@/components/NavBar";
 
-import { Inconsolata, Cascadia_Code } from "next/font/google";
+import {
+    Inconsolata,
+    Cascadia_Code,
+    IBM_Plex_Sans,
+    Inter,
+    Literata,
+} from "next/font/google";
 import { cn } from "@/lib/cn";
 import { Person, WithContext } from "schema-dts";
+import FontToggle from "@/components/FontToggle";
 
 import serialize from "serialize-javascript";
 
@@ -85,6 +92,22 @@ const cascadiaCode = Cascadia_Code({
     subsets: ["latin"],
     display: "swap",
 });
+const ibmPlexSans = IBM_Plex_Sans({
+    variable: "--font-ibm-plex-sans",
+    subsets: ["latin"],
+    display: "swap",
+    weight: ["400", "600"],
+});
+const inter = Inter({
+    variable: "--font-inter",
+    subsets: ["latin"],
+    display: "swap",
+});
+const literata = Literata({
+    variable: "--font-literata",
+    subsets: ["latin"],
+    display: "swap",
+});
 
 export default async function RootLayout({
     children,
@@ -98,6 +121,9 @@ export default async function RootLayout({
                 "dark antialiased",
                 inconsolata.variable,
                 cascadiaCode.variable,
+                ibmPlexSans.variable,
+                inter.variable,
+                literata.variable,
             )}
         >
             <head>
@@ -111,6 +137,7 @@ export default async function RootLayout({
                     <NavBar />
                     {children}
                 </div>
+                <FontToggle />
             </body>
         </html>
     );
