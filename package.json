@@ -35,7 +35,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "rehype-highlight": "7.0.2",
-    "schema-dts": "^1.1.5",
+    "schema-dts": "^2.0.0",
     "serialize-javascript": "^7.1.0",
     "tailwind-merge": "^3.6.0",
     "zod": "^4.4.3"
