@@ -29,6 +29,11 @@ html[data-body-font="literata"] .prose {
     font-family: var(--font-literata);
 }
 
+/* Keep chrome inside articles (dates, tags, covers) in the site font */
+html[data-body-font] .prose :where(.not-prose, .not-prose *) {
+    font-family: var(--font-inconsolata);
+}
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
