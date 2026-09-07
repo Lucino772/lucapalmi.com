@@ -3,16 +3,9 @@ import "./globals.css";
 import "highlight.js/styles/github-dark-dimmed.css";
 import NavBar from "@/components/NavBar";
 
-import {
-    Inconsolata,
-    Cascadia_Code,
-    IBM_Plex_Sans,
-    Inter,
-    Literata,
-} from "next/font/google";
+import localFont from "next/font/local";
 import { cn } from "@/lib/cn";
 import { Person, WithContext } from "schema-dts";
-import FontToggle from "@/components/FontToggle";
 
 import serialize from "serialize-javascript";
 
@@ -82,31 +75,23 @@ const jsonLd: WithContext<Person> = {
     sameAs: ["https://github.com/Lucino772"],
 };
 
-const inconsolata = Inconsolata({
+const inconsolata = localFont({
+    src: "../fonts/inconsolata-latin.woff2",
     variable: "--font-inconsolata",
-    subsets: ["latin"],
     display: "swap",
+    weight: "200 900",
 });
-const cascadiaCode = Cascadia_Code({
+const cascadiaCode = localFont({
+    src: "../fonts/cascadia-code-latin.woff2",
     variable: "--font-cascadia-code",
-    subsets: ["latin"],
     display: "swap",
+    weight: "200 700",
 });
-const ibmPlexSans = IBM_Plex_Sans({
-    variable: "--font-ibm-plex-sans",
-    subsets: ["latin"],
-    display: "swap",
-    weight: ["400", "600"],
-});
-const inter = Inter({
-    variable: "--font-inter",
-    subsets: ["latin"],
-    display: "swap",
-});
-const literata = Literata({
+const literata = localFont({
+    src: "../fonts/literata-latin.woff2",
     variable: "--font-literata",
-    subsets: ["latin"],
     display: "swap",
+    weight: "200 900",
 });
 
 export default async function RootLayout({
@@ -121,8 +106,6 @@ export default async function RootLayout({
                 "dark antialiased",
                 inconsolata.variable,
                 cascadiaCode.variable,
-                ibmPlexSans.variable,
-                inter.variable,
                 literata.variable,
             )}
         >
@@ -137,7 +120,6 @@ export default async function RootLayout({
                     <NavBar />
                     {children}
                 </div>
-                <FontToggle />
             </body>
         </html>
     );

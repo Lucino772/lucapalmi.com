@@ -17,26 +17,22 @@
     --font-content: var(--font-inconsolata);
 }
 
-html[data-body-font="plex"] .prose {
-    font-family: var(--font-ibm-plex-sans);
-}
-
-html[data-body-font="inter"] .prose {
-    font-family: var(--font-inter);
-}
-
-html[data-body-font="literata"] .prose {
+.prose {
     font-family: var(--font-literata);
 }
 
 /* Keep chrome inside articles (dates, tags, covers) in the site font,
    except elements opting back in via .follow-body-font */
-html[data-body-font]
-    .prose
+.prose
     :where(.not-prose, .not-prose *):not(
         :where(.follow-body-font, .follow-body-font *)
     ) {
     font-family: var(--font-inconsolata);
+}
+
+.prose .follow-body-font,
+.prose .follow-body-font * {
+    font-family: var(--font-literata);
 }
 
 /*
