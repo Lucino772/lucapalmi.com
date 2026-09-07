@@ -3,7 +3,7 @@ import "./globals.css";
 import "highlight.js/styles/github-dark-dimmed.css";
 import NavBar from "@/components/NavBar";
 
-import { Inconsolata, Cascadia_Code } from "next/font/google";
+import localFont from "next/font/local";
 import { cn } from "@/lib/cn";
 import { Person, WithContext } from "schema-dts";
 
@@ -75,15 +75,23 @@ const jsonLd: WithContext<Person> = {
     sameAs: ["https://github.com/Lucino772"],
 };
 
-const inconsolata = Inconsolata({
+const inconsolata = localFont({
+    src: "../fonts/inconsolata-latin.woff2",
     variable: "--font-inconsolata",
-    subsets: ["latin"],
     display: "swap",
+    weight: "200 900",
 });
-const cascadiaCode = Cascadia_Code({
+const cascadiaCode = localFont({
+    src: "../fonts/cascadia-code-latin.woff2",
     variable: "--font-cascadia-code",
-    subsets: ["latin"],
     display: "swap",
+    weight: "200 700",
+});
+const literata = localFont({
+    src: "../fonts/literata-latin.woff2",
+    variable: "--font-literata",
+    display: "swap",
+    weight: "200 900",
 });
 
 export default async function RootLayout({
@@ -98,6 +106,7 @@ export default async function RootLayout({
                 "dark antialiased",
                 inconsolata.variable,
                 cascadiaCode.variable,
+                literata.variable,
             )}
         >
             <head>

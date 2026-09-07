@@ -17,6 +17,24 @@
     --font-content: var(--font-inconsolata);
 }
 
+.prose {
+    font-family: var(--font-literata);
+}
+
+/* Keep chrome inside articles (dates, tags, covers) in the site font,
+   except elements opting back in via .follow-body-font */
+.prose
+    :where(.not-prose, .not-prose *):not(
+        :where(.follow-body-font, .follow-body-font *)
+    ) {
+    font-family: var(--font-inconsolata);
+}
+
+.prose .follow-body-font,
+.prose .follow-body-font * {
+    font-family: var(--font-literata);
+}
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
