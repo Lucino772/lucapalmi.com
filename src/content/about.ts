@@ -26,6 +26,10 @@ export const about = {
         ],
         personal: ["Cooking", "Travelling", "Improving the things around me"],
     },
+    // Home page pointers: the flagship project (projects.json title) and an
+    // optional pinned article slug shown instead of the latest one
+    flagshipProject: "qtcompose",
+    pinnedArticle: undefined as string | undefined,
     links: {
         github: "https://github.com/Lucino772",
         linkedin: "https://www.linkedin.com/in/luca-palmisano-1920aa1b6/",

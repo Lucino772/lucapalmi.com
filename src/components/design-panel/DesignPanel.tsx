@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/cn";
-import { useHomeLayout, type HomeLayout } from "@/components/home-layout";
+import { HOME_LAYOUTS, useHomeLayout } from "@/components/home-layout";
 import {
     STORAGE_PREFIX,
     devtoolsEnabled,
@@ -128,19 +128,17 @@ export function DesignPanel({
                     <fieldset className="mb-3 flex flex-col gap-1">
                         <legend className="mb-1 font-semibold">Home</legend>
                         <div className="flex gap-1">
-                            {(["scroll", "fit"] as HomeLayout[]).map(
-                                (option) => (
-                                    <button
-                                        key={option}
-                                        type="button"
-                                        aria-pressed={layout === option}
-                                        onClick={() => setLayout(option)}
-                                        className="flex-1 cursor-pointer rounded border px-2 py-1 capitalize aria-pressed:font-semibold"
-                                    >
-                                        {option}
-                                    </button>
-                                ),
-                            )}
+                            {HOME_LAYOUTS.map((option) => (
+                                <button
+                                    key={option}
+                                    type="button"
+                                    aria-pressed={layout === option}
+                                    onClick={() => setLayout(option)}
+                                    className="flex-1 cursor-pointer rounded border px-2 py-1 capitalize aria-pressed:font-semibold"
+                                >
+                                    {option}
+                                </button>
+                            ))}
                         </div>
                     </fieldset>
                     {groups.map((group) => (

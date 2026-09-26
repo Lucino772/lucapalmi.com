@@ -6,16 +6,18 @@ import { cn } from "@/lib/cn";
 
 /**
  * Two candidate home page layouts, under evaluation:
- * - "scroll": the full home page with sections below the fold
  * - "fit": a single-screen home page that never scrolls on typical viewports
+ * - "fit-first": the same first screen, followed by a short timeless section
  *
  * The active layout is exposed as `data-home-layout` on <html> so each design
  * can switch with CSS. Only the default applies in production; the override
  * (query param, localStorage, toggle) is a development review aid.
  */
-export type HomeLayout = "scroll" | "fit";
+export type HomeLayout = "fit" | "fit-first";
 
-export const DEFAULT_HOME_LAYOUT: HomeLayout = "scroll";
+export const HOME_LAYOUTS: HomeLayout[] = ["fit", "fit-first"];
+
+export const DEFAULT_HOME_LAYOUT: HomeLayout = "fit";
 
 const STORAGE_KEY = "home-layout";
 const ATTRIBUTE = "data-home-layout";
@@ -23,7 +25,7 @@ const allowOverride = process.env.NODE_ENV !== "production";
 
 // Runs before first paint so the chosen layout never flashes
 export const homeLayoutScript = allowOverride
-    ? `(function(){try{var v=new URLSearchParams(location.search).get("home");if(v==="fit"||v==="scroll"){localStorage.setItem("${STORAGE_KEY}",v)}else{v=localStorage.getItem("${STORAGE_KEY}")}if(v!=="fit"&&v!=="scroll"){v="${DEFAULT_HOME_LAYOUT}"}document.documentElement.setAttribute("${ATTRIBUTE}",v)}catch(e){document.documentElement.setAttribute("${ATTRIBUTE}","${DEFAULT_HOME_LAYOUT}")}})()`
+    ? `(function(){try{var v=new URLSearchParams(location.search).get("home");if(v==="fit"||v==="fit-first"){localStorage.setItem("${STORAGE_KEY}",v)}else{v=localStorage.getItem("${STORAGE_KEY}")}if(v!=="fit"&&v!=="fit-first"){v="${DEFAULT_HOME_LAYOUT}"}document.documentElement.setAttribute("${ATTRIBUTE}",v)}catch(e){document.documentElement.setAttribute("${ATTRIBUTE}","${DEFAULT_HOME_LAYOUT}")}})()`
     : `document.documentElement.setAttribute("${ATTRIBUTE}","${DEFAULT_HOME_LAYOUT}")`;
 
 function subscribe(callback: () => void) {
@@ -36,9 +38,9 @@ function subscribe(callback: () => void) {
 }
 
 function getLayout(): HomeLayout {
-    return document.documentElement.getAttribute(ATTRIBUTE) === "fit"
-        ? "fit"
-        : "scroll";
+    return document.documentElement.getAttribute(ATTRIBUTE) === "fit-first"
+        ? "fit-first"
+        : "fit";
 }
 
 export function useHomeLayout() {
@@ -80,7 +82,7 @@ export function HomeLayoutToggle({ className }: { className?: string }) {
                 className,
             )}
         >
-            {(["scroll", "fit"] as const).map((option) => (
+            {HOME_LAYOUTS.map((option) => (
                 <button
                     key={option}
                     type="button"
