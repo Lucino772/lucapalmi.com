@@ -130,7 +130,7 @@ affordance, active underline drawn inside the tab). From `md` up it is
 - **Literata** (self-hosted, mandatory): article prose and subtitles.
 
 Scale (px, 1.25-ish, deliberately tight): 13 · 14 · 16 · 18 · 22 · 28 · 40.
-Prose: Literata 18 px / 1.75 on desktop, 17 px on mobile, measure ≤ 68ch.
+Prose: Literata 18 px / 1.75 on desktop, 17 px on mobile, measure 726px (~74ch).
 Tabular numerals everywhere dates and years line up.
 
 ## Spacing and grid
@@ -234,12 +234,13 @@ button. On mobile the `~/writing` title stays put and the tabs scroll
 horizontally beside it, fading out at the right edge to show there is more.
 
 **Article layout (one template for everything).** One centred column, nothing beside
-it. The header sits on the 40rem measure: `../writing` back link, then a meta
+it. The measure is 726px (45.375rem, shared across variants; Literata 18px,
+about 74 characters per line); the header sits on it: `../writing` back link, then a meta
 line set like a timeline entry (`2026-01-02  6 min read`), the 40px title, the
 Literata italic subtitle, and topics as accent links to `/articles?topic=`.
-Technology tags stay as quiet `#tag` text in the end matter. Prose is Literata on a 40rem
-measure (~70ch). The cover breaks out symmetrically to 52rem, and code blocks
-break out 2.5rem on each side from 1024px up; both stay centred. The article
+Technology tags stay as quiet `#tag` text in the end matter. Prose is Literata on the same 726px measure. The cover breaks out symmetrically to 52rem, and code blocks
+break out 20px on each side from 768px up (766px); both stay centred. On
+phones prose uses the full content width (24px side padding, 342px at 390) and code blocks run full-bleed with their text on the prose edge. The article
 ends with a hairline and `../writing` / `Back to top`. (The first version put
 the file info in a left gutter; it became an empty column on long articles, so
 it moved into the header.)
@@ -252,7 +253,7 @@ rounded tick per section. Upcoming ticks are `faint` at 45 %, passed ones
 while the reader is in the article body. On hover or focus-within, the rail
 gets a `bg` panel with a hairline border and 6px radius, and section titles
 appear right-aligned next to their ticks (Inconsolata 13px, up to 2 lines,
-12rem wide below 1440px and 15rem above, so the panel clears code blocks at
+11.5rem wide below 1440px and 15rem above, so the panel clears code blocks at
 1280). Links are real anchors with `aria-current="location"`; headings get
 `scroll-margin-top` so they land below the sticky header.
 

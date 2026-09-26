@@ -32,8 +32,8 @@ export default function SectionRail() {
                                 <span
                                     className={cn(
                                         "sr-only text-right text-[0.8125rem] leading-5",
-                                        "group-focus-within:not-sr-only group-focus-within:line-clamp-2 group-focus-within:max-w-[12rem] group-focus-within:animate-[fade_150ms_ease-out] min-[1440px]:group-focus-within:max-w-[15rem]",
-                                        "group-hover:not-sr-only group-hover:line-clamp-2 group-hover:max-w-[12rem] group-hover:animate-[fade_150ms_ease-out] min-[1440px]:group-hover:max-w-[15rem]",
+                                        "group-focus-within:not-sr-only group-focus-within:line-clamp-2 group-focus-within:max-w-[11.5rem] group-focus-within:animate-[fade_150ms_ease-out] min-[1440px]:group-focus-within:max-w-[15rem]",
+                                        "group-hover:not-sr-only group-hover:line-clamp-2 group-hover:max-w-[11.5rem] group-hover:animate-[fade_150ms_ease-out] min-[1440px]:group-hover:max-w-[15rem]",
                                         active
                                             ? "text-fg"
                                             : "text-muted hover:text-fg",

@@ -41,7 +41,7 @@
     --text-2xs--line-height: 1.25rem;
 
     --container-page: 70rem;
-    --container-measure: 40rem;
+    --container-measure: 45.375rem; /* 726px, shared across variants */
 }
 
 .dark {
@@ -309,10 +309,25 @@ html[data-surfaces="current"].dark {
     min-width: 100%;
 }
 
-/* Code breaks out of the measure a little, symmetrically */
-@media (min-width: 64rem) {
+/* Code breaks out of the 726px measure by 20px each side (766px); on
+   phones it runs full-bleed, edge to edge */
+@media (min-width: 48rem) {
     .prose :where(pre):not(:where(.not-prose *)) {
-        margin-inline: -2.5rem;
+        margin-inline: -1.25rem;
+    }
+}
+
+@media (max-width: 47.999rem) {
+    .prose :where(pre):not(:where(.not-prose *)) {
+        margin-inline: -1.5rem;
+        border-radius: 0;
+        border-inline-width: 0;
+    }
+
+    /* Keep the code and its language label on the text's left edge */
+    .prose :where(pre code):not(:where(.not-prose *)),
+    .prose pre::before {
+        padding-inline: 1.5rem;
     }
 }
 

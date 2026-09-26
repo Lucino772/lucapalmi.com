@@ -58,8 +58,8 @@ export default async function Page({
     const minutes = readingMinutes(article.readingTime);
 
     return (
-        <article className="w-full px-5 pt-8 pb-20 md:px-6 md:pt-14 md:pb-28">
-            <header className="fade-in mx-auto max-w-[40rem]">
+        <article className="w-full px-6 pt-8 pb-20 md:px-6 md:pt-14 md:pb-28">
+            <header className="fade-in max-w-measure mx-auto">
                 <Link
                     href="/articles"
                     className="text-faint hover:text-accent-text text-[0.875rem] transition-colors duration-150"
@@ -112,7 +112,7 @@ export default async function Page({
                         />
                     </div>
                     {article.cover.kind === "ai-generated" && (
-                        <figcaption className="mx-auto mt-3 max-w-[40rem]">
+                        <figcaption className="max-w-measure mx-auto mt-3">
                             <AiImageDescription prompt={article.cover.prompt} />
                         </figcaption>
                     )}
@@ -123,7 +123,7 @@ export default async function Page({
                 <Content />
             </div>
 
-            <footer className="border-line text-muted mx-auto mt-16 max-w-[40rem] border-t pt-6 text-[0.875rem]">
+            <footer className="border-line text-muted max-w-measure mx-auto mt-16 border-t pt-6 text-[0.875rem]">
                 <ul
                     aria-label="Tags"
                     className="text-faint mb-5 flex flex-wrap gap-x-[1.5ch] text-[0.8125rem]"
