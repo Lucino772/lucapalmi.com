@@ -8,8 +8,8 @@ const quietLink =
     "hover:text-accent-text decoration-transparent underline underline-offset-4 transition-colors duration-150 hover:decoration-current";
 
 // A timeless calling card, exactly one screen: whoami, headline, "I tend to"
-// and an `ls` of writing/ and projects/. "fit-first" currently renders the
-// same as "fit": its below-the-fold section is gone (decision pending).
+// and an `ls` of writing/ and projects/ beside the self-drawing portrait.
+
 export default async function Index() {
     const log = await getWritingLog();
     const article =

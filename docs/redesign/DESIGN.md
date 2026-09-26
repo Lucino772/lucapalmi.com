@@ -182,9 +182,8 @@ its repo.
 Exactly one screen (`min-height: calc(100svh - header)`, content vertically
 centred with symmetric padding, footer hidden). The drawing sits on the right
 (height `min(62svh, 40rem)`); on phones it sits above the whoami block at
-18svh. `fit-first` (design panel, Home) currently renders the same as `fit`:
-its below-the-fold section held the hobbies, and a decision on retiring it
-is pending.
+18svh. This is the only home layout: the earlier scrolling and fit-first
+variants and their switch are retired.
 
 **Page titles (Writing, Projects).** No hero, kicker or intro paragraph; the
 intro sentences live only in each page's `metadata.description`. The `<h1>`
@@ -299,13 +298,12 @@ window with a component tree (one blue node), `package` stacked module boxes
 `cd ~`, `cd ~/writing`, `cd ~/projects` as real links.
 
 **Footer.** A quiet status-bar strip: `© year Luca Palmisano` on the left,
-GitHub and LinkedIn on the right. Hidden on the `fit` home.
+GitHub and LinkedIn on the right. Hidden on the home page, which is one screen.
 
 ## Design panel (development only)
 
 A "Design" button bottom-right opens the shared review panel (surfaces in
-the editor palette: `raised`, `line`, Inconsolata). It also holds the
-Fit/Fit-first home switch. Every control defaults to the current look, and CSS
+the editor palette: `raised`, `line`, Inconsolata). Every control defaults to the current look, and CSS
 carries the defaults as `var()` fallbacks, so production, which has no panel
 and no script, renders exactly the defaults.
 
@@ -320,8 +318,8 @@ and no script, renders exactly the defaults.
 | Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                       | 176px       |
 | Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                        | 17px        |
 | Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px                         | 16px        |
-| Home         | Headline size          | `--home-headline-size` (scroll ≥768px; caps the fit clamp)                | 28–56px                        | 40px        |
-| Home         | Drawing size (%)       | `--home-drawing-size` (width in scroll, height in fit)                    | 50–110                         | 100         |
+| Home         | Headline size          | `--home-headline-size` (caps the svh clamp from 768px)                    | 28–56px                        | 40px        |
+| Home         | Drawing size (%)       | `--home-drawing-size` (scales the drawing height)                         | 50–110                         | 100         |
 | Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static               | draw in     |
 | Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                          | 100         |
 
