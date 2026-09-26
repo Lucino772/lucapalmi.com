@@ -54,10 +54,13 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
         ...available,
     ];
 
-    // Centred by default; the design panel can switch it back to the left
+    // The bar spans the page container; only the timeline is centred. The
+    // design panel can pin the list left or shrink the bar to the list width.
+    const column =
+        "writing-left:mx-0! writing-bar-list:max-w-[61rem] mx-auto w-full max-w-[48rem]";
     return (
-        <div className="writing-left:mx-0 mx-auto flex w-full max-w-[58rem] flex-col gap-10">
-            <div>
+        <div className="flex flex-col gap-10">
+            <div className="writing-bar-list:mx-auto writing-bar-list:max-w-[61rem] writing-left:mx-0! w-full">
                 {/* The page title is the path in the tab bar, like an editor's
                     breadcrumb, followed by the topic tabs */}
                 <div className="border-line -mx-5 flex items-start border-b pl-5 md:mx-0 md:pl-0">
@@ -85,8 +88,8 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                                     aria-pressed={active}
                                     onClick={() => selectTopic(filter.id)}
                                     className={cn(
-                                        "relative flex shrink-0 cursor-pointer items-baseline gap-1.5 px-2.5 pt-1 pb-3 text-[0.9375rem] whitespace-nowrap transition-colors duration-150 focus-visible:outline-offset-[-2px]",
-                                        "after:absolute after:inset-x-2.5 after:-bottom-px after:h-0.5 after:content-['']",
+                                        "relative flex shrink-0 cursor-pointer items-baseline gap-2 px-3 pt-1 pb-3 text-[0.9375rem] whitespace-nowrap transition-colors duration-150 focus-visible:outline-offset-[-2px]",
+                                        "after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:content-['']",
                                         active
                                             ? "text-fg after:bg-accent"
                                             : "text-muted hover:text-fg",
@@ -108,54 +111,56 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                 </p>
             </div>
 
-            {visible.length === 0 ? (
-                <div className="text-muted text-[0.9375rem] leading-7">
-                    <p>Nothing filed under {label} yet.</p>
-                    <button
-                        type="button"
-                        onClick={() => selectTopic(null)}
-                        className="text-accent-text mt-1 cursor-pointer underline decoration-current/40 underline-offset-4 hover:decoration-current"
-                    >
-                        Show all writing
-                    </button>
-                </div>
-            ) : (
-                // One spine for the whole timeline, like `git log --graph`
-                <div className="relative">
-                    <span
-                        aria-hidden
-                        className="bg-line absolute top-2 bottom-2 left-[3.5px] w-px"
-                    />
-                    {years.map((year) => (
-                        <section
-                            key={year}
-                            aria-labelledby={`year-${year}`}
-                            className="relative pb-6 last:pb-0"
+            <div className={column}>
+                {visible.length === 0 ? (
+                    <div className="text-muted text-[0.9375rem] leading-7">
+                        <p>Nothing filed under {label} yet.</p>
+                        <button
+                            type="button"
+                            onClick={() => selectTopic(null)}
+                            className="text-accent-text mt-1 cursor-pointer underline decoration-current/40 underline-offset-4 hover:decoration-current"
                         >
-                            <h2
-                                id={`year-${year}`}
-                                className="flex items-center gap-4 pb-2 text-[0.9375rem] leading-7 font-semibold tabular-nums"
+                            Show all writing
+                        </button>
+                    </div>
+                ) : (
+                    // One spine for the whole timeline, like `git log --graph`
+                    <div className="relative">
+                        <span
+                            aria-hidden
+                            className="bg-line absolute top-2 bottom-2 left-[3.5px] w-px"
+                        />
+                        {years.map((year) => (
+                            <section
+                                key={year}
+                                aria-labelledby={`year-${year}`}
+                                className="relative pb-6 last:pb-0"
                             >
-                                <span
-                                    aria-hidden
-                                    className="bg-accent ring-bg relative size-2 ring-4"
-                                />
-                                {year}
-                            </h2>
-                            <ol>
-                                {visible
-                                    .filter((e) => e.year === year)
-                                    .map((entry) => (
-                                        <TimelineEntry
-                                            key={entry.slug}
-                                            entry={entry}
-                                        />
-                                    ))}
-                            </ol>
-                        </section>
-                    ))}
-                </div>
-            )}
+                                <h2
+                                    id={`year-${year}`}
+                                    className="flex items-center gap-4 pb-2 text-[0.9375rem] leading-7 font-semibold tabular-nums"
+                                >
+                                    <span
+                                        aria-hidden
+                                        className="bg-accent ring-bg relative size-2 ring-4"
+                                    />
+                                    {year}
+                                </h2>
+                                <ol>
+                                    {visible
+                                        .filter((e) => e.year === year)
+                                        .map((entry) => (
+                                            <TimelineEntry
+                                                key={entry.slug}
+                                                entry={entry}
+                                            />
+                                        ))}
+                                </ol>
+                            </section>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

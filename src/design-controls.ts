@@ -18,6 +18,18 @@ export const designControls: DesignControl[] = [
         default: "center",
     },
     {
+        type: "choice",
+        key: "writing-bar",
+        label: "Filter bar",
+        group: "Writing list",
+        attribute: "data-writing-bar",
+        options: [
+            { value: "page", label: "Page width" },
+            { value: "list", label: "List width" },
+        ],
+        default: "page",
+    },
+    {
         type: "range",
         key: "writing-thumb-width",
         label: "Thumbnail width",

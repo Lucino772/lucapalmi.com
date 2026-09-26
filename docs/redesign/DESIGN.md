@@ -158,12 +158,13 @@ sits in the gutter on the same line as the `ls -l` column headers
 next to the first row. Neither costs any extra height: the first timeline
 entry starts ~175px below the nav, the first project ~105px.
 
-**Writing (`/articles`).** Centred on the page by default: one 58rem column
-holds the `~/writing` + topic-tab row and the timeline, so the filter bar is
-width-matched and lined up with the list, and all eight topic tabs fit on
-one row from 1024px up. `html[data-writing-align="left"]` (design panel)
-pins the column to the left edge of the page container instead; without the
-attribute the page is centred. A timeline in the language of
+**Writing (`/articles`).** The `~/writing` + topic-tab row spans the normal
+page container (title on the logo's left edge, tabs on one row at 1280 and
+1440, original tab padding); only the timeline below is centred, in a 48rem
+column. Design panel: `data-writing-align="left"` pins the list to the left
+edge; `data-writing-bar="list"` restores the earlier variant where bar and
+list share one 61rem column (centred, or left with the list). Without the
+attributes you get the defaults: page-width bar, centred list. A timeline in the language of
 `git log --graph`.
 One hairline spine runs down the left; each year is a small filled accent
 square on the spine followed by the year, and each entry hangs off the

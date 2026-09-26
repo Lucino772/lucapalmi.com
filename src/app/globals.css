@@ -4,6 +4,7 @@
 @custom-variant fit (&:where([data-home-layout="fit"] *));
 /* Design-panel overrides: only non-default values have a selector */
 @custom-variant writing-left (&:where([data-writing-align="left"] *));
+@custom-variant writing-bar-list (&:where([data-writing-bar="list"] *));
 @plugin "@tailwindcss/typography";
 
 /* Light values here, dark overrides under .dark below */
