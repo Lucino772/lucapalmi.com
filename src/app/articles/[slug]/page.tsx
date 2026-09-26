@@ -123,7 +123,7 @@ export default async function Page({
                 <Content />
             </div>
 
-            <footer className="border-line text-muted max-w-measure mx-auto mt-16 border-t pt-6 text-[0.875rem]">
+            <footer className="text-muted max-w-measure mx-auto mt-20 text-[0.875rem]">
                 <ul
                     aria-label="Tags"
                     className="text-faint mb-5 flex flex-wrap gap-x-[1.5ch] text-[0.8125rem]"

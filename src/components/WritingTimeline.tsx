@@ -63,7 +63,7 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
             <div className="writing-bar-list:mx-auto writing-bar-list:max-w-[61rem] writing-left:mx-0! w-full">
                 {/* The page title is the path in the tab bar, like an editor's
                     breadcrumb, followed by the topic tabs */}
-                <div className="border-line -mx-5 flex items-start border-b pl-5 md:mx-0 md:pl-0">
+                <div className="-mx-5 flex items-start pl-5 md:mx-0 md:pl-0">
                     <h1 className="shrink-0 pt-1 pb-3 text-[0.9375rem] font-semibold">
                         <span aria-hidden className="text-faint font-normal">
                             ~/
@@ -89,7 +89,7 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                                     onClick={() => selectTopic(filter.id)}
                                     className={cn(
                                         "relative flex shrink-0 cursor-pointer items-baseline gap-2 px-3 pt-1 pb-3 text-[0.9375rem] whitespace-nowrap transition-colors duration-150 focus-visible:outline-offset-[-2px]",
-                                        "after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:content-[''] md:after:-bottom-px",
+                                        "after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:content-['']",
                                         active
                                             ? "text-fg after:bg-accent"
                                             : "text-muted hover:text-fg",

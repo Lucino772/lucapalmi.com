@@ -166,6 +166,16 @@ Tabular numerals everywhere dates and years line up.
 - Log rows use a fixed column grid: `date 10ch | title 1fr | minutes`.
 - Radius: 6 px on code blocks and menus, 3 px on small chips, 0 on rows.
 
+## Lines
+
+Lines belong to window-like elements only: the nav bar's bottom border,
+project panes (tab strip, status bar), code blocks, callouts, the 404
+terminal box, the mobile menu panel edge, and the open section-rail panel.
+Page and section labels (`~/writing`, `~/projects`, "Smaller things", the
+article end matter, mobile menu items) rely on type and spacing. The one
+exception is the article h2 rule with its blue tick, because headings are
+content, not chrome.
+
 ## Pages
 
 **Nav.** Wordmark `luca palmisano` left. Right: `writing`, `projects` as
@@ -287,7 +297,7 @@ appear right-aligned next to their ticks (Inconsolata 13px, up to 2 lines,
 `~/writing`), then the featured projects with a clearly heavier treatment
 than the compact `ls`-style "Smaller things" table below (larger gap before
 it: 80/112px). "Smaller things" sits on top of its list in the same bar
-grammar (`Smaller things │ 8 projects` over a hairline), and the list runs
+grammar (`Smaller things │ 8 projects`, no rule), and the list runs
 the full container width, on the featured panes' left edge. Rows share one
 column template through subgrid (`11rem | 1fr | 4ch | 9ch`): name (semibold,
 the only link to the repo: accent + underline on hover, focus ring), muted description, faint right-aligned

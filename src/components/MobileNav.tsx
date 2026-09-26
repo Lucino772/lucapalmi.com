@@ -47,7 +47,7 @@ export default function MobileNav({ open, close }: Props) {
                                     onClick={close}
                                     aria-current={active ? "page" : undefined}
                                     className={cn(
-                                        "border-line flex items-baseline justify-between border-b py-3.5 text-lg",
+                                        "flex items-baseline justify-between py-3 text-lg",
                                         active ? "text-fg" : "text-muted",
                                     )}
                                 >

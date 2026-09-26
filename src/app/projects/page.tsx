@@ -18,8 +18,8 @@ export default async function Projects() {
         <div className="max-w-page mx-auto w-full px-5 pt-6 pb-12 md:px-6 md:pt-10 md:pb-24">
             <div className="flex flex-col gap-20 md:gap-28">
                 <section aria-labelledby="featured">
-                    {/* Path bar, the same row grammar as ~/writing */}
-                    <div className="border-line mb-8 flex items-baseline gap-4 border-b pb-3 md:mb-10">
+                    {/* Path title; lines are kept for window-like elements */}
+                    <div className="mb-6 md:mb-8">
                         <h1 className="text-[0.9375rem] font-semibold">
                             <span
                                 aria-hidden
@@ -29,15 +29,8 @@ export default async function Projects() {
                             </span>
                             projects
                         </h1>
-                        <span
-                            aria-hidden
-                            className="bg-line h-4 w-px self-center"
-                        />
-                        <h2
-                            id="featured"
-                            className="text-muted text-[0.9375rem]"
-                        >
-                            Featured
+                        <h2 id="featured" className="sr-only">
+                            Featured projects
                         </h2>
                     </div>
                     <FeaturedProjects projects={projects.featured} />
@@ -45,7 +38,7 @@ export default async function Projects() {
 
                 <section aria-labelledby="more">
                     {/* Label on top, same bar grammar as ~/projects */}
-                    <div className="border-line mb-4 flex items-baseline gap-4 border-b pb-3">
+                    <div className="mb-3 flex items-baseline gap-4">
                         <h2
                             id="more"
                             className="text-[0.9375rem] font-semibold"
