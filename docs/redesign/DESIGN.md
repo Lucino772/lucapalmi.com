@@ -136,7 +136,7 @@ Article headings are Inconsolata bold (700), no prefix characters: h2 at
 measure and a short 2px royal-blue segment at its start (the editor-tab
 accent edge); h3 at 1.15em, 700, 0.8em below, without a rule. Both keep
 `scroll-margin-top` for the section rail. The design panel's "Article
-headings" group tunes `--h2-size` (18–36px, 26), `--h2-weight` (400–800, 700) and `--h2-space-below` (8–48px, 26).
+headings" group tunes `--h2-size` (18–36px, 26), `--h2-weight` (400–800, 700), `--h2-space-below` (8–48px, 26) and `--h3-size` (14–28px, 20.7), and offers "Heading font": Inconsolata (default) or "Sans (V4)", IBM Plex Sans 600 on h2/h3 (`data-heading-font="sans"`, self-hosted, not preloaded; the weight slider still applies).
 Tabular numerals everywhere dates and years line up.
 
 ## Spacing and grid
@@ -313,6 +313,8 @@ and no script, renders exactly the defaults.
 | Writing list     | Filter bar                     | `data-writing-bar`                                                        | page width / list width    | page width        |
 | Chrome           | Theme toggle                   | `data-theme-toggle`                                                       | wall switch / sun-moon     | wall switch       |
 | Article headings | H2 size / weight / space below | `--h2-size`, `--h2-weight`, `--h2-space-below`                            | 18–36px / 400–800 / 8–48px | 26px / 700 / 26px |
+| Article headings | Heading font                   | `data-heading-font`                                                       | own / sans (IBM Plex Sans) | own               |
+| Article headings | H3 size                        | `--h3-size`                                                               | 14–28px                    | 20.7px            |
 | Colour           | Surfaces                       | `data-surfaces`                                                           | paper / cool / current     | warm paper        |
 | Writing list     | Fallback thumbnail             | `data-thumb-style`                                                        | ink sketch / code pane     | ink sketch        |
 | Writing list     | Thumbnail width                | `--writing-thumb-width` (mobile half)                                     | 96–280px                   | 176px             |
