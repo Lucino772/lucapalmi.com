@@ -2,13 +2,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { projects } from "@/lib/projects";
 import { toSorted } from "@/lib/utils";
-import PageHeader from "@/components/PageHeader";
 import ProjectRows from "@/components/ProjectRows";
 
 export const metadata: Metadata = {
     title: "Projects | Luca Palmisano",
     description:
-        "Infrastructure, developer tools, desktop apps and packages built by Luca Palmisano.",
+        "What I build when nobody asks: infrastructure, developer tools, desktop apps and small packages. Almost all of it is open source.",
     alternates: { canonical: "https://lucapalmi.com/projects" },
 };
 
@@ -16,26 +15,31 @@ export default async function Projects() {
     const others = toSorted(projects.others, (p) => p.year, false);
 
     return (
-        <div className="max-w-page mx-auto w-full px-5 pb-20 md:px-6 md:pb-28">
-            <PageHeader path="~/projects" title="Projects">
-                <p>
-                    What I build when nobody asks: infrastructure, developer
-                    tools, desktop apps and small packages. Almost all of it is
-                    open source.
-                </p>
-            </PageHeader>
-
+        <div className="max-w-page mx-auto w-full px-5 pt-6 pb-20 md:px-6 md:pt-10 md:pb-28">
             <div className="flex flex-col gap-16 md:gap-20">
                 <section
                     aria-labelledby="featured"
                     className="grid gap-x-10 gap-y-4 md:grid-cols-[12rem_minmax(0,1fr)]"
                 >
-                    <h2
-                        id="featured"
-                        className="text-[0.9375rem] leading-7 font-semibold md:pt-8"
-                    >
-                        Featured
-                    </h2>
+                    {/* The title sits in the gutter, on the line of the
+                        column headers, like the path above an ls -l */}
+                    <div className="flex items-baseline gap-4 md:block">
+                        <h1 className="text-[0.9375rem] leading-5 font-semibold">
+                            <span
+                                aria-hidden
+                                className="text-faint font-normal"
+                            >
+                                ~/
+                            </span>
+                            projects
+                        </h1>
+                        <h2
+                            id="featured"
+                            className="text-muted text-[0.9375rem] leading-7 md:mt-[1.625rem]"
+                        >
+                            Featured
+                        </h2>
+                    </div>
                     <div className="min-w-0">
                         <div
                             aria-hidden
@@ -57,7 +61,7 @@ export default async function Projects() {
                 >
                     <h2
                         id="more"
-                        className="text-[0.9375rem] leading-7 font-semibold md:pt-2"
+                        className="text-muted text-[0.9375rem] leading-7 md:pt-2"
                     >
                         Smaller things
                     </h2>

@@ -115,6 +115,16 @@ path-style links, socials, theme toggle. Escape and route change close it.
 Every entry gets the same row: date, semibold title with a Literata italic
 subtitle, reading time. (No essay/note distinction anywhere in the UI.)
 
+**Page titles (Writing, Projects).** No hero, kicker or intro paragraph; the
+intro sentences live only in each page's `metadata.description`. The `<h1>`
+is the page's path, set the way an editor shows the current folder:
+`~/writing` sits at the left of the topic tab bar, split from the tabs by a
+short vertical hairline, so the title and filters are one row. `~/projects`
+sits in the gutter on the same line as the `ls -l` column headers
+(`status year name description type`), with the "Featured" label below it
+next to the first row. Neither costs any extra height: the first timeline
+entry starts ~175px below the nav, the first project ~105px.
+
 **Writing (`/articles`).** A timeline in the language of `git log --graph`.
 One hairline spine runs down the left; each year is a small filled accent
 square on the spine followed by the year, and each entry hangs off the
@@ -134,10 +144,12 @@ _Topic filter_: "All" plus every topic with at least one visible article,
 each with its count, styled like the nav's editor tabs (`aria-pressed`
 buttons). The selection is read from `?topic=` on the client through
 `useSyncExternalStore` and written back with `history.replaceState`, so the
-page stays statically prerendered and shows everything without JS. An
-`aria-live` line reports "2 of 6 filed under Architecture"; empty years are
+page stays statically prerendered and shows everything without JS. A
+visually hidden `aria-live` line announces "2 of 6 filed under
+Architecture"; there is no visible count or sort caption. Empty years are
 hidden; an unknown topic gets an empty state with a "Show all writing"
-button. On mobile the filter scrolls horizontally.
+button. On mobile the `~/writing` title stays put and the tabs scroll
+horizontally beside it, fading out at the right edge to show there is more.
 
 **Article layout (one template for everything).** One centred column, nothing beside
 it. The header sits on the 40rem measure: `../writing` back link, then a meta
@@ -162,9 +174,9 @@ appear right-aligned next to their ticks (Inconsolata 13px, up to 2 lines,
 1280). Links are real anchors with `aria-current="location"`; headings get
 `scroll-margin-top` so they land below the sticky header.
 
-**Projects.** `~/projects` listing. Featured rows: status dot + status, year,
-name, description, tags, links (case study, source). Listed projects in a
-tighter table: year, name, one-liner.
+**Projects.** `~/projects` listing (title as above). Featured rows: status dot + status, year,
+name, description, tags, links (case study, source). Listed projects, under a
+"Smaller things" label in the gutter, in a tighter table: year, name, one-liner.
 
 **404.** A helpful "command not found": shows the requested path and offers
 `cd ~`, `cd ~/writing`, `cd ~/projects` as real links.

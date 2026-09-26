@@ -57,39 +57,50 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
     return (
         <div className="flex flex-col gap-10">
             <div>
-                <div
-                    role="group"
-                    aria-label="Filter by topic"
-                    className="border-line -mx-5 flex gap-1 overflow-x-auto border-b px-5 md:mx-0 md:flex-wrap md:px-0"
-                >
-                    {filters.map((filter) => {
-                        const active = filter.id === selected;
-                        return (
-                            <button
-                                key={filter.id ?? "all"}
-                                type="button"
-                                aria-pressed={active}
-                                onClick={() => selectTopic(filter.id)}
-                                className={cn(
-                                    "relative flex shrink-0 cursor-pointer items-baseline gap-2 px-3 pt-1 pb-3 text-[0.9375rem] whitespace-nowrap transition-colors duration-150 first:pl-0 first:after:left-0 focus-visible:outline-offset-[-2px]",
-                                    "after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:content-['']",
-                                    active
-                                        ? "text-fg after:bg-accent"
-                                        : "text-muted hover:text-fg",
-                                )}
-                            >
-                                {filter.label}
-                                <span className="text-faint text-[0.8125rem] tabular-nums">
-                                    {filter.count}
-                                </span>
-                            </button>
-                        );
-                    })}
+                {/* The page title is the path in the tab bar, like an editor's
+                    breadcrumb, followed by the topic tabs */}
+                <div className="border-line -mx-5 flex items-start border-b pl-5 md:mx-0 md:pl-0">
+                    <h1 className="shrink-0 pt-1 pb-3 text-[0.9375rem] font-semibold">
+                        <span aria-hidden className="text-faint font-normal">
+                            ~/
+                        </span>
+                        writing
+                    </h1>
+                    <span
+                        aria-hidden
+                        className="bg-line mt-1.5 ml-4 h-4 w-px shrink-0"
+                    />
+                    <div
+                        role="group"
+                        aria-label="Filter by topic"
+                        className="flex min-w-0 flex-1 gap-1 overflow-x-auto [mask-image:linear-gradient(to_right,black_calc(100%-2.5rem),transparent)] pr-8 pl-1 md:flex-wrap md:[mask-image:none] md:pr-0"
+                    >
+                        {filters.map((filter) => {
+                            const active = filter.id === selected;
+                            return (
+                                <button
+                                    key={filter.id ?? "all"}
+                                    type="button"
+                                    aria-pressed={active}
+                                    onClick={() => selectTopic(filter.id)}
+                                    className={cn(
+                                        "relative flex shrink-0 cursor-pointer items-baseline gap-2 px-3 pt-1 pb-3 text-[0.9375rem] whitespace-nowrap transition-colors duration-150 focus-visible:outline-offset-[-2px]",
+                                        "after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:content-['']",
+                                        active
+                                            ? "text-fg after:bg-accent"
+                                            : "text-muted hover:text-fg",
+                                    )}
+                                >
+                                    {filter.label}
+                                    <span className="text-faint text-[0.8125rem] tabular-nums">
+                                        {filter.count}
+                                    </span>
+                                </button>
+                            );
+                        })}
+                    </div>
                 </div>
-                <p
-                    aria-live="polite"
-                    className="text-faint mt-3 text-[0.8125rem]"
-                >
+                <p aria-live="polite" className="sr-only">
                     {label
                         ? `${visible.length} of ${entries.length} filed under ${label}`
                         : `${entries.length} entries, newest first`}
