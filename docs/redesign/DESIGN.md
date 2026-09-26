@@ -287,7 +287,13 @@ appear right-aligned next to their ticks (Inconsolata 13px, up to 2 lines,
 than the compact `ls`-style "Smaller things" table below (larger gap before
 it: 80/112px). "Smaller things" sits on top of its list in the same bar
 grammar (`Smaller things │ 8 projects` over a hairline), and the list runs
-the full container width, on the featured panes' left edge.
+the full container width, on the featured panes' left edge. Rows share one
+column template through subgrid (`11rem | 1fr | 4ch | 9ch`): name (semibold,
+links the repo across the whole row), muted description, faint right-aligned
+tabular year, and a small accent "write-up" link when a case study exists,
+empty otherwise. No borders, separators or header row: alignment and
+spacing only, with the usual `raised` hover. On mobile each project stacks:
+name with the year on the right, description, then write-up.
 
 _Editor panes (default, `cards`)._ A 2-column grid (1 on mobile) of bounded
 panes on the `raised` surface with `line` borders, so they follow the

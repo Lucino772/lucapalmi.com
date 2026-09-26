@@ -60,37 +60,42 @@ export default async function Projects() {
                             {others.length} projects
                         </p>
                     </div>
-                    <ul className="-mx-3 flex min-w-0 flex-col">
+                    {/* One shared column template (subgrid) so every row aligns:
+                        name, description, year, write-up. No table chrome. */}
+                    <ul className="-mx-3 flex min-w-0 flex-col sm:grid sm:grid-cols-[11rem_minmax(0,1fr)_4ch_9ch] sm:gap-x-[2ch]">
                         {others.map((project) => (
                             <li
                                 key={project.title}
-                                className="group hover:bg-raised relative grid grid-cols-[4ch_minmax(0,1fr)] gap-x-[2ch] rounded-[4px] px-3 py-2 text-[0.9375rem] leading-7 transition-colors duration-150 sm:grid-cols-[4ch_14ch_minmax(0,1fr)]"
+                                className="group hover:bg-raised relative grid grid-cols-[minmax(0,1fr)_auto] gap-x-[2ch] rounded-[4px] px-3 py-2.5 text-[0.9375rem] leading-7 transition-colors duration-150 sm:col-span-4 sm:grid-cols-subgrid sm:py-2"
                             >
-                                <span className="text-faint tabular-nums">
-                                    {project.year}
-                                </span>
                                 <a
                                     href={project.url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="text-fg group-hover:text-accent-text font-semibold transition-colors duration-150 after:absolute after:inset-0 after:content-['']"
+                                    className="text-fg group-hover:text-accent-text min-w-0 font-semibold transition-colors duration-150 after:absolute after:inset-0 after:content-['']"
                                 >
                                     {project.title}
                                 </a>
-                                <div className="text-muted col-start-2 sm:col-start-3">
+                                <p className="text-muted order-3 col-span-2 sm:order-none sm:col-span-1">
                                     {project.description}
+                                </p>
+                                <span className="text-faint order-2 text-right tabular-nums sm:order-none">
+                                    {project.year}
+                                </span>
+                                <span className="order-4 col-span-2 text-[0.8125rem] sm:order-none sm:col-span-1 sm:text-right">
                                     {project.article && (
-                                        <>
-                                            {" "}
-                                            <Link
-                                                href={`/articles/${project.article}`}
-                                                className="text-accent-text relative z-10 whitespace-nowrap underline decoration-current/40 underline-offset-4 hover:decoration-current"
-                                            >
-                                                Case study
-                                            </Link>
-                                        </>
+                                        <Link
+                                            href={`/articles/${project.article}`}
+                                            className="text-accent-text relative z-10 underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                        >
+                                            write-up
+                                            <span className="sr-only">
+                                                {" "}
+                                                about {project.title}
+                                            </span>
+                                        </Link>
                                     )}
-                                </div>
+                                </span>
                             </li>
                         ))}
                     </ul>
