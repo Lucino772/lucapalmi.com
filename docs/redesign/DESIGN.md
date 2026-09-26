@@ -131,6 +131,10 @@ affordance, active underline drawn inside the tab). From `md` up it is
 
 Scale (px, 1.25-ish, deliberately tight): 13 · 14 · 16 · 18 · 22 · 28 · 40.
 Prose: Literata 18 px / 1.75 on desktop, 17 px on mobile, measure 726px (~74ch).
+Article headings are Inconsolata semibold, no prefix characters: h2 at
+1.45em with a hairline across the measure and a short 2px royal-blue segment
+at its start (the editor-tab accent edge); h3 at 1.15em without a rule. Both
+keep `scroll-margin-top` for the section rail.
 Tabular numerals everywhere dates and years line up.
 
 ## Spacing and grid
