@@ -42,16 +42,16 @@ accent blue. That glow is the only "effect" on the whole site.
 One cool grey family, one accent. Semantic tokens live in `@theme` (light
 values) and are overridden under `.dark`.
 
-| Token          | Dark (default feel) | Light ("light editor") | Use                             |
-| -------------- | ------------------- | ---------------------- | ------------------------------- |
-| `bg`           | `#14161b`           | `#fbfbfc`              | page                            |
-| `raised`       | `#1a1d23`           | `#f2f4f7`              | code, hover rows, menus         |
-| `line`         | `#2a2e37`           | `#dfe3ea`              | hairlines, borders              |
-| `fg`           | `#dde1e8`           | `#1b1f27`              | primary text (13.8 / 16.0 : 1)  |
-| `muted`        | `#9aa1ae`           | `#555c69`              | secondary text (7.0 / 6.5 : 1)  |
-| `faint`        | `#828996`           | `#636a78`              | column keys, dates (≥ 4.6 : 1)  |
-| `accent`       | `#8ea8ff`           | `#2b50c8`              | links, active tab, essay marker |
-| `accent-solid` | `#4169e1`           | `#4169e1`              | laptop glow, selection, focus   |
+| Token          | Dark (default feel) | Light ("light editor") | Use                            |
+| -------------- | ------------------- | ---------------------- | ------------------------------ |
+| `bg`           | `#14161b`           | `#fbfbfc`              | page                           |
+| `raised`       | `#1a1d23`           | `#f2f4f7`              | code, hover rows, menus        |
+| `line`         | `#2a2e37`           | `#dfe3ea`              | hairlines, borders             |
+| `fg`           | `#dde1e8`           | `#1b1f27`              | primary text (13.8 / 16.0 : 1) |
+| `muted`        | `#9aa1ae`           | `#555c69`              | secondary text (7.0 / 6.5 : 1) |
+| `faint`        | `#828996`           | `#636a78`              | column keys, dates (≥ 4.6 : 1) |
+| `accent`       | `#8ea8ff`           | `#2b50c8`              | links, active tab, topic links |
+| `accent-solid` | `#4169e1`           | `#4169e1`              | laptop glow, selection, focus  |
 
 Syntax colours are a small, desaturated set (keyword, string, number,
 comment, title, attr) defined per mode, so highlight.js works in both themes
@@ -64,7 +64,7 @@ without a third-party stylesheet.
 - **Cascadia Code** (self-hosted): code only (inline and blocks). The editor
   font is used where there is actual code, which gives the two monospaces
   distinct jobs.
-- **Literata** (self-hosted, mandatory): article prose and the essay dek.
+- **Literata** (self-hosted, mandatory): article prose and subtitles.
 
 Scale (px, 1.25-ish, deliberately tight): 13 · 14 · 16 · 18 · 22 · 28 · 40.
 Prose: Literata 18 px / 1.75 on desktop, 17 px on mobile, measure ≤ 68ch.
@@ -74,7 +74,7 @@ Tabular numerals everywhere dates and years line up.
 
 - 4 px base; section rhythm 64 / 96 px desktop, 48 / 64 px mobile.
 - Container 1120 px, 24 px gutters (20 px mobile). Content is left aligned.
-- Log rows use a fixed column grid: `date 11ch | kind 6ch | title 1fr`.
+- Log rows use a fixed column grid: `date 10ch | title 1fr | minutes`.
 - Radius: 6 px on code blocks and menus, 3 px on small chips, 0 on rows.
 
 ## Pages
@@ -101,8 +101,8 @@ path-style links, socials, theme toggle. Escape and route change close it.
 │ elsewhere github  linkedin                   │                   │
 ├──────────────────────────────────────────────┴───────────────────┤
 │ ~/writing                                             all entries │
-│ 2026-09-12  note   A LoRaWAN gateway on a Raspberry Pi, …        │
-│ 2026-01-02  essay  From Imperative Qt to State-Driven UI …  6 min │
+│ 2026-09-12  A LoRaWAN gateway on a Raspberry Pi, …         2 min │
+│ 2026-01-02  From Imperative Qt to State-Driven UI …        6 min │
 │                    Building desktop UIs with Python is …          │
 ├───────────────────────────────────────────────────────────────────┤
 │ ~/projects                                                        │
@@ -112,26 +112,43 @@ path-style links, socials, theme toggle. Escape and route change close it.
 └───────────────────────────────────────────────────────────────────┘
 ```
 
-Essays are heavier than notes: title in `fg` 18 px semibold plus a Literata
-dek line; notes are a single line in `muted` weight 400.
+Every entry gets the same row: date, semibold title with a Literata italic
+subtitle, reading time. (No essay/note distinction anywhere in the UI.)
 
-**Writing (`/articles`).** Title, one-line description, kind filter
-(`all · essays · notes` as a tablist-like link group synced to `?kind=`),
-then the log grouped by year. Scales to dozens of notes.
+**Writing (`/articles`).** A timeline in the language of `git log --graph`.
+One hairline spine runs down the left; each year is a small filled accent
+square on the spine followed by the year, and each entry hangs off the
+spine by a hollow node that turns accent on hover. Every entry gets the same
+treatment: a 16:10 thumbnail (176px desktop, 88px mobile), then date and
+reading time, title, Literata italic subtitle (hidden below 640px) and
+topics. Covers use `next/image` with `sizes` of 176px/88px.
 
-**Article layout (essays and notes).** One centred column, nothing beside
+_Fallback thumbnail_ (`FallbackThumb`): a tiny editor pane drawn in SVG,
+with a file tab carrying a 1.5px accent top edge, a line-number gutter, and
+eight lines of rounded "code" bars with indentation, token widths and two
+syntax colours chosen by a PRNG seeded from slug and first topic. Colours
+come from the syntax tokens, so it follows light/dark automatically and
+matches the code blocks in articles.
+
+_Topic filter_: "All" plus every topic with at least one visible article,
+each with its count, styled like the nav's editor tabs (`aria-pressed`
+buttons). The selection is read from `?topic=` on the client through
+`useSyncExternalStore` and written back with `history.replaceState`, so the
+page stays statically prerendered and shows everything without JS. An
+`aria-live` line reports "2 of 6 filed under Architecture"; empty years are
+hidden; an unknown topic gets an empty state with a "Show all writing"
+button. On mobile the filter scrolls horizontally.
+
+**Article layout (one template for everything).** One centred column, nothing beside
 it. The header sits on the 40rem measure: `../writing` back link, then a meta
-line set exactly like a writing-log row (`2026-01-02  essay  6 min read`),
-the title, the subtitle, and tags as `#tag`. Prose is Literata on a 40rem
+line set like a timeline entry (`2026-01-02  6 min read`), the 40px title, the
+Literata italic subtitle, and topics as accent links to `/articles?topic=`.
+Technology tags stay as quiet `#tag` text in the end matter. Prose is Literata on a 40rem
 measure (~70ch). The cover breaks out symmetrically to 52rem, and code blocks
 break out 2.5rem on each side from 1024px up; both stay centred. The article
 ends with a hairline and `../writing` / `Back to top`. (The first version put
-the file info in a left gutter; it became an empty column on long essays, so
+the file info in a left gutter; it became an empty column on long articles, so
 it moved into the header.)
-
-**Essay vs note.** Essay: 40 px title, Literata italic subtitle, accent
-`essay` label, optional cover and AI prompt disclosure. Note: 28 px title,
-plain Literata subtitle, faint `note` label, no cover.
 
 **Section rail.** Only on articles with 3 or more h2s and viewports of at
 least 1280px. Fixed to the right edge (20px inset), vertically centred, like

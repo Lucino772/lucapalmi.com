@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getArticle, getArticles } from "@/lib/cms";
 import Link from "next/link";
-import { cn } from "@/lib/cn";
+import { topicLabel } from "@/content/topics";
 import { isoDay, readingMinutes } from "@/lib/format";
 import SectionRail from "@/components/SectionRail";
 import { AiImageDescription } from "@/components/ai-image-description";
@@ -55,7 +55,6 @@ export default async function Page({
 }) {
     const { slug } = await params;
     const { Content, metadata: article } = await getArticle(slug);
-    const essay = article.kind === "essay";
     const minutes = readingMinutes(article.readingTime);
 
     return (
@@ -67,44 +66,36 @@ export default async function Page({
                 >
                     <span aria-hidden>../</span>writing
                 </Link>
-                {/* Same columns as a row of the writing log */}
+                {/* Same columns as the writing timeline */}
                 <p className="text-faint mt-8 flex flex-wrap gap-x-[2ch] text-[0.875rem] leading-6 tabular-nums">
                     <time dateTime={isoDay(article.createdAt)}>
                         {isoDay(article.createdAt)}
                     </time>
-                    <span className={essay ? "text-accent" : undefined}>
-                        {article.kind}
-                    </span>
                     {minutes && <span>{minutes} read</span>}
                 </p>
-                <h1
-                    className={cn(
-                        "mt-3 font-semibold tracking-[-0.02em]",
-                        essay
-                            ? "text-[2rem] leading-[1.15] md:text-[2.5rem]"
-                            : "text-[1.625rem] leading-tight md:text-[1.75rem]",
-                    )}
-                >
+                <h1 className="mt-3 text-[2rem] leading-[1.15] font-semibold tracking-[-0.02em] md:text-[2.5rem]">
                     {article.title}
                 </h1>
-                <p
-                    className={cn(
-                        "text-muted mt-4 font-serif",
-                        essay
-                            ? "text-[1.1875rem] leading-8 italic md:text-[1.3125rem]"
-                            : "text-[1rem] leading-7",
-                    )}
-                >
+                <p className="text-muted mt-4 font-serif text-[1.1875rem] leading-8 italic md:text-[1.3125rem]">
                     {article.subtitle}
                 </p>
-                <ul
-                    aria-label="Tags"
-                    className="text-faint mt-5 flex flex-wrap gap-x-[1.5ch] text-[0.8125rem]"
-                >
-                    {article.tags.map((tag) => (
-                        <li key={tag}>#{tag}</li>
-                    ))}
-                </ul>
+                {article.topics.length > 0 && (
+                    <ul
+                        aria-label="Topics"
+                        className="mt-5 flex flex-wrap gap-x-[2ch] text-[0.875rem]"
+                    >
+                        {article.topics.map((topic) => (
+                            <li key={topic}>
+                                <Link
+                                    href={`/articles?topic=${topic}`}
+                                    className="text-accent underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                >
+                                    {topicLabel(topic)}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </header>
 
             {article.cover && (
@@ -128,29 +119,33 @@ export default async function Page({
                 </figure>
             )}
 
-            <div
-                data-article-body
-                className={cn(
-                    "prose mx-auto",
-                    essay ? "mt-12 md:mt-14" : "mt-10",
-                )}
-            >
+            <div data-article-body className="prose mx-auto mt-12 md:mt-14">
                 <Content />
             </div>
 
-            <footer className="border-line text-muted mx-auto mt-16 flex max-w-[40rem] items-center justify-between border-t pt-6 text-[0.875rem]">
-                <Link
-                    href="/articles"
-                    className="hover:text-accent transition-colors duration-150"
+            <footer className="border-line text-muted mx-auto mt-16 max-w-[40rem] border-t pt-6 text-[0.875rem]">
+                <ul
+                    aria-label="Tags"
+                    className="text-faint mb-5 flex flex-wrap gap-x-[1.5ch] text-[0.8125rem]"
                 >
-                    <span aria-hidden>../</span>writing
-                </Link>
-                <a
-                    href="#content"
-                    className="hover:text-accent transition-colors duration-150"
-                >
-                    Back to top
-                </a>
+                    {article.tags.map((tag) => (
+                        <li key={tag}>#{tag}</li>
+                    ))}
+                </ul>
+                <div className="flex items-center justify-between">
+                    <Link
+                        href="/articles"
+                        className="hover:text-accent transition-colors duration-150"
+                    >
+                        <span aria-hidden>../</span>writing
+                    </Link>
+                    <a
+                        href="#content"
+                        className="hover:text-accent transition-colors duration-150"
+                    >
+                        Back to top
+                    </a>
+                </div>
             </footer>
 
             <SectionRail />
