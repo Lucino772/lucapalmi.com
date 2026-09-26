@@ -2,15 +2,10 @@
   "name": "lucapalmi.com",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.28.0",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "core-js",
-      "protobufjs",
-      "sharp",
-      "unrs-resolver"
-    ]
+  "engines": {
+    "node": ">=24.0.0 <25"
   },
+  "packageManager": "pnpm@12.7.0",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -46,7 +41,7 @@
     "@svgr/webpack": "8.1.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
-    "@types/node": "^25.3.3",
+    "@types/node": "^24.0.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@types/serialize-javascript": "^5.0.4",
