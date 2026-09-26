@@ -139,3 +139,7 @@ featured projects) and still scale to dozens of notes.
   entry points (latest article, flagship project). The fit-first layout and the
   `data-home-layout` mechanism are retired. Hobbies stay in `about.ts` as data
   only; Luca will write about them instead.
+- **Projects: less labelling.** Featured project tags are technologies only
+  (no categories). Don't display project status or type; only mark projects
+  with `status: "early"` with a quiet "wip" marker. Each featured project has
+  a small square icon (per-type motif) next to its name; no large sketches.
