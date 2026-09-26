@@ -236,16 +236,18 @@ Scroll/Fit home switch. Every control defaults to the current look, and CSS
 carries the defaults as `var()` fallbacks, so production, which has no panel
 and no script, renders exactly the defaults.
 
-| Group        | Control                | Drives                                                                    | Range            | Default |
-| ------------ | ---------------------- | ------------------------------------------------------------------------- | ---------------- | ------- |
-| Writing list | List alignment         | `data-writing-align`                                                      | centre / left    | centre  |
-| Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px         | 176px   |
-| Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px          | 17px    |
-| Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px           | 16px    |
-| Home         | Headline size          | `--home-headline-size` (scroll ≥768px; caps the fit clamp)                | 28–56px          | 40px    |
-| Home         | Drawing size (%)       | `--home-drawing-size` (width in scroll, height in fit)                    | 50–110           | 100     |
-| Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static | draw in |
-| Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300            | 100     |
+| Group        | Control                | Drives                                                                    | Range                   | Default    |
+| ------------ | ---------------------- | ------------------------------------------------------------------------- | ----------------------- | ---------- |
+| Writing list | List alignment         | `data-writing-align`                                                      | centre / left           | centre     |
+| Writing list | Filter bar             | `data-writing-bar`                                                        | page width / list width | page width |
+| Writing list | Fallback thumbnail     | `data-thumb-style`                                                        | ink sketch / code pane  | ink sketch |
+| Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                | 176px      |
+| Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                 | 17px       |
+| Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px                  | 16px       |
+| Home         | Headline size          | `--home-headline-size` (scroll ≥768px; caps the fit clamp)                | 28–56px                 | 40px       |
+| Home         | Drawing size (%)       | `--home-drawing-size` (width in scroll, height in fit)                    | 50–110                  | 100        |
+| Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static        | draw in    |
+| Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                   | 100        |
 
 ## Motion
 
