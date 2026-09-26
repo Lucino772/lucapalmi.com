@@ -235,4 +235,17 @@ export const designControls: DesignControl[] = [
         ],
         default: "muted",
     },
+    {
+        type: "choice",
+        key: "others-label",
+        label: "Other projects label",
+        group: "Projects",
+        attribute: "data-others-label",
+        options: [
+            { value: "comment", label: "// other projects" },
+            { value: "none", label: "None (space only)" },
+            { value: "heading", label: "Smaller things │ 8 projects" },
+        ],
+        default: "comment",
+    },
 ];

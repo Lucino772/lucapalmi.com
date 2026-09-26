@@ -15,43 +15,39 @@ export default async function Projects() {
     const others = toSorted(projects.others, (p) => p.year, false);
 
     return (
-        <div className="max-w-page mx-auto w-full px-5 pt-6 pb-12 md:px-6 md:pt-10 md:pb-24">
+        <div className="max-w-page mx-auto w-full px-5 pt-8 pb-12 md:px-6 md:pt-12 md:pb-24">
             <div className="flex flex-col gap-20 md:gap-28">
                 <section aria-labelledby="featured">
-                    {/* Path title; lines are kept for window-like elements */}
-                    <div className="mb-6 md:mb-8">
-                        <h1 className="text-[0.9375rem] font-semibold">
-                            <span
-                                aria-hidden
-                                className="text-faint font-normal"
-                            >
-                                ~/
-                            </span>
-                            projects
-                        </h1>
-                        <h2 id="featured" className="sr-only">
-                            Featured projects
-                        </h2>
-                    </div>
+                    <h1 className="sr-only">Projects</h1>
+                    <h2 id="featured" className="sr-only">
+                        Featured projects
+                    </h2>
                     <FeaturedProjects projects={projects.featured} />
                 </section>
 
                 <section aria-labelledby="more">
-                    {/* Label on top, same bar grammar as ~/projects */}
-                    <div className="mb-3 flex items-baseline gap-4">
-                        <h2
-                            id="more"
-                            className="text-[0.9375rem] font-semibold"
-                        >
+                    <h2 id="more" className="sr-only">
+                        Other projects
+                    </h2>
+                    {/* A code comment by default; the design panel can show
+                        nothing or the earlier heading bar */}
+                    <p
+                        aria-hidden
+                        className="others-none:hidden others-heading:hidden text-faint mb-3 text-[0.8125rem]"
+                    >
+                        {"// other projects"}
+                    </p>
+                    <div
+                        aria-hidden
+                        className="others-heading:flex mb-3 hidden items-baseline gap-4"
+                    >
+                        <span className="text-[0.9375rem] font-semibold">
                             Smaller things
-                        </h2>
-                        <span
-                            aria-hidden
-                            className="bg-line h-4 w-px self-center"
-                        />
-                        <p className="text-faint text-[0.8125rem] tabular-nums">
+                        </span>
+                        <span className="bg-line h-4 w-px self-center" />
+                        <span className="text-faint text-[0.8125rem] tabular-nums">
                             {others.length} projects
-                        </p>
+                        </span>
                     </div>
                     {/* One shared column template (subgrid) so every row aligns:
                         name, description, year, write-up. No table chrome. */}

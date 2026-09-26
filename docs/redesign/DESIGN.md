@@ -222,15 +222,16 @@ centred with symmetric padding). The drawing sits on the right
 18svh. This is the only home layout: the earlier scrolling and fit-first
 variants and their switch are retired.
 
-**Page titles (Writing, Projects).** No hero, kicker or intro paragraph; the
-intro sentences live only in each page's `metadata.description`. The `<h1>`
-is the page's path, set the way an editor shows the current folder:
-`~/writing` sits at the left of the topic tab bar, split from the tabs by a
-short vertical hairline, so the title and filters are one row. `~/projects`
-sits in the gutter on the same line as the `ls -l` column headers
-(`status year name description type`), with the "Featured" label below it
-next to the first row. Neither costs any extra height: the first timeline
-entry starts ~175px below the nav, the first project ~105px.
+**Page titles (Writing, Projects).** No visible title: the nav's active tab
+already says where you are. Each page keeps a visually hidden `<h1>`
+("Writing", "Projects"). Writing opens directly with the topic tabs, the
+first tab's text on the content's left edge; Projects opens directly with the
+featured panes (48px under the nav on desktop, 32px on phones). The intro
+sentences live only in `metadata.description`. The other projects are
+introduced by a faint code comment, `// other projects` (13px Inconsolata),
+with a visually hidden `<h2>` "Other projects". The design panel's "Other
+projects label" (`data-others-label`) can show nothing (`none`) or the
+earlier `Smaller things │ 8 projects` bar (`heading`).
 
 **Writing (`/articles`).** The `~/writing` + topic-tab row spans the normal
 page container (title on the logo's left edge, tabs on one row at 1280 and
@@ -350,6 +351,7 @@ and no script, renders exactly the defaults.
 | Article headings | H3 size                        | `--h3-size`                                                               | 14–28px                    | 20.7px            |
 | Article          | Callout style                  | `data-callout-style`                                                      | tinted box / bar + tint    | tinted box        |
 | Article          | Callout text                   | `data-callout-text`                                                       | muted / full               | muted             |
+| Projects         | Other projects label           | `data-others-label`                                                       | comment / none / heading   | comment           |
 | Colour           | Surfaces                       | `data-surfaces`                                                           | paper / cool / current     | warm paper        |
 | Writing list     | Fallback thumbnail             | `data-thumb-style`                                                        | ink sketch / code pane     | ink sketch        |
 | Writing list     | Thumbnail width                | `--writing-thumb-width` (mobile half)                                     | 96–280px                   | 176px             |

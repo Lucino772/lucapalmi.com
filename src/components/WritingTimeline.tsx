@@ -61,23 +61,13 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
     return (
         <div className="flex flex-col gap-10">
             <div className="writing-bar-list:mx-auto writing-bar-list:max-w-[61rem] writing-left:mx-0! w-full">
-                {/* The page title is the path in the tab bar, like an editor's
-                    breadcrumb, followed by the topic tabs */}
+                <h1 className="sr-only">Writing</h1>
+                {/* The topic tabs start the page, on the content's left edge */}
                 <div className="-mx-5 flex items-start pl-5 md:mx-0 md:pl-0">
-                    <h1 className="shrink-0 pt-1 pb-3 text-[0.9375rem] font-semibold">
-                        <span aria-hidden className="text-faint font-normal">
-                            ~/
-                        </span>
-                        writing
-                    </h1>
-                    <span
-                        aria-hidden
-                        className="bg-line mt-1.5 ml-4 h-4 w-px shrink-0"
-                    />
                     <div
                         role="group"
                         aria-label="Filter by topic"
-                        className="no-scrollbar flex min-w-0 flex-1 gap-1 overflow-x-auto overflow-y-hidden [mask-image:linear-gradient(to_right,black_calc(100%-2.5rem),transparent)] pr-8 pl-1 md:flex-wrap md:overflow-visible md:[mask-image:none] md:pr-0"
+                        className="no-scrollbar -ml-3 flex min-w-0 flex-1 gap-1 overflow-x-auto overflow-y-hidden [mask-image:linear-gradient(to_right,black_calc(100%-2.5rem),transparent)] pr-8 md:flex-wrap md:overflow-visible md:[mask-image:none] md:pr-0"
                     >
                         {filters.map((filter) => {
                             const active = filter.id === selected;
