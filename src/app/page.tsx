@@ -26,7 +26,7 @@ export default async function Index() {
                         <span className="font-semibold">{about.name}</span>
                         <span className="text-muted">, {about.role}</span>
                     </h1>
-                    <p className="fit:mt-3 fit:text-[1.5rem] md:fit:text-[clamp(1.75rem,4.6svh,2.5rem)] mt-4 text-[1.75rem] leading-[1.2] font-medium tracking-[-0.02em] text-balance md:text-[2.5rem] md:leading-[1.15]">
+                    <p className="fit:mt-3 fit:text-[1.5rem] md:fit:text-[clamp(1.75rem,4.6svh,var(--home-headline-size,40px))] mt-4 text-[1.75rem] leading-[1.2] font-medium tracking-[-0.02em] text-balance md:text-[length:var(--home-headline-size,40px)] md:leading-[1.15]">
                         {about.headline}
                     </p>
 
@@ -117,7 +117,7 @@ export default async function Index() {
                 </div>
 
                 <div className="text-muted fit:w-auto fit:max-w-none max-lg:fit:order-first max-lg:fit:mx-0 mx-auto w-full max-w-[17rem] sm:max-w-[20rem] lg:max-w-none">
-                    <Portrait className="fit:h-[18svh] fit:w-auto lg:fit:h-[min(64svh,40rem)] h-auto w-full [mask-image:linear-gradient(to_bottom,black_82%,transparent)]" />
+                    <Portrait className="fit:h-[calc(18svh*var(--home-drawing-size,100)/100)] fit:w-auto lg:fit:h-[calc(min(64svh,40rem)*var(--home-drawing-size,100)/100)] mx-auto block h-auto w-[calc(var(--home-drawing-size,100)*1%)] [mask-image:linear-gradient(to_bottom,black_82%,transparent)]" />
                 </div>
             </section>
 

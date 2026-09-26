@@ -54,8 +54,9 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
         ...available,
     ];
 
+    // Centred by default; the design panel can switch it back to the left
     return (
-        <div className="flex flex-col gap-10">
+        <div className="writing-left:mx-0 mx-auto flex w-full max-w-[58rem] flex-col gap-10">
             <div>
                 {/* The page title is the path in the tab bar, like an editor's
                     breadcrumb, followed by the topic tabs */}
@@ -84,8 +85,8 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                                     aria-pressed={active}
                                     onClick={() => selectTopic(filter.id)}
                                     className={cn(
-                                        "relative flex shrink-0 cursor-pointer items-baseline gap-2 px-3 pt-1 pb-3 text-[0.9375rem] whitespace-nowrap transition-colors duration-150 focus-visible:outline-offset-[-2px]",
-                                        "after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:content-['']",
+                                        "relative flex shrink-0 cursor-pointer items-baseline gap-1.5 px-2.5 pt-1 pb-3 text-[0.9375rem] whitespace-nowrap transition-colors duration-150 focus-visible:outline-offset-[-2px]",
+                                        "after:absolute after:inset-x-2.5 after:-bottom-px after:h-0.5 after:content-['']",
                                         active
                                             ? "text-fg after:bg-accent"
                                             : "text-muted hover:text-fg",
@@ -120,7 +121,7 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                 </div>
             ) : (
                 // One spine for the whole timeline, like `git log --graph`
-                <div className="relative max-w-[52rem]">
+                <div className="relative">
                     <span
                         aria-hidden
                         className="bg-line absolute top-2 bottom-2 left-[3.5px] w-px"
@@ -164,16 +165,16 @@ function TimelineEntry({ entry }: { entry: LogEntry }) {
         <li className="group relative pl-6 md:pl-8">
             <span
                 aria-hidden
-                className="border-faint bg-bg group-hover:border-accent absolute top-[1.9rem] left-0 size-2 rounded-full border transition-colors duration-150 md:top-[2.15rem]"
+                className="border-faint bg-bg group-hover:border-accent absolute top-[calc(var(--writing-entry-gap,16px)+0.9rem)] left-0 size-2 rounded-full border transition-colors duration-150 md:top-[calc(var(--writing-entry-gap,16px)+1.15rem)]"
             />
-            <div className="group-hover:bg-raised -mx-3 grid grid-cols-[5.5rem_minmax(0,1fr)] items-start gap-x-4 rounded-[6px] px-3 py-4 transition-colors duration-150 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-x-6">
+            <div className="group-hover:bg-raised -mx-3 grid grid-cols-[calc(var(--writing-thumb-width,176px)/2)_minmax(0,1fr)] items-start gap-x-4 rounded-[6px] px-3 py-[var(--writing-entry-gap,16px)] transition-colors duration-150 md:grid-cols-[var(--writing-thumb-width,176px)_minmax(0,1fr)] md:gap-x-6">
                 <Thumb entry={entry} sizes="(min-width: 768px) 176px, 88px" />
                 <div className="min-w-0">
                     <p className="text-faint flex flex-wrap gap-x-[2ch] text-[0.8125rem] leading-6 tabular-nums">
                         <time dateTime={entry.date}>{entry.date}</time>
                         {entry.minutes && <span>{entry.minutes}</span>}
                     </p>
-                    <h3 className="mt-0.5 text-[1rem] leading-6 font-semibold md:text-[1.0625rem] md:leading-7">
+                    <h3 className="mt-0.5 text-[length:min(var(--writing-title-size,17px),16px)] leading-[1.45] font-semibold md:text-[length:var(--writing-title-size,17px)] md:leading-[1.6]">
                         <Link
                             href={`/articles/${entry.slug}`}
                             className="group-hover:text-accent-text transition-colors duration-150 after:absolute after:inset-0 after:content-['']"

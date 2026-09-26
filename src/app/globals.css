@@ -2,6 +2,8 @@
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant fit (&:where([data-home-layout="fit"] *));
+/* Design-panel overrides: only non-default values have a selector */
+@custom-variant writing-left (&:where([data-writing-align="left"] *));
 @plugin "@tailwindcss/typography";
 
 /* Light values here, dark overrides under .dark below */
@@ -335,12 +337,13 @@ html[data-home-layout="fit"] body:has([data-home]) > footer {
 
 /* Final state is the plain filled drawing; the animation strokes each
    outline in, then swaps the stroke for the fill. */
+/* --screen-glow (design panel) scales the per-mode glow, 100 = default */
 .portrait {
-    --screen-opacity: 0.12;
+    --screen-opacity: calc(0.12 * var(--screen-glow, 100) / 100);
 }
 
 .dark .portrait {
-    --screen-opacity: 0.22;
+    --screen-opacity: calc(0.22 * var(--screen-glow, 100) / 100);
 }
 
 .portrait .portrait-screen {
@@ -376,6 +379,18 @@ html[data-home-layout="fit"] body:has([data-home]) > footer {
     html:has([data-article-body]) {
         scroll-behavior: smooth;
     }
+}
+
+/* Design panel: show the finished drawing without the draw-in */
+html[data-portrait-animation="off"] .portrait path,
+html[data-portrait-animation="off"] .portrait .portrait-screen {
+    animation: none;
+    stroke: none;
+    fill-opacity: 1;
+}
+
+html[data-portrait-animation="off"] .portrait .portrait-screen {
+    opacity: var(--screen-opacity);
 }
 
 @keyframes portrait-draw {

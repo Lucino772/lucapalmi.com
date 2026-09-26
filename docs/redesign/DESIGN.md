@@ -158,7 +158,13 @@ sits in the gutter on the same line as the `ls -l` column headers
 next to the first row. Neither costs any extra height: the first timeline
 entry starts ~175px below the nav, the first project ~105px.
 
-**Writing (`/articles`).** A timeline in the language of `git log --graph`.
+**Writing (`/articles`).** Centred on the page by default: one 58rem column
+holds the `~/writing` + topic-tab row and the timeline, so the filter bar is
+width-matched and lined up with the list, and all eight topic tabs fit on
+one row from 1024px up. `html[data-writing-align="left"]` (design panel)
+pins the column to the left edge of the page container instead; without the
+attribute the page is centred. A timeline in the language of
+`git log --graph`.
 One hairline spine runs down the left; each year is a small filled accent
 square on the spine followed by the year, and each entry hangs off the
 spine by a hollow node that turns accent on hover. Every entry gets the same
@@ -216,6 +222,25 @@ name, description, tags, links (case study, source). Listed projects, under a
 
 **Footer.** A status-bar strip: name and year, a quiet availability line
 ("Open to freelance work and interesting roles"), GitHub and LinkedIn.
+
+## Design panel (development only)
+
+A "Design" button bottom-right opens the shared review panel (surfaces in
+the editor palette: `raised`, `line`, Inconsolata). It also holds the
+Scroll/Fit home switch. Every control defaults to the current look, and CSS
+carries the defaults as `var()` fallbacks, so production, which has no panel
+and no script, renders exactly the defaults.
+
+| Group        | Control                | Drives                                                                    | Range            | Default |
+| ------------ | ---------------------- | ------------------------------------------------------------------------- | ---------------- | ------- |
+| Writing list | List alignment         | `data-writing-align`                                                      | centre / left    | centre  |
+| Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px         | 176px   |
+| Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px          | 17px    |
+| Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px           | 16px    |
+| Home         | Headline size          | `--home-headline-size` (scroll ≥768px; caps the fit clamp)                | 28–56px          | 40px    |
+| Home         | Drawing size (%)       | `--home-drawing-size` (width in scroll, height in fit)                    | 50–110           | 100     |
+| Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static | draw in |
+| Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300            | 100     |
 
 ## Motion
 
