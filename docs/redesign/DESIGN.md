@@ -233,13 +233,13 @@ with a visually hidden `<h2>` "Other projects". The design panel's "Other
 projects label" (`data-others-label`) can show nothing (`none`) or the
 `Other projects │ 8 projects` bar (`heading`).
 
-**Writing (`/articles`).** The `~/writing` + topic-tab row spans the normal
-page container (title on the logo's left edge, tabs on one row at 1280 and
-1440, original tab padding); only the timeline below is centred, in a 48rem
-column. Design panel: `data-writing-align="left"` pins the list to the left
-edge; `data-writing-bar="list"` restores the earlier variant where bar and
-list share one 61rem column (centred, or left with the list). Without the
-attributes you get the defaults: page-width bar, centred list. A timeline in the language of
+**Writing (`/articles`).** The topic tabs and the timeline share one centred
+54rem (864px) column, the smallest width that keeps all eight tabs on one
+row from 1024px up; the first tab's text sits on the column's left edge, in
+line with the timeline spine and year markers. Below 768px the tabs keep the
+full content width and scroll horizontally. Design panel:
+`data-writing-bar="page"` lets the tabs span the page container instead;
+`data-writing-align="left"` pins the column to the left edge. A timeline in the language of
 `git log --graph`.
 One hairline spine runs down the left; each year is a small filled accent
 square on the spine followed by the year, and each entry hangs off the
@@ -342,7 +342,7 @@ and no script, renders exactly the defaults.
 | Group            | Control                        | Drives                                                                    | Range                      | Default           |
 | ---------------- | ------------------------------ | ------------------------------------------------------------------------- | -------------------------- | ----------------- |
 | Writing list     | List alignment                 | `data-writing-align`                                                      | centre / left              | centre            |
-| Writing list     | Filter bar                     | `data-writing-bar`                                                        | page width / list width    | page width        |
+| Writing list     | Filter bar                     | `data-writing-bar`                                                        | list width / page width    | list width        |
 | Chrome           | Theme toggle                   | `data-theme-toggle`                                                       | wall switch / sun-moon     | wall switch       |
 | Article headings | H2 size / weight / space below | `--h2-size`, `--h2-weight`, `--h2-space-below`                            | 18–36px / 400–800 / 8–48px | 26px / 700 / 26px |
 | Article headings | Heading font                   | `data-heading-font`                                                       | own / sans (IBM Plex Sans) | own               |

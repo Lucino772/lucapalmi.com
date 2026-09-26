@@ -24,10 +24,10 @@ export const designControls: DesignControl[] = [
         group: "Writing list",
         attribute: "data-writing-bar",
         options: [
-            { value: "page", label: "Page width" },
             { value: "list", label: "List width" },
+            { value: "page", label: "Page width" },
         ],
-        default: "page",
+        default: "list",
     },
     {
         type: "choice",

@@ -3,7 +3,7 @@
 @custom-variant dark (&:is(.dark *));
 /* Design-panel overrides: only non-default values have a selector */
 @custom-variant writing-left (&:where([data-writing-align="left"] *));
-@custom-variant writing-bar-list (&:where([data-writing-bar="list"] *));
+@custom-variant writing-bar-page (&:where([data-writing-bar="page"] *));
 @custom-variant thumb-code (&:where([data-thumb-style="code"] *));
 @custom-variant theme-icon (&:where([data-theme-toggle="icon"] *));
 @custom-variant others-none (&:where([data-others-label="none"] *));
