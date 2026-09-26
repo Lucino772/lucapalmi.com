@@ -187,7 +187,7 @@ Two layouts via `data-home-layout` (design panel, Home):
   (the three tendencies as `-` lines, hobbies as one `/`-joined line),
   13px faint labels and muted text, 12px and stacked on phones. The
   drawing sits on the right (height `min(62svh, 40rem)`); on phones it
-  shrinks to a small mark (10svh) above the whoami block.
+  shrinks to a small mark (8svh) above the whoami block. Bottom breathing room is `clamp(1.5rem, 5svh, 3.5rem)` on desktop (20px on phones), and on screens at least 840px tall the hero is biased slightly upward.
 - **`fit-first`:** the same first screen without the bottom panel, then a
   short section (about half a screen) with "I tend to" and `~/.hobbies` as
   two columns under bar headings, at a comfortable 15px, with the hobbies

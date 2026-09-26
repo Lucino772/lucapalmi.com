@@ -32,9 +32,9 @@ export default async function Index() {
         <div data-home className="max-w-page mx-auto w-full px-5 md:px-6">
             <section
                 aria-label="About"
-                className="flex min-h-[calc(100svh-3.5rem-1px)] flex-col pt-4 pb-3 md:pt-8 md:pb-5"
+                className="flex min-h-[calc(100svh-3.5rem-1px)] flex-col pt-3 pb-5 md:pt-5 md:pb-[clamp(1.5rem,5svh,3.5rem)]"
             >
-                <div className="grid flex-1 content-center items-center gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,1fr)_auto]">
+                <div className="grid flex-1 content-center items-center gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,1fr)_auto] md:[@media(min-height:840px)]:pb-[4svh]">
                     <div className="fade-in max-w-[46rem] min-w-0">
                         <p className="text-faint text-[0.875rem] md:text-[0.9375rem]">
                             <span aria-hidden>~ $ </span>whoami
@@ -95,7 +95,7 @@ export default async function Index() {
                     </div>
 
                     <div className="text-muted order-first lg:order-none">
-                        <Portrait className="block h-[calc(10svh*var(--home-drawing-size,100)/100)] w-auto [mask-image:linear-gradient(to_bottom,black_82%,transparent)] lg:mx-auto lg:h-[calc(min(62svh,40rem)*var(--home-drawing-size,100)/100)]" />
+                        <Portrait className="block h-[calc(8svh*var(--home-drawing-size,100)/100)] w-auto [mask-image:linear-gradient(to_bottom,black_82%,transparent)] lg:mx-auto lg:h-[calc(min(62svh,40rem)*var(--home-drawing-size,100)/100)]" />
                     </div>
                 </div>
 
