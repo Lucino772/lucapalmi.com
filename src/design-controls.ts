@@ -151,4 +151,16 @@ export const designControls: DesignControl[] = [
         ],
         default: "cards",
     },
+    {
+        type: "choice",
+        key: "theme-toggle",
+        label: "Theme toggle",
+        group: "Chrome",
+        attribute: "data-theme-toggle",
+        options: [
+            { value: "switch", label: "Wall switch" },
+            { value: "icon", label: "Sun / moon" },
+        ],
+        default: "switch",
+    },
 ];

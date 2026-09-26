@@ -147,6 +147,16 @@ editor tabs (active tab gets a 2 px accent underline), GitHub and LinkedIn
 icons with accessible names, theme toggle. Sticky, translucent `bg`, hairline
 bottom border only after scroll-safe (always present, 1 px).
 
+**Theme toggle.** A wall light switch (after the Lamplight variant), drawn
+in Workstation hairlines: a 16×22 plate with 1px non-scaling strokes and a
+1.5 radius, two screw ticks, a slot, and a square-cornered lever. In light
+mode the lever is up and lit in royal blue; in dark it drops 5px and turns
+`muted`. It is the same 32px icon button as GitHub/LinkedIn (40px in the
+mobile menu) with `aria-label` "Switch to light/dark theme". The lever
+position rides on the `.dark` class and the variant on `data-theme-toggle`,
+both set before paint, so nothing flashes. The design panel's "Theme toggle"
+(`icon`) restores the earlier sun/moon icon.
+
 **Mobile nav.** Menu button (aria-expanded) opens a panel under the header:
 path-style links, socials, theme toggle. Escape and route change close it.
 
@@ -319,20 +329,21 @@ Scroll/Fit home switch. Every control defaults to the current look, and CSS
 carries the defaults as `var()` fallbacks, so production, which has no panel
 and no script, renders exactly the defaults.
 
-| Group        | Control                | Drives                                                                    | Range                          | Default    |
-| ------------ | ---------------------- | ------------------------------------------------------------------------- | ------------------------------ | ---------- |
-| Writing list | List alignment         | `data-writing-align`                                                      | centre / left                  | centre     |
-| Writing list | Filter bar             | `data-writing-bar`                                                        | page width / list width        | page width |
-| Projects     | Featured projects      | `data-projects-style`                                                     | cards (editor panes) / stacked | cards      |
-| Colour       | Surfaces               | `data-surfaces`                                                           | paper / cool / current         | warm paper |
-| Writing list | Fallback thumbnail     | `data-thumb-style`                                                        | ink sketch / code pane         | ink sketch |
-| Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                       | 176px      |
-| Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                        | 17px       |
-| Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px                         | 16px       |
-| Home         | Headline size          | `--home-headline-size` (scroll ≥768px; caps the fit clamp)                | 28–56px                        | 40px       |
-| Home         | Drawing size (%)       | `--home-drawing-size` (width in scroll, height in fit)                    | 50–110                         | 100        |
-| Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static               | draw in    |
-| Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                          | 100        |
+| Group        | Control                | Drives                                                                    | Range                          | Default     |
+| ------------ | ---------------------- | ------------------------------------------------------------------------- | ------------------------------ | ----------- |
+| Writing list | List alignment         | `data-writing-align`                                                      | centre / left                  | centre      |
+| Writing list | Filter bar             | `data-writing-bar`                                                        | page width / list width        | page width  |
+| Projects     | Featured projects      | `data-projects-style`                                                     | cards (editor panes) / stacked | cards       |
+| Chrome       | Theme toggle           | `data-theme-toggle`                                                       | wall switch / sun-moon         | wall switch |
+| Colour       | Surfaces               | `data-surfaces`                                                           | paper / cool / current         | warm paper  |
+| Writing list | Fallback thumbnail     | `data-thumb-style`                                                        | ink sketch / code pane         | ink sketch  |
+| Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                       | 176px       |
+| Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                        | 17px        |
+| Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px                         | 16px        |
+| Home         | Headline size          | `--home-headline-size` (scroll ≥768px; caps the fit clamp)                | 28–56px                        | 40px        |
+| Home         | Drawing size (%)       | `--home-drawing-size` (width in scroll, height in fit)                    | 50–110                         | 100         |
+| Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static               | draw in     |
+| Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                          | 100         |
 
 ## Motion
 

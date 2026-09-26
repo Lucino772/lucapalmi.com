@@ -46,7 +46,9 @@ export function ThemeToggle({ className }: { className?: string }) {
     const next = theme === "dark" ? "light" : "dark";
     const label = theme === null ? "Toggle theme" : `Switch to ${next} theme`;
 
-    // Icons swap on the .dark class so the right one shows before hydration
+    // Everything swaps on classes/attributes set before paint, so nothing
+    // flashes: the lever sits on the .dark class, and data-theme-toggle
+    // (design panel) picks the wall switch (default) or the sun/moon icon
     return (
         <button
             type="button"
@@ -58,8 +60,57 @@ export function ThemeToggle({ className }: { className?: string }) {
             aria-label={label}
             title={label}
         >
-            <SunIcon aria-hidden className="hidden size-4 dark:block" />
-            <MoonIcon aria-hidden className="block size-4 dark:hidden" />
+            <svg
+                aria-hidden
+                viewBox="0 0 16 22"
+                fill="none"
+                className="theme-icon:hidden block h-5 w-auto"
+            >
+                {/* Wall plate with two screw ticks */}
+                <rect
+                    x="0.5"
+                    y="0.5"
+                    width="15"
+                    height="21"
+                    rx="1.5"
+                    stroke="currentColor"
+                    vectorEffect="non-scaling-stroke"
+                />
+                <path
+                    d="M7 2.75h2M7 19.25h2"
+                    stroke="currentColor"
+                    opacity="0.6"
+                    vectorEffect="non-scaling-stroke"
+                />
+                {/* Slot */}
+                <rect
+                    x="5"
+                    y="5"
+                    width="6"
+                    height="12"
+                    rx="0.75"
+                    stroke="currentColor"
+                    opacity="0.55"
+                    vectorEffect="non-scaling-stroke"
+                />
+                {/* Lever: up and lit in royal blue in light mode, down in dark */}
+                <rect
+                    x="6.25"
+                    y="6"
+                    width="3.5"
+                    height="5"
+                    rx="0.5"
+                    className="fill-accent transition-transform duration-150 dark:translate-y-[5px] dark:fill-current"
+                />
+            </svg>
+            <SunIcon
+                aria-hidden
+                className="theme-icon:dark:block hidden size-4"
+            />
+            <MoonIcon
+                aria-hidden
+                className="theme-icon:block theme-icon:dark:hidden hidden size-4"
+            />
         </button>
     );
 }
