@@ -3,6 +3,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { themeScript } from "@/components/theme";
+import { HomeLayoutToggle, homeLayoutScript } from "@/components/home-layout";
 
 import localFont from "next/font/local";
 import { cn } from "@/lib/cn";
@@ -121,6 +122,9 @@ export default async function RootLayout({
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
                 <script
+                    dangerouslySetInnerHTML={{ __html: homeLayoutScript }}
+                />
+                <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
                 />
@@ -137,6 +141,7 @@ export default async function RootLayout({
                     {children}
                 </main>
                 <Footer />
+                <HomeLayoutToggle className="border-line bg-raised text-faint [&_button:hover]:text-fg [&_button[aria-pressed=true]]:bg-bg [&_button[aria-pressed=true]]:text-fg top-auto right-4 bottom-4 left-auto translate-x-0 gap-0.5 rounded-[6px] p-0.5 font-mono text-[0.75rem] shadow-none before:pr-1 before:pl-2 before:content-['home'] [&_button]:rounded-[4px] [&_button]:px-2.5 [&_button]:lowercase [&_button]:transition-colors" />
             </body>
         </html>
     );
