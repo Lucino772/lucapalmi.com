@@ -3,6 +3,7 @@ import path from "path";
 import React from "react";
 
 import { z } from "zod";
+import { topicIds } from "@/content/topics";
 
 const articleSchema = z.object({
     kind: z.enum(["essay", "note"]).default("essay"),
@@ -12,6 +13,7 @@ const articleSchema = z.object({
     subtitle: z.string(),
     createdAt: z.date(),
     updatedAt: z.date().optional(),
+    topics: z.array(z.enum(topicIds)).default([]),
     tags: z.array(z.string()),
     readingTime: z.number().optional(),
     author: z.string().optional(),

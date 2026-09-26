@@ -106,3 +106,17 @@ featured projects) and still scale to dozens of notes.
 - `/projects`: featured (4) and listed (8). Status (`early`/`active`) and year
   are available.
 - 404, desktop nav, mobile nav, footer, theme toggle.
+
+## Decisions after review (these override anything above)
+
+- **Article pages**: one centred column, no side columns or margin content.
+  Long articles get a section rail (see `useArticleSections`).
+- **No essay/note distinction in the UI.** `kind` stays in the content data
+  but is not displayed or used for layout anywhere: one article template,
+  no kind labels, no separate notes columns or sizes.
+- **Topics, not technologies.** Articles carry `topics` (see
+  `src/content/topics.ts`). The Writing page filters by topic only. Tags
+  (technologies) remain descriptive on article pages and are not filters.
+- **Writing page is a timeline**: chronological, newest first, grouped by
+  year. Every entry shows a thumbnail; articles without a cover get a
+  generated fallback thumbnail in the variant's visual language.
