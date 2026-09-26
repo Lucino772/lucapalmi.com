@@ -42,7 +42,7 @@ export default async function Projects() {
                         className="others-heading:flex mb-3 hidden items-baseline gap-4"
                     >
                         <span className="text-[0.9375rem] font-semibold">
-                            Smaller things
+                            Other projects
                         </span>
                         <span className="bg-line h-4 w-px self-center" />
                         <span className="text-faint text-[0.8125rem] tabular-nums">

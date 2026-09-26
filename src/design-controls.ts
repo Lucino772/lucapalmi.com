@@ -244,7 +244,7 @@ export const designControls: DesignControl[] = [
         options: [
             { value: "comment", label: "// other projects" },
             { value: "none", label: "None (space only)" },
-            { value: "heading", label: "Smaller things │ 8 projects" },
+            { value: "heading", label: "Heading" },
         ],
         default: "comment",
     },

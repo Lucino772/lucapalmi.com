@@ -171,7 +171,7 @@ Tabular numerals everywhere dates and years line up.
 Lines belong to window-like elements only: the nav bar's bottom border,
 project panes (tab strip, status bar), code blocks, callouts, the 404
 terminal box, the mobile menu panel edge, and the open section-rail panel.
-Page and section labels (`~/writing`, `~/projects`, "Smaller things", the
+Page and section labels (`~/writing`, `~/projects`, the other-projects label, the
 article end matter, mobile menu items) rely on type and spacing. The one
 exception is the article h2 rule with its blue tick, because headings are
 content, not chrome.
@@ -231,7 +231,7 @@ sentences live only in `metadata.description`. The other projects are
 introduced by a faint code comment, `// other projects` (13px Inconsolata),
 with a visually hidden `<h2>` "Other projects". The design panel's "Other
 projects label" (`data-others-label`) can show nothing (`none`) or the
-earlier `Smaller things │ 8 projects` bar (`heading`).
+`Other projects │ 8 projects` bar (`heading`).
 
 **Writing (`/articles`).** The `~/writing` + topic-tab row spans the normal
 page container (title on the logo's left edge, tabs on one row at 1280 and
@@ -294,11 +294,9 @@ appear right-aligned next to their ticks (Inconsolata 13px, up to 2 lines,
 1280). Links are real anchors with `aria-current="location"`; headings get
 `scroll-margin-top` so they land below the sticky header.
 
-**Projects.** A path bar (`~/projects │ Featured`, same grammar as
-`~/writing`), then the featured projects with a clearly heavier treatment
-than the compact `ls`-style "Smaller things" table below (larger gap before
-it: 80/112px). "Smaller things" sits on top of its list in the same bar
-grammar (`Smaller things │ 8 projects`, no rule), and the list runs
+**Projects.** No visible title (see Page titles): the featured projects with a clearly heavier treatment
+than the compact `ls`-style list of other projects below (larger gap before
+it: 80/112px). The `// other projects` comment sits on top of that list, and the list runs
 the full container width, on the featured panes' left edge. Rows share one
 column template through subgrid (`11rem | 1fr | 4ch | 9ch`): name (semibold,
 the only link to the repo: accent + underline on hover, focus ring), muted description, faint right-aligned
