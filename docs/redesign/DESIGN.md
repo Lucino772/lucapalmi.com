@@ -160,57 +160,41 @@ both set before paint, so nothing flashes. The design panel's "Theme toggle"
 **Mobile nav.** Menu button (aria-expanded) opens a panel under the header:
 path-style links, socials, theme toggle. Escape and route change close it.
 
-**Home.**
+**Home: a timeless calling card.** One job: a newcomer sees who Luca is,
+then gets pointed to one post or one project. No lists or cards. Content:
+`~ $ whoami`, name and role, the headline (sized with `svh`, capped by the
+design panel's headline size), the focus areas on one line joined by `/`,
+the self-drawing portrait with the laptop glow, then `~ $ ls` with two
+directory rows as the entry points:
 
 ```
-┌──────────────────────────────────────────────┬───────────────────┐
-│ ~ whoami                                     │                   │
-│ Luca Palmisano, Senior Software Engineer     │   line drawing    │
-│ I build well-designed software systems,      │   (draws itself,  │
-│ end to end: from the infrastructure up to    │   screen glows)   │
-│ the tools people use.                        │                   │
-│ focus     backend & distributed systems, …   │                   │
-│ tend to   break complex problems down …      │                   │
-│ elsewhere github  linkedin                   │                   │
-├──────────────────────────────────────────────┴───────────────────┤
-│ ~/writing                                             all entries │
-│ 2026-09-12  A LoRaWAN gateway on a Raspberry Pi, …         2 min │
-│ 2026-01-02  From Imperative Qt to State-Driven UI …        6 min │
-│                    Building desktop UIs with Python is …          │
-├───────────────────────────────────────────────────────────────────┤
-│ ~/projects                                                        │
-│ ● active  2026  orka       Run GPU workloads across …   infra     │
-├───────────────────────────────────────────────────────────────────┤
-│ ~/.hobbies   one quiet two-column line list                       │
-└───────────────────────────────────────────────────────────────────┘
+writing/    latest    A LoRaWAN gateway on a Raspberry Pi, one evening in
+projects/   flagship  qtcompose
 ```
 
-Every entry gets the same row: date, semibold title with a Literata italic
-subtitle, reading time. (No essay/note distinction anywhere in the UI.)
+The folder name is the main link (to /articles or /projects, accent and
+underline on hover). The pointer beside it is the one secondary link: the
+latest article (or `about.pinnedArticle`), and the flagship project
+`about.flagshipProject`, linked to its write-up when it has one, otherwise
+its repo. The rows themselves are not clickable.
 
-**Home, "fit" layout (review option, `html[data-home-layout="fit"]`).** The
-same page, switched with a `fit:` Tailwind variant, so both layouts are
-server-rendered and there is no flash. Only the whoami section is kept and it
-fills exactly one screen (`min-height: calc(100svh - header)`, content
-vertically centred): `~ $ whoami`, name and role, the headline (sized with
-`svh` so it shrinks on short screens), focus areas on one line joined by
-`/`, then `~ $ ls` and two large directory rows as the entry points:
+Two layouts via `data-home-layout` (design panel, Home):
 
-```
-writing/    latest A LoRaWAN gateway on a Raspberry Pi…      6 entries
-projects/   orka, envelop, qtcompose, stillhead             12 projects
-```
+- **`fit` (default, attribute `fit` or absent):** exactly one screen
+  (`min-height: calc(100svh - header)`, content vertically centred, footer
+  hidden). "I tend to" and the hobbies sit in a compressed bottom panel
+  under a hairline, like an editor's terminal panel: two columns on desktop
+  (the three tendencies as `-` lines, hobbies as one `/`-joined line),
+  13px faint labels and muted text, 12px and stacked on phones. The
+  drawing sits on the right (height `min(62svh, 40rem)`); on phones it
+  shrinks to a small mark (10svh) above the whoami block.
+- **`fit-first`:** the same first screen without the bottom panel, then a
+  short section (about half a screen) with "I tend to" and `~/.hobbies` as
+  two columns under bar headings, at a comfortable 15px, with the hobbies
+  intro and technical/personal lists, then the footer.
 
-Each row is a full-width link between hairlines; on hover it gets the
-`raised` surface, a 2px royal-blue bar at its left edge and an accent name,
-the same language as the active tabs. The drawing (with its one-off
-animation) sits on the right, height-bound to `min(64svh, 40rem)`. On
-mobile it moves above the text at 18svh. The hobbies, the latest-writing log,
-the project rows and the site footer are hidden. On very short viewports
-the page grows rather than clipping (verified at 1440×560). The dev-only
-layout switch is a small `home | scroll | fit` segmented control in the
-editor-tab style: bottom-right on desktop, and top-right under the nav on
-mobile, clear of the entry rows.
+The old scrolling home (latest-writing log, project rows, hobbies section)
+is retired.
 
 **Page titles (Writing, Projects).** No hero, kicker or intro paragraph; the
 intro sentences live only in each page's `metadata.description`. The `<h1>`
@@ -324,14 +308,14 @@ window with a component tree (one blue node), `package` stacked module boxes
 **404.** A helpful "command not found": shows the requested path and offers
 `cd ~`, `cd ~/writing`, `cd ~/projects` as real links.
 
-**Footer.** A status-bar strip: name and year, a quiet availability line
-("Open to freelance work and interesting roles"), GitHub and LinkedIn.
+**Footer.** A quiet status-bar strip: `© year Luca Palmisano` on the left,
+GitHub and LinkedIn on the right. Hidden on the `fit` home.
 
 ## Design panel (development only)
 
 A "Design" button bottom-right opens the shared review panel (surfaces in
 the editor palette: `raised`, `line`, Inconsolata). It also holds the
-Scroll/Fit home switch. Every control defaults to the current look, and CSS
+Fit/Fit-first home switch. Every control defaults to the current look, and CSS
 carries the defaults as `var()` fallbacks, so production, which has no panel
 and no script, renders exactly the defaults.
 

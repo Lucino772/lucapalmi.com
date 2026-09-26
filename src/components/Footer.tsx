@@ -1,16 +1,13 @@
 import { about } from "@/content/about";
 
+// Quiet essentials only, like an editor's status bar
 export default function Footer() {
     return (
         <footer className="border-line text-faint mt-auto w-full border-t text-[0.8125rem]">
-            <div className="max-w-page mx-auto flex w-full flex-col gap-3 px-5 py-5 sm:flex-row sm:items-center sm:justify-between md:px-6">
-                <p className="flex items-center gap-2.5">
-                    <span
-                        aria-hidden
-                        className="bg-accent inline-block size-1.5 rounded-full"
-                    />
-                    Open to freelance work and interesting roles.
-                </p>
+            <div className="max-w-page mx-auto flex w-full items-center justify-between gap-5 px-5 py-5 md:px-6">
+                <span className="tabular-nums">
+                    © {new Date().getFullYear()} {about.name}
+                </span>
                 <div className="flex items-center gap-5">
                     <a
                         href={about.links.github}
@@ -28,9 +25,6 @@ export default function Footer() {
                     >
                         LinkedIn
                     </a>
-                    <span className="tabular-nums">
-                        © {new Date().getFullYear()} {about.name}
-                    </span>
                 </div>
             </div>
         </footer>
