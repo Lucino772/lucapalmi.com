@@ -41,7 +41,7 @@ export default function NotFound() {
                                     href={item.href}
                                     className="group hover:bg-raised -mx-3 grid grid-cols-[17ch_1fr] gap-x-[2ch] rounded-[4px] px-3 py-1.5 transition-colors duration-150"
                                 >
-                                    <span className="text-accent">
+                                    <span className="text-accent-text">
                                         <span
                                             aria-hidden
                                             className="text-faint"

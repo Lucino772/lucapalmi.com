@@ -113,7 +113,7 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                     <button
                         type="button"
                         onClick={() => selectTopic(null)}
-                        className="text-accent mt-1 cursor-pointer underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                        className="text-accent-text mt-1 cursor-pointer underline decoration-current/40 underline-offset-4 hover:decoration-current"
                     >
                         Show all writing
                     </button>
@@ -137,7 +137,7 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                             >
                                 <span
                                     aria-hidden
-                                    className="bg-accent-solid ring-bg relative size-2 ring-4"
+                                    className="bg-accent ring-bg relative size-2 ring-4"
                                 />
                                 {year}
                             </h2>
@@ -176,7 +176,7 @@ function TimelineEntry({ entry }: { entry: LogEntry }) {
                     <h3 className="mt-0.5 text-[1rem] leading-6 font-semibold md:text-[1.0625rem] md:leading-7">
                         <Link
                             href={`/articles/${entry.slug}`}
-                            className="group-hover:text-accent transition-colors duration-150 after:absolute after:inset-0 after:content-['']"
+                            className="group-hover:text-accent-text transition-colors duration-150 after:absolute after:inset-0 after:content-['']"
                         >
                             {entry.title}
                         </Link>

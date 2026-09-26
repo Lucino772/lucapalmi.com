@@ -19,7 +19,7 @@ export default function WritingLog({ entries }: { entries: LogEntry[] }) {
                     <div className="min-w-0">
                         <Link
                             href={`/articles/${entry.slug}`}
-                            className="text-fg group-hover:text-accent text-[1rem] leading-7 font-semibold transition-colors duration-150 after:absolute after:inset-0 after:content-['']"
+                            className="text-fg group-hover:text-accent-text text-[1rem] leading-7 font-semibold transition-colors duration-150 after:absolute after:inset-0 after:content-['']"
                         >
                             {entry.title}
                         </Link>

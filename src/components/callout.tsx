@@ -6,10 +6,10 @@ export function Callout({
 }: React.PropsWithChildren<{ type: "note" }>) {
     return (
         <aside
-            className="not-prose border-accent-solid bg-accent-solid/[0.06] dark:bg-accent-solid/[0.09] my-8 border-l-2 py-3.5 pr-5 pl-5"
+            className="not-prose border-accent bg-accent/[0.06] my-8 border-l-2 py-3.5 pr-5 pl-5"
             aria-label={type}
         >
-            <p className="text-accent font-mono text-[0.8125rem] leading-5">
+            <p className="text-accent-text font-mono text-[0.8125rem] leading-5">
                 {type}
             </p>
             <div className="text-fg/90 mt-1.5 font-serif text-[1rem] leading-7">

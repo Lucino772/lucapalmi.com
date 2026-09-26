@@ -7,7 +7,7 @@ export default function Footer() {
                 <p className="flex items-center gap-2.5">
                     <span
                         aria-hidden
-                        className="bg-accent-solid inline-block size-1.5 rounded-full"
+                        className="bg-accent inline-block size-1.5 rounded-full"
                     />
                     Open to freelance work and interesting roles.
                 </p>

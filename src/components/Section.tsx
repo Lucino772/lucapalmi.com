@@ -37,7 +37,7 @@ export default function Section({
                 {link && (
                     <Link
                         href={link.href}
-                        className="text-muted hover:text-accent text-[0.8125rem] underline decoration-current/30 underline-offset-4 transition-colors duration-150"
+                        className="text-muted hover:text-accent-text text-[0.8125rem] underline decoration-current/30 underline-offset-4 transition-colors duration-150"
                     >
                         {link.label}
                     </Link>

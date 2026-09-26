@@ -11,9 +11,7 @@ export function StatusMark({ status }: { status: Featured["status"] }) {
                 aria-hidden
                 className={cn(
                     "inline-block size-[7px] rounded-full",
-                    status === "active"
-                        ? "bg-accent-solid"
-                        : "border-faint border",
+                    status === "active" ? "bg-accent" : "border-faint border",
                 )}
             />
             {status}
@@ -51,7 +49,7 @@ export default function ProjectRows({
                         href={project.links.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-fg group-hover:text-accent col-span-3 font-semibold transition-colors duration-150 after:absolute after:inset-0 after:content-[''] sm:col-span-1"
+                        className="text-fg group-hover:text-accent-text col-span-3 font-semibold transition-colors duration-150 after:absolute after:inset-0 after:content-[''] sm:col-span-1"
                     >
                         {project.title}
                         <span className="sr-only"> (GitHub)</span>
@@ -66,7 +64,7 @@ export default function ProjectRows({
                                 {project.article && (
                                     <Link
                                         href={`/articles/${project.article}`}
-                                        className="text-accent relative z-10 underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                        className="text-accent-text relative z-10 underline decoration-current/40 underline-offset-4 hover:decoration-current"
                                     >
                                         Read the case study
                                     </Link>

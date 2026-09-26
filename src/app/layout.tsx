@@ -128,7 +128,7 @@ export default async function RootLayout({
             <body className="bg-bg text-fg flex min-h-dvh flex-col">
                 <a
                     href="#content"
-                    className="bg-accent-solid fixed top-2 left-2 z-50 -translate-y-16 px-3 py-2 text-sm text-white focus-visible:translate-y-0"
+                    className="bg-accent fixed top-2 left-2 z-50 -translate-y-16 px-3 py-2 text-sm text-white focus-visible:translate-y-0"
                 >
                     Skip to content
                 </a>

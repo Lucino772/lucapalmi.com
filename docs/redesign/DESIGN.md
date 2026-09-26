@@ -39,19 +39,28 @@ accent blue. That glow is the only "effect" on the whole site.
 
 ## Colour tokens
 
-One cool grey family, one accent. Semantic tokens live in `@theme` (light
+One cool grey family, one accent: the royal blue `#4169E1` of the original
+site. `#4169E1` itself is used for every non-text accent (active tab and
+filter underlines, rail tick, timeline markers, focus rings, selection, the
+laptop glow, thumbnail accents). Small text uses `accent-text`, a tint (dark)
+or shade (light) of the same 225° hue, because `#4169E1` is only 3.7:1 on
+the dark page and 4.4:1 on the light `raised` surface. Contrast figures are
+against `bg`; `accent-text` stays ≥ 5.5:1 on `raised` and `accent-soft` too.
+
+Semantic tokens live in `@theme` (light
 values) and are overridden under `.dark`.
 
-| Token          | Dark (default feel) | Light ("light editor") | Use                            |
-| -------------- | ------------------- | ---------------------- | ------------------------------ |
-| `bg`           | `#14161b`           | `#fbfbfc`              | page                           |
-| `raised`       | `#1a1d23`           | `#f2f4f7`              | code, hover rows, menus        |
-| `line`         | `#2a2e37`           | `#dfe3ea`              | hairlines, borders             |
-| `fg`           | `#dde1e8`           | `#1b1f27`              | primary text (13.8 / 16.0 : 1) |
-| `muted`        | `#9aa1ae`           | `#555c69`              | secondary text (7.0 / 6.5 : 1) |
-| `faint`        | `#828996`           | `#636a78`              | column keys, dates (≥ 4.6 : 1) |
-| `accent`       | `#8ea8ff`           | `#2b50c8`              | links, active tab, topic links |
-| `accent-solid` | `#4169e1`           | `#4169e1`              | laptop glow, selection, focus  |
+| Token         | Dark (default feel) | Light ("light editor") | Use                                                      |
+| ------------- | ------------------- | ---------------------- | -------------------------------------------------------- |
+| `bg`          | `#14161b`           | `#fbfbfc`              | page                                                     |
+| `raised`      | `#1a1d23`           | `#f2f4f7`              | code, hover rows, menus                                  |
+| `line`        | `#2a2e37`           | `#dfe3ea`              | hairlines, borders                                       |
+| `fg`          | `#dde1e8`           | `#1b1f27`              | primary text (13.8 / 16.0 : 1)                           |
+| `muted`       | `#9aa1ae`           | `#555c69`              | secondary text (7.0 / 6.5 : 1)                           |
+| `faint`       | `#828996`           | `#636a78`              | column keys, dates (≥ 4.6 : 1)                           |
+| `accent`      | `#4169e1`           | `#4169e1`              | royal blue: fills, rules, ticks, focus (3.73 / 4.69 : 1) |
+| `accent-text` | `#7b97ea`           | `#3558c7`              | links, small accent text (6.43 / 6.02 : 1)               |
+| `accent-soft` | `#181e31`           | `#eef1fb`              | callout surface                                          |
 
 Syntax colours are a small, desaturated set (keyword, string, number,
 comment, title, attr) defined per mode, so highlight.js works in both themes

@@ -59,7 +59,7 @@ export default async function Index() {
                                 href={about.links.github}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-accent underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                className="text-accent-text underline decoration-current/40 underline-offset-4 hover:decoration-current"
                             >
                                 GitHub
                             </a>
@@ -67,7 +67,7 @@ export default async function Index() {
                                 href={about.links.linkedin}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-accent underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                className="text-accent-text underline decoration-current/40 underline-offset-4 hover:decoration-current"
                             >
                                 LinkedIn
                             </a>

@@ -88,7 +88,7 @@ export default function FallbackThumb({
                 y="0"
                 width={tabWidth + 14}
                 height="1.5"
-                className="fill-accent-solid"
+                className="fill-accent"
             />
             <rect
                 x="7"
@@ -138,7 +138,7 @@ export default function FallbackThumb({
                 width="4"
                 height="2"
                 rx="1"
-                className="fill-accent-solid"
+                className="fill-accent"
             />
         </svg>
     );

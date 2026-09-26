@@ -31,9 +31,9 @@ export default function NavBar() {
                 >
                     <span
                         aria-hidden
-                        className="bg-accent-solid inline-block h-3.5 w-2"
+                        className="bg-accent inline-block h-3.5 w-2"
                     />
-                    <span className="group-hover:text-accent transition-colors duration-150">
+                    <span className="group-hover:text-accent-text transition-colors duration-150">
                         {about.name.toLowerCase()}
                     </span>
                 </Link>

@@ -62,7 +62,7 @@ export default async function Page({
             <header className="fade-in mx-auto max-w-[40rem]">
                 <Link
                     href="/articles"
-                    className="text-faint hover:text-accent text-[0.875rem] transition-colors duration-150"
+                    className="text-faint hover:text-accent-text text-[0.875rem] transition-colors duration-150"
                 >
                     <span aria-hidden>../</span>writing
                 </Link>
@@ -88,7 +88,7 @@ export default async function Page({
                             <li key={topic}>
                                 <Link
                                     href={`/articles?topic=${topic}`}
-                                    className="text-accent underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                    className="text-accent-text underline decoration-current/40 underline-offset-4 hover:decoration-current"
                                 >
                                     {topicLabel(topic)}
                                 </Link>
@@ -135,13 +135,13 @@ export default async function Page({
                 <div className="flex items-center justify-between">
                     <Link
                         href="/articles"
-                        className="hover:text-accent transition-colors duration-150"
+                        className="hover:text-accent-text transition-colors duration-150"
                     >
                         <span aria-hidden>../</span>writing
                     </Link>
                     <a
                         href="#content"
-                        className="hover:text-accent transition-colors duration-150"
+                        className="hover:text-accent-text transition-colors duration-150"
                     >
                         Back to top
                     </a>

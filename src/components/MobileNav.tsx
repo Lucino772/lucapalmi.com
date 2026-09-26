@@ -55,7 +55,7 @@ export default function MobileNav({ open, close }: Props) {
                                         <span
                                             aria-hidden
                                             className={cn(
-                                                "text-accent w-3",
+                                                "text-accent-text w-3",
                                                 !active && "invisible",
                                             )}
                                         >

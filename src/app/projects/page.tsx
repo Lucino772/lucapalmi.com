@@ -78,7 +78,7 @@ export default async function Projects() {
                                     href={project.url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="text-fg group-hover:text-accent font-semibold transition-colors duration-150 after:absolute after:inset-0 after:content-['']"
+                                    className="text-fg group-hover:text-accent-text font-semibold transition-colors duration-150 after:absolute after:inset-0 after:content-['']"
                                 >
                                     {project.title}
                                 </a>
@@ -89,7 +89,7 @@ export default async function Projects() {
                                             {" "}
                                             <Link
                                                 href={`/articles/${project.article}`}
-                                                className="text-accent relative z-10 whitespace-nowrap underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                                className="text-accent-text relative z-10 whitespace-nowrap underline decoration-current/40 underline-offset-4 hover:decoration-current"
                                             >
                                                 Case study
                                             </Link>

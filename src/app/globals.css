@@ -11,14 +11,16 @@
     --color-fg: #1b1f27;
     --color-muted: #555c69;
     --color-faint: #636a78;
-    --color-accent: #2b50c8;
-    --color-accent-solid: #4169e1;
+    /* Royal blue: fills, rules, focus. Text uses accent-text for AA */
+    --color-accent: #4169e1;
+    --color-accent-text: #3558c7;
+    --color-accent-soft: #eef1fb;
 
     --color-syn-keyword: #9b2f8f;
     --color-syn-string: #2f6f3e;
     --color-syn-number: #9a5b00;
     --color-syn-comment: #6b7280;
-    --color-syn-title: #2b50c8;
+    --color-syn-title: #3558c7;
     --color-syn-attr: #0e6b84;
 
     --font-mono: var(--font-inconsolata), ui-monospace, monospace;
@@ -39,13 +41,14 @@
     --color-fg: #dde1e8;
     --color-muted: #9aa1ae;
     --color-faint: #828996;
-    --color-accent: #8ea8ff;
+    --color-accent-text: #7b97ea;
+    --color-accent-soft: #181e31;
 
     --color-syn-keyword: #d59bf0;
     --color-syn-string: #a5d49a;
     --color-syn-number: #e8b778;
     --color-syn-comment: #7d8492;
-    --color-syn-title: #8ea8ff;
+    --color-syn-title: #7b97ea;
     --color-syn-attr: #7fc8d9;
 }
 
@@ -82,11 +85,7 @@
     }
 
     ::selection {
-        background: color-mix(
-            in oklab,
-            var(--color-accent-solid) 30%,
-            transparent
-        );
+        background: color-mix(in oklab, var(--color-accent) 30%, transparent);
     }
 
     :focus-visible {
@@ -112,13 +111,13 @@
     --tw-prose-body: var(--color-fg);
     --tw-prose-headings: var(--color-fg);
     --tw-prose-lead: var(--color-muted);
-    --tw-prose-links: var(--color-accent);
+    --tw-prose-links: var(--color-accent-text);
     --tw-prose-bold: var(--color-fg);
     --tw-prose-counters: var(--color-faint);
     --tw-prose-bullets: var(--color-faint);
     --tw-prose-hr: var(--color-line);
     --tw-prose-quotes: var(--color-fg);
-    --tw-prose-quote-borders: var(--color-accent-solid);
+    --tw-prose-quote-borders: var(--color-accent);
     --tw-prose-captions: var(--color-muted);
     --tw-prose-code: var(--color-fg);
     --tw-prose-pre-code: var(--color-fg);
@@ -171,7 +170,7 @@
     text-decoration: underline;
     text-decoration-color: color-mix(
         in oklab,
-        var(--color-accent) 40%,
+        var(--color-accent-text) 40%,
         transparent
     );
     text-underline-offset: 0.2em;
@@ -181,7 +180,7 @@
 }
 
 .prose :where(a):not(:where(.not-prose *)):hover {
-    text-decoration-color: var(--color-accent);
+    text-decoration-color: var(--color-accent-text);
 }
 
 .prose :where(blockquote):not(:where(.not-prose *)) {
@@ -337,7 +336,7 @@
 }
 
 .portrait .portrait-screen {
-    fill: var(--color-accent-solid);
+    fill: var(--color-accent);
     opacity: var(--screen-opacity);
 }
 
