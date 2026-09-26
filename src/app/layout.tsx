@@ -3,6 +3,7 @@ import "./globals.css";
 import "highlight.js/styles/github-dark-dimmed.css";
 import NavBar from "@/components/NavBar";
 import { themeScript } from "@/components/theme";
+import { HomeLayoutToggle, homeLayoutScript } from "@/components/home-layout";
 
 import localFont from "next/font/local";
 import { cn } from "@/lib/cn";
@@ -114,6 +115,9 @@ export default async function RootLayout({
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
                 <script
+                    dangerouslySetInnerHTML={{ __html: homeLayoutScript }}
+                />
+                <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
                 />
@@ -122,6 +126,7 @@ export default async function RootLayout({
                 <div className="bg-secondary relative z-0 flex min-h-full w-full flex-col items-center">
                     <NavBar />
                     {children}
+                    <HomeLayoutToggle className="bg-secondary text-white" />
                 </div>
             </body>
         </html>
