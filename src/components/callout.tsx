@@ -16,7 +16,7 @@ export function Callout({
             <p className="callout-label font-serif text-[0.9375rem] leading-6 italic">
                 {calloutLabels[type]}
             </p>
-            <div className="text-fg mt-1 font-serif text-[1.0625rem] leading-7">
+            <div className="callout-body mt-1 font-serif text-[1.0625rem] leading-7">
                 {children}
             </div>
         </aside>

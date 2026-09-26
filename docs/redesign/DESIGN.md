@@ -119,12 +119,16 @@ affordance, active underline drawn inside the tab). From `md` up it is
 
 **Callouts** (`Callout`, types note / tip / warning). A tinted box: the
 type colour at 11% (`color-mix` over transparent) with a 1px border at 28%,
-6px radius, 14px × 20px padding, no bar, label or header strip in
-monospace, so callouts never read as code blocks. The label ("Note", "Tip",
-"Warning") is Literata italic 15px in the type's text tint; the body is
-Literata 17px at full prose contrast. `aside aria-label={label}`. The design
-panel's "Callout style" (`data-callout-style="bar"`) switches to a 2px left
-bar in the type colour with a 7% tint and square corners.
+6px radius, 14px × 20px padding, no bar, no monospace label or header strip,
+so callouts never read as code blocks. The label is lowercase ("note",
+"tip", "warning", via `text-transform`; `aria-label` keeps "Note" etc.) in
+Literata italic 15px and the type's text tint. The body is Literata 17px:
+note and tip use `--color-callout-muted`, a tone between secondary and main
+text chosen per palette and mode so it clears 7 : 1 on every tint (lowest
+7.07 : 1, paper light note); warning keeps full-contrast `fg`. `aside
+aria-label={label}`. Design panel: "Callout style" (`data-callout-style="bar"`:
+2px left bar, 7% tint, square corners) and "Callout text"
+(`data-callout-text="full"`: full-contrast body for every type).
 
 | Type    | Fill (dark · light)   | Label text (dark · light) | Label contrast, min over palettes (dark · light) |
 | ------- | --------------------- | ------------------------- | ------------------------------------------------ |

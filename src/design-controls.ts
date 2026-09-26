@@ -223,4 +223,16 @@ export const designControls: DesignControl[] = [
         ],
         default: "box",
     },
+    {
+        type: "choice",
+        key: "callout-text",
+        label: "Callout text",
+        group: "Article",
+        attribute: "data-callout-text",
+        options: [
+            { value: "muted", label: "Muted (note, tip)" },
+            { value: "full", label: "Full contrast" },
+        ],
+        default: "muted",
+    },
 ];
