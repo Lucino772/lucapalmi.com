@@ -135,3 +135,10 @@
         opacity: 0;
     }
 }
+
+/* Development-only design panel; system colours follow the colour scheme */
+.design-panel-surface {
+    background-color: Canvas;
+    color: CanvasText;
+    border-color: color-mix(in oklab, CanvasText 20%, transparent);
+}
