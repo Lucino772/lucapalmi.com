@@ -135,6 +135,7 @@ export const designControls: DesignControl[] = [
         options: [
             { value: "paper", label: "Warm paper (V2)" },
             { value: "cool", label: "Cool (original V1)" },
+            { value: "current", label: "Current site" },
         ],
         default: "paper",
     },

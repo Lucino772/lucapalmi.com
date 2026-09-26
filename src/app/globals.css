@@ -89,6 +89,42 @@ html[data-surfaces="cool"].dark {
     --color-syn-comment: #7d8492;
 }
 
+/* The live lucapalmi.com: neutral untinted greys, dark only. Light is an
+   extrapolated neutral counterpart. Raised is darker than the page, as on
+   the live site; hairlines are a lighter step of its #292936 border. */
+html[data-surfaces="current"]:not(.dark) {
+    --color-bg: #f4f4f4;
+    --color-raised: #ebebeb;
+    --color-line: #d6d6d6;
+    --color-fg: #1f1f1f;
+    --color-muted: #555555;
+    --color-faint: #636363;
+    --color-accent-soft: #e6e9f2;
+    --color-sketch: #1f1f1f;
+    --color-syn-comment: #666666;
+}
+
+html[data-surfaces="current"].dark {
+    --color-bg: #272727;
+    --color-raised: #242424;
+    --color-line: #3a3a48;
+    --color-fg: #e9e9e9;
+    --color-muted: #c9c9c9;
+    --color-faint: #9e9e9e;
+    --color-accent-soft: #2a2f3d;
+    --color-sketch: #d9d9d9;
+    --color-syn-comment: #939393;
+}
+
+/* Horizontal scroll rows (mobile topic tabs): the fade is the affordance */
+.no-scrollbar {
+    scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
 @layer base {
     *,
     ::after,
@@ -261,6 +297,7 @@ html[data-surfaces="cool"].dark {
     padding: 2.25rem 0 1rem;
     margin: 1.75em 0;
     overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .prose :where(pre code):not(:where(.not-prose *)) {

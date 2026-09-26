@@ -93,6 +93,33 @@ the earlier Workstation (verified by screenshot diff).
 | `accent-text` | `#7b97ea` | `#3558c7` | links, small accent text (6.43 / 6.02 : 1)      |
 | `accent-soft` | `#181e31` | `#eef1fb` | callout surface                                 |
 
+**Current site**, `html[data-surfaces="current"]`. The live lucapalmi.com
+(`main`) is dark only, with neutral untinted greys. Dark maps it directly;
+light is an **extrapolated** neutral counterpart (no live equivalent).
+Contrast is the minimum across `bg`, `raised` and `accent-soft`.
+
+| Token         | Dark      | Light     | Notes (contrast dark · light)                                     |
+| ------------- | --------- | --------- | ----------------------------------------------------------------- |
+| `bg`          | `#272727` | `#f4f4f4` | live `--color-secondary`                                          |
+| `raised`      | `#242424` | `#ebebeb` | live `--color-primary`: darker than the page, kept as on the site |
+| `line`        | `#3a3a48` | `#d6d6d6` | lighter step of the live `#292936`, which is ~1.04:1, invisible   |
+| `fg`          | `#e9e9e9` | `#1f1f1f` | white at 90 % (11.0 · 13.6 : 1)                                   |
+| `muted`       | `#c9c9c9` | `#555555` | white at 75 %, the live body text (8.1 · 6.1 : 1)                 |
+| `faint`       | `#9e9e9e` | `#636363` | white at 55 % (5.0 · 5.0 : 1)                                     |
+| `accent-text` | `#7b97ea` | `#3558c7` | the live link tint (4.7 · 5.1 : 1)                                |
+| `accent-soft` | `#2a2f3d` | `#e6e9f2` | 12 % / 8 % blue over the page                                     |
+| `sketch`      | `#d9d9d9` | `#1f1f1f` | thumbnail pen strokes                                             |
+
+Code comments use `#939393` (dark, 5.1 : 1) and `#666666` (light, 4.8 : 1)
+on the code surface; the other syntax colours are shared with the paper
+palette and stay ≥ 5.1 : 1.
+
+**Scroll rows.** The topic tab row is only a horizontal scroll container
+below 768px (`overflow-y: hidden`, scrollbar hidden, right-edge fade as the
+affordance, active underline drawn inside the tab). From `md` up it is
+`overflow: visible`, so no scrollbar can appear. Code blocks set
+`overflow-y: hidden` next to their horizontal scroll.
+
 ## Type
 
 - **Inconsolata** (variable, self-hosted): the whole UI. Narrow, calm, reads
@@ -267,7 +294,7 @@ and no script, renders exactly the defaults.
 | ------------ | ---------------------- | ------------------------------------------------------------------------- | ----------------------- | ---------- |
 | Writing list | List alignment         | `data-writing-align`                                                      | centre / left           | centre     |
 | Writing list | Filter bar             | `data-writing-bar`                                                        | page width / list width | page width |
-| Colour       | Surfaces               | `data-surfaces`                                                           | warm paper / cool       | warm paper |
+| Colour       | Surfaces               | `data-surfaces`                                                           | paper / cool / current  | warm paper |
 | Writing list | Fallback thumbnail     | `data-thumb-style`                                                        | ink sketch / code pane  | ink sketch |
 | Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                | 176px      |
 | Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                 | 17px       |

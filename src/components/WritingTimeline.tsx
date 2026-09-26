@@ -77,7 +77,7 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                     <div
                         role="group"
                         aria-label="Filter by topic"
-                        className="flex min-w-0 flex-1 gap-1 overflow-x-auto [mask-image:linear-gradient(to_right,black_calc(100%-2.5rem),transparent)] pr-8 pl-1 md:flex-wrap md:[mask-image:none] md:pr-0"
+                        className="no-scrollbar flex min-w-0 flex-1 gap-1 overflow-x-auto overflow-y-hidden [mask-image:linear-gradient(to_right,black_calc(100%-2.5rem),transparent)] pr-8 pl-1 md:flex-wrap md:overflow-visible md:[mask-image:none] md:pr-0"
                     >
                         {filters.map((filter) => {
                             const active = filter.id === selected;
@@ -89,7 +89,7 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                                     onClick={() => selectTopic(filter.id)}
                                     className={cn(
                                         "relative flex shrink-0 cursor-pointer items-baseline gap-2 px-3 pt-1 pb-3 text-[0.9375rem] whitespace-nowrap transition-colors duration-150 focus-visible:outline-offset-[-2px]",
-                                        "after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:content-['']",
+                                        "after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:content-[''] md:after:-bottom-px",
                                         active
                                             ? "text-fg after:bg-accent"
                                             : "text-muted hover:text-fg",
