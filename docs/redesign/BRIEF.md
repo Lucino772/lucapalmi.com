@@ -120,3 +120,9 @@ featured projects) and still scale to dozens of notes.
 - **Writing page is a timeline**: chronological, newest first, grouped by
   year. Every entry shows a thumbnail; articles without a cover get a
   generated fallback thumbnail in the variant's visual language.
+- **No page intros on Writing and Projects.** No hero/intro block: the page
+  title is a compact one-line label merged with the filter bar (or carried by
+  the variant's page chrome), still the page's `<h1>`. Intro sentences move
+  into the page `metadata.description`. No visible "N entries, newest first"
+  line (the count lives on the "All" chip and in an `aria-live` region).
+  Projects keep a small label separating featured from other projects.
