@@ -88,7 +88,7 @@ export const designControls: DesignControl[] = [
         max: 56,
         step: 1,
         unit: "px",
-        default: 40,
+        default: 34,
     },
     {
         type: "range",

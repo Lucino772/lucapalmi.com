@@ -4,15 +4,17 @@ import { projects } from "@/lib/projects";
 import { getWritingLog } from "@/lib/writing";
 import Portrait from "@/components/Portrait";
 
-const hobbies = [...about.hobbies.technical, ...about.hobbies.personal];
+// A short, lowercase take on about.hobbies for the dotfile row
+const hobbyLine =
+    "hardware · raspberry pi · lorawan · networking · game servers · lego · cooking · travel";
 
 const quietLink =
     "hover:text-accent-text decoration-transparent underline underline-offset-4 transition-colors duration-150 hover:decoration-current";
 
-// A timeless calling card. "fit" (default) is exactly one screen, with
-// "I tend to" and the hobbies in a compact bottom panel, like an editor's
-// terminal panel. "fit-first" keeps the same first screen and moves them to
-// a comfortable section below the fold.
+// A timeless calling card. "fit" (default) is exactly one screen: whoami,
+// headline, "I tend to", and an `ls -a` of writing/, projects/ and the
+// .hobbies dotfile. "fit-first" keeps the same first screen and adds the
+// hobbies in full below the fold.
 export default async function Index() {
     const log = await getWritingLog();
     const article =
@@ -32,9 +34,9 @@ export default async function Index() {
         <div data-home className="max-w-page mx-auto w-full px-5 md:px-6">
             <section
                 aria-label="About"
-                className="flex min-h-[calc(100svh-3.5rem-1px)] flex-col pt-3 pb-5 md:pt-5 md:pb-[clamp(1.5rem,5svh,3.5rem)]"
+                className="flex min-h-[calc(100svh-3.5rem-1px)] flex-col py-4 md:py-[clamp(1.5rem,4svh,3rem)]"
             >
-                <div className="grid flex-1 content-center items-center gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,1fr)_auto] md:[@media(min-height:840px)]:pb-[4svh]">
+                <div className="grid flex-1 content-center items-center gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,1fr)_auto]">
                     <div className="fade-in max-w-[46rem] min-w-0">
                         <p className="text-faint text-[0.875rem] md:text-[0.9375rem]">
                             <span aria-hidden>~ $ </span>whoami
@@ -43,13 +45,25 @@ export default async function Index() {
                             <span className="font-semibold">{about.name}</span>
                             <span className="text-muted">, {about.role}</span>
                         </h1>
-                        <p className="mt-2 text-[clamp(1.25rem,3.3svh,1.625rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance md:mt-3 md:text-[clamp(1.5rem,4.4svh,var(--home-headline-size,40px))] md:leading-[1.15]">
+                        <p className="mt-2 text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance md:mt-3 md:text-[clamp(1.375rem,3.8svh,var(--home-headline-size,34px))] md:leading-[1.15]">
                             {about.headline}
                         </p>
-                        <p className="text-muted mt-3 text-[0.8125rem] leading-6 md:mt-5 md:text-[0.9375rem] md:leading-7">
-                            <span className="text-faint">focus </span>
-                            {about.focus.join(" / ")}
-                        </p>
+                        <div className="mt-3 text-[0.8125rem] leading-6 md:mt-[min(1.75rem,3svh)] md:text-[0.9375rem] md:leading-7">
+                            <h2 className="text-faint">I tend to</h2>
+                            <ul className="text-fg/90">
+                                {about.tendencies.map((item) => (
+                                    <li key={item} className="flex gap-[1ch]">
+                                        <span
+                                            aria-hidden
+                                            className="text-faint"
+                                        >
+                                            -
+                                        </span>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
                         <nav
                             aria-label="Explore"
@@ -59,7 +73,7 @@ export default async function Index() {
                                 aria-hidden
                                 className="text-faint text-[0.875rem] md:text-[0.9375rem]"
                             >
-                                ~ $ ls
+                                ~ $ ls -a
                             </p>
                             <ul className="border-line mt-1.5 border-t">
                                 <Entry
@@ -90,78 +104,43 @@ export default async function Index() {
                                         }
                                     }
                                 />
+                                {/* Dotfile row: information only, not a link */}
+                                <li className="border-line grid grid-cols-[minmax(0,1fr)] items-baseline gap-x-6 border-b py-2 sm:grid-cols-[8.5rem_minmax(0,1fr)] md:py-[min(0.75rem,1.3svh)]">
+                                    <h2 className="text-faint text-[1rem] leading-7 md:text-[1.125rem]">
+                                        .hobbies/
+                                    </h2>
+                                    <p className="text-muted text-[0.8125rem] leading-6 md:text-[0.875rem]">
+                                        {hobbyLine}
+                                    </p>
+                                </li>
                             </ul>
                         </nav>
                     </div>
 
                     <div className="text-muted order-first lg:order-none">
-                        <Portrait className="block h-[calc(8svh*var(--home-drawing-size,100)/100)] w-auto [mask-image:linear-gradient(to_bottom,black_82%,transparent)] lg:mx-auto lg:h-[calc(min(62svh,40rem)*var(--home-drawing-size,100)/100)]" />
+                        <Portrait className="block h-[calc(14svh*var(--home-drawing-size,100)/100)] w-auto [mask-image:linear-gradient(to_bottom,black_82%,transparent)] lg:mx-auto lg:h-[calc(min(62svh,40rem)*var(--home-drawing-size,100)/100)]" />
                     </div>
                 </div>
-
-                {/* Fit: the personality, compressed into a bottom panel */}
-                <aside
-                    aria-label="Personality"
-                    className="fitfirst:hidden border-line mt-3 grid gap-x-10 gap-y-2 border-t pt-2.5 text-[0.75rem] leading-[1.35rem] md:mt-6 md:grid-cols-2 md:pt-4 md:text-[0.8125rem] md:leading-6"
-                >
-                    <div>
-                        <h2 className="text-faint">I tend to</h2>
-                        <ul className="text-muted">
-                            {about.tendencies.map((item) => (
-                                <li key={item} className="flex gap-[1ch]">
-                                    <span aria-hidden className="text-faint">
-                                        -
-                                    </span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 className="text-faint">~/.hobbies</h2>
-                        <p className="text-muted">{hobbies.join(" / ")}</p>
-                    </div>
-                </aside>
             </section>
 
-            {/* Fit-first: the same personality, laid out comfortably */}
+            {/* Fit-first: the same first screen, then the hobbies in full */}
             <section
-                aria-label="Personality"
-                className="fitfirst:grid hidden gap-x-12 gap-y-10 pt-10 pb-16 md:grid-cols-2 md:pt-14 md:pb-24"
+                aria-label="Hobbies"
+                className="fitfirst:block hidden pt-10 pb-16 md:pt-14 md:pb-24"
             >
-                <div>
-                    <div className="border-line mb-4 flex items-baseline gap-4 border-b pb-3">
-                        <h2 className="text-[0.9375rem] font-semibold">
-                            I tend to
-                        </h2>
-                    </div>
-                    <ul className="text-fg/90 flex flex-col gap-1.5 text-[0.9375rem] leading-7">
-                        {about.tendencies.map((item) => (
-                            <li key={item} className="flex gap-[1ch]">
-                                <span aria-hidden className="text-faint">
-                                    -
-                                </span>
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
+                <div className="border-line mb-4 flex items-baseline gap-4 border-b pb-3">
+                    <h2 className="text-[0.9375rem] font-semibold">
+                        <span aria-hidden className="text-faint font-normal">
+                            ~/
+                        </span>
+                        .hobbies
+                    </h2>
                 </div>
-                <div>
-                    <div className="border-line mb-4 flex items-baseline gap-4 border-b pb-3">
-                        <h2 className="text-[0.9375rem] font-semibold">
-                            <span
-                                aria-hidden
-                                className="text-faint font-normal"
-                            >
-                                ~/
-                            </span>
-                            .hobbies
-                        </h2>
-                    </div>
-                    <p className="text-muted text-[0.9375rem] leading-7">
+                <div className="grid gap-x-12 gap-y-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                    <p className="text-muted max-w-[46ch] text-[0.9375rem] leading-7">
                         {about.hobbies.intro}
                     </p>
-                    <div className="mt-4 grid grid-cols-2 gap-x-[2ch] text-[0.875rem] leading-6">
+                    <div className="grid grid-cols-2 gap-x-[2ch] text-[0.875rem] leading-6">
                         <ul className="text-fg/90">
                             {about.hobbies.technical.map((item) => (
                                 <li key={item}>{item}</li>

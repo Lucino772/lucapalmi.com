@@ -161,40 +161,38 @@ both set before paint, so nothing flashes. The design panel's "Theme toggle"
 path-style links, socials, theme toggle. Escape and route change close it.
 
 **Home: a timeless calling card.** One job: a newcomer sees who Luca is,
-then gets pointed to one post or one project. No lists or cards. Content:
-`~ $ whoami`, name and role, the headline (sized with `svh`, capped by the
-design panel's headline size), the focus areas on one line joined by `/`,
-the self-drawing portrait with the laptop glow, then `~ $ ls` with two
-directory rows as the entry points:
+then gets pointed to one post or one project. No lists or cards, and no
+focus-area line (it changes over time; the headline says it). Content:
+`~ $ whoami`, name and role, the headline (34px at most, sized with `svh`;
+the design panel's headline-size default is 34), then "I tend to" as a faint
+label with three `-` lines at 15px (13px on phones), the self-drawing
+portrait with the laptop glow, and `~ $ ls -a`:
 
 ```
 writing/    latest    A LoRaWAN gateway on a Raspberry Pi, one evening in
 projects/   flagship  qtcompose
+.hobbies/   hardware · raspberry pi · lorawan · networking · game servers · …
 ```
 
 The folder name is the main link (to /articles or /projects, accent and
 underline on hover). The pointer beside it is the one secondary link: the
 latest article (or `about.pinnedArticle`), and the flagship project
 `about.flagshipProject`, linked to its write-up when it has one, otherwise
-its repo. The rows themselves are not clickable.
+its repo. `.hobbies/` is a dotfile row: dimmer, lighter-weight name, the
+hobbies on one muted line, and it is not a link (no hover, not focusable),
+so it reads as information rather than a destination.
 
 Two layouts via `data-home-layout` (design panel, Home):
 
 - **`fit` (default, attribute `fit` or absent):** exactly one screen
-  (`min-height: calc(100svh - header)`, content vertically centred, footer
-  hidden). "I tend to" and the hobbies sit in a compressed bottom panel
-  under a hairline, like an editor's terminal panel: two columns on desktop
-  (the three tendencies as `-` lines, hobbies as one `/`-joined line),
-  13px faint labels and muted text, 12px and stacked on phones. The
-  drawing sits on the right (height `min(62svh, 40rem)`); on phones it
-  shrinks to a small mark (8svh) above the whoami block. Bottom breathing room is `clamp(1.5rem, 5svh, 3.5rem)` on desktop (20px on phones), and on screens at least 840px tall the hero is biased slightly upward.
-- **`fit-first`:** the same first screen without the bottom panel, then a
-  short section (about half a screen) with "I tend to" and `~/.hobbies` as
-  two columns under bar headings, at a comfortable 15px, with the hobbies
-  intro and technical/personal lists, then the footer.
+  (`min-height: calc(100svh - header)`, content vertically centred with
+  symmetric padding, footer hidden). The drawing sits on the right (height
+  `min(62svh, 40rem)`); on phones it sits above the whoami block at 14svh.
+- **`fit-first`:** the same first screen, then a short `~/.hobbies` section
+  below the fold (the hobbies intro plus the technical and personal lists
+  in full), then the footer.
 
-The old scrolling home (latest-writing log, project rows, hobbies section)
-is retired.
+The old scrolling home and the compressed bottom panel are retired.
 
 **Page titles (Writing, Projects).** No hero, kicker or intro paragraph; the
 intro sentences live only in each page's `metadata.description`. The `<h1>`
