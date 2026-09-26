@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant fit (&:where([data-home-layout="fit"] *));
 @plugin "@tailwindcss/typography";
 
 /* Light values here, dark overrides under .dark below */
@@ -321,6 +322,13 @@
 }
 .hljs-deletion {
     color: var(--color-syn-number);
+}
+
+/* ---------- home: fit layout ---------- */
+
+/* One screen: the home content replaces the long footer */
+html[data-home-layout="fit"] body:has([data-home]) > footer {
+    display: none;
 }
 
 /* ---------- home drawing ---------- */

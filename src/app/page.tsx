@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { about } from "@/content/about";
 import { projects } from "@/lib/projects";
 import { getWritingLog } from "@/lib/writing";
@@ -10,11 +11,12 @@ export default async function Index() {
     const log = await getWritingLog();
 
     return (
-        <div className="max-w-page mx-auto w-full px-5 md:px-6">
-            {/* whoami */}
+        <div data-home className="max-w-page mx-auto w-full px-5 md:px-6">
+            {/* whoami. In the "fit" layout this section is the whole page:
+                one screen, then an ls of the two places to go next */}
             <section
                 aria-label="About"
-                className="grid items-center gap-x-12 gap-y-10 pt-10 pb-14 md:pt-16 md:pb-20 lg:grid-cols-[minmax(0,1fr)_22rem] xl:grid-cols-[minmax(0,1fr)_26rem]"
+                className="fit:min-h-[calc(100svh-3.5rem-1px)] fit:content-center fit:gap-y-5 fit:py-5 md:fit:py-8 lg:fit:grid-cols-[minmax(0,1fr)_auto] grid items-center gap-x-12 gap-y-10 pt-10 pb-14 md:pt-16 md:pb-20 lg:grid-cols-[minmax(0,1fr)_22rem] xl:grid-cols-[minmax(0,1fr)_26rem]"
             >
                 <div className="fade-in max-w-[44rem]">
                     <p className="text-faint text-[0.9375rem]">
@@ -24,11 +26,50 @@ export default async function Index() {
                         <span className="font-semibold">{about.name}</span>
                         <span className="text-muted">, {about.role}</span>
                     </h1>
-                    <p className="mt-4 text-[1.75rem] leading-[1.2] font-medium tracking-[-0.02em] text-balance md:text-[2.5rem] md:leading-[1.15]">
+                    <p className="fit:mt-3 fit:text-[1.5rem] md:fit:text-[clamp(1.75rem,4.6svh,2.5rem)] mt-4 text-[1.75rem] leading-[1.2] font-medium tracking-[-0.02em] text-balance md:text-[2.5rem] md:leading-[1.15]">
                         {about.headline}
                     </p>
 
-                    <dl className="mt-9 grid grid-cols-1 gap-x-[2ch] text-[0.9375rem] leading-7 sm:grid-cols-[10ch_minmax(0,1fr)] sm:gap-y-5">
+                    <p className="text-muted fit:block md:fit:mt-6 mt-5 hidden text-[0.9375rem] leading-7">
+                        <span className="text-faint">focus </span>
+                        {about.focus.join(" / ")}
+                    </p>
+
+                    <nav
+                        aria-label="Explore"
+                        className="fit:block md:fit:mt-9 mt-6 hidden"
+                    >
+                        <p aria-hidden className="text-faint text-[0.9375rem]">
+                            ~ $ ls
+                        </p>
+                        <ul className="border-line mt-2 border-t">
+                            <FitEntry
+                                href="/articles"
+                                name="writing/"
+                                count={`${log.length} ${log.length === 1 ? "entry" : "entries"}`}
+                                detail={
+                                    log[0] && (
+                                        <>
+                                            <span className="text-faint">
+                                                latest{" "}
+                                            </span>
+                                            {log[0].title}
+                                        </>
+                                    )
+                                }
+                            />
+                            <FitEntry
+                                href="/projects"
+                                name="projects/"
+                                count={`${projects.featured.length + projects.others.length} projects`}
+                                detail={projects.featured
+                                    .map((p) => p.title)
+                                    .join(", ")}
+                            />
+                        </ul>
+                    </nav>
+
+                    <dl className="fit:hidden mt-9 grid grid-cols-1 gap-x-[2ch] text-[0.9375rem] leading-7 sm:grid-cols-[10ch_minmax(0,1fr)] sm:gap-y-5">
                         <dt className="text-faint">focus</dt>
                         <dd className="mb-4 sm:mb-0">
                             <ul className="text-fg/90">
@@ -75,12 +116,12 @@ export default async function Index() {
                     </dl>
                 </div>
 
-                <div className="text-muted mx-auto w-full max-w-[17rem] sm:max-w-[20rem] lg:max-w-none">
-                    <Portrait className="h-auto w-full [mask-image:linear-gradient(to_bottom,black_82%,transparent)]" />
+                <div className="text-muted fit:w-auto fit:max-w-none max-lg:fit:order-first max-lg:fit:mx-0 mx-auto w-full max-w-[17rem] sm:max-w-[20rem] lg:max-w-none">
+                    <Portrait className="fit:h-[18svh] fit:w-auto lg:fit:h-[min(64svh,40rem)] h-auto w-full [mask-image:linear-gradient(to_bottom,black_82%,transparent)]" />
                 </div>
             </section>
 
-            <div className="border-line flex flex-col gap-16 border-t pt-12 pb-20 md:gap-20 md:pt-16 md:pb-28">
+            <div className="border-line fit:hidden flex flex-col gap-16 border-t pt-12 pb-20 md:gap-20 md:pt-16 md:pb-28">
                 <Section
                     id="writing"
                     path="~/writing"
@@ -114,5 +155,36 @@ export default async function Index() {
                 </Section>
             </div>
         </div>
+    );
+}
+
+function FitEntry({
+    href,
+    name,
+    count,
+    detail,
+}: {
+    href: string;
+    name: string;
+    count: string;
+    detail: React.ReactNode;
+}) {
+    return (
+        <li className="border-line border-b">
+            <Link
+                href={href}
+                className="group hover:bg-raised hover:before:bg-accent relative -mx-3 grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-6 gap-y-0.5 px-3 py-3 transition-colors duration-150 before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:bg-transparent before:transition-colors before:duration-150 before:content-[''] sm:grid-cols-[8.5rem_minmax(0,1fr)_auto] md:py-4"
+            >
+                <span className="group-hover:text-accent-text text-[1.25rem] leading-7 font-semibold transition-colors duration-150 md:text-[1.375rem]">
+                    {name}
+                </span>
+                <span className="text-faint text-right text-[0.8125rem] tabular-nums sm:order-last">
+                    {count}
+                </span>
+                <span className="text-muted col-span-2 truncate text-[0.875rem] sm:col-span-1">
+                    {detail}
+                </span>
+            </Link>
+        </li>
     );
 }

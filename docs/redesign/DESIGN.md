@@ -124,6 +124,30 @@ path-style links, socials, theme toggle. Escape and route change close it.
 Every entry gets the same row: date, semibold title with a Literata italic
 subtitle, reading time. (No essay/note distinction anywhere in the UI.)
 
+**Home, "fit" layout (review option, `html[data-home-layout="fit"]`).** The
+same page, switched with a `fit:` Tailwind variant, so both layouts are
+server-rendered and there is no flash. Only the whoami section is kept and it
+fills exactly one screen (`min-height: calc(100svh - header)`, content
+vertically centred): `~ $ whoami`, name and role, the headline (sized with
+`svh` so it shrinks on short screens), focus areas on one line joined by
+`/`, then `~ $ ls` and two large directory rows as the entry points:
+
+```
+writing/    latest A LoRaWAN gateway on a Raspberry Pi…      6 entries
+projects/   orka, envelop, qtcompose, stillhead             12 projects
+```
+
+Each row is a full-width link between hairlines; on hover it gets the
+`raised` surface, a 2px royal-blue bar at its left edge and an accent name,
+the same language as the active tabs. The drawing (with its one-off
+animation) sits on the right, height-bound to `min(64svh, 40rem)`. On
+mobile it moves above the text at 18svh. The hobbies, the latest-writing log,
+the project rows and the site footer are hidden. On very short viewports
+the page grows rather than clipping (verified at 1440×560). The dev-only
+layout switch is a small `home | scroll | fit` segmented control in the
+editor-tab style: bottom-right on desktop, and top-right under the nav on
+mobile, clear of the entry rows.
+
 **Page titles (Writing, Projects).** No hero, kicker or intro paragraph; the
 intro sentences live only in each page's `metadata.description`. The `<h1>`
 is the page's path, set the way an editor shows the current folder:
