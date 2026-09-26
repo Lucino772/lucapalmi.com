@@ -19,7 +19,7 @@ export async function generateMetadata({
         openGraph: {
             title: article.title,
             description: article.subtitle,
-            images: [
+            images: article.cover && [
                 {
                     url: article.cover.data.src,
                     width: article.cover.data.width,
@@ -37,7 +37,7 @@ export async function generateMetadata({
             card: "summary_large_image",
             title: article.title,
             description: article.subtitle,
-            images: [article.cover.data.src],
+            images: article.cover && [article.cover.data.src],
         },
         alternates: {
             canonical: `https://lucapalmi.com/articles/${slug}`,
@@ -93,20 +93,22 @@ export default async function Page({
                 </div>
                 <h1 className="mb-0!">{article.title}</h1>
                 <p className="mt-1!">{article.subtitle}</p>
-                <div className="not-prose mb-5 flex flex-col gap-4">
-                    <div className="aspect-video overflow-hidden rounded-lg shadow-sm">
-                        <Image
-                            src={article.cover.data.src}
-                            alt={`${article.title} - ${article.subtitle}`}
-                            width={article.cover.data.width}
-                            height={article.cover.data.height}
-                            className="h-full w-full object-cover transition-transform duration-700 hover:scale-[101%]"
-                        />
+                {article.cover && (
+                    <div className="not-prose mb-5 flex flex-col gap-4">
+                        <div className="aspect-video overflow-hidden rounded-lg shadow-sm">
+                            <Image
+                                src={article.cover.data.src}
+                                alt={`${article.title} - ${article.subtitle}`}
+                                width={article.cover.data.width}
+                                height={article.cover.data.height}
+                                className="h-full w-full object-cover transition-transform duration-700 hover:scale-[101%]"
+                            />
+                        </div>
+                        {article.cover.kind === "ai-generated" && (
+                            <AiImageDescription prompt={article.cover.prompt} />
+                        )}
                     </div>
-                    {article.cover.kind === "ai-generated" && (
-                        <AiImageDescription prompt={article.cover.prompt} />
-                    )}
-                </div>
+                )}
                 <Content />
             </div>
         </div>

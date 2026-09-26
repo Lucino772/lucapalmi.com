@@ -5,6 +5,9 @@ import React from "react";
 import { z } from "zod";
 
 const articleSchema = z.object({
+    kind: z.enum(["essay", "note"]).default("essay"),
+    // Drafts are visible in development only
+    draft: z.boolean().default(false),
     title: z.string(),
     subtitle: z.string(),
     createdAt: z.date(),
@@ -12,34 +15,36 @@ const articleSchema = z.object({
     tags: z.array(z.string()),
     readingTime: z.number().optional(),
     author: z.string().optional(),
-    cover: z.discriminatedUnion("kind", [
-        z.object({
-            kind: z.literal("ai-generated"),
-            data: z.object({
-                src: z.string(),
-                width: z.number(),
-                height: z.number(),
+    cover: z
+        .discriminatedUnion("kind", [
+            z.object({
+                kind: z.literal("ai-generated"),
+                data: z.object({
+                    src: z.string(),
+                    width: z.number(),
+                    height: z.number(),
+                }),
+                prompt: z.string(),
             }),
-            prompt: z.string(),
-        }),
-        z.object({
-            kind: z.literal("external"),
-            data: z.object({
-                src: z.string(),
-                width: z.number(),
-                height: z.number(),
+            z.object({
+                kind: z.literal("external"),
+                data: z.object({
+                    src: z.string(),
+                    width: z.number(),
+                    height: z.number(),
+                }),
+                source: z.url(),
             }),
-            source: z.url(),
-        }),
-        z.object({
-            kind: z.literal("internal"),
-            data: z.object({
-                src: z.string(),
-                width: z.number(),
-                height: z.number(),
+            z.object({
+                kind: z.literal("internal"),
+                data: z.object({
+                    src: z.string(),
+                    width: z.number(),
+                    height: z.number(),
+                }),
             }),
-        }),
-    ]),
+        ])
+        .optional(),
 });
 
 export type Article = z.infer<typeof articleSchema>;
@@ -51,7 +56,7 @@ export async function getArticles(): Promise<
         slug: string;
     }[]
 > {
-    return await Promise.all(
+    const articles = await Promise.all(
         (await fg("*.{md,mdx}", { cwd: "src/content/articles" })).map(
             (filename) =>
                 import(`@/content/articles/${filename}`).then((val) => ({
@@ -60,6 +65,10 @@ export async function getArticles(): Promise<
                     slug: path.parse(filename).name,
                 })),
         ),
+    );
+    return articles.filter(
+        (article) =>
+            !article.metadata.draft || process.env.NODE_ENV !== "production",
     );
 }
 

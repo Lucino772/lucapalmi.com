@@ -21,15 +21,17 @@ export default async function Articles() {
                     key={i}
                 >
                     <div className="bg-primary relative flex aspect-video w-full flex-col justify-between overflow-hidden rounded-sm border-2 border-[#292936] shadow-md transition-all hover:scale-[1.01] hover:border-[#4169E1]">
-                        <div className="absolute inset-px aspect-video rounded-sm">
-                            <Image
-                                src={article.metadata.cover.data.src}
-                                alt={`${article.metadata.title} - ${article.metadata.subtitle}`}
-                                width={article.metadata.cover.data.width}
-                                height={article.metadata.cover.data.height}
-                                className="h-full w-full object-cover transition-transform duration-700 hover:scale-[101%]"
-                            />
-                        </div>
+                        {article.metadata.cover && (
+                            <div className="absolute inset-px aspect-video rounded-sm">
+                                <Image
+                                    src={article.metadata.cover.data.src}
+                                    alt={`${article.metadata.title} - ${article.metadata.subtitle}`}
+                                    width={article.metadata.cover.data.width}
+                                    height={article.metadata.cover.data.height}
+                                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-[101%]"
+                                />
+                            </div>
+                        )}
 
                         <div className="from-primary relative flex flex-row items-center justify-between bg-linear-to-b to-transparent p-2">
                             <div className="flex flex-row items-center gap-2">

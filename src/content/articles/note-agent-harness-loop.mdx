@@ -1,0 +1,25 @@
+import { Callout } from "@/components/callout";
+
+export const metadata = {
+    kind: "note",
+    draft: true,
+    title: "The agent is the easy part",
+    subtitle: "Placeholder note: where the real work sits in an agent harness.",
+    createdAt: new Date(2026, 7, 21),
+    tags: ["AI", "Developer tools", "Opinion"],
+    readingTime: 2 * 60,
+};
+
+<Callout type="note">
+    Placeholder note used to design the notes layout. Not published.
+</Callout>
+
+The loop itself is a few dozen lines: send context, get a tool call, run it, repeat. Everything that makes it usable lives around that loop.
+
+Where the time actually goes:
+
+1. **Environments.** The same agent has to run on a laptop, in a container and on a remote machine, and behave the same way.
+2. **Boundaries.** Deciding what a tool is allowed to touch is a product decision disguised as a security one.
+3. **Observability.** If you cannot replay what happened, you cannot improve it.
+
+It looks a lot like building any other distributed system, which is probably why I enjoy it.

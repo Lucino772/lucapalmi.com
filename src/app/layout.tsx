@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "highlight.js/styles/github-dark-dimmed.css";
 import NavBar from "@/components/NavBar";
+import { themeScript } from "@/components/theme";
 
 import localFont from "next/font/local";
 import { cn } from "@/lib/cn";
@@ -102,14 +103,16 @@ export default async function RootLayout({
     return (
         <html
             lang="en"
+            suppressHydrationWarning
             className={cn(
-                "dark antialiased",
+                "antialiased",
                 inconsolata.variable,
                 cascadiaCode.variable,
                 literata.variable,
             )}
         >
             <head>
+                <script dangerouslySetInnerHTML={{ __html: themeScript }} />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}

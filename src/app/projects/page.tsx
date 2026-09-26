@@ -1,5 +1,5 @@
 import Link from "next/link";
-import projects from "@/content/projects.json";
+import { projects } from "@/lib/projects";
 
 export default async function Projects() {
     return (
