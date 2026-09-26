@@ -136,7 +136,7 @@ export default async function Page({
                     </figure>
                 )}
 
-                <div className="prose">
+                <div className="prose" data-article-body>
                     <Content />
                 </div>
 
