@@ -5,6 +5,7 @@
 /* Design-panel overrides: only non-default values have a selector */
 @custom-variant writing-left (&:where([data-writing-align="left"] *));
 @custom-variant writing-bar-list (&:where([data-writing-bar="list"] *));
+@custom-variant thumb-code (&:where([data-thumb-style="code"] *));
 @plugin "@tailwindcss/typography";
 
 /* Light values here, dark overrides under .dark below */
@@ -19,6 +20,8 @@
     --color-accent: #4169e1;
     --color-accent-text: #3558c7;
     --color-accent-soft: #eef1fb;
+    /* Pen strokes in the fallback sketch thumbnails */
+    --color-sketch: #1b1f27;
 
     --color-syn-keyword: #9b2f8f;
     --color-syn-string: #2f6f3e;
@@ -47,6 +50,7 @@
     --color-faint: #828996;
     --color-accent-text: #7b97ea;
     --color-accent-soft: #181e31;
+    --color-sketch: #c3c8d1;
 
     --color-syn-keyword: #d59bf0;
     --color-syn-string: #a5d49a;

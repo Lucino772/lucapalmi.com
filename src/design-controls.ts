@@ -30,6 +30,18 @@ export const designControls: DesignControl[] = [
         default: "page",
     },
     {
+        type: "choice",
+        key: "thumb-style",
+        label: "Fallback thumbnail",
+        group: "Writing list",
+        attribute: "data-thumb-style",
+        options: [
+            { value: "ink", label: "Ink sketch" },
+            { value: "code", label: "Code pane" },
+        ],
+        default: "ink",
+    },
+    {
         type: "range",
         key: "writing-thumb-width",
         label: "Thumbnail width",

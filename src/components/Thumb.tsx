@@ -2,6 +2,7 @@ import Image from "next/image";
 import { cn } from "@/lib/cn";
 import type { LogEntry } from "@/lib/writing";
 import FallbackThumb from "./FallbackThumb";
+import InkThumbnail from "./InkThumbnail";
 
 // Same frame and 16:10 ratio for every entry, cover or not
 export default function Thumb({
@@ -30,7 +31,20 @@ export default function Thumb({
                     className="h-full w-full object-cover"
                 />
             ) : (
-                <FallbackThumb slug={entry.slug} topic={entry.topics[0]} />
+                <>
+                    {/* Ink sketch by default; the design panel can switch
+                        back to the earlier code-pane tile */}
+                    <InkThumbnail
+                        slug={entry.slug}
+                        topic={entry.topics[0]}
+                        className="thumb-code:hidden h-full"
+                    />
+                    <FallbackThumb
+                        slug={entry.slug}
+                        topic={entry.topics[0]}
+                        className="thumb-code:block hidden"
+                    />
+                </>
             )}
         </div>
     );

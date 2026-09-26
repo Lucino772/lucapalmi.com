@@ -173,12 +173,16 @@ treatment: a 16:10 thumbnail (176px desktop, 88px mobile), then date and
 reading time, title, Literata italic subtitle (hidden below 640px) and
 topics. Covers use `next/image` with `sizes` of 176px/88px.
 
-_Fallback thumbnail_ (`FallbackThumb`): a tiny editor pane drawn in SVG,
-with a file tab carrying a 1.5px accent top edge, a line-number gutter, and
-eight lines of rounded "code" bars with indentation, token widths and two
-syntax colours chosen by a PRNG seeded from slug and first topic. Colours
-come from the syntax tokens, so it follows light/dark automatically and
-matches the code blocks in articles.
+_Fallback thumbnail_ (`InkThumbnail`, adopted from the Sketchbook variant at
+Luca's request): a small pen sketch of the article's first topic (one motif
+per topic: chip, boxes, cylinder, globe…), with a seeded wobble, tilt and
+corner hatching from the slug, so the same article always gets the same
+sketch. The drawings are unchanged; only the colours map to Workstation
+tokens: tile `raised`, strokes `--color-sketch` (`#1b1f27` light, a slightly
+softened `#c3c8d1` dark so it sits with the muted home drawing), hatching
+`faint`, and one royal-blue `accent` detail. Strokes stay at a constant width
+at 176px and 88px. The earlier code-pane tile (`FallbackThumb`) remains as a
+design-panel option.
 
 _Topic filter_: "All" plus every topic with at least one visible article,
 each with its count, styled like the nav's editor tabs (`aria-pressed`
