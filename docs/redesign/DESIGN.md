@@ -131,10 +131,12 @@ affordance, active underline drawn inside the tab). From `md` up it is
 
 Scale (px, 1.25-ish, deliberately tight): 13 · 14 · 16 · 18 · 22 · 28 · 40.
 Prose: Literata 18 px / 1.75 on desktop, 17 px on mobile, measure 726px (~74ch).
-Article headings are Inconsolata semibold, no prefix characters: h2 at
-1.45em with a hairline across the measure and a short 2px royal-blue segment
-at its start (the editor-tab accent edge); h3 at 1.15em without a rule. Both
-keep `scroll-margin-top` for the section rail.
+Article headings are Inconsolata bold (700), no prefix characters: h2 at
+26px (1.45em cap on phones) with 26px of space below, a hairline across the
+measure and a short 2px royal-blue segment at its start (the editor-tab
+accent edge); h3 at 1.15em, 700, 0.8em below, without a rule. Both keep
+`scroll-margin-top` for the section rail. The design panel's "Article
+headings" group tunes `--h2-size` (18–36px, 26), `--h2-weight` (400–800, 700) and `--h2-space-below` (8–48px, 26).
 Tabular numerals everywhere dates and years line up.
 
 ## Spacing and grid
@@ -305,20 +307,21 @@ the editor palette: `raised`, `line`, Inconsolata). Every control defaults to th
 carries the defaults as `var()` fallbacks, so production, which has no panel
 and no script, renders exactly the defaults.
 
-| Group        | Control                | Drives                                                                    | Range                   | Default     |
-| ------------ | ---------------------- | ------------------------------------------------------------------------- | ----------------------- | ----------- |
-| Writing list | List alignment         | `data-writing-align`                                                      | centre / left           | centre      |
-| Writing list | Filter bar             | `data-writing-bar`                                                        | page width / list width | page width  |
-| Chrome       | Theme toggle           | `data-theme-toggle`                                                       | wall switch / sun-moon  | wall switch |
-| Colour       | Surfaces               | `data-surfaces`                                                           | paper / cool / current  | warm paper  |
-| Writing list | Fallback thumbnail     | `data-thumb-style`                                                        | ink sketch / code pane  | ink sketch  |
-| Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                | 176px       |
-| Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                 | 17px        |
-| Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px                  | 16px        |
-| Home         | Headline size          | `--home-headline-size` (caps the svh clamp from 768px)                    | 28–56px                 | 40px        |
-| Home         | Drawing size (%)       | `--home-drawing-size` (scales the drawing height)                         | 50–110                  | 100         |
-| Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static        | draw in     |
-| Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                   | 100         |
+| Group            | Control                        | Drives                                                                    | Range                      | Default           |
+| ---------------- | ------------------------------ | ------------------------------------------------------------------------- | -------------------------- | ----------------- |
+| Writing list     | List alignment                 | `data-writing-align`                                                      | centre / left              | centre            |
+| Writing list     | Filter bar                     | `data-writing-bar`                                                        | page width / list width    | page width        |
+| Chrome           | Theme toggle                   | `data-theme-toggle`                                                       | wall switch / sun-moon     | wall switch       |
+| Article headings | H2 size / weight / space below | `--h2-size`, `--h2-weight`, `--h2-space-below`                            | 18–36px / 400–800 / 8–48px | 26px / 700 / 26px |
+| Colour           | Surfaces                       | `data-surfaces`                                                           | paper / cool / current     | warm paper        |
+| Writing list     | Fallback thumbnail             | `data-thumb-style`                                                        | ink sketch / code pane     | ink sketch        |
+| Writing list     | Thumbnail width                | `--writing-thumb-width` (mobile half)                                     | 96–280px                   | 176px             |
+| Writing list     | Title size                     | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                    | 17px              |
+| Writing list     | Space between entries          | `--writing-entry-gap` (entry padding)                                     | 0–64px                     | 16px              |
+| Home             | Headline size                  | `--home-headline-size` (caps the svh clamp from 768px)                    | 28–56px                    | 40px              |
+| Home             | Drawing size (%)               | `--home-drawing-size` (scales the drawing height)                         | 50–110                     | 100               |
+| Home             | Drawing animation              | `data-portrait-animation`                                                 | draw in / static           | draw in           |
+| Glow             | Laptop screen glow (%)         | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                      | 100               |
 
 ## Motion
 

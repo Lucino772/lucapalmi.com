@@ -219,10 +219,12 @@ html[data-surfaces="current"].dark {
 /* h2: a hairline across the measure with a short royal-blue segment at its
    start, like the accent edge on the editor tabs */
 .prose :where(h2):not(:where(.not-prose *)) {
-    font-size: 1.45em;
+    /* Design panel: --h2-size / --h2-weight / --h2-space-below */
+    font-size: var(--h2-size, 26px);
+    font-weight: var(--h2-weight, 700);
     line-height: 1.3;
     margin-top: 2.2em;
-    margin-bottom: 0.7em;
+    margin-bottom: var(--h2-space-below, 26px);
     padding-top: 0.75em;
     background:
         linear-gradient(var(--color-accent), var(--color-accent)) left top /
@@ -231,11 +233,19 @@ html[data-surfaces="current"].dark {
             1px no-repeat;
 }
 
+/* Phones keep the relative 1.45em when that is smaller */
+@media (max-width: 47.999rem) {
+    .prose :where(h2):not(:where(.not-prose *)) {
+        font-size: min(var(--h2-size, 26px), 1.45em);
+    }
+}
+
 .prose :where(h3):not(:where(.not-prose *)) {
     font-size: 1.15em;
     line-height: 1.4;
     margin-top: 1.9em;
-    margin-bottom: 0.5em;
+    font-weight: 700;
+    margin-bottom: 0.8em;
 }
 
 .prose :where(a):not(:where(.not-prose *)) {
