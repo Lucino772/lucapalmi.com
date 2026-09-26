@@ -275,7 +275,9 @@ appear right-aligned next to their ticks (Inconsolata 13px, up to 2 lines,
 **Projects.** A path bar (`~/projects │ Featured`, same grammar as
 `~/writing`), then the featured projects with a clearly heavier treatment
 than the compact `ls`-style "Smaller things" table below (larger gap before
-it: 80/112px).
+it: 80/112px). "Smaller things" sits on top of its list in the same bar
+grammar (`Smaller things │ 8 projects` over a hairline), and the list runs
+the full container width, on the featured panes' left edge.
 
 _Editor panes (default, `cards`)._ A 2-column grid (1 on mobile) of bounded
 panes on the `raised` surface with `line` borders, so they follow the

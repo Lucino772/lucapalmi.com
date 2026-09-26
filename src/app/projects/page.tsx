@@ -43,16 +43,23 @@ export default async function Projects() {
                     <FeaturedProjects projects={projects.featured} />
                 </section>
 
-                <section
-                    aria-labelledby="more"
-                    className="grid gap-x-10 gap-y-4 md:grid-cols-[12rem_minmax(0,1fr)]"
-                >
-                    <h2
-                        id="more"
-                        className="text-muted text-[0.9375rem] leading-7 md:pt-2"
-                    >
-                        Smaller things
-                    </h2>
+                <section aria-labelledby="more">
+                    {/* Label on top, same bar grammar as ~/projects */}
+                    <div className="border-line mb-4 flex items-baseline gap-4 border-b pb-3">
+                        <h2
+                            id="more"
+                            className="text-[0.9375rem] font-semibold"
+                        >
+                            Smaller things
+                        </h2>
+                        <span
+                            aria-hidden
+                            className="bg-line h-4 w-px self-center"
+                        />
+                        <p className="text-faint text-[0.8125rem] tabular-nums">
+                            {others.length} projects
+                        </p>
+                    </div>
                     <ul className="-mx-3 flex min-w-0 flex-col">
                         {others.map((project) => (
                             <li
