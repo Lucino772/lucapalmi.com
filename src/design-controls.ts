@@ -211,4 +211,16 @@ export const designControls: DesignControl[] = [
         unit: "px",
         default: 20.7,
     },
+    {
+        type: "choice",
+        key: "callout-style",
+        label: "Callout style",
+        group: "Article",
+        attribute: "data-callout-style",
+        options: [
+            { value: "box", label: "Tinted box" },
+            { value: "bar", label: "Bar + tint" },
+        ],
+        default: "box",
+    },
 ];

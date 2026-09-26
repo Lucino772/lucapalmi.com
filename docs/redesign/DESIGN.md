@@ -45,7 +45,7 @@ filter underlines, rail tick, timeline markers, focus rings, selection, the
 laptop glow, thumbnail accents). Small text uses `accent-text`, a tint (dark)
 or shade (light) of the same 225° hue, because `#4169E1` is only 3.7:1 on
 the dark page and 4.4:1 on the light `raised` surface. Contrast figures are
-against `bg`; `accent-text` stays ≥ 5.5:1 on `raised` and `accent-soft` too.
+against `bg`; `accent-text` stays ≥ 5.5:1 on `raised` too.
 
 Semantic tokens live in `@theme` (light values) and are overridden under
 `.dark`. There are two neutral palettes, switched with the design panel's
@@ -65,7 +65,6 @@ and `accent-soft`.
 | `muted`       | `#aaa69c` | `#57554f` | secondary text (6.2 · 5.8 : 1), V2 ink-2          |
 | `faint`       | `#939087` | `#625f58` | dates, keys (4.7 · 4.9 : 1), darker than V2 ink-3 |
 | `accent-text` | `#7b97ea` | `#3558c7` | links, small accent text (5.4 · 4.8 : 1)          |
-| `accent-soft` | `#202636` | `#e1e2e7` | callout surface (8 % / 12 % blue over paper)      |
 | `sketch`      | `#d3cfc6` | `#1d1e22` | pen strokes in fallback thumbnails                |
 
 V2's ink-3 (`#77746c` / `#8f8c84`) is only ~3:1 as text, so `faint` is a
@@ -91,7 +90,6 @@ the earlier Workstation (verified by screenshot diff).
 | `faint`       | `#828996` | `#636a78` | column keys, dates (≥ 4.6 : 1)                  |
 | `accent`      | `#4169e1` | `#4169e1` | royal blue: fills, rules, focus (3.73 / 4.69:1) |
 | `accent-text` | `#7b97ea` | `#3558c7` | links, small accent text (6.43 / 6.02 : 1)      |
-| `accent-soft` | `#181e31` | `#eef1fb` | callout surface                                 |
 
 **Current site**, `html[data-surfaces="current"]`. The live lucapalmi.com
 (`main`) is dark only, with neutral untinted greys. Dark maps it directly;
@@ -107,7 +105,6 @@ Contrast is the minimum across `bg`, `raised` and `accent-soft`.
 | `muted`       | `#c9c9c9` | `#555555` | white at 75 %, the live body text (8.1 · 6.1 : 1)                 |
 | `faint`       | `#9e9e9e` | `#636363` | white at 55 % (5.0 · 5.0 : 1)                                     |
 | `accent-text` | `#7b97ea` | `#3558c7` | the live link tint (4.7 · 5.1 : 1)                                |
-| `accent-soft` | `#2a2f3d` | `#e6e9f2` | 12 % / 8 % blue over the page                                     |
 | `sketch`      | `#d9d9d9` | `#1f1f1f` | thumbnail pen strokes                                             |
 
 Code comments use `#939393` (dark, 5.1 : 1) and `#666666` (light, 4.8 : 1)
@@ -119,6 +116,25 @@ below 768px (`overflow-y: hidden`, scrollbar hidden, right-edge fade as the
 affordance, active underline drawn inside the tab). From `md` up it is
 `overflow: visible`, so no scrollbar can appear. Code blocks set
 `overflow-y: hidden` next to their horizontal scroll.
+
+**Callouts** (`Callout`, types note / tip / warning). A tinted box: the
+type colour at 11% (`color-mix` over transparent) with a 1px border at 28%,
+6px radius, 14px × 20px padding, no bar, label or header strip in
+monospace, so callouts never read as code blocks. The label ("Note", "Tip",
+"Warning") is Literata italic 15px in the type's text tint; the body is
+Literata 17px at full prose contrast. `aside aria-label={label}`. The design
+panel's "Callout style" (`data-callout-style="bar"`) switches to a 2px left
+bar in the type colour with a 7% tint and square corners.
+
+| Type    | Fill (dark · light)   | Label text (dark · light) | Label contrast, min over palettes (dark · light) |
+| ------- | --------------------- | ------------------------- | ------------------------------------------------ |
+| note    | `#4169e1` · `#4169e1` | `#7b97ea` · `#3558c7`     | 4.79 · 4.65                                      |
+| tip     | `#3fa36b` · `#3fa36b` | `#62c08c` · `#256b46`     | 5.76 · 4.96                                      |
+| warning | `#e0a526` · `#b7791f` | `#e8b64a` · `#80530f`     | 6.51 · 5.08                                      |
+
+Light tip and warning text are deeper than first specced (`#2d7a4f` was
+4.05 : 1 and `#8a5a12` 4.52 : 1 on warm paper). Body text on every tint is
+≥ 10 : 1.
 
 ## Type
 

@@ -1,18 +1,22 @@
 import React from "react";
+import { calloutLabels, type CalloutType } from "./callout-types";
 
+// Tinted box: the type colour at 11% with a 1px border at 28% (see
+// .callout in globals.css); the design panel can switch to "bar + tint"
 export function Callout({
-    type,
+    type = "note",
     children,
-}: React.PropsWithChildren<{ type: "note" }>) {
+}: React.PropsWithChildren<{ type?: CalloutType }>) {
     return (
         <aside
-            className="not-prose border-accent bg-accent/[0.06] my-8 border-l-2 py-3.5 pr-5 pl-5"
-            aria-label={type}
+            aria-label={calloutLabels[type]}
+            data-type={type}
+            className="callout not-prose my-8"
         >
-            <p className="text-accent-text font-mono text-[0.8125rem] leading-5">
-                {type}
+            <p className="callout-label font-serif text-[0.9375rem] leading-6 italic">
+                {calloutLabels[type]}
             </p>
-            <div className="text-fg/90 mt-1.5 font-serif text-[1rem] leading-7">
+            <div className="text-fg mt-1 font-serif text-[1.0625rem] leading-7">
                 {children}
             </div>
         </aside>

@@ -22,9 +22,16 @@
     /* Royal blue: fills, rules, focus. Text uses accent-text for AA */
     --color-accent: #4169e1;
     --color-accent-text: #3558c7;
-    --color-accent-soft: #e1e2e7;
     /* Pen strokes in the fallback sketch thumbnails */
     --color-sketch: #1d1e22;
+
+    /* Callout types: fill (tint, border, bar) and label text */
+    --color-note: #4169e1;
+    --color-note-text: #3558c7;
+    --color-tip: #3fa36b;
+    --color-tip-text: #256b46;
+    --color-warning: #b7791f;
+    --color-warning-text: #80530f;
 
     --color-syn-keyword: #9b2f8f;
     --color-syn-string: #2f6f3e;
@@ -52,8 +59,12 @@
     --color-muted: #aaa69c;
     --color-faint: #939087;
     --color-accent-text: #7b97ea;
-    --color-accent-soft: #202636;
     --color-sketch: #d3cfc6;
+
+    --color-note-text: #7b97ea;
+    --color-tip-text: #62c08c;
+    --color-warning: #e0a526;
+    --color-warning-text: #e8b64a;
 
     --color-syn-keyword: #d59bf0;
     --color-syn-string: #a5d49a;
@@ -71,7 +82,6 @@ html[data-surfaces="cool"]:not(.dark) {
     --color-fg: #1b1f27;
     --color-muted: #555c69;
     --color-faint: #636a78;
-    --color-accent-soft: #eef1fb;
     --color-sketch: #1b1f27;
     --color-syn-number: #9a5b00;
     --color-syn-comment: #6b7280;
@@ -84,7 +94,6 @@ html[data-surfaces="cool"].dark {
     --color-fg: #dde1e8;
     --color-muted: #9aa1ae;
     --color-faint: #828996;
-    --color-accent-soft: #181e31;
     --color-sketch: #c3c8d1;
     --color-syn-comment: #7d8492;
 }
@@ -99,7 +108,6 @@ html[data-surfaces="current"]:not(.dark) {
     --color-fg: #1f1f1f;
     --color-muted: #555555;
     --color-faint: #636363;
-    --color-accent-soft: #e6e9f2;
     --color-sketch: #1f1f1f;
     --color-syn-comment: #666666;
 }
@@ -111,7 +119,6 @@ html[data-surfaces="current"].dark {
     --color-fg: #e9e9e9;
     --color-muted: #c9c9c9;
     --color-faint: #9e9e9e;
-    --color-accent-soft: #2a2f3d;
     --color-sketch: #d9d9d9;
     --color-syn-comment: #939393;
 }
@@ -306,6 +313,40 @@ html[data-heading-font="sans"] .prose :where(h3):not(:where(.not-prose *)) {
 .prose :where(code):not(:where(pre *, .not-prose *))::before,
 .prose :where(code):not(:where(pre *, .not-prose *))::after {
     content: none;
+}
+
+/* ---------- callouts ---------- */
+
+/* Tinted box (default): type colour at 11% with a 1px border at 28% */
+.callout {
+    --callout: var(--color-note);
+    --callout-text: var(--color-note-text);
+    background: color-mix(in oklab, var(--callout) 11%, transparent);
+    border: 1px solid color-mix(in oklab, var(--callout) 28%, transparent);
+    border-radius: 6px;
+    padding: 14px 20px;
+}
+
+.callout[data-type="tip"] {
+    --callout: var(--color-tip);
+    --callout-text: var(--color-tip-text);
+}
+
+.callout[data-type="warning"] {
+    --callout: var(--color-warning);
+    --callout-text: var(--color-warning-text);
+}
+
+.callout-label {
+    color: var(--callout-text);
+}
+
+/* Design panel "Bar + tint": 2px left bar, 7% tint, square corners */
+html[data-callout-style="bar"] .callout {
+    background: color-mix(in oklab, var(--callout) 7%, transparent);
+    border: 0;
+    border-left: 2px solid var(--callout);
+    border-radius: 0;
 }
 
 /* ---------- code blocks ---------- */
