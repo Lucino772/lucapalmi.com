@@ -4,7 +4,6 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import ThemeColorSync from "@/components/ThemeColorSync";
 import { themeScript } from "@/components/theme";
-import { homeLayoutScript } from "@/components/home-layout";
 import { DesignPanel } from "@/components/design-panel/DesignPanel";
 import { designPanelScript } from "@/components/design-panel/controls";
 import { designControls } from "@/design-controls";
@@ -125,9 +124,6 @@ export default async function RootLayout({
         >
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-                <script
-                    dangerouslySetInnerHTML={{ __html: homeLayoutScript }}
-                />
                 <script
                     dangerouslySetInnerHTML={{
                         __html: designPanelScript(designControls),
