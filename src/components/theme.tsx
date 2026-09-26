@@ -44,20 +44,22 @@ export function useTheme() {
 export function ThemeToggle({ className }: { className?: string }) {
     const { theme, setTheme } = useTheme();
     const next = theme === "dark" ? "light" : "dark";
+    const label = theme === null ? "Toggle theme" : `Switch to ${next} theme`;
 
+    // Icons swap on the .dark class so the right one shows before hydration
     return (
         <button
             type="button"
-            className={cn("cursor-pointer", className)}
-            onClick={() => setTheme(next)}
-            aria-label={`Switch to ${next} theme`}
-            title={`Switch to ${next} theme`}
-        >
-            {theme === "dark" ? (
-                <SunIcon aria-hidden className="size-5" />
-            ) : (
-                <MoonIcon aria-hidden className="size-5" />
+            className={cn(
+                "text-muted hover:text-fg hover:bg-raised inline-flex size-8 cursor-pointer items-center justify-center rounded-[4px] transition-colors duration-150",
+                className,
             )}
+            onClick={() => setTheme(next)}
+            aria-label={label}
+            title={label}
+        >
+            <SunIcon aria-hidden className="hidden size-4 dark:block" />
+            <MoonIcon aria-hidden className="block size-4 dark:hidden" />
         </button>
     );
 }

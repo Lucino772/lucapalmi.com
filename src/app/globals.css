@@ -3,113 +3,385 @@
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 
+/* Light values here, dark overrides under .dark below */
 @theme {
-    --color-primary: #242424;
-    --color-secondary: #272727;
-    --color-accent-blue: hsl(225, 72.73%, 56.86%);
-    --color-accent-dark-blue: color-mix(
-        in oklab,
-        var(--color-accent-blue) 45%,
-        transparent
-    );
+    --color-bg: #fbfbfc;
+    --color-raised: #f2f4f7;
+    --color-line: #dfe3ea;
+    --color-fg: #1b1f27;
+    --color-muted: #555c69;
+    --color-faint: #636a78;
+    --color-accent: #2b50c8;
+    --color-accent-solid: #4169e1;
 
-    --font-headings: var(--font-cascadia-code);
-    --font-content: var(--font-inconsolata);
+    --color-syn-keyword: #9b2f8f;
+    --color-syn-string: #2f6f3e;
+    --color-syn-number: #9a5b00;
+    --color-syn-comment: #6b7280;
+    --color-syn-title: #2b50c8;
+    --color-syn-attr: #0e6b84;
+
+    --font-mono: var(--font-inconsolata), ui-monospace, monospace;
+    --font-code: var(--font-cascadia-code), ui-monospace, monospace;
+    --font-serif: var(--font-literata), Georgia, serif;
+
+    --text-2xs: 0.8125rem;
+    --text-2xs--line-height: 1.25rem;
+
+    --container-page: 70rem;
+    --container-measure: 42rem;
 }
 
-.prose {
-    font-family: var(--font-literata);
+.dark {
+    --color-bg: #14161b;
+    --color-raised: #1a1d23;
+    --color-line: #2a2e37;
+    --color-fg: #dde1e8;
+    --color-muted: #9aa1ae;
+    --color-faint: #828996;
+    --color-accent: #8ea8ff;
+
+    --color-syn-keyword: #d59bf0;
+    --color-syn-string: #a5d49a;
+    --color-syn-number: #e8b778;
+    --color-syn-comment: #7d8492;
+    --color-syn-title: #8ea8ff;
+    --color-syn-attr: #7fc8d9;
 }
 
-/* Keep chrome inside articles (dates, tags, covers) in the site font,
-   except elements opting back in via .follow-body-font */
-.prose
-    :where(.not-prose, .not-prose *):not(
-        :where(.follow-body-font, .follow-body-font *)
-    ) {
-    font-family: var(--font-inconsolata);
-}
-
-.prose .follow-body-font,
-.prose .follow-body-font * {
-    font-family: var(--font-literata);
-}
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
     *,
     ::after,
     ::before,
     ::backdrop,
     ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
-    }
-
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
+        border-color: var(--color-line);
     }
 
     :root {
         color-scheme: light;
+        -webkit-tap-highlight-color: transparent;
     }
 
     :root.dark {
         color-scheme: dark;
     }
+
+    html {
+        background: var(--color-bg);
+        color: var(--color-fg);
+        font-family: var(--font-mono);
+        font-size: 100%;
+        font-variant-ligatures: none;
+        text-rendering: optimizeLegibility;
+        scroll-padding-top: 4.5rem;
+    }
+
+    body {
+        touch-action: manipulation;
+    }
+
+    ::selection {
+        background: color-mix(
+            in oklab,
+            var(--color-accent-solid) 30%,
+            transparent
+        );
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 3px;
+        border-radius: 2px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        text-wrap: balance;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
+}
+
+/* ---------- prose (Literata) ---------- */
+
+.prose {
+    --tw-prose-body: var(--color-fg);
+    --tw-prose-headings: var(--color-fg);
+    --tw-prose-lead: var(--color-muted);
+    --tw-prose-links: var(--color-accent);
+    --tw-prose-bold: var(--color-fg);
+    --tw-prose-counters: var(--color-faint);
+    --tw-prose-bullets: var(--color-faint);
+    --tw-prose-hr: var(--color-line);
+    --tw-prose-quotes: var(--color-fg);
+    --tw-prose-quote-borders: var(--color-accent-solid);
+    --tw-prose-captions: var(--color-muted);
+    --tw-prose-code: var(--color-fg);
+    --tw-prose-pre-code: var(--color-fg);
+    --tw-prose-pre-bg: var(--color-raised);
+    --tw-prose-th-borders: var(--color-line);
+    --tw-prose-td-borders: var(--color-line);
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    max-width: var(--container-measure);
+}
+
+@media (min-width: 48rem) {
+    .prose {
+        font-size: 1.125rem;
+    }
+}
+
+.prose :where(h2, h3, h4):not(:where(.not-prose *)) {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    scroll-margin-top: 5rem;
+}
+
+.prose :where(h2):not(:where(.not-prose *)) {
+    font-size: 1.375rem;
+    margin-top: 2.5em;
+    margin-bottom: 0.75em;
+}
+
+.prose :where(h2):not(:where(.not-prose *))::before {
+    content: "## ";
+    color: var(--color-faint);
+    font-weight: 400;
+}
+
+.prose :where(h3):not(:where(.not-prose *)) {
+    font-size: 1.125rem;
+    margin-top: 2em;
+}
+
+.prose :where(h3):not(:where(.not-prose *))::before {
+    content: "### ";
+    color: var(--color-faint);
+    font-weight: 400;
+}
+
+.prose :where(a):not(:where(.not-prose *)) {
+    text-decoration: underline;
+    text-decoration-color: color-mix(
+        in oklab,
+        var(--color-accent) 40%,
+        transparent
+    );
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+    font-weight: inherit;
+    transition: text-decoration-color 120ms ease;
+}
+
+.prose :where(a):not(:where(.not-prose *)):hover {
+    text-decoration-color: var(--color-accent);
+}
+
+.prose :where(blockquote):not(:where(.not-prose *)) {
+    font-style: italic;
+    font-weight: 400;
+    border-left-width: 2px;
+    padding-left: 1.25em;
+}
+
+.prose :where(blockquote p):not(:where(.not-prose *))::before,
+.prose :where(blockquote p):not(:where(.not-prose *))::after {
+    content: none;
+}
+
+/* Inline code: editor font, quiet chip */
+.prose :where(code):not(:where(pre *, .not-prose *)) {
+    font-family: var(--font-code);
+    font-size: 0.84em;
+    font-weight: 400;
+    background: var(--color-raised);
+    border: 1px solid var(--color-line);
+    border-radius: 3px;
+    padding: 0.1em 0.35em;
+}
+
+.prose :where(code):not(:where(pre *, .not-prose *))::before,
+.prose :where(code):not(:where(pre *, .not-prose *))::after {
+    content: none;
+}
+
+/* ---------- code blocks ---------- */
+
+.prose :where(pre):not(:where(.not-prose *)) {
+    position: relative;
+    font-family: var(--font-code);
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    background: var(--color-raised);
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    padding: 2.25rem 0 1rem;
+    margin: 1.75em 0;
+    overflow-x: auto;
+}
+
+.prose :where(pre code):not(:where(.not-prose *)) {
+    display: block;
+    padding: 0 1.25rem;
+    background: transparent;
+    font-family: inherit;
+    width: max-content;
+    min-width: 100%;
+}
+
+/* A quiet language tab in the corner, like an editor's file header */
+.prose pre::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.35rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    color: var(--color-faint);
+    border-bottom: 1px solid var(--color-line);
+}
+
+.prose pre:has(code.language-python)::before {
+    content: "python";
+}
+.prose pre:has(code.language-sh)::before,
+.prose pre:has(code.language-bash)::before,
+.prose pre:has(code.language-shell)::before {
+    content: "shell";
+}
+.prose pre:has(code.language-ts)::before,
+.prose pre:has(code.language-typescript)::before {
+    content: "typescript";
+}
+.prose pre:has(code.language-tsx)::before {
+    content: "tsx";
+}
+.prose pre:has(code.language-js)::before,
+.prose pre:has(code.language-javascript)::before {
+    content: "javascript";
+}
+.prose pre:has(code.language-json)::before {
+    content: "json";
+}
+.prose pre:has(code.language-go)::before {
+    content: "go";
+}
+
+.hljs-keyword,
+.hljs-built_in,
+.hljs-literal,
+.hljs-meta .hljs-keyword,
+.hljs-selector-tag {
+    color: var(--color-syn-keyword);
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
+    color: var(--color-syn-string);
+}
+.hljs-number,
+.hljs-symbol,
+.hljs-variable.language_ {
+    color: var(--color-syn-number);
+}
+.hljs-comment,
+.hljs-quote,
+.hljs-meta {
+    color: var(--color-syn-comment);
+    font-style: italic;
+}
+.hljs-title,
+.hljs-title.function_,
+.hljs-title.class_,
+.hljs-section {
+    color: var(--color-syn-title);
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-params,
+.hljs-type,
+.hljs-property {
+    color: var(--color-syn-attr);
+}
+.hljs-deletion {
+    color: var(--color-syn-number);
+}
+
+/* ---------- home drawing ---------- */
+
+/* Final state is the plain filled drawing; the animation strokes each
+   outline in, then swaps the stroke for the fill. */
+.portrait {
+    --screen-opacity: 0.12;
+}
+
+.dark .portrait {
+    --screen-opacity: 0.22;
+}
+
+.portrait .portrait-screen {
+    fill: var(--color-accent-solid);
+    opacity: var(--screen-opacity);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .portrait path {
+        stroke: currentColor;
+        stroke-width: 1.25;
+        vector-effect: non-scaling-stroke;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        fill-opacity: 0;
+        animation:
+            portrait-draw 1500ms cubic-bezier(0.45, 0, 0.25, 1) forwards,
+            portrait-fill 500ms ease-out forwards;
+        animation-delay: calc(var(--i) * 40ms), calc(1400ms + var(--i) * 24ms);
+    }
+
+    .portrait .portrait-screen {
+        opacity: 0;
+        animation: portrait-screen 800ms ease-out 2400ms forwards;
+    }
+
+    .fade-in {
+        animation: fade 240ms ease-out both;
+    }
+}
+
+@keyframes portrait-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes portrait-fill {
+    to {
+        fill-opacity: 1;
+        stroke-opacity: 0;
+    }
+}
+
+@keyframes portrait-screen {
+    to {
+        opacity: var(--screen-opacity);
+    }
 }
 
 @keyframes fade {
-    0% {
+    from {
         opacity: 0;
     }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes scale-y {
-    0% {
-        transform: scaleY(0);
-    }
-    100% {
-        transform: scaleY(1);
-    }
-}
-
-@keyframes logo-in {
-    0% {
-        opacity: 0;
-        transform: translateX(-100%) rotateZ(0deg);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0) rotateZ(-15deg);
-    }
-}
-@keyframes about-h1 {
-    0% {
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-@keyframes about-p {
-    0% {
-        opacity: 0;
-    }
-    100% {
+    to {
         opacity: 1;
     }
 }
@@ -133,5 +405,15 @@
     to {
         height: 0;
         opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

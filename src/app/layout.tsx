@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import "highlight.js/styles/github-dark-dimmed.css";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import { themeScript } from "@/components/theme";
 
 import localFont from "next/font/local";
@@ -65,6 +65,13 @@ export const metadata: Metadata = {
     },
 };
 
+export const viewport: Viewport = {
+    themeColor: [
+        { media: "(prefers-color-scheme: light)", color: "#fbfbfc" },
+        { media: "(prefers-color-scheme: dark)", color: "#14161b" },
+    ],
+};
+
 const jsonLd: WithContext<Person> = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -118,11 +125,18 @@ export default async function RootLayout({
                     dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
                 />
             </head>
-            <body className="relative h-screen w-full overflow-auto">
-                <div className="bg-secondary relative z-0 flex min-h-full w-full flex-col items-center">
-                    <NavBar />
+            <body className="bg-bg text-fg flex min-h-dvh flex-col">
+                <a
+                    href="#content"
+                    className="bg-accent-solid fixed top-2 left-2 z-50 -translate-y-16 px-3 py-2 text-sm text-white focus-visible:translate-y-0"
+                >
+                    Skip to content
+                </a>
+                <NavBar />
+                <main id="content" className="flex w-full flex-1 flex-col">
                     {children}
-                </div>
+                </main>
+                <Footer />
             </body>
         </html>
     );

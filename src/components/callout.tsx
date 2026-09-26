@@ -1,4 +1,3 @@
-import { cn } from "@/lib/cn";
 import React from "react";
 
 export function Callout({
@@ -6,17 +5,16 @@ export function Callout({
     children,
 }: React.PropsWithChildren<{ type: "note" }>) {
     return (
-        <div
-            className={cn("not-prose flex flex-col rounded-sm p-3", {
-                "border-2 border-[#4169E1] bg-[#4169E1]/40": type === "note",
-            })}
+        <aside
+            className="not-prose border-accent-solid bg-accent-solid/[0.06] dark:bg-accent-solid/[0.09] my-8 border-l-2 py-3.5 pr-5 pl-5"
+            aria-label={type}
         >
-            <span className="font-headings mb-0 font-bold text-white">
-                NOTE
-            </span>
-            <div className="font-content text-base text-white/90">
+            <p className="text-accent font-mono text-[0.8125rem] leading-5">
+                {type}
+            </p>
+            <div className="text-fg/90 mt-1.5 font-serif text-[1rem] leading-7">
                 {children}
             </div>
-        </div>
+        </aside>
     );
 }
