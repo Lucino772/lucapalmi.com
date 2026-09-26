@@ -152,6 +152,18 @@ export const designControls: DesignControl[] = [
         default: "switch",
     },
     {
+        type: "choice",
+        key: "heading-font",
+        label: "Heading font",
+        group: "Article headings",
+        attribute: "data-heading-font",
+        options: [
+            { value: "own", label: "Inconsolata (V1)" },
+            { value: "sans", label: "Sans (V4)" },
+        ],
+        default: "own",
+    },
+    {
         type: "range",
         key: "h2-size",
         label: "H2 size",
@@ -186,5 +198,17 @@ export const designControls: DesignControl[] = [
         step: 1,
         unit: "px",
         default: 26,
+    },
+    {
+        type: "range",
+        key: "h3-size",
+        label: "H3 size",
+        group: "Article headings",
+        property: "--h3-size",
+        min: 14,
+        max: 28,
+        step: 0.1,
+        unit: "px",
+        default: 20.7,
     },
 ];

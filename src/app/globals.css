@@ -241,11 +241,26 @@ html[data-surfaces="current"].dark {
 }
 
 .prose :where(h3):not(:where(.not-prose *)) {
-    font-size: 1.15em;
+    font-size: var(--h3-size, 1.15em);
     line-height: 1.4;
     margin-top: 1.9em;
     font-weight: 700;
     margin-bottom: 0.8em;
+}
+
+/* Design panel "Heading font: Sans (V4)": IBM Plex Sans for h2/h3, 600 by
+   default; the weight slider still applies */
+html[data-heading-font="sans"] .prose :where(h2, h3):not(:where(.not-prose *)) {
+    font-family: var(--font-plex-sans), system-ui, sans-serif;
+    letter-spacing: -0.005em;
+}
+
+html[data-heading-font="sans"] .prose :where(h2):not(:where(.not-prose *)) {
+    font-weight: var(--h2-weight, 600);
+}
+
+html[data-heading-font="sans"] .prose :where(h3):not(:where(.not-prose *)) {
+    font-weight: 600;
 }
 
 .prose :where(a):not(:where(.not-prose *)) {
