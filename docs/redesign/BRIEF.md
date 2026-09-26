@@ -143,3 +143,9 @@ featured projects) and still scale to dozens of notes.
   (no categories). Don't display project status or type; only mark projects
   with `status: "early"` with a quiet "wip" marker. Each featured project has
   a small square icon (per-type motif) next to its name; no large sketches.
+- **Callouts**: `<Callout type="note" | "tip" | "warning">` (labels from
+  `src/components/callout-types.ts`). Style "tinted box": a soft tint of the
+  type colour (~11%), a 1px border in the type colour (~28%), rounded, italic
+  serif label, body at full contrast. No neutral surface, no monospace label,
+  no header strip (those belong to code blocks). Note = royal blue, tip =
+  green, warning = amber.

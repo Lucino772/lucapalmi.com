@@ -25,4 +25,14 @@ billing = Module("billing", tables=["invoices", "payments"])
 accounts = Module("accounts", tables=["users", "sessions"])
 ```
 
+<Callout type="tip">
+    Placeholder tip used to design the callout styles: keep one version table
+    per module so each lineage can be inspected on its own.
+</Callout>
+
 The trade-off is cross-module changes. They now need to be explicit, which is annoying, and also exactly the point: the boundary shows up in the tooling instead of only in a diagram.
+
+<Callout type="warning">
+    Placeholder warning used to design the callout styles: the package body has
+    not landed yet, so the API shown here may change.
+</Callout>
