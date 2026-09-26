@@ -134,3 +134,8 @@ featured projects) and still scale to dozens of notes.
   "I tend to" and hobbies compressed) and `fit-first` (the same first screen
   plus a short timeless section below). The old scrolling home is retired.
 - **No "open to work" line** anywhere on the site; LinkedIn covers that.
+- **Home page is final: one screen ("fit") only.** No hobbies, no focus
+  list: name + role, headline, the "I tend to" list, the drawing, and the two
+  entry points (latest article, flagship project). The fit-first layout and the
+  `data-home-layout` mechanism are retired. Hobbies stay in `about.ts` as data
+  only; Luca will write about them instead.

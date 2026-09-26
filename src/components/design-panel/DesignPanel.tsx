@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/cn";
-import { HOME_LAYOUTS, useHomeLayout } from "@/components/home-layout";
 import {
     STORAGE_PREFIX,
     devtoolsEnabled,
@@ -56,7 +55,6 @@ export function DesignPanel({
     const [open, setOpen] = useState(false);
     const [values, setValues] = useState<Values | null>(null);
     const [copied, setCopied] = useState(false);
-    const { layout, setLayout } = useHomeLayout();
 
     useEffect(() => {
         if (!devtoolsEnabled) {
@@ -93,16 +91,11 @@ export function DesignPanel({
     };
 
     const copy = async () => {
-        const lines = [
-            `home layout: ${layout}`,
-            ...controls.map(
-                (control) =>
-                    `${control.label}: ${formatValue(control, values[control.key])}` +
-                    (values[control.key] === control.default
-                        ? " (default)"
-                        : ""),
-            ),
-        ];
+        const lines = controls.map(
+            (control) =>
+                `${control.label}: ${formatValue(control, values[control.key])}` +
+                (values[control.key] === control.default ? " (default)" : ""),
+        );
         await navigator.clipboard.writeText(lines.join("\n"));
         setCopied(true);
         setTimeout(() => setCopied(false), 1500);
@@ -125,22 +118,6 @@ export function DesignPanel({
                     aria-label="Design panel (review)"
                     className="design-panel-surface w-full overflow-y-auto rounded-md border p-3 shadow-lg"
                 >
-                    <fieldset className="mb-3 flex flex-col gap-1">
-                        <legend className="mb-1 font-semibold">Home</legend>
-                        <div className="flex gap-1">
-                            {HOME_LAYOUTS.map((option) => (
-                                <button
-                                    key={option}
-                                    type="button"
-                                    aria-pressed={layout === option}
-                                    onClick={() => setLayout(option)}
-                                    className="flex-1 cursor-pointer rounded border px-2 py-1 capitalize aria-pressed:font-semibold"
-                                >
-                                    {option}
-                                </button>
-                            ))}
-                        </div>
-                    </fieldset>
                     {groups.map((group) => (
                         <fieldset
                             key={group}
