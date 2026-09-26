@@ -32,7 +32,7 @@ Fix:
 ## Signature idea
 
 **The site reads like a well-kept workstation.** Every section is addressed
-by its path (`~/writing`, `~/projects`, `~/.hobbies`), content is set in
+by its path (`~/writing`, `~/projects`), content is set in
 aligned columns like a good `ls -l` or `git log`, and the line drawing draws
 itself once on the home page, then the laptop screen quietly lights up in the
 accent blue. That glow is the only "effect" on the whole site.
