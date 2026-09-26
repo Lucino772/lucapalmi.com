@@ -7,14 +7,6 @@ export function isoDay(date: Date): string {
     return `${y}-${m}-${d}`;
 }
 
-export function longDay(date: Date): string {
-    return new Intl.DateTimeFormat("en-GB", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    }).format(date);
-}
-
 export function readingMinutes(seconds: number | undefined) {
     if (seconds === undefined) return undefined;
     return `${Math.max(1, Math.round(seconds / 60))} min`;

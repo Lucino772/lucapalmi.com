@@ -29,7 +29,7 @@
     --text-2xs--line-height: 1.25rem;
 
     --container-page: 70rem;
-    --container-measure: 42rem;
+    --container-measure: 40rem;
 }
 
 .dark {
@@ -141,7 +141,7 @@
     font-family: var(--font-mono);
     font-weight: 600;
     letter-spacing: -0.01em;
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 1rem;
 }
 
 .prose :where(h2):not(:where(.not-prose *)) {
@@ -234,6 +234,13 @@
     font-family: inherit;
     width: max-content;
     min-width: 100%;
+}
+
+/* Code breaks out of the measure a little, symmetrically */
+@media (min-width: 64rem) {
+    .prose :where(pre):not(:where(.not-prose *)) {
+        margin-inline: -2.5rem;
+    }
 }
 
 /* A quiet language tab in the corner, like an editor's file header */
@@ -355,6 +362,12 @@
 
     .fade-in {
         animation: fade 240ms ease-out both;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html:has([data-article-body]) {
+        scroll-behavior: smooth;
     }
 }
 

@@ -119,12 +119,31 @@ dek line; notes are a single line in `muted` weight 400.
 (`all · essays · notes` as a tablist-like link group synced to `?kind=`),
 then the log grouped by year. Scales to dozens of notes.
 
-**Essay.** Path breadcrumb `~/writing/essay`, meta line (date, reading time,
-tags as `#tag`), 40 px monospace title, Literata italic dek, cover in a 6 px
-frame with the AI prompt disclosure underneath, then Literata prose.
+**Article layout (essays and notes).** One centred column, nothing beside
+it. The header sits on the 40rem measure: `../writing` back link, then a meta
+line set exactly like a writing-log row (`2026-01-02  essay  6 min read`),
+the title, the subtitle, and tags as `#tag`. Prose is Literata on a 40rem
+measure (~70ch). The cover breaks out symmetrically to 52rem, and code blocks
+break out 2.5rem on each side from 1024px up; both stay centred. The article
+ends with a hairline and `../writing` / `Back to top`. (The first version put
+the file info in a left gutter; it became an empty column on long essays, so
+it moved into the header.)
 
-**Note.** Same shell, compact: meta line, 28 px title, no dek emphasis, no
-cover. A thin accent rule at left of the header marks it as a note.
+**Essay vs note.** Essay: 40 px title, Literata italic subtitle, accent
+`essay` label, optional cover and AI prompt disclosure. Note: 28 px title,
+plain Literata subtitle, faint `note` label, no cover.
+
+**Section rail.** Only on articles with 3 or more h2s and viewports of at
+least 1280px. Fixed to the right edge (20px inset), vertically centred, like
+the change markers in an editor's scrollbar gutter: one 12px, 2px-high
+rounded tick per section. Upcoming ticks are `faint` at 45 %, passed ones
+`muted`, and the active one is 24px wide in `accent`. The rail is visible only
+while the reader is in the article body. On hover or focus-within, the rail
+gets a `bg` panel with a hairline border and 6px radius, and section titles
+appear right-aligned next to their ticks (Inconsolata 13px, up to 2 lines,
+12rem wide below 1440px and 15rem above, so the panel clears code blocks at
+1280). Links are real anchors with `aria-current="location"`; headings get
+`scroll-margin-top` so they land below the sticky header.
 
 **Projects.** `~/projects` listing. Featured rows: status dot + status, year,
 name, description, tags, links (case study, source). Listed projects in a
@@ -144,6 +163,9 @@ tighter table: year, name, one-liner.
 - Hero text: 240 ms opacity fade only.
 - Hover: row background to `raised`, title to `accent` (120 ms colour only).
 - Collapsible: 200 ms height/opacity.
+- Section rail: 200 ms opacity in/out with the article body; tick width
+  and colour 200 ms; titles fade in over 150 ms. Anchor jumps scroll
+  smoothly on article pages only, and only without reduced motion.
 - `prefers-reduced-motion`: all of the above disabled; drawing shows final
   state immediately.
 
