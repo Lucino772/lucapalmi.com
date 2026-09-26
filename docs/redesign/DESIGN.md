@@ -161,38 +161,30 @@ both set before paint, so nothing flashes. The design panel's "Theme toggle"
 path-style links, socials, theme toggle. Escape and route change close it.
 
 **Home: a timeless calling card.** One job: a newcomer sees who Luca is,
-then gets pointed to one post or one project. No lists or cards, and no
-focus-area line (it changes over time; the headline says it). Content:
-`~ $ whoami`, name and role, the headline (34px at most, sized with `svh`;
-the design panel's headline-size default is 34), then "I tend to" as a faint
-label with three `-` lines at 15px (13px on phones), the self-drawing
-portrait with the laptop glow, and `~ $ ls -a`:
+then gets pointed to one post or one project. No lists or cards, no
+focus-area line and no hobbies (Luca will write about those instead).
+Content: `~ $ whoami`, name and role, the headline (34px at most, sized with
+`svh`; the design panel's headline-size default is 34), then "I tend to" as
+a faint label with three `-` lines at 15px (13px on phones), the
+self-drawing portrait with the laptop glow, and `~ $ ls`:
 
 ```
 writing/    latest    A LoRaWAN gateway on a Raspberry Pi, one evening in
 projects/   flagship  qtcompose
-.hobbies/   hardware · raspberry pi · lorawan · networking · game servers · …
 ```
 
 The folder name is the main link (to /articles or /projects, accent and
 underline on hover). The pointer beside it is the one secondary link: the
 latest article (or `about.pinnedArticle`), and the flagship project
 `about.flagshipProject`, linked to its write-up when it has one, otherwise
-its repo. `.hobbies/` is a dotfile row: dimmer, lighter-weight name, the
-hobbies on one muted line, and it is not a link (no hover, not focusable),
-so it reads as information rather than a destination.
+its repo.
 
-Two layouts via `data-home-layout` (design panel, Home):
-
-- **`fit` (default, attribute `fit` or absent):** exactly one screen
-  (`min-height: calc(100svh - header)`, content vertically centred with
-  symmetric padding, footer hidden). The drawing sits on the right (height
-  `min(62svh, 40rem)`); on phones it sits above the whoami block at 14svh.
-- **`fit-first`:** the same first screen, then a short `~/.hobbies` section
-  below the fold (the hobbies intro plus the technical and personal lists
-  in full), then the footer.
-
-The old scrolling home and the compressed bottom panel are retired.
+Exactly one screen (`min-height: calc(100svh - header)`, content vertically
+centred with symmetric padding, footer hidden). The drawing sits on the right
+(height `min(62svh, 40rem)`); on phones it sits above the whoami block at
+18svh. `fit-first` (design panel, Home) currently renders the same as `fit`:
+its below-the-fold section held the hobbies, and a decision on retiring it
+is pending.
 
 **Page titles (Writing, Projects).** No hero, kicker or intro paragraph; the
 intro sentences live only in each page's `metadata.description`. The `<h1>`

@@ -4,17 +4,12 @@ import { projects } from "@/lib/projects";
 import { getWritingLog } from "@/lib/writing";
 import Portrait from "@/components/Portrait";
 
-// A short, lowercase take on about.hobbies for the dotfile row
-const hobbyLine =
-    "hardware · raspberry pi · lorawan · networking · game servers · lego · cooking · travel";
-
 const quietLink =
     "hover:text-accent-text decoration-transparent underline underline-offset-4 transition-colors duration-150 hover:decoration-current";
 
-// A timeless calling card. "fit" (default) is exactly one screen: whoami,
-// headline, "I tend to", and an `ls -a` of writing/, projects/ and the
-// .hobbies dotfile. "fit-first" keeps the same first screen and adds the
-// hobbies in full below the fold.
+// A timeless calling card, exactly one screen: whoami, headline, "I tend to"
+// and an `ls` of writing/ and projects/. "fit-first" currently renders the
+// same as "fit": its below-the-fold section is gone (decision pending).
 export default async function Index() {
     const log = await getWritingLog();
     const article =
@@ -73,7 +68,7 @@ export default async function Index() {
                                 aria-hidden
                                 className="text-faint text-[0.875rem] md:text-[0.9375rem]"
                             >
-                                ~ $ ls -a
+                                ~ $ ls
                             </p>
                             <ul className="border-line mt-1.5 border-t">
                                 <Entry
@@ -104,53 +99,12 @@ export default async function Index() {
                                         }
                                     }
                                 />
-                                {/* Dotfile row: information only, not a link */}
-                                <li className="border-line grid grid-cols-[minmax(0,1fr)] items-baseline gap-x-6 border-b py-2 sm:grid-cols-[8.5rem_minmax(0,1fr)] md:py-[min(0.75rem,1.3svh)]">
-                                    <h2 className="text-faint text-[1rem] leading-7 md:text-[1.125rem]">
-                                        .hobbies/
-                                    </h2>
-                                    <p className="text-muted text-[0.8125rem] leading-6 md:text-[0.875rem]">
-                                        {hobbyLine}
-                                    </p>
-                                </li>
                             </ul>
                         </nav>
                     </div>
 
                     <div className="text-muted order-first lg:order-none">
-                        <Portrait className="block h-[calc(14svh*var(--home-drawing-size,100)/100)] w-auto [mask-image:linear-gradient(to_bottom,black_82%,transparent)] lg:mx-auto lg:h-[calc(min(62svh,40rem)*var(--home-drawing-size,100)/100)]" />
-                    </div>
-                </div>
-            </section>
-
-            {/* Fit-first: the same first screen, then the hobbies in full */}
-            <section
-                aria-label="Hobbies"
-                className="fitfirst:block hidden pt-10 pb-16 md:pt-14 md:pb-24"
-            >
-                <div className="border-line mb-4 flex items-baseline gap-4 border-b pb-3">
-                    <h2 className="text-[0.9375rem] font-semibold">
-                        <span aria-hidden className="text-faint font-normal">
-                            ~/
-                        </span>
-                        .hobbies
-                    </h2>
-                </div>
-                <div className="grid gap-x-12 gap-y-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-                    <p className="text-muted max-w-[46ch] text-[0.9375rem] leading-7">
-                        {about.hobbies.intro}
-                    </p>
-                    <div className="grid grid-cols-2 gap-x-[2ch] text-[0.875rem] leading-6">
-                        <ul className="text-fg/90">
-                            {about.hobbies.technical.map((item) => (
-                                <li key={item}>{item}</li>
-                            ))}
-                        </ul>
-                        <ul className="text-fg/90">
-                            {about.hobbies.personal.map((item) => (
-                                <li key={item}>{item}</li>
-                            ))}
-                        </ul>
+                        <Portrait className="block h-[calc(18svh*var(--home-drawing-size,100)/100)] w-auto [mask-image:linear-gradient(to_bottom,black_82%,transparent)] lg:mx-auto lg:h-[calc(min(62svh,40rem)*var(--home-drawing-size,100)/100)]" />
                     </div>
                 </div>
             </section>

@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
-/* Home: fit is the default (attribute "fit" or absent); key off fit-first */
-@custom-variant fitfirst (&:where([data-home-layout="fit-first"] *));
 /* Design-panel overrides: only non-default values have a selector */
 @custom-variant writing-left (&:where([data-writing-align="left"] *));
 @custom-variant writing-bar-list (&:where([data-writing-bar="list"] *));
@@ -402,8 +400,8 @@ html[data-surfaces="current"].dark {
 
 /* ---------- home ---------- */
 
-/* Fit (default) is one screen: the home content replaces the footer */
-html:not([data-home-layout="fit-first"]) body:has([data-home]) > footer {
+/* The home is one screen in both layouts: it replaces the footer */
+body:has([data-home]) > footer {
     display: none;
 }
 
