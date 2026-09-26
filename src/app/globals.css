@@ -8,25 +8,28 @@
 @custom-variant thumb-code (&:where([data-thumb-style="code"] *));
 @plugin "@tailwindcss/typography";
 
-/* Light values here, dark overrides under .dark below */
+/* Surfaces: warm paper by default (after the Sketchbook variant), light
+   values in @theme and dark under .dark. The original cool Workstation
+   neutrals live under [data-surfaces="cool"] (design panel). The royal blue
+   accent family is shared by both. */
 @theme {
-    --color-bg: #fbfbfc;
-    --color-raised: #f2f4f7;
-    --color-line: #dfe3ea;
-    --color-fg: #1b1f27;
-    --color-muted: #555c69;
-    --color-faint: #636a78;
+    --color-bg: #efede7;
+    --color-raised: #e7e4dc;
+    --color-line: #c9c8c4;
+    --color-fg: #1d1e22;
+    --color-muted: #57554f;
+    --color-faint: #625f58;
     /* Royal blue: fills, rules, focus. Text uses accent-text for AA */
     --color-accent: #4169e1;
     --color-accent-text: #3558c7;
-    --color-accent-soft: #eef1fb;
+    --color-accent-soft: #e1e2e7;
     /* Pen strokes in the fallback sketch thumbnails */
-    --color-sketch: #1b1f27;
+    --color-sketch: #1d1e22;
 
     --color-syn-keyword: #9b2f8f;
     --color-syn-string: #2f6f3e;
-    --color-syn-number: #9a5b00;
-    --color-syn-comment: #6b7280;
+    --color-syn-number: #8a5100;
+    --color-syn-comment: #66625a;
     --color-syn-title: #3558c7;
     --color-syn-attr: #0e6b84;
 
@@ -42,22 +45,48 @@
 }
 
 .dark {
+    --color-bg: #1c1d1f;
+    --color-raised: #232427;
+    --color-line: #414141;
+    --color-fg: #e9e5dc;
+    --color-muted: #aaa69c;
+    --color-faint: #939087;
+    --color-accent-text: #7b97ea;
+    --color-accent-soft: #202636;
+    --color-sketch: #d3cfc6;
+
+    --color-syn-keyword: #d59bf0;
+    --color-syn-string: #a5d49a;
+    --color-syn-number: #e8b778;
+    --color-syn-comment: #8f8b82;
+    --color-syn-title: #7b97ea;
+    --color-syn-attr: #7fc8d9;
+}
+
+/* Original cool Workstation neutrals */
+html[data-surfaces="cool"]:not(.dark) {
+    --color-bg: #fbfbfc;
+    --color-raised: #f2f4f7;
+    --color-line: #dfe3ea;
+    --color-fg: #1b1f27;
+    --color-muted: #555c69;
+    --color-faint: #636a78;
+    --color-accent-soft: #eef1fb;
+    --color-sketch: #1b1f27;
+    --color-syn-number: #9a5b00;
+    --color-syn-comment: #6b7280;
+}
+
+html[data-surfaces="cool"].dark {
     --color-bg: #14161b;
     --color-raised: #1a1d23;
     --color-line: #2a2e37;
     --color-fg: #dde1e8;
     --color-muted: #9aa1ae;
     --color-faint: #828996;
-    --color-accent-text: #7b97ea;
     --color-accent-soft: #181e31;
     --color-sketch: #c3c8d1;
-
-    --color-syn-keyword: #d59bf0;
-    --color-syn-string: #a5d49a;
-    --color-syn-number: #e8b778;
     --color-syn-comment: #7d8492;
-    --color-syn-title: #7b97ea;
-    --color-syn-attr: #7fc8d9;
 }
 
 @layer base {

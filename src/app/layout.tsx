@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import ThemeColorSync from "@/components/ThemeColorSync";
 import { themeScript } from "@/components/theme";
 import { homeLayoutScript } from "@/components/home-layout";
 import { DesignPanel } from "@/components/design-panel/DesignPanel";
@@ -71,8 +72,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
     themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#fbfbfc" },
-        { media: "(prefers-color-scheme: dark)", color: "#14161b" },
+        { media: "(prefers-color-scheme: light)", color: "#efede7" },
+        { media: "(prefers-color-scheme: dark)", color: "#1c1d1f" },
     ],
 };
 
@@ -149,6 +150,7 @@ export default async function RootLayout({
                     {children}
                 </main>
                 <Footer />
+                <ThemeColorSync />
                 <DesignPanel controls={designControls} />
             </body>
         </html>

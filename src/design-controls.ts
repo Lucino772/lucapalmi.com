@@ -126,4 +126,16 @@ export const designControls: DesignControl[] = [
         unit: "",
         default: 100,
     },
+    {
+        type: "choice",
+        key: "surfaces",
+        label: "Surfaces",
+        group: "Colour",
+        attribute: "data-surfaces",
+        options: [
+            { value: "paper", label: "Warm paper (V2)" },
+            { value: "cool", label: "Cool (original V1)" },
+        ],
+        default: "paper",
+    },
 ];

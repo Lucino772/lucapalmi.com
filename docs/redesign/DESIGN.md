@@ -47,24 +47,51 @@ or shade (light) of the same 225° hue, because `#4169E1` is only 3.7:1 on
 the dark page and 4.4:1 on the light `raised` surface. Contrast figures are
 against `bg`; `accent-text` stays ≥ 5.5:1 on `raised` and `accent-soft` too.
 
-Semantic tokens live in `@theme` (light
-values) and are overridden under `.dark`.
+Semantic tokens live in `@theme` (light values) and are overridden under
+`.dark`. There are two neutral palettes, switched with the design panel's
+"Surfaces" control (`data-surfaces`). The accent family is shared.
 
-| Token         | Dark (default feel) | Light ("light editor") | Use                                                      |
-| ------------- | ------------------- | ---------------------- | -------------------------------------------------------- |
-| `bg`          | `#14161b`           | `#fbfbfc`              | page                                                     |
-| `raised`      | `#1a1d23`           | `#f2f4f7`              | code, hover rows, menus                                  |
-| `line`        | `#2a2e37`           | `#dfe3ea`              | hairlines, borders                                       |
-| `fg`          | `#dde1e8`           | `#1b1f27`              | primary text (13.8 / 16.0 : 1)                           |
-| `muted`       | `#9aa1ae`           | `#555c69`              | secondary text (7.0 / 6.5 : 1)                           |
-| `faint`       | `#828996`           | `#636a78`              | column keys, dates (≥ 4.6 : 1)                           |
-| `accent`      | `#4169e1`           | `#4169e1`              | royal blue: fills, rules, ticks, focus (3.73 / 4.69 : 1) |
-| `accent-text` | `#7b97ea`           | `#3558c7`              | links, small accent text (6.43 / 6.02 : 1)               |
-| `accent-soft` | `#181e31`           | `#eef1fb`              | callout surface                                          |
+**Warm paper (default).** Borrowed from the Sketchbook variant (V2) and
+applied to the whole neutral family so borders, surfaces and grey text all
+share the warm hue. Contrast figures are the minimum across `bg`, `raised`
+and `accent-soft`.
 
-Syntax colours are a small, desaturated set (keyword, string, number,
-comment, title, attr) defined per mode, so highlight.js works in both themes
-without a third-party stylesheet.
+| Token         | Dark      | Light     | Use / contrast (dark · light)                     |
+| ------------- | --------- | --------- | ------------------------------------------------- |
+| `bg`          | `#1c1d1f` | `#efede7` | page (V2 paper)                                   |
+| `raised`      | `#232427` | `#e7e4dc` | code, hover rows, thumbnail tiles (V2 paper-2)    |
+| `line`        | `#414141` | `#c9c8c4` | hairlines, borders (V2 ink at 18 % over paper)    |
+| `fg`          | `#e9e5dc` | `#1d1e22` | primary text (12.0 · 12.9 : 1), V2 ink            |
+| `muted`       | `#aaa69c` | `#57554f` | secondary text (6.2 · 5.8 : 1), V2 ink-2          |
+| `faint`       | `#939087` | `#625f58` | dates, keys (4.7 · 4.9 : 1), darker than V2 ink-3 |
+| `accent-text` | `#7b97ea` | `#3558c7` | links, small accent text (5.4 · 4.8 : 1)          |
+| `accent-soft` | `#202636` | `#e1e2e7` | callout surface (8 % / 12 % blue over paper)      |
+| `sketch`      | `#d3cfc6` | `#1d1e22` | pen strokes in fallback thumbnails                |
+
+V2's ink-3 (`#77746c` / `#8f8c84`) is only ~3:1 as text, so `faint` is a
+darker (light) or lighter (dark) step of the same warm grey. Syntax colours
+on the warm code surface: light keyword 5.2, string 4.8, number `#8a5100` 5.1,
+comment `#66625a` 4.8, title 4.9, attr 4.8; dark all ≥ 5.5 except comment
+`#8f8b82` at 4.6. `#4169E1` itself stays for non-text accents only (3.2 : 1 on
+dark `raised`, 3.8 : 1 on light `raised`); the skip link is white on
+`#4169E1` at 4.85 : 1. `theme-color` defaults to the paper backgrounds and a
+small client sync keeps it on the live `--color-bg` (theme toggle and
+palette switch).
+
+**Cool (original V1)**, `html[data-surfaces="cool"]`. Pixel-identical to
+the earlier Workstation (verified by screenshot diff).
+
+| Token         | Dark      | Light     | Use / contrast (against `bg`)                   |
+| ------------- | --------- | --------- | ----------------------------------------------- |
+| `bg`          | `#14161b` | `#fbfbfc` | page                                            |
+| `raised`      | `#1a1d23` | `#f2f4f7` | code, hover rows, menus                         |
+| `line`        | `#2a2e37` | `#dfe3ea` | hairlines, borders                              |
+| `fg`          | `#dde1e8` | `#1b1f27` | primary text (13.8 / 16.0 : 1)                  |
+| `muted`       | `#9aa1ae` | `#555c69` | secondary text (7.0 / 6.5 : 1)                  |
+| `faint`       | `#828996` | `#636a78` | column keys, dates (≥ 4.6 : 1)                  |
+| `accent`      | `#4169e1` | `#4169e1` | royal blue: fills, rules, focus (3.73 / 4.69:1) |
+| `accent-text` | `#7b97ea` | `#3558c7` | links, small accent text (6.43 / 6.02 : 1)      |
+| `accent-soft` | `#181e31` | `#eef1fb` | callout surface                                 |
 
 ## Type
 
@@ -240,6 +267,7 @@ and no script, renders exactly the defaults.
 | ------------ | ---------------------- | ------------------------------------------------------------------------- | ----------------------- | ---------- |
 | Writing list | List alignment         | `data-writing-align`                                                      | centre / left           | centre     |
 | Writing list | Filter bar             | `data-writing-bar`                                                        | page width / list width | page width |
+| Colour       | Surfaces               | `data-surfaces`                                                           | warm paper / cool       | warm paper |
 | Writing list | Fallback thumbnail     | `data-thumb-style`                                                        | ink sketch / code pane  | ink sketch |
 | Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                | 176px      |
 | Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                 | 17px       |
