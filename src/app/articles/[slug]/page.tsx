@@ -109,7 +109,9 @@ export default async function Page({
                         )}
                     </div>
                 )}
-                <Content />
+                <div data-article-body>
+                    <Content />
+                </div>
             </div>
         </div>
     );
