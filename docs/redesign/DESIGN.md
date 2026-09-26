@@ -269,31 +269,23 @@ empty otherwise. No borders, separators or header row: alignment and
 spacing only; rows themselves are not clickable. On mobile each project stacks:
 name with the year on the right, description, then write-up.
 
-_Editor panes (default, `cards`)._ A 2-column grid (1 on mobile) of bounded
-panes on the `raised` surface with `line` borders, so they follow the
-Surfaces control. Each pane is a file in an editor: the tab strip (page
-background) holds the active tab, with a 2px royal-blue top edge, the status
-light and the project folder name `orka/` at 22px semibold, the dominant
-element. Type and year sit faint on the right of the strip. The body reads
-like the README: a faint `active  README.md` line, the project sketch
-(10rem, 16:10) beside the description, and `#tags`. A status-bar footer
-(page background, hairline above) carries the links: Source, Website, Case
-study.
+_Editor panes._ A 2-column grid (1 on mobile) of slim panes on the `raised`
+surface with `line` borders (they follow the Surfaces control). The tab
+(2px royal-blue top edge) holds a 30px square project icon, the folder name
+`orka/` at 18px semibold, and a quiet outlined `wip` marker for projects
+with `status: "early"`; the year sits faint on the right of the strip. The
+body is the description only, at a 1.6 line-height. A status-bar footer
+carries the links on the left (`source ↗`, `website ↗`, `case study ↗`) and
+the technologies on the right as one faint line (`Python · Qt`). No status
+lights, type labels or sketches: the four panes are 393px tall at 1440
+(664px before).
 
-_Large stacked entries (`stacked`)._ Full-width entries between hairlines: a
-small `dl` metadata column (status with light, type, year), the name at
-40px (32px mobile) with a faint trailing `/`, description, `#tags`, links,
-and the sketch on the right (14rem). On mobile the sketch (12rem) sits above
-the metadata.
-
-_Project sketch_ (`ProjectSketch` in `InkThumbnail.tsx`): the same pen engine
-as the Writing fallback thumbnails (wobble, tilt, corner hatching, one
-royal-blue detail), seeded from `title:type`, with one motif per project
-type: `infrastructure` a GPU card (fans, bracket, connector teeth, blue LED
-strip), `tool` a terminal with a prompt and a blue gear, `desktop` an app
-window with a component tree (one blue node), `package` stacked module boxes
-(blue top box), `website` a browser window (blue address bar). Decorative
-(`aria-hidden`). Not used on the home page, whose `ls` rows stay compact.
+_Project icons_ (`ProjectIcon`): one clean line motif per project type in a
+30px bordered square, stroked in `--color-sketch` with a single royal-blue
+detail: `infrastructure` a GPU card with one blue fan, `tool` a terminal
+with a blue play mark, `desktop` a window with a component tree and a blue
+root, `package` stacked modules with the top one blue, `website` a browser
+with a blue address bar. Decorative (`aria-hidden`).
 
 **404.** A helpful "command not found": shows the requested path and offers
 `cd ~`, `cd ~/writing`, `cd ~/projects` as real links.
@@ -308,21 +300,20 @@ the editor palette: `raised`, `line`, Inconsolata). Every control defaults to th
 carries the defaults as `var()` fallbacks, so production, which has no panel
 and no script, renders exactly the defaults.
 
-| Group        | Control                | Drives                                                                    | Range                          | Default     |
-| ------------ | ---------------------- | ------------------------------------------------------------------------- | ------------------------------ | ----------- |
-| Writing list | List alignment         | `data-writing-align`                                                      | centre / left                  | centre      |
-| Writing list | Filter bar             | `data-writing-bar`                                                        | page width / list width        | page width  |
-| Projects     | Featured projects      | `data-projects-style`                                                     | cards (editor panes) / stacked | cards       |
-| Chrome       | Theme toggle           | `data-theme-toggle`                                                       | wall switch / sun-moon         | wall switch |
-| Colour       | Surfaces               | `data-surfaces`                                                           | paper / cool / current         | warm paper  |
-| Writing list | Fallback thumbnail     | `data-thumb-style`                                                        | ink sketch / code pane         | ink sketch  |
-| Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                       | 176px       |
-| Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                        | 17px        |
-| Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px                         | 16px        |
-| Home         | Headline size          | `--home-headline-size` (caps the svh clamp from 768px)                    | 28–56px                        | 40px        |
-| Home         | Drawing size (%)       | `--home-drawing-size` (scales the drawing height)                         | 50–110                         | 100         |
-| Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static               | draw in     |
-| Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                          | 100         |
+| Group        | Control                | Drives                                                                    | Range                   | Default     |
+| ------------ | ---------------------- | ------------------------------------------------------------------------- | ----------------------- | ----------- |
+| Writing list | List alignment         | `data-writing-align`                                                      | centre / left           | centre      |
+| Writing list | Filter bar             | `data-writing-bar`                                                        | page width / list width | page width  |
+| Chrome       | Theme toggle           | `data-theme-toggle`                                                       | wall switch / sun-moon  | wall switch |
+| Colour       | Surfaces               | `data-surfaces`                                                           | paper / cool / current  | warm paper  |
+| Writing list | Fallback thumbnail     | `data-thumb-style`                                                        | ink sketch / code pane  | ink sketch  |
+| Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                | 176px       |
+| Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                 | 17px        |
+| Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px                  | 16px        |
+| Home         | Headline size          | `--home-headline-size` (caps the svh clamp from 768px)                    | 28–56px                 | 40px        |
+| Home         | Drawing size (%)       | `--home-drawing-size` (scales the drawing height)                         | 50–110                  | 100         |
+| Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static        | draw in     |
+| Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                   | 100         |
 
 ## Motion
 

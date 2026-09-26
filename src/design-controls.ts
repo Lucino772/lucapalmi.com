@@ -141,18 +141,6 @@ export const designControls: DesignControl[] = [
     },
     {
         type: "choice",
-        key: "projects-style",
-        label: "Featured projects",
-        group: "Projects",
-        attribute: "data-projects-style",
-        options: [
-            { value: "cards", label: "Cards" },
-            { value: "stacked", label: "Large stacked entries" },
-        ],
-        default: "cards",
-    },
-    {
-        type: "choice",
         key: "theme-toggle",
         label: "Theme toggle",
         group: "Chrome",
