@@ -159,14 +159,86 @@ const MOTIFS: Record<TopicId | "default", (p: Pen) => Sketch> = {
     }),
 };
 
-type Props = {
-    slug: string;
-    topic?: TopicId;
-    className?: string;
+// Project motifs, chosen by project type (shared across variants)
+export type ProjectType =
+    "infrastructure" | "tool" | "desktop" | "package" | "website";
+
+const PROJECT_MOTIFS: Record<ProjectType, (p: Pen) => Sketch> = {
+    // A GPU card: board, two fans, bracket and connector teeth
+    infrastructure: (p) => ({
+        ink:
+            p.rect(34, 40, 88, 38) +
+            p.ellipse(60, 59, 12, 12) +
+            p.ellipse(96, 59, 12, 12) +
+            p.line(54, 59, 66, 59) +
+            p.line(90, 59, 102, 59) +
+            p.line(126, 34, 126, 86) +
+            [0, 1, 2, 3, 4]
+                .map((i) => p.line(48 + i * 9, 78, 48 + i * 9, 84))
+                .join(""),
+        accent: p.line(40, 46, 76, 46),
+    }),
+    // A terminal window with a prompt and a small gear
+    tool: (p) => ({
+        ink:
+            p.rect(36, 28, 88, 62) +
+            p.line(36, 40, 124, 40) +
+            p.line(46, 52, 54, 58) +
+            p.line(54, 58, 46, 64) +
+            p.line(60, 64, 80, 64) +
+            p.line(46, 76, 70, 76),
+        accent:
+            p.ellipse(106, 72, 7, 7) +
+            p.line(106, 61, 106, 64) +
+            p.line(106, 80, 106, 83) +
+            p.line(95, 72, 98, 72) +
+            p.line(114, 72, 117, 72),
+    }),
+    // An app window holding a small component tree
+    desktop: (p) => ({
+        ink:
+            p.rect(34, 26, 92, 66) +
+            p.line(34, 38, 126, 38) +
+            p.rect(46, 46, 20, 10) +
+            p.line(56, 56, 56, 81) +
+            p.line(56, 66, 72, 66) +
+            p.line(56, 81, 72, 81) +
+            p.rect(72, 61, 20, 10) +
+            p.line(92, 66, 100, 66) +
+            p.rect(100, 61, 16, 10),
+        accent: p.rect(72, 76, 20, 10),
+    }),
+    // Stacked module boxes
+    package: (p) => ({
+        ink:
+            p.rect(48, 60, 30, 26) +
+            p.rect(82, 60, 30, 26) +
+            p.line(56, 70, 70, 70) +
+            p.line(90, 70, 104, 70),
+        accent: p.rect(65, 30, 30, 26),
+    }),
+    // A browser window with an address bar and content lines
+    website: (p) => ({
+        ink:
+            p.rect(34, 26, 92, 66) +
+            p.line(34, 38, 126, 38) +
+            p.line(46, 52, 96, 52) +
+            p.line(46, 62, 110, 62) +
+            p.line(46, 72, 88, 72),
+        accent: p.line(56, 32, 104, 32),
+    }),
 };
 
-export default function InkThumbnail({ slug, topic, className }: Props) {
-    const seed = hash(slug);
+function SketchSvg({
+    seedText,
+    draw,
+    className,
+}: {
+    seedText: string;
+    draw: (p: Pen) => Sketch;
+    className?: string;
+}) {
+    const seed = hash(seedText);
     const rand = random(seed);
     const pen = makePen(rand);
 
@@ -191,7 +263,7 @@ export default function InkThumbnail({ slug, topic, className }: Props) {
     const tilt = r1((rand() - 0.5) * 7);
     const dx = r1((rand() - 0.5) * 10);
     const dy = r1((rand() - 0.5) * 4);
-    const sketch = MOTIFS[topic ?? "default"](pen);
+    const sketch = draw(pen);
 
     return (
         <svg
@@ -225,5 +297,40 @@ export default function InkThumbnail({ slug, topic, className }: Props) {
                 />
             </g>
         </svg>
+    );
+}
+
+type Props = {
+    slug: string;
+    topic?: TopicId;
+    className?: string;
+};
+
+export default function InkThumbnail({ slug, topic, className }: Props) {
+    return (
+        <SketchSvg
+            seedText={slug}
+            draw={MOTIFS[topic ?? "default"]}
+            className={className}
+        />
+    );
+}
+
+// Same pen, project motif; seeded from title and type
+export function ProjectSketch({
+    title,
+    type,
+    className,
+}: {
+    title: string;
+    type: ProjectType;
+    className?: string;
+}) {
+    return (
+        <SketchSvg
+            seedText={`${title}:${type}`}
+            draw={PROJECT_MOTIFS[type]}
+            className={className}
+        />
     );
 }

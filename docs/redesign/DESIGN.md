@@ -272,9 +272,36 @@ appear right-aligned next to their ticks (Inconsolata 13px, up to 2 lines,
 1280). Links are real anchors with `aria-current="location"`; headings get
 `scroll-margin-top` so they land below the sticky header.
 
-**Projects.** `~/projects` listing (title as above). Featured rows: status dot + status, year,
-name, description, tags, links (case study, source). Listed projects, under a
-"Smaller things" label in the gutter, in a tighter table: year, name, one-liner.
+**Projects.** A path bar (`~/projects │ Featured`, same grammar as
+`~/writing`), then the featured projects with a clearly heavier treatment
+than the compact `ls`-style "Smaller things" table below (larger gap before
+it: 80/112px).
+
+_Editor panes (default, `cards`)._ A 2-column grid (1 on mobile) of bounded
+panes on the `raised` surface with `line` borders, so they follow the
+Surfaces control. Each pane is a file in an editor: the tab strip (page
+background) holds the active tab, with a 2px royal-blue top edge, the status
+light and the project folder name `orka/` at 22px semibold, the dominant
+element. Type and year sit faint on the right of the strip. The body reads
+like the README: a faint `active  README.md` line, the project sketch
+(10rem, 16:10) beside the description, and `#tags`. A status-bar footer
+(page background, hairline above) carries the links: Source, Website, Case
+study.
+
+_Large stacked entries (`stacked`)._ Full-width entries between hairlines: a
+small `dl` metadata column (status with light, type, year), the name at
+40px (32px mobile) with a faint trailing `/`, description, `#tags`, links,
+and the sketch on the right (14rem). On mobile the sketch (12rem) sits above
+the metadata.
+
+_Project sketch_ (`ProjectSketch` in `InkThumbnail.tsx`): the same pen engine
+as the Writing fallback thumbnails (wobble, tilt, corner hatching, one
+royal-blue detail), seeded from `title:type`, with one motif per project
+type: `infrastructure` a GPU card (fans, bracket, connector teeth, blue LED
+strip), `tool` a terminal with a prompt and a blue gear, `desktop` an app
+window with a component tree (one blue node), `package` stacked module boxes
+(blue top box), `website` a browser window (blue address bar). Decorative
+(`aria-hidden`). Not used on the home page, whose `ls` rows stay compact.
 
 **404.** A helpful "command not found": shows the requested path and offers
 `cd ~`, `cd ~/writing`, `cd ~/projects` as real links.
@@ -290,19 +317,20 @@ Scroll/Fit home switch. Every control defaults to the current look, and CSS
 carries the defaults as `var()` fallbacks, so production, which has no panel
 and no script, renders exactly the defaults.
 
-| Group        | Control                | Drives                                                                    | Range                   | Default    |
-| ------------ | ---------------------- | ------------------------------------------------------------------------- | ----------------------- | ---------- |
-| Writing list | List alignment         | `data-writing-align`                                                      | centre / left           | centre     |
-| Writing list | Filter bar             | `data-writing-bar`                                                        | page width / list width | page width |
-| Colour       | Surfaces               | `data-surfaces`                                                           | paper / cool / current  | warm paper |
-| Writing list | Fallback thumbnail     | `data-thumb-style`                                                        | ink sketch / code pane  | ink sketch |
-| Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                | 176px      |
-| Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                 | 17px       |
-| Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px                  | 16px       |
-| Home         | Headline size          | `--home-headline-size` (scroll ≥768px; caps the fit clamp)                | 28–56px                 | 40px       |
-| Home         | Drawing size (%)       | `--home-drawing-size` (width in scroll, height in fit)                    | 50–110                  | 100        |
-| Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static        | draw in    |
-| Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                   | 100        |
+| Group        | Control                | Drives                                                                    | Range                          | Default    |
+| ------------ | ---------------------- | ------------------------------------------------------------------------- | ------------------------------ | ---------- |
+| Writing list | List alignment         | `data-writing-align`                                                      | centre / left                  | centre     |
+| Writing list | Filter bar             | `data-writing-bar`                                                        | page width / list width        | page width |
+| Projects     | Featured projects      | `data-projects-style`                                                     | cards (editor panes) / stacked | cards      |
+| Colour       | Surfaces               | `data-surfaces`                                                           | paper / cool / current         | warm paper |
+| Writing list | Fallback thumbnail     | `data-thumb-style`                                                        | ink sketch / code pane         | ink sketch |
+| Writing list | Thumbnail width        | `--writing-thumb-width` (mobile half)                                     | 96–280px                       | 176px      |
+| Writing list | Title size             | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                        | 17px       |
+| Writing list | Space between entries  | `--writing-entry-gap` (entry padding)                                     | 0–64px                         | 16px       |
+| Home         | Headline size          | `--home-headline-size` (scroll ≥768px; caps the fit clamp)                | 28–56px                        | 40px       |
+| Home         | Drawing size (%)       | `--home-drawing-size` (width in scroll, height in fit)                    | 50–110                         | 100        |
+| Home         | Drawing animation      | `data-portrait-animation`                                                 | draw in / static               | draw in    |
+| Glow         | Laptop screen glow (%) | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                          | 100        |
 
 ## Motion
 

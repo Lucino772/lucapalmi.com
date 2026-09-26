@@ -6,6 +6,7 @@
 @custom-variant writing-left (&:where([data-writing-align="left"] *));
 @custom-variant writing-bar-list (&:where([data-writing-bar="list"] *));
 @custom-variant thumb-code (&:where([data-thumb-style="code"] *));
+@custom-variant projects-stacked (&:where([data-projects-style="stacked"] *));
 @plugin "@tailwindcss/typography";
 
 /* Surfaces: warm paper by default (after the Sketchbook variant), light

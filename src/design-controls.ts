@@ -139,4 +139,16 @@ export const designControls: DesignControl[] = [
         ],
         default: "paper",
     },
+    {
+        type: "choice",
+        key: "projects-style",
+        label: "Featured projects",
+        group: "Projects",
+        attribute: "data-projects-style",
+        options: [
+            { value: "cards", label: "Cards" },
+            { value: "stacked", label: "Large stacked entries" },
+        ],
+        default: "cards",
+    },
 ];

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { projects } from "@/lib/projects";
 import { toSorted } from "@/lib/utils";
-import ProjectRows from "@/components/ProjectRows";
+import FeaturedProjects from "@/components/FeaturedProjects";
 
 export const metadata: Metadata = {
     title: "Projects | Luca Palmisano",
@@ -16,15 +16,11 @@ export default async function Projects() {
 
     return (
         <div className="max-w-page mx-auto w-full px-5 pt-6 pb-20 md:px-6 md:pt-10 md:pb-28">
-            <div className="flex flex-col gap-16 md:gap-20">
-                <section
-                    aria-labelledby="featured"
-                    className="grid gap-x-10 gap-y-4 md:grid-cols-[12rem_minmax(0,1fr)]"
-                >
-                    {/* The title sits in the gutter, on the line of the
-                        column headers, like the path above an ls -l */}
-                    <div className="flex items-baseline gap-4 md:block">
-                        <h1 className="text-[0.9375rem] leading-5 font-semibold">
+            <div className="flex flex-col gap-20 md:gap-28">
+                <section aria-labelledby="featured">
+                    {/* Path bar, the same row grammar as ~/writing */}
+                    <div className="border-line mb-8 flex items-baseline gap-4 border-b pb-3 md:mb-10">
+                        <h1 className="text-[0.9375rem] font-semibold">
                             <span
                                 aria-hidden
                                 className="text-faint font-normal"
@@ -33,26 +29,18 @@ export default async function Projects() {
                             </span>
                             projects
                         </h1>
+                        <span
+                            aria-hidden
+                            className="bg-line h-4 w-px self-center"
+                        />
                         <h2
                             id="featured"
-                            className="text-muted text-[0.9375rem] leading-7 md:mt-[1.625rem]"
+                            className="text-muted text-[0.9375rem]"
                         >
                             Featured
                         </h2>
                     </div>
-                    <div className="min-w-0">
-                        <div
-                            aria-hidden
-                            className="text-faint border-line mb-1 hidden grid-cols-[8ch_4ch_11ch_minmax(0,1fr)_auto] gap-x-[2ch] border-b pb-2 text-[0.8125rem] sm:grid"
-                        >
-                            <span>status</span>
-                            <span>year</span>
-                            <span>name</span>
-                            <span>description</span>
-                            <span>type</span>
-                        </div>
-                        <ProjectRows projects={projects.featured} detailed />
-                    </div>
+                    <FeaturedProjects projects={projects.featured} />
                 </section>
 
                 <section
