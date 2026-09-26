@@ -496,13 +496,6 @@ html[data-callout-style="bar"] .callout {
     color: var(--color-syn-number);
 }
 
-/* ---------- home ---------- */
-
-/* The home is one screen in both layouts: it replaces the footer */
-body:has([data-home]) > footer {
-    display: none;
-}
-
 /* ---------- home drawing ---------- */
 
 /* Final state is the plain filled drawing; the animation strokes each

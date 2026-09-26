@@ -207,7 +207,7 @@ latest article (or `about.pinnedArticle`), and the flagship project
 its repo.
 
 Exactly one screen (`min-height: calc(100svh - header)`, content vertically
-centred with symmetric padding, footer hidden). The drawing sits on the right
+centred with symmetric padding). The drawing sits on the right
 (height `min(62svh, 40rem)`); on phones it sits above the whoami block at
 18svh. This is the only home layout: the earlier scrolling and fit-first
 variants and their switch are retired.
@@ -317,8 +317,11 @@ with a blue address bar. Decorative (`aria-hidden`).
 **404.** A helpful "command not found": shows the requested path and offers
 `cd ~`, `cd ~/writing`, `cd ~/projects` as real links.
 
-**Footer.** A quiet status-bar strip: `© year Luca Palmisano` on the left,
-GitHub and LinkedIn on the right. Hidden on the home page, which is one screen.
+**No site footer.** GitHub and LinkedIn live in the nav (and the mobile
+menu), so there is no global footer or © line. Pages end with their own
+bottom padding (96px desktop, 48px mobile). Articles keep their own end
+matter inside the article: a hairline, `#tags`, `../writing` and "Back to
+top".
 
 ## Design panel (development only)
 

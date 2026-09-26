@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 import ThemeColorSync from "@/components/ThemeColorSync";
 import { themeScript } from "@/components/theme";
 import { DesignPanel } from "@/components/design-panel/DesignPanel";
@@ -154,7 +153,6 @@ export default async function RootLayout({
                 <main id="content" className="flex w-full flex-1 flex-col">
                     {children}
                 </main>
-                <Footer />
                 <ThemeColorSync />
                 <DesignPanel controls={designControls} />
             </body>

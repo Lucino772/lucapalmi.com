@@ -58,7 +58,7 @@ export default async function Page({
     const minutes = readingMinutes(article.readingTime);
 
     return (
-        <article className="w-full px-6 pt-8 pb-20 md:px-6 md:pt-14 md:pb-28">
+        <article className="w-full px-6 pt-8 pb-12 md:px-6 md:pt-14 md:pb-24">
             <header className="fade-in max-w-measure mx-auto">
                 <Link
                     href="/articles"

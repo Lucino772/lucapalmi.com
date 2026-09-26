@@ -15,7 +15,7 @@ export default async function Projects() {
     const others = toSorted(projects.others, (p) => p.year, false);
 
     return (
-        <div className="max-w-page mx-auto w-full px-5 pt-6 pb-20 md:px-6 md:pt-10 md:pb-28">
+        <div className="max-w-page mx-auto w-full px-5 pt-6 pb-12 md:px-6 md:pt-10 md:pb-24">
             <div className="flex flex-col gap-20 md:gap-28">
                 <section aria-labelledby="featured">
                     {/* Path bar, the same row grammar as ~/writing */}

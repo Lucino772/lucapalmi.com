@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
     return (
-        <div className="max-w-page mx-auto w-full px-5 pt-12 pb-24 md:px-6 md:pt-24">
+        <div className="max-w-page mx-auto w-full px-5 pt-12 pb-12 md:px-6 md:pt-24 md:pb-24">
             <div className="grid gap-x-10 md:grid-cols-[12rem_minmax(0,1fr)]">
                 <p className="text-faint mb-4 text-[0.9375rem] tabular-nums md:mb-0 md:pt-1">
                     exit 404
