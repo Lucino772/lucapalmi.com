@@ -126,3 +126,11 @@ featured projects) and still scale to dozens of notes.
   into the page `metadata.description`. No visible "N entries, newest first"
   line (the count lives on the "All" chip and in an `aria-live` region).
   Projects keep a small label separating featured from other projects.
+- **Home page = timeless calling card.** Same content in every variant: name +
+  role, headline, focus areas, the drawing, the "I tend to" list, hobbies, and
+  two entry points: Writing (latest article, or `about.pinnedArticle` if set)
+  and Projects (the flagship project, `about.flagshipProject`). No article
+  lists, no project cards. Two layouts: `fit` (default, strictly one screen,
+  "I tend to" and hobbies compressed) and `fit-first` (the same first screen
+  plus a short timeless section below). The old scrolling home is retired.
+- **No "open to work" line** anywhere on the site; LinkedIn covers that.
