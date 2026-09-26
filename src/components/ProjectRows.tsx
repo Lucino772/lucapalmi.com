@@ -33,7 +33,7 @@ export default function ProjectRows({
                 <li
                     key={project.title}
                     className={cn(
-                        "group hover:bg-raised relative grid grid-cols-[auto_auto_1fr] gap-x-[2ch] rounded-[4px] px-3 py-2.5 text-[0.9375rem] leading-7 transition-colors duration-150",
+                        "grid grid-cols-[auto_auto_1fr] gap-x-[2ch] px-3 py-2.5 text-[0.9375rem] leading-7",
                         "sm:grid-cols-[8ch_4ch_11ch_minmax(0,1fr)_auto]",
                         detailed && "py-4",
                     )}
@@ -49,7 +49,7 @@ export default function ProjectRows({
                         href={project.links.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-fg group-hover:text-accent-text col-span-3 font-semibold transition-colors duration-150 after:absolute after:inset-0 after:content-[''] sm:col-span-1"
+                        className="text-fg hover:text-accent-text col-span-3 min-w-0 justify-self-start font-semibold underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:decoration-current sm:col-span-1"
                     >
                         {project.title}
                         <span className="sr-only"> (GitHub)</span>
@@ -64,7 +64,7 @@ export default function ProjectRows({
                                 {project.article && (
                                     <Link
                                         href={`/articles/${project.article}`}
-                                        className="text-accent-text relative z-10 underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                        className="text-accent-text underline decoration-current/40 underline-offset-4 hover:decoration-current"
                                     >
                                         Read the case study
                                     </Link>

@@ -66,13 +66,13 @@ export default async function Projects() {
                         {others.map((project) => (
                             <li
                                 key={project.title}
-                                className="group hover:bg-raised relative grid grid-cols-[minmax(0,1fr)_auto] gap-x-[2ch] rounded-[4px] px-3 py-2.5 text-[0.9375rem] leading-7 transition-colors duration-150 sm:col-span-4 sm:grid-cols-subgrid sm:py-2"
+                                className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-[2ch] px-3 py-2.5 text-[0.9375rem] leading-7 transition-colors duration-150 sm:col-span-4 sm:grid-cols-subgrid sm:py-2"
                             >
                                 <a
                                     href={project.url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="text-fg group-hover:text-accent-text min-w-0 font-semibold transition-colors duration-150 after:absolute after:inset-0 after:content-['']"
+                                    className="text-fg hover:text-accent-text min-w-0 justify-self-start font-semibold underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:decoration-current"
                                 >
                                     {project.title}
                                 </a>
@@ -86,7 +86,7 @@ export default async function Projects() {
                                     {project.article && (
                                         <Link
                                             href={`/articles/${project.article}`}
-                                            className="text-accent-text relative z-10 underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                            className="text-accent-text underline decoration-current/40 underline-offset-4 hover:decoration-current"
                                         >
                                             write-up
                                             <span className="sr-only">

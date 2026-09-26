@@ -289,10 +289,10 @@ it: 80/112px). "Smaller things" sits on top of its list in the same bar
 grammar (`Smaller things │ 8 projects` over a hairline), and the list runs
 the full container width, on the featured panes' left edge. Rows share one
 column template through subgrid (`11rem | 1fr | 4ch | 9ch`): name (semibold,
-links the repo across the whole row), muted description, faint right-aligned
+the only link to the repo: accent + underline on hover, focus ring), muted description, faint right-aligned
 tabular year, and a small accent "write-up" link when a case study exists,
 empty otherwise. No borders, separators or header row: alignment and
-spacing only, with the usual `raised` hover. On mobile each project stacks:
+spacing only; rows themselves are not clickable. On mobile each project stacks:
 name with the year on the right, description, then write-up.
 
 _Editor panes (default, `cards`)._ A 2-column grid (1 on mobile) of bounded
