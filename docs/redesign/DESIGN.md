@@ -296,7 +296,7 @@ appear right-aligned next to their ticks (Inconsolata 13px, up to 2 lines,
 
 **Projects.** No visible title (see Page titles): the featured projects with a clearly heavier treatment
 than the compact `ls`-style list of other projects below (larger gap before
-it: 80/112px). The `// other projects` comment sits on top of that list, and the list runs
+it: 56px desktop, 40px mobile; 16px from the label to the first row). The `// other projects` comment sits on top of that list, and the list runs
 the full container width, on the featured panes' left edge. Rows share one
 column template through subgrid (`11rem | 1fr | 4ch | 9ch`): name (semibold,
 the only link to the repo: accent + underline on hover, focus ring), muted description, faint right-aligned

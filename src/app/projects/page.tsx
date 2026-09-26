@@ -16,7 +16,7 @@ export default async function Projects() {
 
     return (
         <div className="max-w-page mx-auto w-full px-5 pt-8 pb-12 md:px-6 md:pt-12 md:pb-24">
-            <div className="flex flex-col gap-20 md:gap-28">
+            <div className="flex flex-col gap-10 md:gap-14">
                 <section aria-labelledby="featured">
                     <h1 className="sr-only">Projects</h1>
                     <h2 id="featured" className="sr-only">
@@ -33,13 +33,13 @@ export default async function Projects() {
                         nothing or the earlier heading bar */}
                     <p
                         aria-hidden
-                        className="others-none:hidden others-heading:hidden text-faint mb-3 text-[0.8125rem]"
+                        className="others-none:hidden others-heading:hidden text-faint mb-2 text-[0.8125rem]"
                     >
                         {"// other projects"}
                     </p>
                     <div
                         aria-hidden
-                        className="others-heading:flex mb-3 hidden items-baseline gap-4"
+                        className="others-heading:flex mb-2 hidden items-baseline gap-4"
                     >
                         <span className="text-[0.9375rem] font-semibold">
                             Other projects
