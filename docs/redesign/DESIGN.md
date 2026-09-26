@@ -335,6 +335,8 @@ and no script, renders exactly the defaults.
 | Article headings | H2 size / weight / space below | `--h2-size`, `--h2-weight`, `--h2-space-below`                            | 18–36px / 400–800 / 8–48px | 26px / 700 / 26px |
 | Article headings | Heading font                   | `data-heading-font`                                                       | own / sans (IBM Plex Sans) | own               |
 | Article headings | H3 size                        | `--h3-size`                                                               | 14–28px                    | 20.7px            |
+| Article          | Callout style                  | `data-callout-style`                                                      | tinted box / bar + tint    | tinted box        |
+| Article          | Callout text                   | `data-callout-text`                                                       | muted / full               | muted             |
 | Colour           | Surfaces                       | `data-surfaces`                                                           | paper / cool / current     | warm paper        |
 | Writing list     | Fallback thumbnail             | `data-thumb-style`                                                        | ink sketch / code pane     | ink sketch        |
 | Writing list     | Thumbnail width                | `--writing-thumb-width` (mobile half)                                     | 96–280px                   | 176px             |
