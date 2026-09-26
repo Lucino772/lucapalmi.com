@@ -9,7 +9,7 @@
                 "github": "https://github.com/Lucino772/orka"
             },
             "description": "Run GPU workloads across your own infrastructure.",
-            "tags": ["TypeScript", "Infrastructure", "Distributed systems"]
+            "tags": ["TypeScript"]
         },
         {
             "title": "envelop",
@@ -20,7 +20,7 @@
                 "github": "https://github.com/Lucino772/envelop"
             },
             "description": "Install, run and manage dedicated game servers behind one API: process control, RCON, player management and event streaming, for Steam and non-Steam games alike.",
-            "tags": ["Go", "Game servers", "Systems"]
+            "tags": ["Go"]
         },
         {
             "title": "qtcompose",
@@ -32,7 +32,7 @@
                 "github": "https://github.com/Lucino772/qtcompose"
             },
             "description": "Build Qt applications in a reactive, declarative and composable way: describe the UI as a tree of components driven by reactive state.",
-            "tags": ["Python", "Qt", "Desktop"]
+            "tags": ["Python", "Qt"]
         },
         {
             "title": "stillhead",
@@ -43,7 +43,7 @@
                 "github": "https://github.com/Lucino772/stillhead"
             },
             "description": "Per-module database migrations on Alembic: each module owns its namespace, its version table and its revision lineage.",
-            "tags": ["Python", "Databases", "Architecture"]
+            "tags": ["Python", "Alembic"]
         }
     ],
     "others": [
