@@ -147,12 +147,13 @@ editor tabs (active tab gets a 2 px accent underline), GitHub and LinkedIn
 icons with accessible names, theme toggle. Sticky, translucent `bg`, hairline
 bottom border only after scroll-safe (always present, 1 px).
 
-**Theme toggle.** A wall light switch (after the Lamplight variant), drawn
-in Workstation hairlines: a 16×22 plate with 1px non-scaling strokes and a
-1.5 radius, two screw ticks, a slot, and a square-cornered lever. In light
-mode the lever is up and lit in royal blue; in dark it drops 5px and turns
-`muted`. It is the same 32px icon button as GitHub/LinkedIn (40px in the
-mobile menu) with `aria-label` "Switch to light/dark theme". The lever
+**Theme toggle.** The Lamplight variant's wall switch, copied with the same
+geometry (20×28 plate with a 3.5 radius, inner slot, rounded lever), drawn
+at 20px tall next to the 16px GitHub/LinkedIn icons. In light mode the lever
+is up and lit in royal blue `#4169E1`; in dark it slides down and takes the
+outline colour. The nav icon buttons (GitHub, LinkedIn, the switch) sit bare:
+no box at rest or on hover, hover is a colour change (`muted` → `fg`), and
+the focus ring appears on keyboard focus only (`:focus-visible`). The lever
 position rides on the `.dark` class and the variant on `data-theme-toggle`,
 both set before paint, so nothing flashes. The design panel's "Theme toggle"
 (`icon`) restores the earlier sun/moon icon.

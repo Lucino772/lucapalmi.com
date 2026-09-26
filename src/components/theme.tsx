@@ -53,54 +53,46 @@ export function ThemeToggle({ className }: { className?: string }) {
         <button
             type="button"
             className={cn(
-                "text-muted hover:text-fg hover:bg-raised inline-flex size-8 cursor-pointer items-center justify-center rounded-[4px] transition-colors duration-150",
+                "text-muted hover:text-fg inline-flex size-8 cursor-pointer items-center justify-center rounded-[4px] transition-colors duration-150",
                 className,
             )}
             onClick={() => setTheme(next)}
             aria-label={label}
             title={label}
         >
+            {/* The Lamplight wall switch, same geometry; lever lit royal
+                blue when up (light), outline colour when down (dark) */}
             <svg
                 aria-hidden
-                viewBox="0 0 16 22"
+                viewBox="0 0 20 28"
                 fill="none"
                 className="theme-icon:hidden block h-5 w-auto"
             >
-                {/* Wall plate with two screw ticks */}
                 <rect
-                    x="0.5"
-                    y="0.5"
-                    width="15"
-                    height="21"
-                    rx="1.5"
+                    x="1"
+                    y="1"
+                    width="18"
+                    height="26"
+                    rx="3.5"
                     stroke="currentColor"
-                    vectorEffect="non-scaling-stroke"
+                    strokeWidth="1.5"
                 />
-                <path
-                    d="M7 2.75h2M7 19.25h2"
-                    stroke="currentColor"
-                    opacity="0.6"
-                    vectorEffect="non-scaling-stroke"
-                />
-                {/* Slot */}
                 <rect
-                    x="5"
-                    y="5"
-                    width="6"
-                    height="12"
-                    rx="0.75"
-                    stroke="currentColor"
-                    opacity="0.55"
-                    vectorEffect="non-scaling-stroke"
-                />
-                {/* Lever: up and lit in royal blue in light mode, down in dark */}
-                <rect
-                    x="6.25"
+                    x="6.5"
                     y="6"
-                    width="3.5"
-                    height="5"
-                    rx="0.5"
-                    className="fill-accent transition-transform duration-150 dark:translate-y-[5px] dark:fill-current"
+                    width="7"
+                    height="16"
+                    rx="2"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
+                    opacity="0.6"
+                />
+                <rect
+                    x="7.75"
+                    width="4.5"
+                    height="7"
+                    rx="1.25"
+                    className="fill-accent translate-y-[7.25px] transition-transform duration-150 dark:translate-y-[13.75px] dark:fill-current"
                 />
             </svg>
             <SunIcon

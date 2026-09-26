@@ -12,7 +12,7 @@ import MobileNav from "./MobileNav";
 import { isActive, navItems } from "./nav-items";
 
 const iconLink =
-    "text-muted hover:text-fg hover:bg-raised inline-flex size-8 items-center justify-center rounded-[4px] transition-colors duration-150";
+    "text-muted hover:text-fg inline-flex size-8 items-center justify-center rounded-[4px] transition-colors duration-150";
 
 export default function NavBar() {
     const pathname = usePathname();
@@ -94,7 +94,7 @@ export default function NavBar() {
 
                 <button
                     type="button"
-                    className="text-fg hover:bg-raised -mr-1.5 inline-flex size-10 cursor-pointer items-center justify-center rounded-[4px] md:hidden"
+                    className="text-fg hover:text-accent-text -mr-1.5 inline-flex size-10 cursor-pointer items-center justify-center rounded-[4px] md:hidden"
                     aria-expanded={open}
                     aria-controls="mobile-nav"
                     aria-label={open ? "Close menu" : "Open menu"}
