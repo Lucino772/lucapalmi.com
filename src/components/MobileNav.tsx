@@ -98,7 +98,7 @@ export default function MobileNav({ open, close }: Props) {
                     </ul>
                     <div className="mt-4 flex items-center justify-between">
                         {/* The first glyph lines up with the item text */}
-                        <div className="-ml-[13px] flex">
+                        <div className="-ml-[0.8125rem] flex">
                             <a
                                 href={about.links.github}
                                 target="_blank"
@@ -107,7 +107,7 @@ export default function MobileNav({ open, close }: Props) {
                                 title="GitHub"
                                 className={iconLink}
                             >
-                                <GitHubIcon className="size-[18px]" />
+                                <GitHubIcon className="size-[1.125rem]" />
                             </a>
                             <a
                                 href={about.links.linkedin}
@@ -117,7 +117,7 @@ export default function MobileNav({ open, close }: Props) {
                                 title="LinkedIn"
                                 className={iconLink}
                             >
-                                <LinkedInIcon className="size-[16px]" />
+                                <LinkedInIcon className="size-[1rem]" />
                             </a>
                         </div>
                         <ThemeToggle className="-mr-2 size-11" />

@@ -192,14 +192,15 @@
 }
 
 /* h2: a hairline across the measure with a short royal-blue segment at its
-   start, like the accent edge on the editor tabs */
+   start, like the accent edge on the editor tabs. 1.375rem on phones (26px
+   mono wraps into 3+ lines at 360px), 1.625rem from sm; Inconsolata's real
+   800 (variable 200-900); space below in em so it follows the size */
 .prose :where(h2):not(:where(.not-prose *)) {
-    /* Design panel: --h2-size / --h2-weight / --h2-space-below */
-    font-size: var(--h2-size, 26px);
-    font-weight: var(--h2-weight, 700);
+    font-size: 1.375rem;
+    font-weight: 800;
     line-height: 1.3;
     margin-top: 2.2em;
-    margin-bottom: var(--h2-space-below, 26px);
+    margin-bottom: 0.77em;
     padding-top: 0.75em;
     background:
         linear-gradient(var(--color-accent), var(--color-accent)) left top /
@@ -208,19 +209,23 @@
             1px no-repeat;
 }
 
-/* Phones keep the relative 1.45em when that is smaller */
-@media (max-width: 47.999rem) {
-    .prose :where(h2):not(:where(.not-prose *)) {
-        font-size: min(var(--h2-size, 26px), 1.45em);
-    }
-}
-
+/* h3 steps down from h2: 1.125rem on phones, 1.25rem from sm, weight 700 */
 .prose :where(h3):not(:where(.not-prose *)) {
-    font-size: var(--h3-size, 1.15em);
+    font-size: 1.125rem;
     line-height: 1.4;
     margin-top: 1.9em;
     font-weight: 700;
     margin-bottom: 0.8em;
+}
+
+@media (min-width: 40rem) {
+    .prose :where(h2):not(:where(.not-prose *)) {
+        font-size: 1.625rem;
+    }
+
+    .prose :where(h3):not(:where(.not-prose *)) {
+        font-size: 1.25rem;
+    }
 }
 
 .prose :where(a):not(:where(.not-prose *)) {
@@ -278,7 +283,7 @@
     background: color-mix(in oklab, var(--callout) 11%, transparent);
     border: 1px solid color-mix(in oklab, var(--callout) 28%, transparent);
     border-radius: 6px;
-    padding: 14px 20px;
+    padding: 0.875rem 1.25rem;
 }
 
 .callout[data-type="tip"] {

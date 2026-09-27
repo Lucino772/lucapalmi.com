@@ -42,7 +42,7 @@ export default function FeaturedProjects({
                                     </span>
                                 </h3>
                                 {project.status === "early" && (
-                                    <span className="text-muted border-line rounded-[3px] border px-[5px] text-[0.6875rem] leading-[17px]">
+                                    <span className="text-muted border-line rounded-[3px] border px-[0.3125rem] text-[0.6875rem] leading-[1.0625rem]">
                                         wip
                                     </span>
                                 )}

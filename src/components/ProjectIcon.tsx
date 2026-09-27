@@ -57,7 +57,7 @@ export default function ProjectIcon({ type }: { type: ProjectType }) {
     return (
         <span
             aria-hidden
-            className="border-line bg-bg grid size-[30px] shrink-0 place-items-center rounded-[4px] border"
+            className="border-line bg-bg grid size-[1.875rem] shrink-0 place-items-center rounded-[4px] border"
         >
             <svg
                 viewBox="0 0 22 22"

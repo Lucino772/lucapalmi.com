@@ -82,7 +82,7 @@ export default function NavBar() {
                             title="GitHub"
                             className={iconLink}
                         >
-                            <GitHubIcon className="size-[18px]" />
+                            <GitHubIcon className="size-[1.125rem]" />
                         </a>
                         <a
                             href={about.links.linkedin}
@@ -92,7 +92,7 @@ export default function NavBar() {
                             title="LinkedIn"
                             className={iconLink}
                         >
-                            <LinkedInIcon className="size-[16px]" />
+                            <LinkedInIcon className="size-[1rem]" />
                         </a>
                         <ThemeToggle />
                     </div>

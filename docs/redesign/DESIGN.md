@@ -109,12 +109,19 @@ be 4.3 : 1 and `#8a5a12` 4.8 : 1). Full-contrast body text on every tint is
 
 Scale (px, 1.25-ish, deliberately tight): 13 · 14 · 16 · 18 · 22 · 28 · 40.
 Prose: Literata 18 px / 1.75 on desktop, 17 px on mobile, measure 726px (~74ch).
-Article headings are Inconsolata bold (700), no prefix characters: h2 at
-26px (1.45em cap on phones) with 26px of space below, a hairline across the
-measure and a short 2px royal-blue segment at its start (the editor-tab
-accent edge); h3 at 1.15em, 700, 0.8em below, without a rule. Both keep
-`scroll-margin-top` for the section rail. The design panel's "Article
-headings" group tunes `--h2-size` (18–36px, 26), `--h2-weight` (400–800, 700), `--h2-space-below` (8–48px, 26) and `--h3-size` (14–28px, 20.7), . Headings are Inconsolata only (the variable file's real 200–900 weight axis, so 700 is never synthesised), tracked −0.01em.
+Article headings are Inconsolata, no prefix characters, tracked −0.01em,
+using the variable file's real 200–900 weight axis (nothing synthesised).
+h2: 1.625rem from 640px, 1.375rem on phones (26px mono wrapped into 3 lines
+at 360px; now at most 2), weight 800, 0.77em below (20px on desktop, so it
+follows the phone size), a hairline across the measure and a short 2px
+royal-blue segment at its start (the editor-tab accent edge). h3 steps down:
+1.25rem from 640px, 1.125rem on phones (still above the 1.0625rem phone
+body), weight 700, 0.8em below, without a rule. Both keep
+`scroll-margin-top` for the section rail.
+
+**Units.** Type and layout sizes are rem; spacing that should follow its own
+element's size is em (heading margins). Raw px is kept only for hairlines,
+borders, radii, outline offsets and SVG user units.
 Tabular numerals everywhere dates and years line up.
 
 ## Spacing and grid
@@ -245,10 +252,12 @@ zoom), one hairline border, accent focus ring. A timeline in the language of
 One hairline spine runs down the left; each year is a small filled accent
 square on the spine followed by the year, and each entry hangs off the
 spine by a hollow node that turns accent on hover. Every entry gets the same
-treatment: a 16:10 thumbnail (176px desktop, 88px from 640px, none on
-phones, where the title takes the full width), then date and
+treatment: a 16:10 thumbnail (12.5rem from 768px, 6.25rem from 640px,
+none on phones, where the title takes the full width), then date and
 reading time, title, Literata italic subtitle (hidden below 640px) and
-topics. Covers use `next/image` with `sizes` of 176px/88px.
+topics. Titles are 1.25rem from 640px and 1.125rem on phones; entries are
+1rem apart (0.75rem on phones). Covers use `next/image` with `sizes` of
+200px/100px.
 
 _Fallback thumbnail_ (`InkThumbnail`, adopted from the Sketchbook variant at
 Luca's request): a small pen sketch of the article's first topic (one motif
@@ -257,7 +266,7 @@ corner hatching from the slug, so the same article always gets the same
 sketch. The drawings are unchanged; only the colours map to Workstation
 tokens: tile `raised`, strokes `--color-sketch` (`#1f1f1f` light, a slightly
 softened `#d9d9d9` dark), hatching `faint`, and one royal-blue `accent`
-detail. Strokes stay at a constant width at 176px and 88px.
+detail. Strokes stay at a constant width at every thumbnail size.
 
 _Topic filter_: "All" plus every topic with at least one visible article,
 each with its count, styled like the nav's editor tabs (`aria-pressed`
@@ -339,17 +348,12 @@ the editor palette: `raised`, `line`, Inconsolata). Every control defaults to th
 carries the defaults as `var()` fallbacks, so production, which has no panel
 and no script, renders exactly the defaults.
 
-| Group            | Control                        | Drives                                                               | Range                      | Default           |
-| ---------------- | ------------------------------ | -------------------------------------------------------------------- | -------------------------- | ----------------- |
-| Article headings | H2 size / weight / space below | `--h2-size`, `--h2-weight`, `--h2-space-below`                       | 18–36px / 400–800 / 8–48px | 26px / 700 / 26px |
-| Article headings | H3 size                        | `--h3-size`                                                          | 14–28px                    | 20.7px            |
-| Writing list     | Thumbnail width                | `--writing-thumb-width` (half from 640px, none below)                | 96–280px                   | 176px             |
-| Writing list     | Title size                     | `--writing-title-size` (mobile ≤16px)                                | 14–26px                    | 17px              |
-| Writing list     | Space between entries          | `--writing-entry-gap` (entry padding; ×0.75 on phones)               | 0–64px                     | 16px              |
-| Home             | Headline size                  | `--home-headline-size` (caps the svh clamp from 768px)               | 28–56px                    | 40px              |
-| Home             | Drawing size (%)               | `--home-drawing-size` (scales the drawing height)                    | 50–110                     | 100               |
-| Home             | Drawing animation              | `data-portrait-animation`                                            | draw in / static           | draw in           |
-| Glow             | Laptop screen glow (%)         | `--screen-glow`, scales the lit screen opacity (0.7 light, 0.9 dark) | 0–300                      | 100               |
+| Group | Control                | Drives                                                               | Range            | Default  |
+| ----- | ---------------------- | -------------------------------------------------------------------- | ---------------- | -------- |
+| Home  | Headline size (rem)    | `--home-headline-size` (caps the svh clamp from 768px)               | 1.75–3.5rem      | 2.125rem |
+| Home  | Drawing size (%)       | `--home-drawing-size` (scales the drawing height)                    | 50–110           | 100      |
+| Home  | Drawing animation      | `data-portrait-animation`                                            | draw in / static | draw in  |
+| Glow  | Laptop screen glow (%) | `--screen-glow`, scales the lit screen opacity (0.7 light, 0.9 dark) | 0–300            | 100      |
 
 ## Motion
 
