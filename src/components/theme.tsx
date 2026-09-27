@@ -1,6 +1,5 @@
 "use client";
 
-import { MoonIcon, SunIcon } from "lucide-react";
 import { useSyncExternalStore } from "react";
 import { cn } from "@/lib/cn";
 
@@ -46,9 +45,8 @@ export function ThemeToggle({ className }: { className?: string }) {
     const next = theme === "dark" ? "light" : "dark";
     const label = theme === null ? "Toggle theme" : `Switch to ${next} theme`;
 
-    // Everything swaps on classes/attributes set before paint, so nothing
-    // flashes: the lever sits on the .dark class, and data-theme-toggle
-    // (design panel) picks the wall switch (default) or the sun/moon icon
+    // The lever position rides on the .dark class, set before paint, so
+    // nothing flashes
     return (
         <button
             type="button"
@@ -66,7 +64,7 @@ export function ThemeToggle({ className }: { className?: string }) {
                 aria-hidden
                 viewBox="0 0 20 28"
                 fill="none"
-                className="theme-icon:hidden block h-5 w-auto"
+                className="block h-5 w-auto"
             >
                 <rect
                     x="1"
@@ -95,14 +93,6 @@ export function ThemeToggle({ className }: { className?: string }) {
                     className="fill-accent translate-y-[7.25px] transition-transform duration-150 dark:translate-y-[13.75px] dark:fill-current"
                 />
             </svg>
-            <SunIcon
-                aria-hidden
-                className="theme-icon:dark:block hidden size-4"
-            />
-            <MoonIcon
-                aria-hidden
-                className="theme-icon:block theme-icon:dark:hidden hidden size-4"
-            />
         </button>
     );
 }

@@ -6,42 +6,6 @@ import type { DesignControl } from "@/components/design-panel/controls";
  */
 export const designControls: DesignControl[] = [
     {
-        type: "choice",
-        key: "writing-align",
-        label: "List alignment",
-        group: "Writing list",
-        attribute: "data-writing-align",
-        options: [
-            { value: "center", label: "Centred" },
-            { value: "left", label: "Left" },
-        ],
-        default: "center",
-    },
-    {
-        type: "choice",
-        key: "writing-bar",
-        label: "Filter bar",
-        group: "Writing list",
-        attribute: "data-writing-bar",
-        options: [
-            { value: "list", label: "List width" },
-            { value: "page", label: "Page width" },
-        ],
-        default: "list",
-    },
-    {
-        type: "choice",
-        key: "thumb-style",
-        label: "Fallback thumbnail",
-        group: "Writing list",
-        attribute: "data-thumb-style",
-        options: [
-            { value: "ink", label: "Ink sketch" },
-            { value: "code", label: "Code pane" },
-        ],
-        default: "ink",
-    },
-    {
         type: "range",
         key: "writing-thumb-width",
         label: "Thumbnail width",
@@ -140,31 +104,6 @@ export const designControls: DesignControl[] = [
     },
     {
         type: "choice",
-        key: "surfaces",
-        label: "Surfaces",
-        group: "Colour",
-        attribute: "data-surfaces",
-        options: [
-            { value: "paper", label: "Warm paper (V2)" },
-            { value: "cool", label: "Cool (original V1)" },
-            { value: "current", label: "Current site" },
-        ],
-        default: "paper",
-    },
-    {
-        type: "choice",
-        key: "theme-toggle",
-        label: "Theme toggle",
-        group: "Chrome",
-        attribute: "data-theme-toggle",
-        options: [
-            { value: "switch", label: "Wall switch" },
-            { value: "icon", label: "Sun / moon" },
-        ],
-        default: "switch",
-    },
-    {
-        type: "choice",
         key: "heading-font",
         label: "Heading font",
         group: "Article headings",
@@ -222,42 +161,5 @@ export const designControls: DesignControl[] = [
         step: 0.1,
         unit: "px",
         default: 20.7,
-    },
-    {
-        type: "choice",
-        key: "callout-style",
-        label: "Callout style",
-        group: "Article",
-        attribute: "data-callout-style",
-        options: [
-            { value: "box", label: "Tinted box" },
-            { value: "bar", label: "Bar + tint" },
-        ],
-        default: "box",
-    },
-    {
-        type: "choice",
-        key: "callout-text",
-        label: "Callout text",
-        group: "Article",
-        attribute: "data-callout-text",
-        options: [
-            { value: "muted", label: "Muted (note, tip)" },
-            { value: "full", label: "Full contrast" },
-        ],
-        default: "muted",
-    },
-    {
-        type: "choice",
-        key: "others-label",
-        label: "Other projects label",
-        group: "Projects",
-        attribute: "data-others-label",
-        options: [
-            { value: "comment", label: "// other projects" },
-            { value: "none", label: "None (space only)" },
-            { value: "heading", label: "Heading" },
-        ],
-        default: "comment",
     },
 ];

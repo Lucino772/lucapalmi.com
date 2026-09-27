@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 // Keeps <meta name="theme-color"> on the actual page background, which can
-// differ from the OS scheme (theme toggle) or palette (design panel)
+// differ from the OS scheme (theme toggle)
 export default function ThemeColorSync() {
     useEffect(() => {
         const root = document.documentElement;
@@ -20,7 +20,7 @@ export default function ThemeColorSync() {
         const observer = new MutationObserver(sync);
         observer.observe(root, {
             attributes: true,
-            attributeFilter: ["class", "data-surfaces"],
+            attributeFilter: ["class"],
         });
         return () => observer.disconnect();
     }, []);

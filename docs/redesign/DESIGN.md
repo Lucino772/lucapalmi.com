@@ -39,83 +39,31 @@ accent blue. That glow is the only "effect" on the whole site.
 
 ## Colour tokens
 
-One cool grey family, one accent: the royal blue `#4169E1` of the original
-site. `#4169E1` itself is used for every non-text accent (active tab and
-filter underlines, rail tick, timeline markers, focus rings, selection, the
-laptop glow, thumbnail accents). Small text uses `accent-text`, a tint (dark)
-or shade (light) of the same 225° hue, because `#4169E1` is only 3.7:1 on
-the dark page and 4.4:1 on the light `raised` surface. Contrast figures are
-against `bg`; `accent-text` stays ≥ 5.5:1 on `raised` too.
+One neutral family, one accent. The surfaces are the live lucapalmi.com's
+untinted greys; the site is dark only, so the light mode is a derived
+neutral counterpart. Light values live in `@theme`, dark under `.dark`. In
+dark, raised is darker than the page, as on the live site; hairlines are a
+lighter step of its `#292936` card border. `theme-color` is `#f4f4f4` /
+`#272727` and follows the theme toggle. Contrast is the minimum over `bg`
+and `raised` (dark · light).
 
-Semantic tokens live in `@theme` (light values) and are overridden under
-`.dark`. There are two neutral palettes, switched with the design panel's
-"Surfaces" control (`data-surfaces`). The accent family is shared.
+| Token         | Dark      | Light     | Use / contrast                                         |
+| ------------- | --------- | --------- | ------------------------------------------------------ |
+| `bg`          | `#272727` | `#f4f4f4` | page                                                   |
+| `raised`      | `#242424` | `#ebebeb` | code, hover rows, panes, thumbnail tiles               |
+| `line`        | `#3a3a48` | `#d6d6d6` | hairlines, borders (window-like elements only)         |
+| `fg`          | `#e9e9e9` | `#1f1f1f` | primary text (12.3 · 13.8 : 1)                         |
+| `muted`       | `#c9c9c9` | `#555555` | secondary text (9.0 · 6.3 : 1)                         |
+| `faint`       | `#9e9e9e` | `#636363` | dates, labels (5.6 · 5.0 : 1)                          |
+| `accent`      | `#4169e1` | `#4169e1` | royal blue: fills, rules, ticks, focus (3.1 · 4.4 : 1) |
+| `accent-text` | `#7b97ea` | `#3558c7` | links, small accent text (5.3 · 5.2 : 1)               |
+| `sketch`      | `#d9d9d9` | `#1f1f1f` | pen strokes in the fallback ink thumbnails             |
 
-**Warm paper (default).** Borrowed from the Sketchbook variant (V2) and
-applied to the whole neutral family so borders, surfaces and grey text all
-share the warm hue. Contrast figures are the minimum across `bg`, `raised`
-and `accent-soft`.
-
-| Token         | Dark      | Light     | Use / contrast (dark · light)                     |
-| ------------- | --------- | --------- | ------------------------------------------------- |
-| `bg`          | `#1c1d1f` | `#efede7` | page (V2 paper)                                   |
-| `raised`      | `#232427` | `#e7e4dc` | code, hover rows, thumbnail tiles (V2 paper-2)    |
-| `line`        | `#414141` | `#c9c8c4` | hairlines, borders (V2 ink at 18 % over paper)    |
-| `fg`          | `#e9e5dc` | `#1d1e22` | primary text (12.0 · 12.9 : 1), V2 ink            |
-| `muted`       | `#aaa69c` | `#57554f` | secondary text (6.2 · 5.8 : 1), V2 ink-2          |
-| `faint`       | `#939087` | `#625f58` | dates, keys (4.7 · 4.9 : 1), darker than V2 ink-3 |
-| `accent-text` | `#7b97ea` | `#3558c7` | links, small accent text (5.4 · 4.8 : 1)          |
-| `sketch`      | `#d3cfc6` | `#1d1e22` | pen strokes in fallback thumbnails                |
-
-V2's ink-3 (`#77746c` / `#8f8c84`) is only ~3:1 as text, so `faint` is a
-darker (light) or lighter (dark) step of the same warm grey. Syntax colours
-on the warm code surface: light keyword 5.2, string 4.8, number `#8a5100` 5.1,
-comment `#66625a` 4.8, title 4.9, attr 4.8; dark all ≥ 5.5 except comment
-`#8f8b82` at 4.6. `#4169E1` itself stays for non-text accents only (3.2 : 1 on
-dark `raised`, 3.8 : 1 on light `raised`); the skip link is white on
-`#4169E1` at 4.85 : 1. `theme-color` defaults to the paper backgrounds and a
-small client sync keeps it on the live `--color-bg` (theme toggle and
-palette switch).
-
-**Cool (original V1)**, `html[data-surfaces="cool"]`. Pixel-identical to
-the earlier Workstation (verified by screenshot diff).
-
-| Token         | Dark      | Light     | Use / contrast (against `bg`)                   |
-| ------------- | --------- | --------- | ----------------------------------------------- |
-| `bg`          | `#14161b` | `#fbfbfc` | page                                            |
-| `raised`      | `#1a1d23` | `#f2f4f7` | code, hover rows, menus                         |
-| `line`        | `#2a2e37` | `#dfe3ea` | hairlines, borders                              |
-| `fg`          | `#dde1e8` | `#1b1f27` | primary text (13.8 / 16.0 : 1)                  |
-| `muted`       | `#9aa1ae` | `#555c69` | secondary text (7.0 / 6.5 : 1)                  |
-| `faint`       | `#828996` | `#636a78` | column keys, dates (≥ 4.6 : 1)                  |
-| `accent`      | `#4169e1` | `#4169e1` | royal blue: fills, rules, focus (3.73 / 4.69:1) |
-| `accent-text` | `#7b97ea` | `#3558c7` | links, small accent text (6.43 / 6.02 : 1)      |
-
-**Current site**, `html[data-surfaces="current"]`. The live lucapalmi.com
-(`main`) is dark only, with neutral untinted greys. Dark maps it directly;
-light is an **extrapolated** neutral counterpart (no live equivalent).
-Contrast is the minimum across `bg`, `raised` and `accent-soft`.
-
-| Token         | Dark      | Light     | Notes (contrast dark · light)                                     |
-| ------------- | --------- | --------- | ----------------------------------------------------------------- |
-| `bg`          | `#272727` | `#f4f4f4` | live `--color-secondary`                                          |
-| `raised`      | `#242424` | `#ebebeb` | live `--color-primary`: darker than the page, kept as on the site |
-| `line`        | `#3a3a48` | `#d6d6d6` | lighter step of the live `#292936`, which is ~1.04:1, invisible   |
-| `fg`          | `#e9e9e9` | `#1f1f1f` | white at 90 % (11.0 · 13.6 : 1)                                   |
-| `muted`       | `#c9c9c9` | `#555555` | white at 75 %, the live body text (8.1 · 6.1 : 1)                 |
-| `faint`       | `#9e9e9e` | `#636363` | white at 55 % (5.0 · 5.0 : 1)                                     |
-| `accent-text` | `#7b97ea` | `#3558c7` | the live link tint (4.7 · 5.1 : 1)                                |
-| `sketch`      | `#d9d9d9` | `#1f1f1f` | thumbnail pen strokes                                             |
-
-Code comments use `#939393` (dark, 5.1 : 1) and `#666666` (light, 4.8 : 1)
-on the code surface; the other syntax colours are shared with the paper
-palette and stay ≥ 5.1 : 1.
-
-**Scroll rows.** The topic tab row is only a horizontal scroll container
-below 768px (`overflow-y: hidden`, scrollbar hidden, right-edge fade as the
-affordance, active underline drawn inside the tab). From `md` up it is
-`overflow: visible`, so no scrollbar can appear. Code blocks set
-`overflow-y: hidden` next to their horizontal scroll.
+Syntax colours on the code surface (dark · light): keyword 7.2 · 5.5,
+string 9.2 · 5.1, number 8.5 · 5.4, comment `#939393` · `#666666` at 5.1 ·
+4.8 (the lowest text contrast on the site), title 5.5 · 5.2, attr 8.3 · 5.1.
+`#4169E1` itself is never used for small text. The skip link is white on
+`#4169E1` at 4.85 : 1.
 
 **Callouts** (`Callout`, types note / tip / warning). A tinted box: the
 type colour at 11% (`color-mix` over transparent) with a 1px border at 28%,
@@ -123,21 +71,18 @@ type colour at 11% (`color-mix` over transparent) with a 1px border at 28%,
 so callouts never read as code blocks. The label is lowercase ("note",
 "tip", "warning", via `text-transform`; `aria-label` keeps "Note" etc.) in
 Literata italic 15px and the type's text tint. The body is Literata 17px:
-note and tip use `--color-callout-muted`, a tone between secondary and main
-text chosen per palette and mode so it clears 7 : 1 on every tint (lowest
-7.07 : 1, paper light note); warning keeps full-contrast `fg`. `aside
-aria-label={label}`. Design panel: "Callout style" (`data-callout-style="bar"`:
-2px left bar, 7% tint, square corners) and "Callout text"
-(`data-callout-text="full"`: full-contrast body for every type).
+note and tip use `--color-callout-muted` (`#c9c9c9` dark, `#494949` light),
+which clears 7 : 1 on every tint (lowest 7.4 : 1); warning keeps full-contrast `fg`. `aside
+aria-label={label}`.
 
-| Type    | Fill (dark · light)   | Label text (dark · light) | Label contrast, min over palettes (dark · light) |
-| ------- | --------------------- | ------------------------- | ------------------------------------------------ |
-| note    | `#4169e1` · `#4169e1` | `#7b97ea` · `#3558c7`     | 4.79 · 4.65                                      |
-| tip     | `#3fa36b` · `#3fa36b` | `#62c08c` · `#256b46`     | 5.76 · 4.96                                      |
-| warning | `#e0a526` · `#b7791f` | `#e8b64a` · `#80530f`     | 6.51 · 5.08                                      |
+| Type    | Fill (dark · light)   | Label text (dark · light) | Label contrast on its tint (dark · light) |
+| ------- | --------------------- | ------------------------- | ----------------------------------------- |
+| note    | `#4169e1` · `#4169e1` | `#7b97ea` · `#3558c7`     | 4.82 · 4.93                               |
+| tip     | `#3fa36b` · `#3fa36b` | `#62c08c` · `#256b46`     | 5.81 · 5.25                               |
+| warning | `#e0a526` · `#b7791f` | `#e8b64a` · `#80530f`     | 6.58 · 5.36                               |
 
-Light tip and warning text are deeper than first specced (`#2d7a4f` was
-4.05 : 1 and `#8a5a12` 4.52 : 1 on warm paper). Body text on every tint is
+Light tip and warning text are deeper than first specced (`#2d7a4f` would
+be 4.3 : 1 and `#8a5a12` 4.8 : 1). Full-contrast body text on every tint is
 ≥ 10 : 1.
 
 ## Type
@@ -190,9 +135,7 @@ is up and lit in royal blue `#4169E1`; in dark it slides down and takes the
 outline colour. The nav icon buttons (GitHub, LinkedIn, the switch) sit bare:
 no box at rest or on hover, hover is a colour change (`muted` → `fg`), and
 the focus ring appears on keyboard focus only (`:focus-visible`). The lever
-position rides on the `.dark` class and the variant on `data-theme-toggle`,
-both set before paint, so nothing flashes. The design panel's "Theme toggle"
-(`icon`) restores the earlier sun/moon icon.
+position rides on the `.dark` class, set before paint, so nothing flashes.
 
 **Mobile nav.** Menu button (aria-expanded) opens a panel under the header:
 path-style links, socials, theme toggle. Escape and route change close it.
@@ -245,17 +188,13 @@ first tab's text on the content's left edge; Projects opens directly with the
 featured panes (48px under the nav on desktop, 32px on phones). The intro
 sentences live only in `metadata.description`. The other projects are
 introduced by a faint code comment, `// other projects` (13px Inconsolata),
-with a visually hidden `<h2>` "Other projects". The design panel's "Other
-projects label" (`data-others-label`) can show nothing (`none`) or the
-`Other projects │ 8 projects` bar (`heading`).
+with a visually hidden `<h2>` "Other projects".
 
 **Writing (`/articles`).** The topic tabs and the timeline share one centred
 54rem (864px) column, the smallest width that keeps all eight tabs on one
 row from 1024px up; the first tab's text sits on the column's left edge, in
 line with the timeline spine and year markers. Below 768px the tabs keep the
-full content width and scroll horizontally. Design panel:
-`data-writing-bar="page"` lets the tabs span the page container instead;
-`data-writing-align="left"` pins the column to the left edge. A timeline in the language of
+full content width and scroll horizontally. A timeline in the language of
 `git log --graph`.
 One hairline spine runs down the left; each year is a small filled accent
 square on the spine followed by the year, and each entry hangs off the
@@ -269,11 +208,9 @@ Luca's request): a small pen sketch of the article's first topic (one motif
 per topic: chip, boxes, cylinder, globe…), with a seeded wobble, tilt and
 corner hatching from the slug, so the same article always gets the same
 sketch. The drawings are unchanged; only the colours map to Workstation
-tokens: tile `raised`, strokes `--color-sketch` (`#1b1f27` light, a slightly
-softened `#c3c8d1` dark so it sits with the muted home drawing), hatching
-`faint`, and one royal-blue `accent` detail. Strokes stay at a constant width
-at 176px and 88px. The earlier code-pane tile (`FallbackThumb`) remains as a
-design-panel option.
+tokens: tile `raised`, strokes `--color-sketch` (`#1f1f1f` light, a slightly
+softened `#d9d9d9` dark), hatching `faint`, and one royal-blue `accent`
+detail. Strokes stay at a constant width at 176px and 88px.
 
 _Topic filter_: "All" plus every topic with at least one visible article,
 each with its count, styled like the nav's editor tabs (`aria-pressed`
@@ -322,7 +259,7 @@ spacing only; rows themselves are not clickable. On mobile each project stacks:
 name with the year on the right, description, then write-up.
 
 _Editor panes._ A 2-column grid (1 on mobile) of slim panes on the `raised`
-surface with `line` borders (they follow the Surfaces control). The tab
+surface with `line` borders. The tab
 (2px royal-blue top edge) holds a 30px square project icon, the folder name
 `orka/` at 18px semibold, and a quiet outlined `wip` marker for projects
 with `status: "early"`; the year sits faint on the right of the strip. The
@@ -355,27 +292,19 @@ the editor palette: `raised`, `line`, Inconsolata). Every control defaults to th
 carries the defaults as `var()` fallbacks, so production, which has no panel
 and no script, renders exactly the defaults.
 
-| Group            | Control                        | Drives                                                                    | Range                      | Default           |
-| ---------------- | ------------------------------ | ------------------------------------------------------------------------- | -------------------------- | ----------------- |
-| Writing list     | List alignment                 | `data-writing-align`                                                      | centre / left              | centre            |
-| Writing list     | Filter bar                     | `data-writing-bar`                                                        | list width / page width    | list width        |
-| Chrome           | Theme toggle                   | `data-theme-toggle`                                                       | wall switch / sun-moon     | wall switch       |
-| Article headings | H2 size / weight / space below | `--h2-size`, `--h2-weight`, `--h2-space-below`                            | 18–36px / 400–800 / 8–48px | 26px / 700 / 26px |
-| Article headings | Heading font                   | `data-heading-font`                                                       | own / sans (IBM Plex Sans) | own               |
-| Article headings | H3 size                        | `--h3-size`                                                               | 14–28px                    | 20.7px            |
-| Article          | Callout style                  | `data-callout-style`                                                      | tinted box / bar + tint    | tinted box        |
-| Article          | Callout text                   | `data-callout-text`                                                       | muted / full               | muted             |
-| Projects         | Other projects label           | `data-others-label`                                                       | comment / none / heading   | comment           |
-| Colour           | Surfaces                       | `data-surfaces`                                                           | paper / cool / current     | warm paper        |
-| Writing list     | Fallback thumbnail             | `data-thumb-style`                                                        | ink sketch / code pane     | ink sketch        |
-| Writing list     | Thumbnail width                | `--writing-thumb-width` (mobile half)                                     | 96–280px                   | 176px             |
-| Writing list     | Title size                     | `--writing-title-size` (mobile ≤16px)                                     | 14–26px                    | 17px              |
-| Writing list     | Space between entries          | `--writing-entry-gap` (entry padding)                                     | 0–64px                     | 16px              |
-| Home             | Headline size                  | `--home-headline-size` (caps the svh clamp from 768px)                    | 28–56px                    | 40px              |
-| Home             | Drawing size (%)               | `--home-drawing-size` (scales the drawing height)                         | 50–110                     | 100               |
-| Home             | Drawing animation              | `data-portrait-animation`                                                 | draw in / static           | draw in           |
-| Home             | Drawing fade                   | `data-drawing-fade`                                                       | on / off                   | on                |
-| Glow             | Laptop screen glow (%)         | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                      | 100               |
+| Group            | Control                        | Drives                                                               | Range                      | Default           |
+| ---------------- | ------------------------------ | -------------------------------------------------------------------- | -------------------------- | ----------------- |
+| Article headings | H2 size / weight / space below | `--h2-size`, `--h2-weight`, `--h2-space-below`                       | 18–36px / 400–800 / 8–48px | 26px / 700 / 26px |
+| Article headings | Heading font                   | `data-heading-font`                                                  | own / sans (IBM Plex Sans) | own               |
+| Article headings | H3 size                        | `--h3-size`                                                          | 14–28px                    | 20.7px            |
+| Writing list     | Thumbnail width                | `--writing-thumb-width` (mobile half)                                | 96–280px                   | 176px             |
+| Writing list     | Title size                     | `--writing-title-size` (mobile ≤16px)                                | 14–26px                    | 17px              |
+| Writing list     | Space between entries          | `--writing-entry-gap` (entry padding)                                | 0–64px                     | 16px              |
+| Home             | Headline size                  | `--home-headline-size` (caps the svh clamp from 768px)               | 28–56px                    | 40px              |
+| Home             | Drawing size (%)               | `--home-drawing-size` (scales the drawing height)                    | 50–110                     | 100               |
+| Home             | Drawing animation              | `data-portrait-animation`                                            | draw in / static           | draw in           |
+| Home             | Drawing fade                   | `data-drawing-fade`                                                  | on / off                   | on                |
+| Glow             | Laptop screen glow (%)         | `--screen-glow`, scales the lit screen opacity (0.7 light, 0.9 dark) | 0–300                      | 100               |
 
 ## Motion
 

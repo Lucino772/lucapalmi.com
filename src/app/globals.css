@@ -1,33 +1,26 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
-/* Design-panel overrides: only non-default values have a selector */
-@custom-variant writing-left (&:where([data-writing-align="left"] *));
-@custom-variant writing-bar-page (&:where([data-writing-bar="page"] *));
-@custom-variant thumb-code (&:where([data-thumb-style="code"] *));
-@custom-variant theme-icon (&:where([data-theme-toggle="icon"] *));
-@custom-variant others-none (&:where([data-others-label="none"] *));
-@custom-variant others-heading (&:where([data-others-label="heading"] *));
 @plugin "@tailwindcss/typography";
 
-/* Surfaces: warm paper by default (after the Sketchbook variant), light
-   values in @theme and dark under .dark. The original cool Workstation
-   neutrals live under [data-surfaces="cool"] (design panel). The royal blue
-   accent family is shared by both. */
+/* Surfaces: the live lucapalmi.com's neutral, untinted greys. The site is
+   dark only; the light mode is a derived neutral counterpart. Light values
+   in @theme, dark under .dark. Raised is darker than the page in dark, as on
+   the live site; hairlines are a lighter step of its #292936 border. */
 @theme {
-    --color-bg: #efede7;
-    --color-raised: #e7e4dc;
-    --color-line: #c9c8c4;
-    --color-fg: #1d1e22;
-    --color-muted: #57554f;
-    --color-faint: #625f58;
+    --color-bg: #f4f4f4;
+    --color-raised: #ebebeb;
+    --color-line: #d6d6d6;
+    --color-fg: #1f1f1f;
+    --color-muted: #555555;
+    --color-faint: #636363;
     /* Royal blue: fills, rules, focus. Text uses accent-text for AA */
     --color-accent: #4169e1;
     --color-accent-text: #3558c7;
     /* Pen strokes in the fallback sketch thumbnails */
-    --color-sketch: #1d1e22;
+    --color-sketch: #1f1f1f;
     /* Muted callout body (note, tip): >= 7:1 on the type tints */
-    --color-callout-muted: #474642;
+    --color-callout-muted: #494949;
 
     /* Callout types: fill (tint, border, bar) and label text */
     --color-note: #4169e1;
@@ -40,7 +33,7 @@
     --color-syn-keyword: #9b2f8f;
     --color-syn-string: #2f6f3e;
     --color-syn-number: #8a5100;
-    --color-syn-comment: #66625a;
+    --color-syn-comment: #666666;
     --color-syn-title: #3558c7;
     --color-syn-attr: #0e6b84;
 
@@ -56,15 +49,15 @@
 }
 
 .dark {
-    --color-bg: #1c1d1f;
-    --color-raised: #232427;
-    --color-line: #414141;
-    --color-fg: #e9e5dc;
-    --color-muted: #aaa69c;
-    --color-faint: #939087;
+    --color-bg: #272727;
+    --color-raised: #242424;
+    --color-line: #3a3a48;
+    --color-fg: #e9e9e9;
+    --color-muted: #c9c9c9;
+    --color-faint: #9e9e9e;
     --color-accent-text: #7b97ea;
-    --color-sketch: #d3cfc6;
-    --color-callout-muted: #b9b5ab;
+    --color-sketch: #d9d9d9;
+    --color-callout-muted: #c9c9c9;
 
     --color-note-text: #7b97ea;
     --color-tip-text: #62c08c;
@@ -74,62 +67,9 @@
     --color-syn-keyword: #d59bf0;
     --color-syn-string: #a5d49a;
     --color-syn-number: #e8b778;
-    --color-syn-comment: #8f8b82;
+    --color-syn-comment: #939393;
     --color-syn-title: #7b97ea;
     --color-syn-attr: #7fc8d9;
-}
-
-/* Original cool Workstation neutrals */
-html[data-surfaces="cool"]:not(.dark) {
-    --color-bg: #fbfbfc;
-    --color-raised: #f2f4f7;
-    --color-line: #dfe3ea;
-    --color-fg: #1b1f27;
-    --color-muted: #555c69;
-    --color-faint: #636a78;
-    --color-sketch: #1b1f27;
-    --color-callout-muted: #474d59;
-    --color-syn-number: #9a5b00;
-    --color-syn-comment: #6b7280;
-}
-
-html[data-surfaces="cool"].dark {
-    --color-bg: #14161b;
-    --color-raised: #1a1d23;
-    --color-line: #2a2e37;
-    --color-fg: #dde1e8;
-    --color-muted: #9aa1ae;
-    --color-faint: #828996;
-    --color-sketch: #c3c8d1;
-    --color-callout-muted: #a9afbb;
-    --color-syn-comment: #7d8492;
-}
-
-/* The live lucapalmi.com: neutral untinted greys, dark only. Light is an
-   extrapolated neutral counterpart. Raised is darker than the page, as on
-   the live site; hairlines are a lighter step of its #292936 border. */
-html[data-surfaces="current"]:not(.dark) {
-    --color-bg: #f4f4f4;
-    --color-raised: #ebebeb;
-    --color-line: #d6d6d6;
-    --color-fg: #1f1f1f;
-    --color-muted: #555555;
-    --color-faint: #636363;
-    --color-sketch: #1f1f1f;
-    --color-callout-muted: #494949;
-    --color-syn-comment: #666666;
-}
-
-html[data-surfaces="current"].dark {
-    --color-bg: #272727;
-    --color-raised: #242424;
-    --color-line: #3a3a48;
-    --color-fg: #e9e9e9;
-    --color-muted: #c9c9c9;
-    --color-faint: #9e9e9e;
-    --color-sketch: #d9d9d9;
-    --color-callout-muted: #c9c9c9;
-    --color-syn-comment: #939393;
 }
 
 /* Horizontal scroll rows (mobile topic tabs): the fade is the affordance */
@@ -352,22 +292,9 @@ html[data-heading-font="sans"] .prose :where(h3):not(:where(.not-prose *)) {
     color: var(--callout-body);
 }
 
-/* Design panel "Callout text: full": full-contrast body for every type */
-html[data-callout-text="full"] .callout {
-    --callout-body: var(--color-fg);
-}
-
 .callout-label {
     color: var(--callout-text);
     text-transform: lowercase;
-}
-
-/* Design panel "Bar + tint": 2px left bar, 7% tint, square corners */
-html[data-callout-style="bar"] .callout {
-    background: color-mix(in oklab, var(--callout) 7%, transparent);
-    border: 0;
-    border-left: 2px solid var(--callout);
-    border-radius: 0;
 }
 
 /* ---------- code blocks ---------- */

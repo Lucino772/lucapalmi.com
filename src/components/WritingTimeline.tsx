@@ -55,11 +55,11 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
     ];
 
     // Tabs and timeline share one centred 54rem column (all 8 tabs fit on one
-    // row). The design panel can pin it left or let the tabs span the page.
-    const column = "writing-left:mx-0! mx-auto w-full max-w-[54rem]";
+    // row)
+    const column = "mx-auto w-full max-w-[54rem]";
     return (
         <div className="flex flex-col gap-10">
-            <div className="writing-bar-page:mx-0 writing-bar-page:max-w-none writing-left:mx-0! mx-auto w-full max-w-[54rem]">
+            <div className="mx-auto w-full max-w-[54rem]">
                 <h1 className="sr-only">Writing</h1>
                 {/* The topic tabs start the page, on the content's left edge */}
                 <div className="-mx-5 flex items-start pl-5 md:mx-0 md:pl-0">

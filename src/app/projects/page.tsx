@@ -29,26 +29,10 @@ export default async function Projects() {
                     <h2 id="more" className="sr-only">
                         Other projects
                     </h2>
-                    {/* A code comment by default; the design panel can show
-                        nothing or the earlier heading bar */}
-                    <p
-                        aria-hidden
-                        className="others-none:hidden others-heading:hidden text-faint mb-2 text-[0.8125rem]"
-                    >
+                    {/* Introduced like a comment in the editor */}
+                    <p aria-hidden className="text-faint mb-2 text-[0.8125rem]">
                         {"// other projects"}
                     </p>
-                    <div
-                        aria-hidden
-                        className="others-heading:flex mb-2 hidden items-baseline gap-4"
-                    >
-                        <span className="text-[0.9375rem] font-semibold">
-                            Other projects
-                        </span>
-                        <span className="bg-line h-4 w-px self-center" />
-                        <span className="text-faint text-[0.8125rem] tabular-nums">
-                            {others.length} projects
-                        </span>
-                    </div>
                     {/* One shared column template (subgrid) so every row aligns:
                         name, description, year, write-up. No table chrome. */}
                     <ul className="-mx-3 flex min-w-0 flex-col sm:grid sm:grid-cols-[11rem_minmax(0,1fr)_4ch_9ch] sm:gap-x-[2ch]">
