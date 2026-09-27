@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
-import ThemeColorSync from "@/components/ThemeColorSync";
+import NavBar from "@/components/nav-bar";
+import ThemeColorSync from "@/components/theme-color-sync";
 import { themeScript } from "@/components/theme";
 import ScrollbarWidthSync from "@/components/scrollbar-width";
 import { scrollbarWidthScript } from "@/lib/scrollbar-width";

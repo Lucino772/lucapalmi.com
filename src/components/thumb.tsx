@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 import type { LogEntry } from "@/lib/writing";
-import InkThumbnail from "./InkThumbnail";
+import InkThumbnail from "./ink-thumbnail";
 
 // Same frame and 16:10 ratio for every entry, cover or not
 export default function Thumb({

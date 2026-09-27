@@ -5,7 +5,7 @@ import { useSyncExternalStore } from "react";
 import { cn } from "@/lib/cn";
 import { topicLabel, topics, type TopicId } from "@/content/topics";
 import type { LogEntry } from "@/lib/writing";
-import Thumb from "./Thumb";
+import Thumb from "./thumb";
 
 // The selected topic lives in ?topic= so filtered views can be shared.
 // Read on the client only, so /articles stays statically prerendered.

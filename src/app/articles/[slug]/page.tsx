@@ -3,7 +3,7 @@ import { getArticle, getArticles } from "@/lib/cms";
 import Link from "next/link";
 import { topicLabel } from "@/content/topics";
 import { isoDay, readingMinutes } from "@/lib/format";
-import SectionRail from "@/components/SectionRail";
+import SectionRail from "@/components/section-rail";
 import { AiImageDescription } from "@/components/ai-image-description";
 import type { Metadata } from "next";
 

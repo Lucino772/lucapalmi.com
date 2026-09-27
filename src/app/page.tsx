@@ -2,7 +2,7 @@ import Link from "next/link";
 import { about } from "@/content/about";
 import { projects } from "@/lib/projects";
 import { getWritingLog } from "@/lib/writing";
-import Portrait from "@/components/Portrait";
+import Portrait from "@/components/portrait";
 
 const quietLink =
     "hover:text-accent-text decoration-transparent underline underline-offset-4 transition-colors duration-150 hover:decoration-current";

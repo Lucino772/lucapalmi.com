@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import MissingPath from "@/components/MissingPath";
+import MissingPath from "@/components/missing-path";
 
 export const metadata: Metadata = {
     title: "Page not found | Luca Palmisano",

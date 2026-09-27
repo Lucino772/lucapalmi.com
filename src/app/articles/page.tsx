@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getWritingLog } from "@/lib/writing";
-import WritingTimeline from "@/components/WritingTimeline";
+import WritingTimeline from "@/components/writing-timeline";
 
 export const metadata: Metadata = {
     title: "Writing | Luca Palmisano",

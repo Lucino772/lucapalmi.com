@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Projects } from "@/lib/projects";
-import ProjectIcon from "./ProjectIcon";
+import ProjectIcon from "./project-icon";
 
 type Featured = Projects["featured"][number];
 

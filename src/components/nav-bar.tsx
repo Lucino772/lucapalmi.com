@@ -8,8 +8,8 @@ import { cn } from "@/lib/cn";
 import { about } from "@/content/about";
 import { ThemeToggle } from "./theme";
 import { GitHubIcon, LinkedInIcon } from "./icons";
-import LogoMark from "./LogoMark";
-import MobileNav from "./MobileNav";
+import LogoMark from "./logo-mark";
+import MobileNav from "./mobile-nav";
 import { isActive, navItems } from "./nav-items";
 
 // Touch screens (tablets get this nav from md): a 44px-tall, 36px-wide hit

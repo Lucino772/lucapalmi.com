@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { projects } from "@/lib/projects";
 import { toSorted } from "@/lib/utils";
-import FeaturedProjects from "@/components/FeaturedProjects";
+import FeaturedProjects from "@/components/featured-projects";
 
 export const metadata: Metadata = {
     title: "Projects | Luca Palmisano",
