@@ -11,9 +11,8 @@ const quietLink =
 // and an `ls` of writing/ and projects/ beside the self-drawing portrait.
 
 export default async function Index() {
-    const log = await getWritingLog();
-    const article =
-        log.find((entry) => entry.slug === about.pinnedArticle) ?? log[0];
+    // The newest published article
+    const [article] = await getWritingLog();
     const flagship = [...projects.featured, ...projects.others].find(
         (project) => project.title === about.flagshipProject,
     );
@@ -82,11 +81,7 @@ export default async function Index() {
                                 <Entry
                                     href="/articles"
                                     name="writing/"
-                                    label={
-                                        article?.slug === about.pinnedArticle
-                                            ? "pinned"
-                                            : "latest"
-                                    }
+                                    label="latest"
                                     detail={
                                         article && {
                                             href: `/articles/${article.slug}`,
