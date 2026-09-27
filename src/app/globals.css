@@ -510,11 +510,12 @@
     }
 }
 
-/* Phones (below sm): no drawing. The text sits between two flexible
-   spacers, the lower one 1.25x the upper, so it is centred slightly above
-   the middle. When the text is taller than the screen the spacers collapse
-   to zero: it starts right under the nav and the page scrolls */
-@media (max-width: 39.999rem) {
+/* Text-only home: phones, tablets below the two-column scene (lg), and
+   short viewports (landscape phones). No drawing; the text sits between two
+   flexible spacers, the lower one 1.25x the upper, so it is centred slightly
+   above the middle. When the text is taller than the screen the spacers
+   collapse to zero: it starts right under the nav and the page scrolls */
+@media (max-width: 63.999rem), (max-height: 30rem) {
     .home-grid {
         display: flex;
         flex-direction: column;

@@ -29,10 +29,11 @@ export default async function Index() {
         <div data-home className="max-w-page mx-auto w-full px-5 md:px-6">
             <section
                 aria-label="About"
-                className="relative flex min-h-[calc(100dvh-3.5rem-1px)] flex-col py-4 sm:min-h-[calc(100svh-3.5rem-1px)] md:py-[clamp(1.5rem,4svh,3rem)]"
+                className="relative flex min-h-[calc(100dvh-3.5rem-1px)] flex-col py-4 md:py-[clamp(1.5rem,4svh,3rem)]"
             >
-                {/* Phones: no drawing; the text is centred optically
-                    between the nav and the bottom (see .home-grid) */}
+                {/* Below lg and on short screens: no drawing; the text is
+                    centred optically between the nav and the bottom (see
+                    .home-grid). From lg: the two-column scene */}
                 <div className="home-grid grid flex-1 content-center items-center gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,31rem)_minmax(0,1fr)]">
                     <div className="fade-in relative z-10 min-w-0">
                         <p className="text-faint text-[0.875rem] md:text-[0.9375rem]">
@@ -42,7 +43,7 @@ export default async function Index() {
                             <span className="font-semibold">{about.name}</span>
                             <span className="text-muted">, {about.role}</span>
                         </h1>
-                        <p className="mt-2 max-w-[29ch] text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance max-sm:text-[clamp(1.6875rem,4.35svh,2.1rem)] md:mt-3 md:text-[clamp(1.375rem,3.8svh,2.125rem)] md:leading-[1.15]">
+                        <p className="mt-2 max-w-[29ch] text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance max-[359px]:text-[1.375rem] max-sm:min-[360px]:text-[clamp(1.6875rem,4.35svh,2.1rem)] md:mt-3 md:text-[clamp(1.375rem,3.8svh,2.125rem)] md:leading-[1.15]">
                             {about.headline}
                         </p>
                         <div className="mt-3 text-[0.8125rem] leading-6 md:mt-[min(1.75rem,3svh)] md:text-[0.9375rem] md:leading-7">
@@ -120,6 +121,14 @@ export default async function Index() {
     );
 }
 
+// Touch screens from sm (details shown): each link's hit area is its whole
+// grid cell, row height included (the detail's own box is clipped by the
+// truncating <p>, so its area hangs off the row instead)
+const coarseFolderHit =
+    "sm:pointer-coarse:after:absolute sm:pointer-coarse:after:inset-y-0 sm:pointer-coarse:after:left-0 sm:pointer-coarse:after:w-[8.5rem] sm:pointer-coarse:after:content-['']";
+const coarseDetailHit =
+    "sm:pointer-coarse:after:absolute sm:pointer-coarse:after:inset-y-0 sm:pointer-coarse:after:right-0 sm:pointer-coarse:after:left-[10rem] sm:pointer-coarse:after:content-['']";
+
 // One ls row: the folder is the main link, then one pointer inside it
 function Entry({
     href,
@@ -137,7 +146,7 @@ function Entry({
         <li className="border-line relative grid grid-cols-[minmax(0,1fr)] items-baseline gap-x-6 border-b py-2.5 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:py-2 md:py-[min(1rem,1.6svh)]">
             <Link
                 href={href}
-                className={`${quietLink} justify-self-start text-[1.125rem] leading-7 font-semibold max-sm:after:absolute max-sm:after:inset-0 max-sm:after:content-[''] md:text-[1.375rem]`}
+                className={`${quietLink} ${detail ? coarseFolderHit : ""} justify-self-start text-[1.125rem] leading-7 font-semibold max-sm:after:absolute max-sm:after:inset-0 max-sm:after:content-[''] md:text-[1.375rem]`}
             >
                 {name}
             </Link>
@@ -149,14 +158,14 @@ function Entry({
                             href={detail.href}
                             target="_blank"
                             rel="noreferrer"
-                            className={`text-fg/90 ${quietLink}`}
+                            className={`text-fg/90 ${quietLink} ${coarseDetailHit}`}
                         >
                             {detail.text}
                         </a>
                     ) : (
                         <Link
                             href={detail.href}
-                            className={`text-fg/90 ${quietLink}`}
+                            className={`text-fg/90 ${quietLink} ${coarseDetailHit}`}
                         >
                             {detail.text}
                         </Link>

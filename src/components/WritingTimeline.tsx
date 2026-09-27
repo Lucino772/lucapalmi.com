@@ -45,6 +45,9 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
         ? entries.filter((e) => e.topics.includes(selected as TopicId))
         : entries;
     const years = Array.from(new Set(visible.map((e) => e.year)));
+    // The first cover is usually the largest paint: preload it (the rest
+    // stay lazy); phones hide thumbnails, so they only get a 1px candidate
+    const firstCover = visible.find((e) => e.cover)?.slug;
     const label = selected
         ? (topics.find((t) => t.id === selected)?.label ?? selected)
         : null;
@@ -189,12 +192,12 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
 
             <div className={column}>
                 {visible.length === 0 ? (
-                    <div className="text-muted text-[0.9375rem] leading-7">
+                    <div className="text-muted text-center text-[0.9375rem] leading-7">
                         <p>Nothing filed under {label} yet.</p>
                         <button
                             type="button"
                             onClick={() => selectTopic(null)}
-                            className="text-accent-text mt-1 cursor-pointer underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                            className="text-accent-text mt-1 cursor-pointer underline decoration-current/40 underline-offset-4 hover:decoration-current max-sm:relative max-sm:after:absolute max-sm:after:inset-x-0 max-sm:after:-inset-y-2 max-sm:after:content-[''] pointer-coarse:relative pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:-inset-y-2 pointer-coarse:after:content-['']"
                         >
                             Show all writing
                         </button>
@@ -229,6 +232,9 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                                             <TimelineEntry
                                                 key={entry.slug}
                                                 entry={entry}
+                                                preload={
+                                                    entry.slug === firstCover
+                                                }
                                             />
                                         ))}
                                 </ol>
@@ -241,7 +247,13 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
     );
 }
 
-function TimelineEntry({ entry }: { entry: LogEntry }) {
+function TimelineEntry({
+    entry,
+    preload,
+}: {
+    entry: LogEntry;
+    preload: boolean;
+}) {
     return (
         <li className="group relative pl-6 [--entry-gap:0.75rem] sm:[--entry-gap:1rem] md:pl-8">
             <span
@@ -252,7 +264,8 @@ function TimelineEntry({ entry }: { entry: LogEntry }) {
                 {/* No thumbnails on phones: titles get the full width */}
                 <Thumb
                     entry={entry}
-                    sizes="(min-width: 768px) 200px, 100px"
+                    sizes="(min-width: 768px) 200px, (min-width: 640px) 100px, 1px"
+                    preload={preload}
                     className="hidden sm:block"
                 />
                 <div className="min-w-0">

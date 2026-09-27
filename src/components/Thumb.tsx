@@ -7,10 +7,12 @@ import InkThumbnail from "./InkThumbnail";
 export default function Thumb({
     entry,
     sizes,
+    preload = false,
     className,
 }: {
     entry: Pick<LogEntry, "slug" | "topics" | "cover">;
     sizes: string;
+    preload?: boolean;
     className?: string;
 }) {
     return (
@@ -26,6 +28,7 @@ export default function Thumb({
                     width={entry.cover.width}
                     height={entry.cover.height}
                     sizes={sizes}
+                    preload={preload}
                     alt=""
                     className="h-full w-full object-cover"
                 />

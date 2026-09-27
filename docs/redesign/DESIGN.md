@@ -117,8 +117,18 @@ follows the phone size), a hairline across the measure and a short 2px
 royal-blue segment at its start (the editor-tab accent edge). h3 steps down:
 1.25rem from 640px, 1.125rem on phones (still above the 1.0625rem phone
 body), weight 700, 0.8em below, without a rule. Both keep
-`scroll-margin-top` for the section rail. (Luca moved the two case studies'
+`scroll-margin-top` for the section rail. The article title is balanced on
+phones and uses `text-wrap: pretty` from 640px, which keeps "State-Driven"
+whole instead of splitting it at its hyphen. (Luca moved the two case studies'
 `###` sections to `##`, so no article uses h3 today.)
+
+**Touch targets.** Every link and button is at least 44px tall on touch
+screens. Phones use `max-sm:` hit-area expansions, and touch tablets (which
+get the desktop layout from 768px) use the same expansions under
+`pointer-coarse:`. These are invisible padding with matching negative margin,
+or pseudo-elements; mouse users see no difference. The one visible touch-only
+change: featured-pane footers are 8px taller so the expanded links aren't
+clipped by the card.
 
 **Units.** Type and layout sizes are rem; spacing that should follow its own
 element's size is em (heading margins). Raw px is kept only for hairlines,
@@ -226,13 +236,19 @@ gradient running along the screen's length, a touch lighter at the top of
 the lid, with no highlight, spill or wide glow. The fill polygon is fitted
 to the bezel's inner edge and masked by the left hand's silhouette (the
 traced drawing's own outline, subpath 56 of its main path, filled), so the
-screen sits behind the fingers instead of tinting them. It switches on 2.4s after the draw-in; reduced motion shows it lit. Tablets (640–1023px) show a small cropped drawing top right (20svh).
-_Phones (below 640px):_ the text block is centred between the nav and the
-bottom of the screen (`100dvh`, so browser chrome can't break it), a touch
-above the true middle: two flexible spacers, the lower 1.25× the upper.
-When the text is taller than the screen the spacers collapse and it starts
-right under the nav and scrolls. Phones show no drawing (a faint background
-drawing was tried and rejected). The drawing's edges are always soft (the
+screen sits behind the fingers instead of tinting them. It switches on 2.4s after the draw-in; reduced motion shows it lit.
+_Text-only home (below 1024px, and any viewport under 30rem tall, e.g.
+landscape phones):_ no drawing. The two-column scene needs `lg`, and the
+old stacked layout (a small drawing above the text) was rejected. The text
+block is centred between the nav and the bottom of the screen (`100dvh`,
+so browser chrome can't break it), a touch above the true middle: two
+flexible spacers, the lower 1.25× the upper. When the text is taller than
+the screen the spacers collapse and it starts right under the nav and
+scrolls. Tablet widths keep the tablet/desktop headline and the
+latest/flagship details; the phone-only rules (150% headline, single-link
+rows) stay below 640px, with a 1.375rem headline below 360px so it stays
+at 5 balanced lines. (A faint background drawing on phones was also tried
+and rejected.) The drawing's edges are always soft (the
 fade masks above).
 
 **Page titles (Writing, Projects).** No visible title: the nav's active tab
@@ -282,8 +298,10 @@ page stays statically prerendered and shows everything without JS. A
 visually hidden `aria-live` line announces "2 of 6 filed under
 Architecture"; there is no visible count or sort caption. Empty years are
 hidden; an unknown topic gets an empty state with a "Show all writing"
-button. A ResizeObserver compares the tab row's natural width with its slot,
-so the switch follows new topics. The server renders the tabs from 640px
+button, both centred under the filter. A ResizeObserver compares the tab row's natural width with its slot,
+so the switch follows new topics. The first entry with a cover preloads its
+thumbnail (it is the page's largest paint); phones, which hide thumbnails,
+only get a 1px candidate. The server renders the tabs from 640px
 (clipped, never wrapped) until the observer reports; the tab slot and the
 select are both 44px tall, so the swap causes no layout shift.
 
@@ -307,8 +325,9 @@ rounded tick per section. Upcoming ticks are `faint` at 45 %, passed ones
 while the reader is in the article body. On hover or focus-within, the rail
 gets a `bg` panel with a hairline border and 6px radius, and section titles
 appear right-aligned next to their ticks (Inconsolata 13px, up to 2 lines,
-11.5rem wide below 1440px and 15rem above, so the panel clears code blocks at
-1280). Links are real anchors with `aria-current="location"`; headings get
+10rem wide below 1440px and 15rem above, so the panel clears code blocks'
+20px break-out at 1280). Hidden on touch screens (`pointer: coarse`), where
+hover labels and small ticks don't work. Links are real anchors with `aria-current="location"`; headings get
 `scroll-margin-top` so they land below the sticky header.
 
 **Projects.** No visible title (see Page titles): the featured projects with a clearly heavier treatment

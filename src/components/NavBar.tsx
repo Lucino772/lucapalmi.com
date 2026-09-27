@@ -11,8 +11,12 @@ import { GitHubIcon, LinkedInIcon } from "./icons";
 import MobileNav from "./MobileNav";
 import { isActive, navItems } from "./nav-items";
 
-const iconLink =
-    "text-muted hover:text-fg inline-flex size-8 items-center justify-center rounded-[4px] transition-colors duration-150";
+// Touch screens (tablets get this nav from md): a 44px-tall, 36px-wide hit
+// area, the full pitch between icons, with no visual change
+const coarseHit =
+    "pointer-coarse:-mx-0.5 pointer-coarse:-my-1.5 pointer-coarse:h-11 pointer-coarse:w-9";
+
+const iconLink = `text-muted hover:text-fg inline-flex size-8 items-center justify-center rounded-[4px] transition-colors duration-150 ${coarseHit}`;
 
 export default function NavBar() {
     const pathname = usePathname();
@@ -94,7 +98,7 @@ export default function NavBar() {
                         >
                             <LinkedInIcon className="size-[1rem]" />
                         </a>
-                        <ThemeToggle />
+                        <ThemeToggle className={coarseHit} />
                     </div>
                 </nav>
 

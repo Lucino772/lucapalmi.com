@@ -73,7 +73,9 @@ export default async function Page({
                     </time>
                     {minutes && <span>{minutes} read</span>}
                 </p>
-                <h1 className="mt-3 text-[2rem] leading-[1.15] font-semibold tracking-[-0.02em] md:text-[2.5rem]">
+                {/* Balanced on phones; from sm, pretty wrapping keeps
+                    "State-Driven" whole instead of splitting at its hyphen */}
+                <h1 className="mt-3 text-[2rem] leading-[1.15] font-semibold tracking-[-0.02em] sm:text-pretty md:text-[2.5rem]">
                     {article.title}
                 </h1>
                 <p className="text-muted mt-4 font-serif text-[1.1875rem] leading-8 italic md:text-[1.3125rem]">

@@ -13,7 +13,7 @@ export const AiImageDescription = ({ prompt }: { prompt: string }) => {
 
     return (
         <Collapsible open={open} onOpenChange={setOpen}>
-            <CollapsibleTrigger className="text-faint hover:text-fg -ml-1 flex cursor-pointer items-center gap-1.5 rounded-[3px] px-1 py-0.5 font-mono text-[0.8125rem] transition-colors duration-150 max-sm:-my-2.5 max-sm:py-3">
+            <CollapsibleTrigger className="text-faint hover:text-fg -ml-1 flex cursor-pointer items-center gap-1.5 rounded-[3px] px-1 py-0.5 font-mono text-[0.8125rem] transition-colors duration-150 max-sm:-my-2.5 max-sm:py-3 pointer-coarse:-my-2.5 pointer-coarse:py-3">
                 <ChevronRightIcon
                     aria-hidden
                     className={cn(

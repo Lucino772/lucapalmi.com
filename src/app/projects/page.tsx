@@ -45,7 +45,7 @@ export default async function Projects() {
                                     href={project.url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="text-fg hover:text-accent-text -my-2 min-w-0 justify-self-start py-2 font-semibold underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:decoration-current sm:my-0 sm:py-0"
+                                    className="text-fg hover:text-accent-text min-w-0 justify-self-start font-semibold underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:decoration-current max-sm:-my-2 max-sm:py-2 pointer-coarse:-my-2 pointer-coarse:py-2"
                                 >
                                     {project.title}
                                 </a>
@@ -59,7 +59,7 @@ export default async function Projects() {
                                     {project.article && (
                                         <Link
                                             href={`/articles/${project.article}`}
-                                            className="text-accent-text -my-3 inline-block py-3 leading-5 underline decoration-current/40 underline-offset-4 hover:decoration-current sm:my-0 sm:inline sm:py-0"
+                                            className="text-accent-text leading-5 underline decoration-current/40 underline-offset-4 hover:decoration-current max-sm:-my-3 max-sm:inline-block max-sm:py-3 pointer-coarse:-my-3 pointer-coarse:inline-block pointer-coarse:py-3"
                                         >
                                             write-up
                                             <span className="sr-only">

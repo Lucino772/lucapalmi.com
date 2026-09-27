@@ -4,7 +4,9 @@ import { cn } from "@/lib/cn";
 import { useArticleSections } from "./article-sections";
 
 // Right-edge outline for long articles: one tick per h2, like the markers in
-// an editor's scrollbar. Hover or focus reveals the section titles.
+// an editor's scrollbar. Hover or focus reveals the section titles (10rem
+// wide below 1440px so they clear code blocks' break-out, 15rem from 1440).
+// Hidden on touch screens, where hover labels and small ticks don't work.
 export default function SectionRail() {
     const { sections, activeId, inBody } = useArticleSections({ levels: [2] });
     if (sections.length < 3) return null;
@@ -14,7 +16,7 @@ export default function SectionRail() {
         <nav
             aria-label="On this page"
             className={cn(
-                "group fixed top-1/2 right-5 z-30 hidden -translate-y-1/2 transition-opacity duration-200 focus-within:opacity-100 xl:block",
+                "group fixed top-1/2 right-5 z-30 hidden -translate-y-1/2 transition-opacity duration-200 focus-within:opacity-100 xl:not-pointer-coarse:block",
                 inBody ? "opacity-100" : "pointer-events-none opacity-0",
             )}
         >
@@ -32,8 +34,8 @@ export default function SectionRail() {
                                 <span
                                     className={cn(
                                         "sr-only text-right text-[0.8125rem] leading-5",
-                                        "group-focus-within:not-sr-only group-focus-within:line-clamp-2 group-focus-within:max-w-[11.5rem] group-focus-within:animate-[fade_150ms_ease-out] min-[90rem]:group-focus-within:max-w-[15rem]",
-                                        "group-hover:not-sr-only group-hover:line-clamp-2 group-hover:max-w-[11.5rem] group-hover:animate-[fade_150ms_ease-out] min-[90rem]:group-hover:max-w-[15rem]",
+                                        "group-focus-within:not-sr-only group-focus-within:line-clamp-2 group-focus-within:max-w-[10rem] group-focus-within:animate-[fade_150ms_ease-out] min-[90rem]:group-focus-within:max-w-[15rem]",
+                                        "group-hover:not-sr-only group-hover:line-clamp-2 group-hover:max-w-[10rem] group-hover:animate-[fade_150ms_ease-out] min-[90rem]:group-hover:max-w-[15rem]",
                                         active
                                             ? "text-fg"
                                             : "text-muted hover:text-fg",
