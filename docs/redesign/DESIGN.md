@@ -176,16 +176,20 @@ toggle. A scrim dims the
 page below the header (black at 25% light, 55% dark; 150ms fade, none with
 reduced motion). A tap on the scrim or Escape closes the menu and returns
 focus to the menu button; route changes close it too. While open the page
-doesn't scroll (`overflow: hidden` on `html`). The desktop nav uses the
+doesn't scroll: the body is pinned (`position: fixed` at the current
+offset) rather than hiding the overflow, so `html` keeps its scrollbar
+track and nothing shifts sideways; closing restores the exact scroll
+position. The desktop nav uses the
 same icons at the same sizes.
 
-**Scrollbar compensation.** The header and `main` carry `.scrollbar-offset`:
-`padding-inline-start: min(100vw - 100%, max(0, 100% - 70rem))`. With a
-classic scrollbar the centred content keeps the same x on short and long
-pages, while the header border runs to the window edge or the scrollbar.
-The offset is capped by the free space beside the page container, so
-narrow windows with full-width content aren't pushed off-centre. It
-resolves to 0 with overlay scrollbars and during the menu's scroll lock.
+**Scrollbar.** `html { overflow-y: scroll }` always reserves the classic
+scrollbar track (disabled when there is nothing to scroll), so nothing
+shifts sideways between short and long pages, when a topic filter makes the
+writing list short, or when the menu opens. Luca chose this over padding
+compensation, which only covered widths with free space beside the 70rem
+container. The track follows `color-scheme` (a dark track in dark mode).
+Overlay-scrollbar platforms (macOS default, phones) are unaffected, and the
+one-screen home still fits exactly (the track is simply disabled).
 
 **Home `ls` rows on phones.** Below 640px the "latest …" / "flagship …"
 detail lines are hidden: each row is just the folder link (`writing/`,

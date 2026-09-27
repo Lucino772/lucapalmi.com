@@ -28,15 +28,30 @@ export default function MobileNav({ open, close }: Props) {
             if (event.key === "Escape") close(true);
         };
         window.addEventListener("keydown", onKey);
-        // The page stays put under the open menu
-        const root = document.documentElement;
-        const overflow = root.style.overflow;
-        root.style.overflow = "hidden";
-        return () => {
-            window.removeEventListener("keydown", onKey);
-            root.style.overflow = overflow;
-        };
+        return () => window.removeEventListener("keydown", onKey);
     }, [open, close]);
+
+    // The page stays put under the open menu. The body is pinned at the
+    // current offset instead of hiding the overflow, so html keeps its
+    // permanent scrollbar track (nothing shifts sideways); closing restores
+    // the exact scroll position.
+    useEffect(() => {
+        if (!open) return;
+        const body = document.body;
+        const y = window.scrollY;
+        const saved = body.getAttribute("style");
+        Object.assign(body.style, {
+            position: "fixed",
+            top: `-${y}px`,
+            left: "0",
+            right: "0",
+        });
+        return () => {
+            if (saved === null) body.removeAttribute("style");
+            else body.setAttribute("style", saved);
+            window.scrollTo({ top: y, behavior: "instant" });
+        };
+    }, [open]);
 
     return (
         <>

@@ -77,20 +77,6 @@
     --color-syn-attr: #7fc8d9;
 }
 
-/* Full-width bands (header, main): inset their content by the classic
-   scrollbar's width (100vw includes it, 100% doesn't), so mx-auto content
-   sits at the same x on short and long pages while borders and
-   backgrounds still run to the scrollbar or the window edge. Capped by the
-   free space beside the 70rem page container, so full-width content on
-   narrow windows isn't pushed off-centre. 0 with overlay scrollbars
-   (phones) and while the menu locks scrolling. */
-.scrollbar-offset {
-    padding-inline-start: min(
-        calc(100vw - 100%),
-        max(0px, calc(100% - var(--container-page)))
-    );
-}
-
 /* Topic tabs that outgrow their row scroll sideways; the thin scrollbar
    (in the code blocks' muted greys) only appears when they do */
 .tab-scroller {
@@ -129,6 +115,11 @@
         font-variant-ligatures: none;
         text-rendering: optimizeLegibility;
         scroll-padding-top: 4.5rem;
+        /* Always reserve the classic scrollbar track (disabled when there
+           is nothing to scroll), so nothing shifts between short and long
+           pages or when filtering. Overlay-scrollbar platforms (macOS
+           default, phones) are unaffected; the track follows color-scheme */
+        overflow-y: scroll;
     }
 
     body {
