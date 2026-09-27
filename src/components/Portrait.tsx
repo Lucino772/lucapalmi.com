@@ -16,7 +16,6 @@ export default function Portrait({
     return (
         <svg
             viewBox={`0 0 2000 ${cropHeight}`}
-            preserveAspectRatio="xMaxYMax meet"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             fillRule="evenodd"

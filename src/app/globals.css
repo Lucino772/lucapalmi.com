@@ -5,11 +5,10 @@
 
 /* Surfaces: dark is the live lucapalmi.com's neutral, untinted greys
    (under .dark). Raised is darker than the page in dark, as on the live
-   site; hairlines are a lighter step of its #292936 border. Light mode
-   defaults to "stone", a warm grey paper; the design panel's "Light
-   surfaces" swaps it for current / paper / putty (light only, below). Text
-   greys take a hint of the surface's warmth and are darkened just enough
-   to stay >= 4.5:1 on bg and raised (callout-muted >= 7:1). */
+   site; hairlines are a lighter step of its #292936 border. Light is
+   "stone", a warm grey paper; its text greys take a hint of the surface's
+   warmth and are darkened just enough to stay >= 4.5:1 on bg and raised
+   (callout-muted >= 7:1). */
 @theme {
     --color-bg: #e8e5de;
     --color-raised: #dfdbd2;
@@ -26,7 +25,9 @@
     --color-callout-muted: #42413e;
 
     /* Callout types: fill (tint, border, bar) and label text */
-    --color-note: #4169e1;
+    /* Note fill leans toward cyan: royal blue at 11% over warm stone reads
+       lilac; this steel blue keeps the tint clearly blue on stone */
+    --color-note: #2f7bd0;
     --color-note-text: #3255c4;
     --color-tip: #3fa36b;
     --color-tip-text: #256b46;
@@ -62,6 +63,7 @@
     --color-sketch: #d9d9d9;
     --color-callout-muted: #c9c9c9;
 
+    --color-note: #4169e1;
     --color-note-text: #7b97ea;
     --color-tip-text: #62c08c;
     --color-warning: #e0a526;
@@ -73,71 +75,6 @@
     --color-syn-comment: #939393;
     --color-syn-title: #7b97ea;
     --color-syn-attr: #7fc8d9;
-}
-
-/* Design panel "Light surfaces" (light mode only; stone is the default
-   above). Each option carries its own derived text tokens. */
-html[data-light-surfaces="current"]:not(.dark) {
-    --color-bg: #f4f4f4;
-    --color-raised: #ebebeb;
-    --color-line: #d6d6d6;
-    --color-fg: #1f1f1f;
-    --color-muted: #555555;
-    --color-faint: #636363;
-    --color-accent-text: #3558c7;
-    --color-sketch: #1f1f1f;
-    --color-callout-muted: #494949;
-    --color-note-text: #3558c7;
-    --color-tip-text: #256b46;
-    --color-warning-text: #80530f;
-    --color-syn-keyword: #9b2f8f;
-    --color-syn-string: #2f6f3e;
-    --color-syn-number: #8a5100;
-    --color-syn-comment: #666666;
-    --color-syn-title: #3558c7;
-    --color-syn-attr: #0e6b84;
-}
-
-html[data-light-surfaces="paper"]:not(.dark) {
-    --color-bg: #efede7;
-    --color-raised: #e7e4dc;
-    --color-line: #d6d2c8;
-    --color-fg: #201f1d;
-    --color-muted: #565553;
-    --color-faint: #646360;
-    --color-accent-text: #3558c7;
-    --color-sketch: #201f1d;
-    --color-callout-muted: #464543;
-    --color-note-text: #3558c7;
-    --color-tip-text: #256b46;
-    --color-warning-text: #80530f;
-    --color-syn-keyword: #9b2f8f;
-    --color-syn-string: #2f6f3e;
-    --color-syn-number: #8a5100;
-    --color-syn-comment: #666562;
-    --color-syn-title: #3558c7;
-    --color-syn-attr: #0e6b84;
-}
-
-html[data-light-surfaces="putty"]:not(.dark) {
-    --color-bg: #e8e7e0;
-    --color-raised: #dfded6;
-    --color-line: #cbcac1;
-    --color-fg: #1f1f1d;
-    --color-muted: #565552;
-    --color-faint: #62615e;
-    --color-accent-text: #3558c7;
-    --color-sketch: #1f1f1d;
-    --color-callout-muted: #43423f;
-    --color-note-text: #3356c5;
-    --color-tip-text: #256b46;
-    --color-warning-text: #80530f;
-    --color-syn-keyword: #9b2f8f;
-    --color-syn-string: #2e6e3d;
-    --color-syn-number: #8a5100;
-    --color-syn-comment: #62615e;
-    --color-syn-title: #3558c7;
-    --color-syn-attr: #0d6a83;
 }
 
 /* Horizontal scroll rows (mobile topic tabs): the fade is the affordance */
@@ -270,21 +207,6 @@ html[data-light-surfaces="putty"]:not(.dark) {
     margin-top: 1.9em;
     font-weight: 700;
     margin-bottom: 0.8em;
-}
-
-/* Design panel "Heading font: Sans (V4)": IBM Plex Sans for h2/h3, 600 by
-   default; the weight slider still applies */
-html[data-heading-font="sans"] .prose :where(h2, h3):not(:where(.not-prose *)) {
-    font-family: var(--font-plex-sans), system-ui, sans-serif;
-    letter-spacing: -0.005em;
-}
-
-html[data-heading-font="sans"] .prose :where(h2):not(:where(.not-prose *)) {
-    font-weight: var(--h2-weight, 600);
-}
-
-html[data-heading-font="sans"] .prose :where(h3):not(:where(.not-prose *)) {
-    font-weight: 600;
 }
 
 .prose :where(a):not(:where(.not-prose *)) {
@@ -532,12 +454,6 @@ html[data-heading-font="sans"] .prose :where(h3):not(:where(.not-prose *)) {
     mask-composite: intersect;
 }
 
-/* Design panel "Drawing fade: off" */
-html[data-drawing-fade="off"] .portrait-fade {
-    -webkit-mask-image: none;
-    mask-image: none;
-}
-
 /* Final state is the plain filled drawing; the animation strokes each
    outline in, then swaps the stroke for the fill. */
 /* --screen-glow (design panel) scales the per-mode glow, 100 = default */
@@ -612,14 +528,10 @@ html[data-portrait-animation="off"] .portrait .portrait-screen {
     opacity: var(--screen-opacity);
 }
 
-/* Phones (below sm): the text sits between two flexible spacers, the lower
-   one 1.25x the upper, so it is centred slightly above the middle. When the
-   text is taller than the screen the spacers collapse to zero: it starts
-   right under the nav and the page scrolls.
-   No drawing by default. Design panel "background": the finished drawing,
-   faint, takes the lower spacer's place (anchored bottom-right, never under
-   any text, so text contrast is unaffected), with no pointer events and no
-   lit screen */
+/* Phones (below sm): no drawing. The text sits between two flexible
+   spacers, the lower one 1.25x the upper, so it is centred slightly above
+   the middle. When the text is taller than the screen the spacers collapse
+   to zero: it starts right under the nav and the page scrolls */
 @media (max-width: 39.999rem) {
     .home-grid {
         display: flex;
@@ -638,38 +550,6 @@ html[data-portrait-animation="off"] .portrait .portrait-screen {
     }
 
     .home-drawing {
-        display: none;
-    }
-
-    html[data-home-drawing-mobile="background"] .home-grid::after {
-        display: none;
-    }
-
-    html[data-home-drawing-mobile="background"] .home-drawing {
-        display: block;
-        order: 1;
-        flex: 1.25 1 0;
-        min-height: 0;
-        margin: 1rem -1.25rem -1rem 0;
-        opacity: var(--home-drawing-bg-opacity, 0.08);
-        pointer-events: none;
-    }
-
-    html[data-home-drawing-mobile="background"] .home-drawing .portrait {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: min(100%, 24rem);
-        height: 100%;
-    }
-
-    html[data-home-drawing-mobile="background"] .home-drawing .portrait path {
-        animation: none;
-        stroke: none;
-        fill-opacity: 1;
-    }
-
-    html[data-home-drawing-mobile="background"] .home-drawing .portrait-screen {
         display: none;
     }
 }

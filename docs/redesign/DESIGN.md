@@ -41,11 +41,11 @@ accent blue. That glow is the only "effect" on the whole site.
 
 One neutral family, one accent. Dark is the live lucapalmi.com's untinted
 greys (under `.dark`); raised is darker than the page, as on the live site,
-and hairlines are a lighter step of its `#292936` card border. Light mode
-defaults to **stone**, a warm grey paper (`@theme`); the design panel's
-"Light surfaces" swaps in another option, light mode only. `theme-color` is
-the light option's `bg` / `#272727` and follows the theme toggle and the
-panel. Contrast is the minimum over `bg` and `raised` (dark · light stone).
+and hairlines are a lighter step of its `#292936` card border. Light is
+**stone**, a warm grey paper (`@theme`), chosen by Luca over putty, paper
+and the neutral greys. `theme-color` is `#e8e5de` / `#272727` and follows
+the theme toggle. Contrast is the minimum over `bg` and `raised` (dark ·
+light).
 
 | Token         | Dark      | Light (stone) | Use / contrast                                 |
 | ------------- | --------- | ------------- | ---------------------------------------------- |
@@ -59,29 +59,19 @@ panel. Contrast is the minimum over `bg` and `raised` (dark · light stone).
 | `accent-text` | `#7b97ea` | `#3457c6`     | links, small accent text (5.3 · 4.6 : 1)       |
 | `sketch`      | `#d9d9d9` | `#201f1c`     | pen strokes in the fallback ink thumbnails     |
 
-**Light surfaces** (design panel, `data-light-surfaces`, overrides only
-when `html` is not `.dark`). Each option carries its own derived text
-tokens: greys take half the surface's oklab chroma (a hint of warmth, not
-a tint), then every text token is darkened in oklab lightness just enough
-that all text pairs stay ≥ 4.5 : 1 on `bg`, `raised` and the callout tints,
-and `callout-muted` ≥ 7 : 1. Callout tints, the drawing's ink, the code
-scrollbar and the selection derive from these tokens automatically.
-
-| Option            | bg / raised / line                | fg / muted / faint                | callout-muted | Lowest text pair             | Lowest callout body |
-| ----------------- | --------------------------------- | --------------------------------- | ------------- | ---------------------------- | ------------------- |
-| stone (default)   | `#e8e5de` / `#dfdbd2` / `#cbc6bb` | `#201f1c` / `#565552` / `#61605d` | `#42413e`     | code attr on raised, 4.53    | 7.11 (note)         |
-| putty             | `#e8e7e0` / `#dfded6` / `#cbcac1` | `#1f1f1d` / `#565552` / `#62615e` | `#43423f`     | note label on its tint, 4.53 | 7.11 (note)         |
-| paper             | `#efede7` / `#e7e4dc` / `#d6d2c8` | `#201f1d` / `#565553` / `#646360` | `#464543`     | code comment on raised, 4.59 | 7.13 (note)         |
-| current (neutral) | `#f4f4f4` / `#ebebeb` / `#d6d6d6` | `#1f1f1f` / `#555555` / `#636363` | `#494949`     | code comment on raised, 4.82 | 7.14 (note)         |
-
-Stone also nudges `accent-text`/syntax title to `#3457c6`, note label to
+Stone's text tokens are derived from the surface: greys take half its oklab
+chroma (a hint of warmth, not a tint), then every text token is darkened in
+oklab lightness just enough that all text pairs stay ≥ 4.5 : 1 on `bg`,
+`raised` and the callout tints, and `callout-muted` (`#42413e`) ≥ 7 : 1.
+That nudged `accent-text`/syntax title to `#3457c6`, the note label to
 `#3255c4`, syntax string to `#2c6c3b`, attr to `#0c6982` and comment to
-`#61605d`; putty nudges note label `#3356c5`, string `#2e6e3d`, attr
-`#0d6a83`, comment `#62615e`; paper only its comment (`#666562`).
+`#61605d`. Callout tints, the drawing's ink, the code scrollbar and the
+selection derive from these tokens. The lowest text pair on the site is the
+syntax attr colour on the code surface, 4.53 : 1.
 
-Syntax colours on the code surface (dark · light current): keyword 7.2 · 5.5,
-string 9.2 · 5.1, number 8.5 · 5.4, comment `#939393` · `#666666` at 5.1 ·
-4.8, title 5.5 · 5.2, attr 8.3 · 5.1. `#4169E1` itself is never used for
+Syntax colours on the code surface (dark · light): keyword 7.2 · 4.75,
+string 9.2 · 4.59, number 8.5 · 4.67, comment `#939393` · `#61605d` at 5.1 ·
+4.55, title 5.5 · 4.57, attr 8.3 · 4.53. `#4169E1` itself is never used for
 small text. The skip link is white on `#4169E1` at 4.85 : 1.
 
 **Callouts** (`Callout`, types note / tip / warning). A tinted box: the
@@ -90,15 +80,19 @@ type colour at 11% (`color-mix` over transparent) with a 1px border at 28%,
 so callouts never read as code blocks. The label is lowercase ("note",
 "tip", "warning", via `text-transform`; `aria-label` keeps "Note" etc.) in
 Literata italic 15px and the type's text tint. The body is Literata 17px:
-note and tip use `--color-callout-muted` (`#c9c9c9` dark, `#494949` light),
-which clears 7 : 1 on every tint (lowest 7.4 : 1); warning keeps full-contrast `fg`. `aside
+note and tip use `--color-callout-muted` (`#c9c9c9` dark, `#42413e` light),
+which clears 7 : 1 on every tint (lowest 7.17 : 1, light note); warning keeps full-contrast `fg`. `aside
 aria-label={label}`.
 
-| Type    | Fill (dark · light)   | Label text (dark · light current) | Label contrast on its tint (dark · light current) |
-| ------- | --------------------- | --------------------------------- | ------------------------------------------------- |
-| note    | `#4169e1` · `#4169e1` | `#7b97ea` · `#3558c7`             | 4.82 · 4.93                                       |
-| tip     | `#3fa36b` · `#3fa36b` | `#62c08c` · `#256b46`             | 5.81 · 5.25                                       |
-| warning | `#e0a526` · `#b7791f` | `#e8b64a` · `#80530f`             | 6.58 · 5.36                                       |
+| Type    | Fill (dark · light)   | Label text (dark · light) | Label contrast on its tint (dark · light) |
+| ------- | --------------------- | ------------------------- | ----------------------------------------- |
+| note    | `#4169e1` · `#2f7bd0` | `#7b97ea` · `#3255c4`     | 4.82 · 4.57                               |
+| tip     | `#3fa36b` · `#3fa36b` | `#62c08c` · `#256b46`     | 5.81 · 4.65                               |
+| warning | `#e0a526` · `#b7791f` | `#e8b64a` · `#80530f`     | 6.58 · 4.75                               |
+
+The light note fill is a steel blue, not the royal-blue accent: `#4169e1` at
+11% over warm stone composites to a near-grey that reads lilac (hue ~280 in
+oklch); `#2f7bd0` keeps the tint clearly blue and sits on stone naturally.
 
 Light tip and warning text are deeper than first specced (`#2d7a4f` would
 be 4.3 : 1 and `#8a5a12` 4.8 : 1). Full-contrast body text on every tint is
@@ -120,7 +114,7 @@ Article headings are Inconsolata bold (700), no prefix characters: h2 at
 measure and a short 2px royal-blue segment at its start (the editor-tab
 accent edge); h3 at 1.15em, 700, 0.8em below, without a rule. Both keep
 `scroll-margin-top` for the section rail. The design panel's "Article
-headings" group tunes `--h2-size` (18–36px, 26), `--h2-weight` (400–800, 700), `--h2-space-below` (8–48px, 26) and `--h3-size` (14–28px, 20.7), and offers "Heading font": Inconsolata (default) or "Sans (V4)", IBM Plex Sans 600 on h2/h3 (`data-heading-font="sans"`, self-hosted, not preloaded; the weight slider still applies).
+headings" group tunes `--h2-size` (18–36px, 26), `--h2-weight` (400–800, 700), `--h2-space-below` (8–48px, 26) and `--h3-size` (14–28px, 20.7), . Headings are Inconsolata only (the variable file's real 200–900 weight axis, so 700 is never synthesised), tracked −0.01em.
 Tabular numerals everywhere dates and years line up.
 
 ## Spacing and grid
@@ -200,14 +194,10 @@ _Phones (below 640px):_ the text block is centred between the nav and the
 bottom of the screen (`100dvh`, so browser chrome can't break it), a touch
 above the true middle: two flexible spacers, the lower 1.25× the upper.
 When the text is taller than the screen the spacers collapse and it starts
-right under the nav and scrolls. By default there is no drawing. The panel's
-"Drawing on phones: background" puts the finished drawing (no draw-in, no
-lit screen, no pointer events) at 4–25% opacity in the lower spacer,
-anchored bottom-right. It never overlaps text, so text contrast is
-unchanged at any opacity. Faint text over strokes at 25% would drop to
-3.9:1. Design panel (Home): drawing size (%, 100 = this size), drawing animation,
-"Drawing fade" (`data-drawing-fade="off"`); "Laptop screen glow (%)" scales
-only the lit screen.
+right under the nav and scrolls. Phones show no drawing (a faint background
+drawing was tried and rejected). The drawing's edges are always soft (the
+fade masks above). Design panel (Home): drawing size (%, 100 = this size),
+drawing animation; "Laptop screen glow (%)" scales only the lit screen.
 
 **Page titles (Writing, Projects).** No visible title: the nav's active tab
 already says where you are. Each page keeps a visually hidden `<h1>`
@@ -324,22 +314,17 @@ the editor palette: `raised`, `line`, Inconsolata). Every control defaults to th
 carries the defaults as `var()` fallbacks, so production, which has no panel
 and no script, renders exactly the defaults.
 
-| Group            | Control                        | Drives                                                               | Range                           | Default           |
-| ---------------- | ------------------------------ | -------------------------------------------------------------------- | ------------------------------- | ----------------- |
-| Article headings | H2 size / weight / space below | `--h2-size`, `--h2-weight`, `--h2-space-below`                       | 18–36px / 400–800 / 8–48px      | 26px / 700 / 26px |
-| Article headings | Heading font                   | `data-heading-font`                                                  | own / sans (IBM Plex Sans)      | own               |
-| Article headings | H3 size                        | `--h3-size`                                                          | 14–28px                         | 20.7px            |
-| Writing list     | Thumbnail width                | `--writing-thumb-width` (half from 640px, none below)                | 96–280px                        | 176px             |
-| Writing list     | Title size                     | `--writing-title-size` (mobile ≤16px)                                | 14–26px                         | 17px              |
-| Writing list     | Space between entries          | `--writing-entry-gap` (entry padding)                                | 0–64px                          | 16px              |
-| Home             | Headline size                  | `--home-headline-size` (caps the svh clamp from 768px)               | 28–56px                         | 40px              |
-| Home             | Drawing size (%)               | `--home-drawing-size` (scales the drawing height)                    | 50–110                          | 100               |
-| Home             | Drawing animation              | `data-portrait-animation`                                            | draw in / static                | draw in           |
-| Home             | Drawing fade                   | `data-drawing-fade`                                                  | on / off                        | on                |
-| Home             | Drawing on phones              | `data-home-drawing-mobile` (below 640px)                             | hidden / background             | hidden            |
-| Home             | Phone background opacity       | `--home-drawing-bg-opacity`                                          | 0.04–0.25                       | 0.08              |
-| Glow             | Laptop screen glow (%)         | `--screen-glow`, scales the lit screen opacity (0.7 light, 0.9 dark) | 0–300                           | 100               |
-| Colour           | Light surfaces                 | `data-light-surfaces` (light mode only)                              | stone / putty / paper / current | stone             |
+| Group            | Control                        | Drives                                                               | Range                      | Default           |
+| ---------------- | ------------------------------ | -------------------------------------------------------------------- | -------------------------- | ----------------- |
+| Article headings | H2 size / weight / space below | `--h2-size`, `--h2-weight`, `--h2-space-below`                       | 18–36px / 400–800 / 8–48px | 26px / 700 / 26px |
+| Article headings | H3 size                        | `--h3-size`                                                          | 14–28px                    | 20.7px            |
+| Writing list     | Thumbnail width                | `--writing-thumb-width` (half from 640px, none below)                | 96–280px                   | 176px             |
+| Writing list     | Title size                     | `--writing-title-size` (mobile ≤16px)                                | 14–26px                    | 17px              |
+| Writing list     | Space between entries          | `--writing-entry-gap` (entry padding)                                | 0–64px                     | 16px              |
+| Home             | Headline size                  | `--home-headline-size` (caps the svh clamp from 768px)               | 28–56px                    | 40px              |
+| Home             | Drawing size (%)               | `--home-drawing-size` (scales the drawing height)                    | 50–110                     | 100               |
+| Home             | Drawing animation              | `data-portrait-animation`                                            | draw in / static           | draw in           |
+| Glow             | Laptop screen glow (%)         | `--screen-glow`, scales the lit screen opacity (0.7 light, 0.9 dark) | 0–300                      | 100               |
 
 ## Motion
 

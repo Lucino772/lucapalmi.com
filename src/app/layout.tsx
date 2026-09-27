@@ -99,13 +99,6 @@ const cascadiaCode = localFont({
     weight: "200 700",
 });
 // Only used when the design panel switches article headings to "Sans (V4)"
-const plexSans = localFont({
-    src: "../fonts/ibm-plex-sans-latin.woff2",
-    variable: "--font-plex-sans",
-    display: "swap",
-    weight: "100 700",
-    preload: false,
-});
 const literata = localFont({
     src: "../fonts/literata-latin.woff2",
     variable: "--font-literata",
@@ -127,7 +120,6 @@ export default async function RootLayout({
                 inconsolata.variable,
                 cascadiaCode.variable,
                 literata.variable,
-                plexSans.variable,
             )}
         >
             <head>

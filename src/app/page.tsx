@@ -31,9 +31,8 @@ export default async function Index() {
                 aria-label="About"
                 className="relative flex min-h-[calc(100dvh-3.5rem-1px)] flex-col py-4 sm:min-h-[calc(100svh-3.5rem-1px)] md:py-[clamp(1.5rem,4svh,3rem)]"
             >
-                {/* Phones: the text is centred optically between the nav
-                    and the bottom (see .home-grid); the drawing is hidden or
-                    sits behind the page (design panel) */}
+                {/* Phones: no drawing; the text is centred optically
+                    between the nav and the bottom (see .home-grid) */}
                 <div className="home-grid grid flex-1 content-center items-center gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,31rem)_minmax(0,1fr)]">
                     <div className="fade-in relative z-10 min-w-0">
                         <p className="text-faint text-[0.875rem] md:text-[0.9375rem]">
