@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { getArticle, getArticles } from "@/lib/cms";
-import { CalendarIcon, ClockIcon } from "lucide-react";
+import Link from "next/link";
+import { topicLabel } from "@/content/topics";
+import { isoDay, readingMinutes } from "@/lib/format";
+import SectionRail from "@/components/section-rail";
 import { AiImageDescription } from "@/components/ai-image-description";
 import type { Metadata } from "next";
 
@@ -19,7 +22,7 @@ export async function generateMetadata({
         openGraph: {
             title: article.title,
             description: article.subtitle,
-            images: [
+            images: article.cover && [
                 {
                     url: article.cover.data.src,
                     width: article.cover.data.width,
@@ -37,7 +40,7 @@ export async function generateMetadata({
             card: "summary_large_image",
             title: article.title,
             description: article.subtitle,
-            images: [article.cover.data.src],
+            images: article.cover && [article.cover.data.src],
         },
         alternates: {
             canonical: `https://lucapalmi.com/articles/${slug}`,
@@ -52,64 +55,103 @@ export default async function Page({
 }) {
     const { slug } = await params;
     const { Content, metadata: article } = await getArticle(slug);
+    const minutes = readingMinutes(article.readingTime);
 
     return (
-        <div className="relative mx-auto my-0 flex max-w-4xl animate-[fade_300ms_ease-in-out_normal_forwards] flex-col gap-6 px-6">
-            <div className="prose md:prose-lg dark:prose-invert prose-pre:p-0 prose-headings:font-headings font-content prose-pre:border-2 prose-pre:border-[#4169E1]/40 prose-a:after:content-['_↗'] prose-a:text-[#7b97ea] prose-a:no-underline mt-5 max-w-none">
-                <div className="not-prose mb-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
-                    <div className="flex flex-row flex-wrap items-center gap-2">
-                        {article.tags.map((item) => (
-                            <div
-                                key={item}
-                                className="font-content rounded-lg bg-[#4169E1] px-1.5 py-0.5 text-xs text-white shadow md:text-sm"
-                            >
-                                {item}
-                            </div>
+        <article className="w-full px-6 pt-8 pb-24 md:px-6 md:pt-14">
+            <header className="fade-in max-w-measure mx-auto">
+                <Link
+                    href="/articles"
+                    className="text-faint hover:text-accent-text -my-3 inline-block py-3 text-[0.875rem] leading-5 transition-colors duration-150"
+                >
+                    <span aria-hidden>../</span>writing
+                </Link>
+                {/* Same columns as the writing timeline */}
+                <p className="text-faint mt-8 flex flex-wrap gap-x-[2ch] text-[0.875rem] leading-6 tabular-nums">
+                    <time dateTime={isoDay(article.createdAt)}>
+                        {isoDay(article.createdAt)}
+                    </time>
+                    {minutes && <span>{minutes} read</span>}
+                </p>
+                {/* Balanced on phones; from sm, pretty wrapping keeps
+                    "State-Driven" whole instead of splitting at its hyphen */}
+                <h1 className="mt-3 text-[2rem] leading-[1.15] font-semibold tracking-[-0.02em] sm:text-pretty md:text-[2.5rem]">
+                    {article.title}
+                </h1>
+                <p className="text-muted mt-4 font-serif text-[1.1875rem] leading-8 italic md:text-[1.3125rem]">
+                    {article.subtitle}
+                </p>
+                {article.topics.length > 0 && (
+                    <ul
+                        aria-label="Topics"
+                        className="mt-5 flex flex-wrap gap-x-[2ch] text-[0.875rem]"
+                    >
+                        {article.topics.map((topic) => (
+                            <li key={topic}>
+                                <Link
+                                    href={`/articles?topic=${topic}`}
+                                    className="text-accent-text -my-3 inline-block py-3 leading-5 underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                >
+                                    {topicLabel(topic)}
+                                </Link>
+                            </li>
                         ))}
-                    </div>
-                    <div className="flex flex-row items-center gap-6">
-                        <div className="flex flex-row items-center gap-2">
-                            <CalendarIcon className="size-4" />
-                            <span>
-                                {article.createdAt.toLocaleDateString(
-                                    undefined,
-                                    {
-                                        day: "numeric",
-                                        month: "long",
-                                        year: "numeric",
-                                    },
-                                )}
-                            </span>
-                        </div>
-                        {article.readingTime !== undefined && (
-                            <div className="flex flex-row items-center gap-2">
-                                <ClockIcon className="size-4" />
-                                <span>
-                                    {(article.readingTime / 60).toFixed(0)} min
-                                </span>
-                            </div>
-                        )}
-                    </div>
-                </div>
-                <h1 className="mb-0!">{article.title}</h1>
-                <p className="mt-1!">{article.subtitle}</p>
-                <div className="not-prose mb-5 flex flex-col gap-4">
-                    <div className="aspect-video overflow-hidden rounded-lg shadow-sm">
+                    </ul>
+                )}
+            </header>
+
+            {article.cover && (
+                <figure className="mx-auto mt-10 max-w-[52rem]">
+                    <div className="border-line overflow-hidden rounded-[6px] border">
                         <Image
                             src={article.cover.data.src}
-                            alt={`${article.title} - ${article.subtitle}`}
+                            alt={`Cover image for ${article.title}`}
                             width={article.cover.data.width}
                             height={article.cover.data.height}
-                            className="h-full w-full object-cover transition-transform duration-700 hover:scale-[101%]"
+                            priority
+                            sizes="(min-width: 880px) 832px, 100vw"
+                            className="aspect-video h-auto w-full object-cover"
                         />
                     </div>
                     {article.cover.kind === "ai-generated" && (
-                        <AiImageDescription prompt={article.cover.prompt} />
+                        <figcaption className="max-w-measure mx-auto mt-3">
+                            <AiImageDescription prompt={article.cover.prompt} />
+                        </figcaption>
                     )}
-                </div>
+                </figure>
+            )}
+
+            <div data-article-body className="prose mx-auto mt-12 md:mt-14">
                 <Content />
             </div>
-        </div>
+
+            <footer className="text-muted max-w-measure mx-auto mt-20 text-[0.875rem]">
+                <ul
+                    aria-label="Tags"
+                    className="text-faint mb-5 flex flex-wrap gap-x-[1.5ch] text-[0.8125rem]"
+                >
+                    {article.tags.map((tag) => (
+                        <li key={tag}>#{tag}</li>
+                    ))}
+                </ul>
+                <div className="flex items-center justify-between">
+                    <Link
+                        href="/articles"
+                        className="hover:text-accent-text -my-3 inline-block py-3 leading-5 transition-colors duration-150"
+                    >
+                        <span aria-hidden>../</span>writing
+                    </Link>
+                    <a
+                        href="#content"
+                        className="hover:text-accent-text -my-3 inline-block py-3 leading-5 transition-colors duration-150"
+                    >
+                        Back to top
+                    </a>
+                </div>
+            </footer>
+
+            <SectionRail />
+        </article>
     );
 }
 

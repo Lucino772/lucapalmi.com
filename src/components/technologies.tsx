@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 
 type Props = {
@@ -15,24 +13,25 @@ type Props = {
 
 export default function Technologies({ technologies }: Props) {
     return (
-        <div className="flex flex-row flex-wrap gap-1 md:gap-5">
+        <ul
+            className="not-prose my-8 flex flex-wrap gap-2"
+            aria-label="Technologies"
+        >
             {technologies.map((technology) => (
-                <div
+                <li
                     key={technology.name}
-                    className="bg-primary flex flex-row items-center justify-center gap-2 rounded-sm border-2 border-[#292936] px-2 py-2 shadow-md transition-all hover:border-[#4169E1]"
+                    className="border-line bg-raised flex items-center gap-2 rounded-[4px] border py-1.5 pr-3 pl-1.5 font-mono text-[0.875rem]"
                 >
                     <Image
                         src={technology.icon.src}
-                        alt={technology.name}
+                        alt=""
                         width={technology.icon.width}
                         height={technology.icon.height}
-                        className="m-0! size-7 rounded-full object-cover md:size-8"
+                        className="size-5 rounded-[3px] object-cover"
                     />
-                    <span className="font-content text-sm text-white md:text-base">
-                        {technology.name}
-                    </span>
-                </div>
+                    {technology.name}
+                </li>
             ))}
-        </div>
+        </ul>
     );
 }

@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import "highlight.js/styles/github-dark-dimmed.css";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/nav-bar";
+import { prePaintScript, themeColors } from "@/lib/pre-paint";
 
 import localFont from "next/font/local";
 import { cn } from "@/lib/cn";
@@ -64,6 +64,13 @@ export const metadata: Metadata = {
     },
 };
 
+export const viewport: Viewport = {
+    themeColor: [
+        { media: "(prefers-color-scheme: light)", color: themeColors.light },
+        { media: "(prefers-color-scheme: dark)", color: themeColors.dark },
+    ],
+};
+
 const jsonLd: WithContext<Person> = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -102,24 +109,35 @@ export default async function RootLayout({
     return (
         <html
             lang="en"
+            suppressHydrationWarning
             className={cn(
-                "dark antialiased",
+                "antialiased",
                 inconsolata.variable,
                 cascadiaCode.variable,
                 literata.variable,
             )}
         >
             <head>
+                <script dangerouslySetInnerHTML={{ __html: prePaintScript }} />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
                 />
             </head>
-            <body className="relative h-screen w-full overflow-auto">
-                <div className="bg-secondary relative z-0 flex min-h-full w-full flex-col items-center">
-                    <NavBar />
+            <body className="bg-bg text-fg flex min-h-dvh flex-col">
+                <a
+                    href="#content"
+                    className="bg-accent fixed top-2 left-2 z-50 -translate-y-16 px-3 py-2 text-sm text-white focus-visible:translate-y-0"
+                >
+                    Skip to content
+                </a>
+                <NavBar />
+                <main
+                    id="content"
+                    className="scrollbar-offset flex w-full flex-1 flex-col"
+                >
                     {children}
-                </div>
+                </main>
             </body>
         </html>
     );

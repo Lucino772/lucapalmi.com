@@ -1,140 +1,177 @@
-import Image from "next/image";
 import Link from "next/link";
-import desktopDimmed from "../../public/images/desktop-dimmed.webp";
+import { about } from "@/content/about";
+import { projects } from "@/lib/projects";
+import { getWritingLog } from "@/lib/writing";
+import Portrait from "@/components/portrait";
 
-export default function Index() {
+const quietLink =
+    "hover:text-accent-text decoration-transparent underline underline-offset-4 transition-colors duration-150 hover:decoration-current";
+
+// A timeless calling card, exactly one screen: whoami, headline, "I tend to"
+// and an `ls` of writing/ and projects/ beside the self-drawing portrait.
+
+export default async function Index() {
+    // The newest published article
+    const [article] = await getWritingLog();
+    const flagship = [...projects.featured, ...projects.others].find(
+        (project) => project.title === about.flagshipProject,
+    );
+    const flagshipHref = flagship
+        ? flagship.article
+            ? `/articles/${flagship.article}`
+            : "links" in flagship
+              ? flagship.links.github
+              : flagship.url
+        : "/projects";
+
     return (
-        <>
-            {/* Background Image */}
-            <div className="absolute top-1/2 left-1/2 -z-10 hidden h-screen w-screen max-w-6xl -translate-x-1/2 -translate-y-1/2 overflow-hidden lg:block">
-                <div className="absolute h-full w-full md:top-3/5 md:right-7 md:h-auto md:w-1/2 md:-translate-y-1/2">
-                    <Image
-                        className="relative h-full w-full animate-[fade_800ms_ease-out_normal_forwards] object-cover object-top md:h-auto"
-                        src={desktopDimmed}
-                        alt="Desktop"
-                        width={500}
-                        priority={true}
-                    />
-                    <div className="bg-opacity-60 from-secondary absolute top-0 right-0 bottom-0 left-0 bg-linear-to-t from-10% to-transparent to-50% md:bg-transparent"></div>
-                    <div className="bg-opacity-60 from-secondary absolute top-0 right-0 bottom-0 left-0 bg-linear-to-r from-10% to-transparent to-50% md:bg-transparent"></div>
-                </div>
-                <div className="from-secondary absolute hidden h-full w-full bg-linear-80 from-50% to-transparent to-50% md:block"></div>
-            </div>
-
-            {/* Hero Section */}
-            <div className="absolute top-1/2 left-1/2 w-screen max-w-6xl -translate-x-1/2 -translate-y-1/2 px-6">
-                <div className="relative flex w-full flex-col gap-6 sm:gap-0 lg:max-w-130">
-                    {/* Welcome */}
-                    <div className="sm:bg-primary border-x-none relative flex animate-[fade_300ms_100ms_ease-out_normal_forwards] flex-row items-center gap-4 rounded-none border-[#4169E1]/20 bg-transparent p-0 opacity-0 transition-all first:rounded-t-sm last:rounded-b-sm sm:border-x-2 sm:border-t-0 sm:border-b-2 sm:p-5 sm:shadow-md sm:first:border-t-2">
-                        {/* <Image
-                            className="relative aspect-square size-13 animate-[fade_800ms_ease-out_normal_forwards] rounded-full border-2 border-[#292936] object-cover sm:size-18"
-                            src={portrait}
-                            alt="Portrait"
-                            width={500}
-                            priority={true}
-                        /> */}
-                        <div className="flex flex-col gap-1">
-                            <p className="font-content text-xs font-normal text-white/75 sm:text-base">
-                                {`👋 Hi there, I'm`}
-                            </p>
-                            <h1 className="font-headings text-base font-bold sm:text-3xl">
-                                Luca Palmisano
-                            </h1>
-                        </div>
-                    </div>
-
-                    {/* About */}
-                    <div className="sm:bg-primary border-x-none relative flex animate-[fade_300ms_200ms_ease-out_normal_forwards] flex-col gap-5 rounded-none border-[#4169E1]/20 bg-transparent p-0 opacity-0 transition-all first:rounded-t-sm last:rounded-b-sm sm:border-x-2 sm:border-t-0 sm:border-b-2 sm:p-5 sm:shadow-md sm:first:border-t-2">
-                        {/* Mission */}
-                        <div className="flex flex-col gap-2">
-                            <h2 className="font-headings text-sm font-bold sm:text-base">
-                                My Mission
-                            </h2>
-                            <p className="font-content text-sm text-white/75 sm:text-base">
-                                I design and build software that empower
-                                individuals and professionals to work smarter,
-                                faster, and more efficiently.
-                            </p>
-                        </div>
-
-                        {/* I Tend to */}
-                        <div className="flex flex-col gap-2">
-                            <h2 className="font-headings text-sm font-bold sm:text-base">
-                                I tend to
-                            </h2>
-                            <ul className="font-content text-sm text-white/75 sm:text-base">
-                                <li>
-                                    - break complex problems down into simpler
-                                    ones
-                                </li>
-                                <li>
-                                    - think beyond the code when making
-                                    decisions
-                                </li>
-                                <li>
-                                    - rely on proven solutions when they do the
-                                    job
-                                </li>
+        <div
+            data-home
+            data-page="home"
+            className="max-w-page mx-auto w-full px-5 md:px-6"
+        >
+            <section
+                aria-label="About"
+                className="relative flex min-h-[calc(100dvh-3.5rem-1px)] flex-col py-4 md:py-[clamp(1.5rem,4svh,3rem)]"
+            >
+                {/* Below 56rem and on short screens: no drawing; the text is
+                    centred optically between the nav and the bottom (see
+                    .home-grid). From 56rem: the two-column scene, the
+                    drawing scaling down to its column */}
+                <div className="home-grid grid flex-1 content-center items-center gap-x-12 gap-y-2 min-[56rem]:grid-cols-[minmax(0,31rem)_minmax(0,1fr)]">
+                    <div className="fade-in relative z-10 min-w-0">
+                        <p className="text-faint text-[0.875rem] md:text-[0.9375rem]">
+                            <span aria-hidden>~ $ </span>whoami
+                        </p>
+                        <h1 className="mt-2 text-[0.875rem] md:mt-3 md:text-[0.9375rem]">
+                            <span className="font-semibold">{about.name}</span>
+                            <span className="text-muted">, {about.role}</span>
+                        </h1>
+                        <p className="mt-2 max-w-[29ch] text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance max-[359px]:text-[1.375rem] max-sm:min-[360px]:text-[clamp(1.6875rem,4.35svh,2.1rem)] sm:text-[clamp(1.375rem,3.8svh,2.125rem)] sm:leading-[1.15] md:mt-3">
+                            {about.headline}
+                        </p>
+                        <div className="mt-3 text-[0.8125rem] leading-6 md:mt-[min(1.75rem,3svh)] md:text-[0.9375rem] md:leading-7">
+                            <h2 className="text-faint">I tend to</h2>
+                            <ul className="text-fg/90">
+                                {about.tendencies.map((item) => (
+                                    <li key={item} className="flex gap-[1ch]">
+                                        <span
+                                            aria-hidden
+                                            className="text-faint"
+                                        >
+                                            -
+                                        </span>
+                                        {item}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
-                        {/* Technologies */}
-                        {/* <div className="flex flex-col gap-2">
-                            <h2 className="font-headings text-sm font-bold sm:text-base">
-                                Technologies I've used
-                            </h2>
-                            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                                <TechStack
-                                    name="Vercel"
-                                    slug="vercel"
-                                    icon={vercel}
+                        <nav
+                            aria-label="Explore"
+                            className="mt-4 md:mt-[min(2.25rem,4svh)]"
+                        >
+                            <p
+                                aria-hidden
+                                className="text-faint text-[0.875rem] md:text-[0.9375rem]"
+                            >
+                                ~ $ ls
+                            </p>
+                            <ul className="border-line mt-1.5 border-t">
+                                <Entry
+                                    href="/articles"
+                                    name="writing/"
+                                    label="latest"
+                                    detail={
+                                        article && {
+                                            href: `/articles/${article.slug}`,
+                                            text: article.title,
+                                        }
+                                    }
                                 />
-                                <TechStack
-                                    name="Tailwind"
-                                    slug="tailwind"
-                                    icon={tailwind}
+                                <Entry
+                                    href="/projects"
+                                    name="projects/"
+                                    label="flagship"
+                                    detail={
+                                        flagship && {
+                                            href: flagshipHref,
+                                            text: flagship.title,
+                                            external:
+                                                !flagshipHref.startsWith("/"),
+                                        }
+                                    }
                                 />
-                                <TechStack
-                                    name="Next.js"
-                                    slug="next-js"
-                                    icon={nextjs}
-                                />
-                                <TechStack
-                                    name="Contentful"
-                                    slug="contentful"
-                                    icon={contentful}
-                                />
-                                <TechStack
-                                    name="Python"
-                                    slug="python"
-                                    icon={python}
-                                />
-                            </div>
-                        </div> */}
+                            </ul>
+                        </nav>
                     </div>
 
-                    {/* What next ? */}
-                    <div className="sm:bg-primary border-x-none relative flex animate-[fade_300ms_300ms_ease-out_normal_forwards] flex-col gap-2 rounded-none border-[#4169E1]/20 bg-transparent p-0 opacity-0 transition-all first:rounded-t-sm last:rounded-b-sm sm:border-x-2 sm:border-t-0 sm:border-b-2 sm:p-5 sm:shadow-md sm:first:border-t-2">
-                        <h2 className="font-headings text-sm font-bold sm:text-base">
-                            {`If you're curious`}
-                        </h2>
-                        <div className="font-content flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-5">
-                            <Link
-                                href="/projects"
-                                className="border-accent-blue bg-accent-blue animate-[fade_200ms_400ms_ease-out_normal_forwards] rounded-md border-2 px-3 py-2 text-xs font-semibold text-white/90 opacity-0 transition-colors hover:cursor-pointer hover:text-white sm:text-sm"
-                            >
-                                {`See what I've built 🛠️`}
-                            </Link>
-                            <Link
-                                href="/articles"
-                                className="border-accent-dark-blue hover:border-accent-blue animate-[fade_200ms_500ms_ease-out_normal_forwards] rounded-md border-2 px-3 py-2 text-xs font-semibold text-white/90 opacity-0 transition-colors hover:cursor-pointer hover:text-white sm:text-sm"
-                            >
-                                Read my thoughts 💡
-                            </Link>
-                        </div>
+                    {/* One scene: cropped at the desk, anchored right, its
+                        desk line sliding under the text column where the mask
+                        has already faded it out */}
+                    <div className="home-drawing portrait-tone relative z-0 -ml-16 flex justify-end justify-self-stretch">
+                        <Portrait
+                            cropHeight={1680}
+                            className="portrait-fade block h-auto w-[min(calc(min(62svh,42rem)*1.1905),100%)]"
+                        />
                     </div>
                 </div>
-            </div>
-        </>
+            </section>
+        </div>
+    );
+}
+
+// Touch screens from sm (details shown): each link's hit area is its whole
+// grid cell, row height included (the detail's own box is clipped by the
+// truncating <p>, so its area hangs off the row instead)
+const coarseFolderHit =
+    "sm:pointer-coarse:after:absolute sm:pointer-coarse:after:inset-y-0 sm:pointer-coarse:after:left-0 sm:pointer-coarse:after:w-[8.5rem] sm:pointer-coarse:after:content-['']";
+const coarseDetailHit =
+    "sm:pointer-coarse:after:absolute sm:pointer-coarse:after:inset-y-0 sm:pointer-coarse:after:right-0 sm:pointer-coarse:after:left-[10rem] sm:pointer-coarse:after:content-['']";
+
+// One ls row: the folder is the main link, then one pointer inside it
+function Entry({
+    href,
+    name,
+    label,
+    detail,
+}: {
+    href: string;
+    name: string;
+    label: string;
+    detail?: { href: string; text: string; external?: boolean } | false;
+}) {
+    return (
+        // Phones: no detail line, the whole row is the folder link
+        <li className="border-line relative grid grid-cols-[minmax(0,1fr)] items-baseline gap-x-6 border-b py-2.5 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:py-2 md:py-[min(1rem,1.6svh)]">
+            <Link
+                href={href}
+                className={`${quietLink} ${detail ? coarseFolderHit : ""} justify-self-start text-[1.125rem] leading-7 font-semibold max-sm:after:absolute max-sm:after:inset-0 max-sm:after:content-[''] md:text-[1.375rem]`}
+            >
+                {name}
+            </Link>
+            {detail && (
+                <p className="hidden min-w-0 truncate text-[0.8125rem] sm:block md:text-[0.875rem]">
+                    <span className="text-faint">{label} </span>
+                    {detail.external ? (
+                        <a
+                            href={detail.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={`text-fg/90 ${quietLink} ${coarseDetailHit}`}
+                        >
+                            {detail.text}
+                        </a>
+                    ) : (
+                        <Link
+                            href={detail.href}
+                            className={`text-fg/90 ${quietLink} ${coarseDetailHit}`}
+                        >
+                            {detail.text}
+                        </Link>
+                    )}
+                </p>
+            )}
+        </li>
     );
 }

@@ -1,39 +1,66 @@
 {
     "featured": [
         {
-            "title": "Personal Website",
-            "article": "lucapalmi-com-website",
-            "type": "website",
+            "title": "envelop",
+            "type": "tool",
+            "status": "early",
+            "year": 2023,
             "links": {
-                "github": "https://github.com/Lucino772/lucapalmi.com",
-                "website": "https://lucapalmi.com"
+                "github": "https://github.com/Lucino772/envelop"
             },
-            "description": "A static website build with Next.js. It serve as a portfolio to showcase my work.",
-            "tags": ["Vercel", "Tailwind", "Next.js", "Contentful"]
+            "description": "Install, run and manage dedicated game servers behind one API: process control, RCON, player management and event streaming, for Steam and non-Steam games alike.",
+            "tags": ["Go"]
         },
         {
-            "title": "PyMojang package",
-            "article": "pymojang-python-module",
-            "type": "package",
+            "title": "qtcompose",
+            "article": "from-imperative-qt-to-state-driven-ui-composition",
+            "type": "desktop",
+            "status": "active",
+            "year": 2025,
             "links": {
-                "github": "https://github.com/Lucino772/pymojang"
+                "github": "https://github.com/Lucino772/qtcompose"
             },
-            "description": "PyMojang is a python wrapper around the Mojang API and Mojang Authentication API.",
-            "tags": ["Python"]
+            "description": "Build Qt applications in a reactive, declarative and composable way: describe the UI as a tree of components driven by reactive state.",
+            "tags": ["Python", "Qt"]
         }
     ],
     "others": [
         {
-            "title": "QtCompose",
-            "url": "https://github.com/Lucino772/qtcompose"
-        },
-        {
-            "title": "Miss A brick",
+            "title": "Miss A Brick",
+            "description": "Search LEGO sets and export their full parts list, using Rebrickable data.",
+            "year": 2022,
             "url": "https://github.com/Lucino772/missabrick"
         },
         {
-            "title": "brikk",
-            "url": "https://github.com/Lucino772/brikk"
+            "title": "stillhead",
+            "description": "Per-module database migrations on Alembic: each module owns its namespace, its version table and its revision lineage.",
+            "year": 2026,
+            "url": "https://github.com/Lucino772/stillhead"
+        },
+        {
+            "title": "bex",
+            "description": "Bootstraps a reproducible Python environment with uv, then hands off to your entrypoint.",
+            "year": 2026,
+            "url": "https://github.com/Lucino772/bex"
+        },
+        {
+            "title": "stdlibx",
+            "description": "Small, composable Python utilities: optionals, explicit errors, cancellation, reactive flows.",
+            "year": 2026,
+            "url": "https://github.com/Lucino772/stdlibx"
+        },
+        {
+            "title": "PyMojang",
+            "description": "A Python wrapper around the Mojang API and Mojang Authentication API.",
+            "year": 2021,
+            "article": "pymojang-python-module",
+            "url": "https://github.com/Lucino772/pymojang"
+        },
+        {
+            "title": "proxyctx",
+            "description": "Global context for Python applications, inspired by Flask and built on contextvars.",
+            "year": 2023,
+            "url": "https://github.com/Lucino772/proxyctx"
         }
     ]
 }

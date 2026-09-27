@@ -3,106 +3,595 @@
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 
+/* Surfaces: dark is the live lucapalmi.com's neutral, untinted greys
+   (under .dark). Raised is darker than the page in dark, as on the live
+   site; hairlines are a lighter step of its #292936 border. Light is
+   "stone", a warm grey paper; its text greys take a hint of the surface's
+   warmth and are darkened just enough to stay >= 4.5:1 on bg and raised
+   (callout-muted >= 7:1). */
 @theme {
-    --color-primary: #242424;
-    --color-secondary: #272727;
-    --color-accent-blue: hsl(225, 72.73%, 56.86%);
-    --color-accent-dark-blue: color-mix(
-        in oklab,
-        var(--color-accent-blue) 45%,
-        transparent
+    --color-bg: #e8e5de;
+    --color-raised: #dfdbd2;
+    --color-line: #cbc6bb;
+    --color-fg: #201f1c;
+    --color-muted: #565552;
+    --color-faint: #61605d;
+    /* Royal blue: fills, rules, focus. Text uses accent-text for AA */
+    --color-accent: #4169e1;
+    --color-accent-text: #3457c6;
+    /* Pen strokes in the fallback sketch thumbnails */
+    --color-sketch: #201f1c;
+    /* Muted callout body (note, tip): >= 7:1 on the type tints */
+    --color-callout-muted: #42413e;
+
+    /* Callout types: fill (tint, border, bar) and label text */
+    /* Note fill leans toward cyan: royal blue at 11% over warm stone reads
+       lilac; this steel blue keeps the tint clearly blue on stone */
+    --color-note: #2f7bd0;
+    --color-note-text: #3255c4;
+    --color-tip: #3fa36b;
+    --color-tip-text: #256b46;
+    --color-warning: #b7791f;
+    --color-warning-text: #80530f;
+
+    --color-syn-keyword: #9b2f8f;
+    --color-syn-string: #2c6c3b;
+    --color-syn-number: #8a5100;
+    --color-syn-comment: #61605d;
+    --color-syn-title: #3457c6;
+    --color-syn-attr: #0c6982;
+
+    --font-mono: var(--font-inconsolata), ui-monospace, monospace;
+    --font-code: var(--font-cascadia-code), ui-monospace, monospace;
+    --font-serif: var(--font-literata), Georgia, serif;
+
+    --container-page: 70rem;
+    --container-measure: 45.375rem; /* 726px */
+}
+
+.dark {
+    --color-bg: #272727;
+    --color-raised: #242424;
+    --color-line: #3a3a48;
+    --color-fg: #e9e9e9;
+    --color-muted: #c9c9c9;
+    --color-faint: #9e9e9e;
+    --color-accent-text: #7b97ea;
+    --color-sketch: #d9d9d9;
+    --color-callout-muted: #c9c9c9;
+
+    --color-note: #4169e1;
+    --color-note-text: #7b97ea;
+    --color-tip-text: #62c08c;
+    --color-warning: #e0a526;
+    --color-warning-text: #e8b64a;
+
+    --color-syn-keyword: #d59bf0;
+    --color-syn-string: #a5d49a;
+    --color-syn-number: #e8b778;
+    --color-syn-comment: #939393;
+    --color-syn-title: #7b97ea;
+    --color-syn-attr: #7fc8d9;
+}
+
+/* Full-width bands (header, main) on pages with the permanent track: inset
+   their content by the classic scrollbar's width (--scrollbar-width, set
+   before paint by src/lib/pre-paint.ts), so it lines up with the track-less
+   home. Capped by the free space beside the 70rem page container, so
+   full-width content on narrow windows isn't pushed off-centre. 0 on the
+   home, with overlay scrollbars, and without JavaScript */
+html:not(:has([data-page="home"])) .scrollbar-offset {
+    padding-inline-start: min(
+        var(--scrollbar-width, 0px),
+        max(0px, calc(100% - var(--container-page)))
     );
-
-    --font-headings: var(--font-cascadia-code);
-    --font-content: var(--font-inconsolata);
 }
 
-.prose {
-    font-family: var(--font-literata);
+/* Header "lp" mark: the accent (royal blue in dark, the accent text colour
+   on stone, which holds up better on thin strokes) */
+.logo-mark {
+    color: var(--color-accent-text);
 }
 
-/* Keep chrome inside articles (dates, tags, covers) in the site font,
-   except elements opting back in via .follow-body-font */
-.prose
-    :where(.not-prose, .not-prose *):not(
-        :where(.follow-body-font, .follow-body-font *)
-    ) {
-    font-family: var(--font-inconsolata);
+.dark .logo-mark {
+    color: var(--color-accent);
 }
 
-.prose .follow-body-font,
-.prose .follow-body-font * {
-    font-family: var(--font-literata);
+/* Topic tabs that outgrow their row scroll sideways; the thin scrollbar
+   (in the code blocks' muted greys) only appears when they do */
+.tab-scroller {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(
+            in oklab,
+            var(--color-faint) 55%,
+            var(--color-bg)
+        )
+        transparent;
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
     *,
     ::after,
     ::before,
     ::backdrop,
     ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
+        border-color: var(--color-line);
     }
 
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
+    :root {
+        color-scheme: light;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    :root.dark {
         color-scheme: dark;
+    }
+
+    html {
+        background: var(--color-bg);
+        color: var(--color-fg);
+        font-family: var(--font-mono);
+        font-size: 100%;
+        font-variant-ligatures: none;
+        text-rendering: optimizeLegibility;
+        scroll-padding-top: 4.5rem;
+        /* Reserve the classic scrollbar track on every page but the home
+           (disabled when there is nothing to scroll), so nothing shifts
+           between short and long pages or when filtering. Overlay-scrollbar
+           platforms (macOS default, phones) are unaffected; the track
+           follows color-scheme */
+        overflow-y: scroll;
+    }
+
+    /* The one-screen home shows no track; it still scrolls normally when
+       it doesn't fit (short screens) */
+    html:has([data-page="home"]) {
+        overflow-y: auto;
+    }
+
+    body {
+        touch-action: manipulation;
+    }
+
+    ::selection {
+        background: color-mix(in oklab, var(--color-accent) 30%, transparent);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 3px;
+        border-radius: 2px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        text-wrap: balance;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
+}
+
+/* ---------- prose (Literata) ---------- */
+
+.prose {
+    --tw-prose-body: var(--color-fg);
+    --tw-prose-headings: var(--color-fg);
+    --tw-prose-lead: var(--color-muted);
+    --tw-prose-links: var(--color-accent-text);
+    --tw-prose-bold: var(--color-fg);
+    --tw-prose-counters: var(--color-faint);
+    --tw-prose-bullets: var(--color-faint);
+    --tw-prose-hr: var(--color-line);
+    --tw-prose-quotes: var(--color-fg);
+    --tw-prose-quote-borders: var(--color-accent);
+    --tw-prose-captions: var(--color-muted);
+    --tw-prose-code: var(--color-fg);
+    --tw-prose-pre-code: var(--color-fg);
+    --tw-prose-pre-bg: var(--color-raised);
+    --tw-prose-th-borders: var(--color-line);
+    --tw-prose-td-borders: var(--color-line);
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    max-width: var(--container-measure);
+}
+
+@media (min-width: 48rem) {
+    .prose {
+        font-size: 1.125rem;
+    }
+}
+
+.prose :where(h2, h3, h4):not(:where(.not-prose *)) {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    scroll-margin-top: 1rem;
+}
+
+/* h2: a hairline across the measure with a short royal-blue segment at its
+   start, like the accent edge on the editor tabs. 1.375rem on phones (26px
+   mono wraps into 3+ lines at 360px), 1.625rem from sm; Inconsolata's real
+   800 (variable 200-900); space below in em so it follows the size */
+.prose :where(h2):not(:where(.not-prose *)) {
+    font-size: 1.375rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-top: 2.2em;
+    margin-bottom: 0.77em;
+    padding-top: 0.75em;
+    background:
+        linear-gradient(var(--color-accent), var(--color-accent)) left top /
+            1.75rem 2px no-repeat,
+        linear-gradient(var(--color-line), var(--color-line)) left top / 100%
+            1px no-repeat;
+}
+
+/* h3 steps down from h2: 1.125rem on phones, 1.25rem from sm, weight 700 */
+.prose :where(h3):not(:where(.not-prose *)) {
+    font-size: 1.125rem;
+    line-height: 1.4;
+    margin-top: 1.9em;
+    font-weight: 700;
+    margin-bottom: 0.8em;
+}
+
+@media (min-width: 40rem) {
+    .prose :where(h2):not(:where(.not-prose *)) {
+        font-size: 1.625rem;
+    }
+
+    .prose :where(h3):not(:where(.not-prose *)) {
+        font-size: 1.25rem;
+    }
+}
+
+.prose :where(a):not(:where(.not-prose *)) {
+    text-decoration: underline;
+    text-decoration-color: color-mix(
+        in oklab,
+        var(--color-accent-text) 40%,
+        transparent
+    );
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+    font-weight: inherit;
+    transition: text-decoration-color 120ms ease;
+}
+
+.prose :where(a):not(:where(.not-prose *)):hover {
+    text-decoration-color: var(--color-accent-text);
+}
+
+.prose :where(blockquote):not(:where(.not-prose *)) {
+    font-style: italic;
+    font-weight: 400;
+    border-left-width: 2px;
+    padding-left: 1.25em;
+}
+
+.prose :where(blockquote p):not(:where(.not-prose *))::before,
+.prose :where(blockquote p):not(:where(.not-prose *))::after {
+    content: none;
+}
+
+/* Inline code: editor font, quiet chip */
+.prose :where(code):not(:where(pre *, .not-prose *)) {
+    font-family: var(--font-code);
+    font-size: 0.84em;
+    font-weight: 400;
+    background: var(--color-raised);
+    border: 1px solid var(--color-line);
+    border-radius: 3px;
+    padding: 0.1em 0.35em;
+}
+
+.prose :where(code):not(:where(pre *, .not-prose *))::before,
+.prose :where(code):not(:where(pre *, .not-prose *))::after {
+    content: none;
+}
+
+/* ---------- callouts ---------- */
+
+/* Tinted box (default): type colour at 11% with a 1px border at 28% */
+.callout {
+    --callout: var(--color-note);
+    --callout-text: var(--color-note-text);
+    --callout-body: var(--color-callout-muted);
+    background: color-mix(in oklab, var(--callout) 11%, transparent);
+    border: 1px solid color-mix(in oklab, var(--callout) 28%, transparent);
+    border-radius: 6px;
+    padding: 0.875rem 1.25rem;
+}
+
+.callout[data-type="tip"] {
+    --callout: var(--color-tip);
+    --callout-text: var(--color-tip-text);
+}
+
+.callout[data-type="warning"] {
+    --callout: var(--color-warning);
+    --callout-text: var(--color-warning-text);
+    --callout-body: var(--color-fg);
+}
+
+.callout-body {
+    color: var(--callout-body);
+}
+
+.callout-label {
+    color: var(--callout-text);
+    text-transform: lowercase;
+}
+
+/* ---------- code blocks ---------- */
+
+/* .code-block (mdx-components) is the frame; its language strip stays
+   fixed and full width while only the <pre> inside scrolls sideways */
+.prose .code-block {
+    font-family: var(--font-code);
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    background: var(--color-raised);
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    margin: 1.75em 0;
+    overflow: hidden;
+}
+
+/* A quiet language tab, like an editor's file header */
+.prose .code-block-lang {
+    padding: 0.35rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    color: var(--color-faint);
+    border-bottom: 1px solid var(--color-line);
+}
+
+.prose .code-block pre {
+    font: inherit;
+    color: var(--color-fg);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 1rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* Thin, in the block's own muted greys */
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(
+            in oklab,
+            var(--color-faint) 55%,
+            var(--color-raised)
+        )
+        transparent;
+}
+
+/* Safari */
+.prose .code-block pre::-webkit-scrollbar {
+    height: 6px;
+}
+.prose .code-block pre::-webkit-scrollbar-track {
+    background: transparent;
+}
+.prose .code-block pre::-webkit-scrollbar-thumb {
+    background: color-mix(
+        in oklab,
+        var(--color-faint) 55%,
+        var(--color-raised)
+    );
+    border-radius: 3px;
+}
+
+/* max-content + padding on both sides: the scroll area ends one padding
+   past the longest line */
+.prose .code-block pre code {
+    display: block;
+    padding: 0 1.25rem;
+    background: transparent;
+    font-family: inherit;
+    width: max-content;
+    min-width: 100%;
+}
+
+/* Code breaks out of the 726px measure by 20px each side (766px); on
+   tablets it runs full-bleed, edge to edge; on phones it sits on the text
+   edges like every other block, with a tighter inner padding */
+@media (min-width: 48rem) {
+    .prose .code-block {
+        margin-inline: -1.25rem;
+    }
+}
+
+@media (min-width: 40rem) and (max-width: 47.999rem) {
+    .prose .code-block {
+        margin-inline: -1.5rem;
+        border-radius: 0;
+        border-inline-width: 0;
+    }
+
+    /* Keep the code and its language label on the text's left edge */
+    .prose .code-block pre code,
+    .prose .code-block-lang {
+        padding-inline: 1.5rem;
+    }
+}
+
+@media (max-width: 39.999rem) {
+    .prose .code-block pre code,
+    .prose .code-block-lang {
+        padding-inline: 0.75rem;
+    }
+}
+
+.hljs-keyword,
+.hljs-built_in,
+.hljs-literal,
+.hljs-meta .hljs-keyword,
+.hljs-selector-tag {
+    color: var(--color-syn-keyword);
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
+    color: var(--color-syn-string);
+}
+.hljs-number,
+.hljs-symbol,
+.hljs-variable.language_ {
+    color: var(--color-syn-number);
+}
+.hljs-comment,
+.hljs-quote,
+.hljs-meta {
+    color: var(--color-syn-comment);
+    font-style: italic;
+}
+.hljs-title,
+.hljs-title.function_,
+.hljs-title.class_,
+.hljs-section {
+    color: var(--color-syn-title);
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-params,
+.hljs-type,
+.hljs-property {
+    color: var(--color-syn-attr);
+}
+.hljs-deletion {
+    color: var(--color-syn-number);
+}
+
+/* ---------- home drawing ---------- */
+
+/* Strokes in a muted ink (faint text eased toward the page), so the drawing
+   sits in the page rather than on it (the lit screen keeps its blue) */
+.portrait-tone {
+    color: color-mix(in oklab, var(--color-faint) 85%, var(--color-bg));
+}
+
+/* Soft edges, long and gradual: the cropped desk fades out below the
+   laptop's base (which sits at 74% of the height), the desk's left end
+   dissolves where it slides under the text column and is fully opaque by
+   the laptop's lid (19% of the width), and the right edge softens */
+.portrait-fade {
+    -webkit-mask-image:
+        linear-gradient(to bottom, #000 76%, transparent 100%),
+        linear-gradient(to right, transparent 0%, transparent 2%, #000 18.5%),
+        linear-gradient(to left, transparent 0%, #000 13%);
+    mask-image:
+        linear-gradient(to bottom, #000 76%, transparent 100%),
+        linear-gradient(to right, transparent 0%, transparent 2%, #000 18.5%),
+        linear-gradient(to left, transparent 0%, #000 13%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+/* Final state is the plain filled drawing; the animation strokes each
+   outline in, then swaps the stroke for the fill. The lit screen settles
+   at 50% in both modes. */
+.portrait .portrait-screen {
+    opacity: 0.38;
+}
+
+/* Lit screen: royal blue, slightly lighter at the top of the lid, no
+   highlight */
+.portrait-lit-top {
+    stop-color: color-mix(in oklab, var(--color-accent) 80%, white);
+}
+.portrait-lit-bottom {
+    stop-color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .portrait > path {
+        stroke: currentColor;
+        stroke-width: 1.25;
+        vector-effect: non-scaling-stroke;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        fill-opacity: 0;
+        animation:
+            portrait-draw 1500ms cubic-bezier(0.45, 0, 0.25, 1) forwards,
+            portrait-fill 500ms ease-out forwards;
+        animation-delay: calc(var(--i) * 40ms), calc(1400ms + var(--i) * 24ms);
+    }
+
+    .portrait .portrait-screen {
+        opacity: 0;
+        animation: portrait-screen 800ms ease-out 2400ms forwards;
+    }
+
+    .fade-in {
+        animation: fade 240ms ease-out both;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html:has([data-article-body]) {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Text-only home: phones, portrait tablets and narrow windows below the
+   two-column scene (56rem), and short viewports (landscape phones). No
+   drawing; the text sits between two flexible spacers, the lower one 1.25x
+   the upper, so it is centred slightly above the middle. When the text is
+   taller than the screen the spacers collapse to zero: it starts right under
+   the nav and the page scrolls */
+@media (max-width: 55.999rem), (max-height: 30rem) {
+    .home-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .home-grid::before,
+    .home-grid::after {
+        content: "";
+        flex: 1 1 0;
+    }
+
+    .home-grid::after {
+        flex-grow: 1.25;
+    }
+
+    .home-drawing {
+        display: none;
+    }
+}
+
+@keyframes portrait-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes portrait-fill {
+    to {
+        fill-opacity: 1;
+        stroke-opacity: 0;
+    }
+}
+
+@keyframes portrait-screen {
+    to {
+        opacity: 0.38;
     }
 }
 
 @keyframes fade {
-    0% {
+    from {
         opacity: 0;
     }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes scale-y {
-    0% {
-        transform: scaleY(0);
-    }
-    100% {
-        transform: scaleY(1);
-    }
-}
-
-@keyframes logo-in {
-    0% {
-        opacity: 0;
-        transform: translateX(-100%) rotateZ(0deg);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0) rotateZ(-15deg);
-    }
-}
-@keyframes about-h1 {
-    0% {
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-@keyframes about-p {
-    0% {
-        opacity: 0;
-    }
-    100% {
+    to {
         opacity: 1;
     }
 }
@@ -126,5 +615,15 @@
     to {
         height: 0;
         opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

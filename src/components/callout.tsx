@@ -1,22 +1,31 @@
-import { cn } from "@/lib/cn";
 import React from "react";
 
+const calloutLabels = {
+    note: "Note",
+    tip: "Tip",
+    warning: "Warning",
+};
+
+type CalloutType = keyof typeof calloutLabels;
+
+// Tinted box: the type colour at 11% with a 1px border at 28% (see
+// .callout in globals.css)
 export function Callout({
-    type,
+    type = "note",
     children,
-}: React.PropsWithChildren<{ type: "note" }>) {
+}: React.PropsWithChildren<{ type?: CalloutType }>) {
     return (
-        <div
-            className={cn("not-prose flex flex-col rounded-sm p-3", {
-                "border-2 border-[#4169E1] bg-[#4169E1]/40": type === "note",
-            })}
+        <aside
+            aria-label={calloutLabels[type]}
+            data-type={type}
+            className="callout not-prose my-8"
         >
-            <span className="font-headings mb-0 font-bold text-white">
-                NOTE
-            </span>
-            <div className="font-content text-base text-white/90">
+            <p className="callout-label font-serif text-[0.9375rem] leading-6 italic">
+                {calloutLabels[type]}
+            </p>
+            <div className="callout-body mt-1 font-serif text-[1.0625rem] leading-7">
                 {children}
             </div>
-        </div>
+        </aside>
     );
 }
