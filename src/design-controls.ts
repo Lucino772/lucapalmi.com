@@ -128,6 +128,20 @@ export const designControls: DesignControl[] = [
     },
     {
         type: "choice",
+        key: "light-surfaces",
+        label: "Light surfaces",
+        group: "Colour",
+        attribute: "data-light-surfaces",
+        options: [
+            { value: "stone", label: "Stone" },
+            { value: "putty", label: "Putty" },
+            { value: "paper", label: "Paper" },
+            { value: "current", label: "Current (neutral)" },
+        ],
+        default: "stone",
+    },
+    {
+        type: "choice",
         key: "heading-font",
         label: "Heading font",
         group: "Article headings",

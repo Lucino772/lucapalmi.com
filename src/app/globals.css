@@ -3,39 +3,42 @@
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 
-/* Surfaces: the live lucapalmi.com's neutral, untinted greys. The site is
-   dark only; the light mode is a derived neutral counterpart. Light values
-   in @theme, dark under .dark. Raised is darker than the page in dark, as on
-   the live site; hairlines are a lighter step of its #292936 border. */
+/* Surfaces: dark is the live lucapalmi.com's neutral, untinted greys
+   (under .dark). Raised is darker than the page in dark, as on the live
+   site; hairlines are a lighter step of its #292936 border. Light mode
+   defaults to "stone", a warm grey paper; the design panel's "Light
+   surfaces" swaps it for current / paper / putty (light only, below). Text
+   greys take a hint of the surface's warmth and are darkened just enough
+   to stay >= 4.5:1 on bg and raised (callout-muted >= 7:1). */
 @theme {
-    --color-bg: #f4f4f4;
-    --color-raised: #ebebeb;
-    --color-line: #d6d6d6;
-    --color-fg: #1f1f1f;
-    --color-muted: #555555;
-    --color-faint: #636363;
+    --color-bg: #e8e5de;
+    --color-raised: #dfdbd2;
+    --color-line: #cbc6bb;
+    --color-fg: #201f1c;
+    --color-muted: #565552;
+    --color-faint: #61605d;
     /* Royal blue: fills, rules, focus. Text uses accent-text for AA */
     --color-accent: #4169e1;
-    --color-accent-text: #3558c7;
+    --color-accent-text: #3457c6;
     /* Pen strokes in the fallback sketch thumbnails */
-    --color-sketch: #1f1f1f;
+    --color-sketch: #201f1c;
     /* Muted callout body (note, tip): >= 7:1 on the type tints */
-    --color-callout-muted: #494949;
+    --color-callout-muted: #42413e;
 
     /* Callout types: fill (tint, border, bar) and label text */
     --color-note: #4169e1;
-    --color-note-text: #3558c7;
+    --color-note-text: #3255c4;
     --color-tip: #3fa36b;
     --color-tip-text: #256b46;
     --color-warning: #b7791f;
     --color-warning-text: #80530f;
 
     --color-syn-keyword: #9b2f8f;
-    --color-syn-string: #2f6f3e;
+    --color-syn-string: #2c6c3b;
     --color-syn-number: #8a5100;
-    --color-syn-comment: #666666;
-    --color-syn-title: #3558c7;
-    --color-syn-attr: #0e6b84;
+    --color-syn-comment: #61605d;
+    --color-syn-title: #3457c6;
+    --color-syn-attr: #0c6982;
 
     --font-mono: var(--font-inconsolata), ui-monospace, monospace;
     --font-code: var(--font-cascadia-code), ui-monospace, monospace;
@@ -70,6 +73,71 @@
     --color-syn-comment: #939393;
     --color-syn-title: #7b97ea;
     --color-syn-attr: #7fc8d9;
+}
+
+/* Design panel "Light surfaces" (light mode only; stone is the default
+   above). Each option carries its own derived text tokens. */
+html[data-light-surfaces="current"]:not(.dark) {
+    --color-bg: #f4f4f4;
+    --color-raised: #ebebeb;
+    --color-line: #d6d6d6;
+    --color-fg: #1f1f1f;
+    --color-muted: #555555;
+    --color-faint: #636363;
+    --color-accent-text: #3558c7;
+    --color-sketch: #1f1f1f;
+    --color-callout-muted: #494949;
+    --color-note-text: #3558c7;
+    --color-tip-text: #256b46;
+    --color-warning-text: #80530f;
+    --color-syn-keyword: #9b2f8f;
+    --color-syn-string: #2f6f3e;
+    --color-syn-number: #8a5100;
+    --color-syn-comment: #666666;
+    --color-syn-title: #3558c7;
+    --color-syn-attr: #0e6b84;
+}
+
+html[data-light-surfaces="paper"]:not(.dark) {
+    --color-bg: #efede7;
+    --color-raised: #e7e4dc;
+    --color-line: #d6d2c8;
+    --color-fg: #201f1d;
+    --color-muted: #565553;
+    --color-faint: #646360;
+    --color-accent-text: #3558c7;
+    --color-sketch: #201f1d;
+    --color-callout-muted: #464543;
+    --color-note-text: #3558c7;
+    --color-tip-text: #256b46;
+    --color-warning-text: #80530f;
+    --color-syn-keyword: #9b2f8f;
+    --color-syn-string: #2f6f3e;
+    --color-syn-number: #8a5100;
+    --color-syn-comment: #666562;
+    --color-syn-title: #3558c7;
+    --color-syn-attr: #0e6b84;
+}
+
+html[data-light-surfaces="putty"]:not(.dark) {
+    --color-bg: #e8e7e0;
+    --color-raised: #dfded6;
+    --color-line: #cbcac1;
+    --color-fg: #1f1f1d;
+    --color-muted: #565552;
+    --color-faint: #62615e;
+    --color-accent-text: #3558c7;
+    --color-sketch: #1f1f1d;
+    --color-callout-muted: #43423f;
+    --color-note-text: #3356c5;
+    --color-tip-text: #256b46;
+    --color-warning-text: #80530f;
+    --color-syn-keyword: #9b2f8f;
+    --color-syn-string: #2e6e3d;
+    --color-syn-number: #8a5100;
+    --color-syn-comment: #62615e;
+    --color-syn-title: #3558c7;
+    --color-syn-attr: #0d6a83;
 }
 
 /* Horizontal scroll rows (mobile topic tabs): the fade is the affordance */

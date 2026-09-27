@@ -2,6 +2,9 @@ import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // Dev only: lets a phone on the LAN load the dev server
+    allowedDevOrigins: ["192.168.0.130"],
+
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,
