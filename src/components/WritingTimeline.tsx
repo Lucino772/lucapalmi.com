@@ -204,12 +204,12 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
 
 function TimelineEntry({ entry }: { entry: LogEntry }) {
     return (
-        <li className="group relative pl-6 md:pl-8">
+        <li className="group relative pl-6 [--entry-gap:calc(var(--writing-entry-gap,16px)*0.75)] sm:[--entry-gap:var(--writing-entry-gap,16px)] md:pl-8">
             <span
                 aria-hidden
-                className="border-faint bg-bg group-hover:border-accent absolute top-[calc(var(--writing-entry-gap,16px)+0.9rem)] left-0 size-2 rounded-full border transition-colors duration-150 md:top-[calc(var(--writing-entry-gap,16px)+1.15rem)]"
+                className="border-faint bg-bg group-hover:border-accent absolute top-[calc(var(--entry-gap)+0.5rem)] left-0 size-2 rounded-full border transition-colors duration-150 sm:top-[calc(var(--entry-gap)+0.9rem)] md:top-[calc(var(--entry-gap)+1.15rem)]"
             />
-            <div className="group-hover:bg-raised -mx-3 grid grid-cols-[minmax(0,1fr)] items-start gap-x-4 rounded-[6px] px-3 py-[var(--writing-entry-gap,16px)] transition-colors duration-150 sm:grid-cols-[calc(var(--writing-thumb-width,176px)/2)_minmax(0,1fr)] md:grid-cols-[var(--writing-thumb-width,176px)_minmax(0,1fr)] md:gap-x-6">
+            <div className="group-hover:bg-raised -mx-3 grid grid-cols-[minmax(0,1fr)] items-start gap-x-4 rounded-[6px] px-3 py-[var(--entry-gap)] transition-colors duration-150 sm:grid-cols-[calc(var(--writing-thumb-width,176px)/2)_minmax(0,1fr)] md:grid-cols-[var(--writing-thumb-width,176px)_minmax(0,1fr)] md:gap-x-6">
                 {/* No thumbnails on phones: titles get the full width */}
                 <Thumb
                     entry={entry}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { MenuIcon, XIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
@@ -21,9 +21,15 @@ export default function NavBar() {
     // Close the mobile menu whenever the route changes
     const open = menu.open && menu.pathname === pathname;
     const setOpen = (next: boolean) => setMenu({ open: next, pathname });
+    const menuButton = useRef<HTMLButtonElement>(null);
+    // Escape and the scrim hand focus back to the menu button
+    const closeMenu = (restoreFocus: boolean) => {
+        setOpen(false);
+        if (restoreFocus) menuButton.current?.focus();
+    };
 
     return (
-        <header className="border-line bg-bg sticky top-0 z-40 w-full border-b">
+        <header className="border-line bg-bg scrollbar-offset sticky top-0 z-40 w-full border-b">
             <div className="max-w-page mx-auto flex h-14 w-full items-center justify-between px-5 md:px-6">
                 <Link
                     href="/"
@@ -76,7 +82,7 @@ export default function NavBar() {
                             title="GitHub"
                             className={iconLink}
                         >
-                            <GitHubIcon className="size-4" />
+                            <GitHubIcon className="size-[18px]" />
                         </a>
                         <a
                             href={about.links.linkedin}
@@ -86,13 +92,14 @@ export default function NavBar() {
                             title="LinkedIn"
                             className={iconLink}
                         >
-                            <LinkedInIcon className="size-3.5" />
+                            <LinkedInIcon className="size-[16px]" />
                         </a>
                         <ThemeToggle />
                     </div>
                 </nav>
 
                 <button
+                    ref={menuButton}
                     type="button"
                     className="text-fg hover:text-accent-text -mr-2 inline-flex size-11 cursor-pointer items-center justify-center rounded-[4px] md:hidden"
                     aria-expanded={open}
@@ -107,7 +114,7 @@ export default function NavBar() {
                     )}
                 </button>
             </div>
-            <MobileNav open={open} close={() => setOpen(false)} />
+            <MobileNav open={open} close={closeMenu} />
         </header>
     );
 }

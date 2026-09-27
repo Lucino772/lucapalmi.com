@@ -142,7 +142,10 @@ export default async function RootLayout({
                     Skip to content
                 </a>
                 <NavBar />
-                <main id="content" className="flex w-full flex-1 flex-col">
+                <main
+                    id="content"
+                    className="scrollbar-offset flex w-full flex-1 flex-col"
+                >
                     {children}
                 </main>
                 <ThemeColorSync />

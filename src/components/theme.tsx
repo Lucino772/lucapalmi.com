@@ -58,13 +58,14 @@ export function ThemeToggle({ className }: { className?: string }) {
             aria-label={label}
             title={label}
         >
-            {/* The Lamplight wall switch, same geometry; lever lit royal
-                blue when up (light), outline colour when down (dark) */}
+            {/* The Lamplight wall switch, same geometry and 24px size as
+                V6 (smaller, the lever shrinks to a stray dot); lever lit
+                royal blue when up (light), outline colour when down (dark) */}
             <svg
                 aria-hidden
                 viewBox="0 0 20 28"
                 fill="none"
-                className="block h-5 w-auto"
+                className="block h-6 w-auto"
             >
                 <rect
                     x="1"

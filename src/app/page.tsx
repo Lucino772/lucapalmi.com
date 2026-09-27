@@ -42,7 +42,7 @@ export default async function Index() {
                             <span className="font-semibold">{about.name}</span>
                             <span className="text-muted">, {about.role}</span>
                         </h1>
-                        <p className="mt-2 max-w-[29ch] text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance md:mt-3 md:text-[clamp(1.375rem,3.8svh,var(--home-headline-size,34px))] md:leading-[1.15]">
+                        <p className="mt-2 max-w-[29ch] text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance max-sm:text-[calc(clamp(1.125rem,2.9svh,1.4rem)*var(--home-phone-headline,100)/100)] md:mt-3 md:text-[clamp(1.375rem,3.8svh,var(--home-headline-size,34px))] md:leading-[1.15]">
                             {about.headline}
                         </p>
                         <div className="mt-3 text-[0.8125rem] leading-6 md:mt-[min(1.75rem,3svh)] md:text-[0.9375rem] md:leading-7">
@@ -133,10 +133,21 @@ function Entry({
     detail?: { href: string; text: string; external?: boolean } | false;
 }) {
     return (
-        <li className="border-line grid grid-cols-[minmax(0,1fr)] items-baseline gap-x-6 border-b py-2 sm:grid-cols-[8.5rem_minmax(0,1fr)] md:py-[min(1rem,1.6svh)]">
+        <li
+            // Phones: the two links split the row into interlocking hit
+            // areas (see .ls-folder / .ls-detail), sized from the name and
+            // label lengths in Inconsolata's 0.5em advance
+            style={
+                {
+                    "--ls-name": `${name.length * 0.5625}rem`,
+                    "--ls-label": `${(label.length + 1) * 0.40625}rem`,
+                } as React.CSSProperties
+            }
+            className="border-line relative grid grid-cols-[minmax(0,1fr)] items-baseline gap-x-6 border-b py-2 sm:grid-cols-[8.5rem_minmax(0,1fr)] md:py-[min(1rem,1.6svh)]"
+        >
             <Link
                 href={href}
-                className={`${quietLink} justify-self-start text-[1.125rem] leading-7 font-semibold md:text-[1.375rem]`}
+                className={`${quietLink} ${detail ? "ls-folder" : ""} justify-self-start text-[1.125rem] leading-7 font-semibold md:text-[1.375rem]`}
             >
                 {name}
             </Link>
@@ -148,14 +159,14 @@ function Entry({
                             href={detail.href}
                             target="_blank"
                             rel="noreferrer"
-                            className={`text-fg/90 ${quietLink}`}
+                            className={`ls-detail text-fg/90 ${quietLink}`}
                         >
                             {detail.text}
                         </a>
                     ) : (
                         <Link
                             href={detail.href}
-                            className={`text-fg/90 ${quietLink}`}
+                            className={`ls-detail text-fg/90 ${quietLink}`}
                         >
                             {detail.text}
                         </Link>

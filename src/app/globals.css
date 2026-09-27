@@ -77,6 +77,20 @@
     --color-syn-attr: #7fc8d9;
 }
 
+/* Full-width bands (header, main): inset their content by the classic
+   scrollbar's width (100vw includes it, 100% doesn't), so mx-auto content
+   sits at the same x on short and long pages while borders and
+   backgrounds still run to the scrollbar or the window edge. Capped by the
+   free space beside the 70rem page container, so full-width content on
+   narrow windows isn't pushed off-centre. 0 with overlay scrollbars
+   (phones) and while the menu locks scrolling. */
+.scrollbar-offset {
+    padding-inline-start: min(
+        calc(100vw - 100%),
+        max(0px, calc(100% - var(--container-page)))
+    );
+}
+
 /* Horizontal scroll rows (mobile topic tabs): the fade is the affordance */
 .no-scrollbar {
     scrollbar-width: none;
@@ -551,6 +565,43 @@ html[data-portrait-animation="off"] .portrait .portrait-screen {
 
     .home-drawing {
         display: none;
+    }
+}
+
+/* Home `ls` rows on phones: the folder name and the detail link sit on two
+   tight lines, too close for stacked 44px targets. Each link instead gets
+   an invisible L-shaped hit area over the whole 64px row: the folder takes
+   the columns left of the detail link plus the top line up to the end of
+   its name; the detail link takes the rest. They meet without overlapping.
+   --ls-name / --ls-label are set per row (page.tsx). */
+@media (max-width: 39.999rem) {
+    .ls-folder::after,
+    .ls-detail::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+    }
+
+    .ls-folder::after {
+        clip-path: polygon(
+            0 0,
+            calc(var(--ls-name) + 0.25rem) 0,
+            calc(var(--ls-name) + 0.25rem) 2.25rem,
+            var(--ls-label) 2.25rem,
+            var(--ls-label) 100%,
+            0 100%
+        );
+    }
+
+    .ls-detail::after {
+        clip-path: polygon(
+            calc(var(--ls-name) + 0.25rem) 0,
+            100% 0,
+            100% 100%,
+            var(--ls-label) 100%,
+            var(--ls-label) 2.25rem,
+            calc(var(--ls-name) + 0.25rem) 2.25rem
+        );
     }
 }
 

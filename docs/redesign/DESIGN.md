@@ -143,7 +143,8 @@ bottom border only after scroll-safe (always present, 1 px).
 
 **Theme toggle.** The Lamplight variant's wall switch, copied with the same
 geometry (20×28 plate with a 3.5 radius, inner slot, rounded lever), drawn
-at 20px tall next to the 16px GitHub/LinkedIn icons. In light mode the lever
+at 24px tall (V6's size; at 20px the lever shrinks to a stray dot) next to
+the filled GitHub (18px) and LinkedIn (16px) marks, all on one centre line. In light mode the lever
 is up and lit in royal blue `#4169E1`; in dark it slides down and takes the
 outline colour. The nav icon buttons (GitHub, LinkedIn, the switch) sit bare:
 no box at rest or on hover, hover is a colour change (`muted` → `fg`), and
@@ -151,7 +152,28 @@ the focus ring appears on keyboard focus only (`:focus-visible`). The lever
 position rides on the `.dark` class, set before paint, so nothing flashes.
 
 **Mobile nav.** Menu button (aria-expanded) opens a panel under the header:
-path-style links, socials, theme toggle. Escape and route change close it.
+path-style links, GitHub and LinkedIn as icons (the filled marks, 18px
+GitHub, 16px LinkedIn, 44px hit areas, accessible names, new tab), theme
+toggle. A scrim dims the
+page below the header (black at 25% light, 55% dark; 150ms fade, none with
+reduced motion). A tap on the scrim or Escape closes the menu and returns
+focus to the menu button; route changes close it too. While open the page
+doesn't scroll (`overflow: hidden` on `html`). The desktop nav uses the
+same icons at the same sizes.
+
+**Scrollbar compensation.** The header and `main` carry `.scrollbar-offset`:
+`padding-inline-start: min(100vw - 100%, max(0, 100% - 70rem))`. With a
+classic scrollbar the centred content keeps the same x on short and long
+pages, while the header border runs to the window edge or the scrollbar.
+The offset is capped by the free space beside the page container, so
+narrow windows with full-width content aren't pushed off-centre. It
+resolves to 0 with overlay scrollbars and during the menu's scroll lock.
+
+**Home `ls` rows on phones.** The folder name and the detail link sit on two
+tight lines, too close for stacked 44px targets. Each row (64px) is split
+into two interlocking L-shaped hit areas (`clip-path` on a pseudo-element),
+so both links get the full row height without overlapping and without any
+visual change.
 
 **Home: a timeless calling card.** One job: a newcomer sees who Luca is,
 then gets pointed to one post or one project. No lists or cards, no
@@ -320,8 +342,9 @@ and no script, renders exactly the defaults.
 | Article headings | H3 size                        | `--h3-size`                                                          | 14–28px                    | 20.7px            |
 | Writing list     | Thumbnail width                | `--writing-thumb-width` (half from 640px, none below)                | 96–280px                   | 176px             |
 | Writing list     | Title size                     | `--writing-title-size` (mobile ≤16px)                                | 14–26px                    | 17px              |
-| Writing list     | Space between entries          | `--writing-entry-gap` (entry padding)                                | 0–64px                     | 16px              |
+| Writing list     | Space between entries          | `--writing-entry-gap` (entry padding; ×0.75 on phones)               | 0–64px                     | 16px              |
 | Home             | Headline size                  | `--home-headline-size` (caps the svh clamp from 768px)               | 28–56px                    | 40px              |
+| Home             | Phone headline size (%)        | `--home-phone-headline`, scales the phone clamp (below 640px)        | 100–150                    | 100               |
 | Home             | Drawing size (%)               | `--home-drawing-size` (scales the drawing height)                    | 50–110                     | 100               |
 | Home             | Drawing animation              | `data-portrait-animation`                                            | draw in / static           | draw in           |
 | Glow             | Laptop screen glow (%)         | `--screen-glow`, scales the lit screen opacity (0.7 light, 0.9 dark) | 0–300                      | 100               |
