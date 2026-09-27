@@ -507,16 +507,17 @@ html[data-callout-style="bar"] .callout {
 }
 
 /* Soft edges: the cropped desk fades out just under its top surface, the
-   desk's left end dissolves before it reaches the text (fully transparent
-   there), and the right edge softens where the drawing runs past the column */
+   desk's left end dissolves where it slides under the text column (fully
+   transparent there) while the laptop stays whole, and the right edge
+   softens */
 .portrait-fade {
     -webkit-mask-image:
         linear-gradient(to bottom, #000 82%, transparent 100%),
-        linear-gradient(to right, transparent 0%, transparent 18%, #000 44%),
+        linear-gradient(to right, transparent 0%, transparent 6%, #000 16%),
         linear-gradient(to left, transparent 0%, #000 7%);
     mask-image:
         linear-gradient(to bottom, #000 82%, transparent 100%),
-        linear-gradient(to right, transparent 0%, transparent 18%, #000 44%),
+        linear-gradient(to right, transparent 0%, transparent 6%, #000 16%),
         linear-gradient(to left, transparent 0%, #000 7%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
@@ -555,14 +556,6 @@ html[data-drawing-fade="off"] .portrait-fade {
 .portrait-lit-edge {
     stop-color: var(--color-accent);
     stop-opacity: 0.3;
-}
-.portrait-spill-core {
-    stop-color: var(--color-accent);
-    stop-opacity: 0.32;
-}
-.portrait-spill-edge {
-    stop-color: var(--color-accent);
-    stop-opacity: 0;
 }
 .dark .portrait-lit-core {
     stop-color: color-mix(in oklab, var(--color-accent) 60%, white);

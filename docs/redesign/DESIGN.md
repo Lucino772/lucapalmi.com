@@ -217,24 +217,26 @@ latest article (or `about.pinnedArticle`), and the flagship project
 its repo.
 
 Exactly one screen (`min-height: calc(100svh - header)`, content vertically
-centred with symmetric padding). Text and drawing read as one scene: the
-drawing is cropped at the desk (`viewBox` height 1680 of 2675, so the chair
-legs and the lower desk edges never show) and fades out just under the desk
-line; it is `min(62svh, 42rem)` tall (the figure about a third larger than
-the previous version), anchored right (~3vw past the column from 1280px),
-and slides 14rem under the text column. There a left mask keeps the desk's
-far end fully transparent before it reaches any text, so the desk line
-reaches toward the text and dissolves. The `~ $ ls` listing is capped at
-36rem so its rules stop short of the drawing. Strokes stay crisp in a
-muted ink (faint text eased 15% toward the page). The laptop screen is a
-light source rather than a flat fill: a radial gradient from a lighter royal
-blue at the centre to a translucent edge, plus a small contained spill onto
-the hands and keyboard (no wide glow in V1). It switches on exactly as
-before, fading in 2.4s after the draw-in; reduced motion shows it lit. On
-phones a small cropped drawing sits top right (20svh). Design panel
-(Home): drawing size (%, 100 = this size), drawing animation, "Drawing
-fade" (`data-drawing-fade="off"`); "Laptop screen glow (%)" scales only the
-lit screen.
+centred with symmetric padding). Everything lives inside the nav's
+container, so the composition is stable from 1024px to 2560px: a 31rem text
+column (the headline capped at 29ch, so it always wraps into four lines) and
+a drawing column whose right edge is the container's right edge, the same
+as the nav icons. Text and drawing read as one scene: the drawing is cropped
+at the desk (`viewBox` height 1680 of 2675, so the chair legs and lower desk
+edges never show) and fades out just under the desk line. Its width is
+`min(62svh × 2000/1680, column)`, so it follows the fold height but never
+grows into the text column. It slides 4rem under the text column's edge,
+where the left mask is fully transparent (0–6%) and ramps to opaque by 16%,
+before the laptop, which always stays whole. So the desk line reaches toward
+the text and dissolves without touching it. Strokes stay crisp in a muted
+ink (faint text eased 15% toward the page). The laptop screen is the only
+light: a radial gradient from a lighter royal blue at the centre to a
+translucent edge (no spill on the hands, no wide glow). It switches on
+exactly as before, fading in 2.4s after the draw-in; reduced motion shows
+it lit. On phones a small cropped drawing sits top right (20svh). Design
+panel (Home): drawing size (%, 100 = this size), drawing animation,
+"Drawing fade" (`data-drawing-fade="off"`); "Laptop screen glow (%)" scales
+only the lit screen.
 
 **Page titles (Writing, Projects).** No visible title: the nav's active tab
 already says where you are. Each page keeps a visually hidden `<h1>`

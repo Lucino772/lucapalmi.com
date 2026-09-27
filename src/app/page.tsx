@@ -31,8 +31,8 @@ export default async function Index() {
                 aria-label="About"
                 className="flex min-h-[calc(100svh-3.5rem-1px)] flex-col py-4 md:py-[clamp(1.5rem,4svh,3rem)]"
             >
-                <div className="grid flex-1 content-center items-center gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,1fr)_auto]">
-                    <div className="fade-in relative z-10 max-w-[46rem] min-w-0">
+                <div className="grid flex-1 content-center items-center gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,31rem)_minmax(0,1fr)]">
+                    <div className="fade-in relative z-10 min-w-0">
                         <p className="text-faint text-[0.875rem] md:text-[0.9375rem]">
                             <span aria-hidden>~ $ </span>whoami
                         </p>
@@ -40,7 +40,7 @@ export default async function Index() {
                             <span className="font-semibold">{about.name}</span>
                             <span className="text-muted">, {about.role}</span>
                         </h1>
-                        <p className="mt-2 text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance md:mt-3 md:text-[clamp(1.375rem,3.8svh,var(--home-headline-size,34px))] md:leading-[1.15]">
+                        <p className="mt-2 max-w-[29ch] text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance md:mt-3 md:text-[clamp(1.375rem,3.8svh,var(--home-headline-size,34px))] md:leading-[1.15]">
                             {about.headline}
                         </p>
                         <div className="mt-3 text-[0.8125rem] leading-6 md:mt-[min(1.75rem,3svh)] md:text-[0.9375rem] md:leading-7">
@@ -70,7 +70,7 @@ export default async function Index() {
                             >
                                 ~ $ ls
                             </p>
-                            <ul className="border-line mt-1.5 max-w-[36rem] border-t">
+                            <ul className="border-line mt-1.5 border-t">
                                 <Entry
                                     href="/articles"
                                     name="writing/"
@@ -106,10 +106,10 @@ export default async function Index() {
                     {/* One scene: cropped at the desk, anchored right, its
                         desk line sliding under the text column where the mask
                         has already faded it out */}
-                    <div className="portrait-tone relative z-0 order-first justify-self-end lg:order-none lg:-ml-[14rem] xl:-mr-[3vw]">
+                    <div className="portrait-tone relative z-0 order-first justify-self-end lg:order-none lg:-ml-16 lg:flex lg:justify-end lg:justify-self-stretch">
                         <Portrait
                             cropHeight={1680}
-                            className="portrait-fade block h-[calc(20svh*var(--home-drawing-size,100)/100)] w-auto lg:h-[calc(min(62svh,42rem)*var(--home-drawing-size,100)/100)]"
+                            className="portrait-fade block h-[calc(20svh*var(--home-drawing-size,100)/100)] w-auto lg:h-auto lg:w-[min(calc(min(62svh,42rem)*1.1905*var(--home-drawing-size,100)/100),100%)]"
                         />
                     </div>
                 </div>

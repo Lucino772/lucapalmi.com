@@ -35,22 +35,9 @@ export default function Portrait({
                     <stop offset="55%" className="portrait-lit-mid" />
                     <stop offset="100%" className="portrait-lit-edge" />
                 </radialGradient>
-                {/* A small spill onto the hands and keyboard only */}
-                <radialGradient id="portrait-screen-spill">
-                    <stop offset="0%" className="portrait-spill-core" />
-                    <stop offset="100%" className="portrait-spill-edge" />
-                </radialGradient>
             </defs>
             {/* Laptop screen, lights up once the drawing is done */}
             <g className="portrait-screen">
-                <ellipse
-                    cx="830"
-                    cy="1180"
-                    rx="250"
-                    ry="95"
-                    transform="rotate(-10 830 1180)"
-                    fill="url(#portrait-screen-spill)"
-                />
                 <polygon
                     points="377,877 607,900 760,1193 627,1227"
                     fill="url(#portrait-screen-lit)"
