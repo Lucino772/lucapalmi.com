@@ -2,7 +2,7 @@ import React from "react";
 import { calloutLabels, type CalloutType } from "./callout-types";
 
 // Tinted box: the type colour at 11% with a 1px border at 28% (see
-// .callout in globals.css); the design panel can switch to "bar + tint"
+// .callout in globals.css)
 export function Callout({
     type = "note",
     children,

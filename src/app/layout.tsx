@@ -5,9 +5,6 @@ import ThemeColorSync from "@/components/ThemeColorSync";
 import { themeScript } from "@/components/theme";
 import ScrollbarWidthSync from "@/components/scrollbar-width";
 import { scrollbarWidthScript } from "@/lib/scrollbar-width";
-import { DesignPanel } from "@/components/design-panel/DesignPanel";
-import { designPanelScript } from "@/components/design-panel/controls";
-import { designControls } from "@/design-controls";
 
 import localFont from "next/font/local";
 import { cn } from "@/lib/cn";
@@ -128,13 +125,6 @@ export default async function RootLayout({
                 <script
                     dangerouslySetInnerHTML={{ __html: scrollbarWidthScript }}
                 />
-                {designControls.length > 0 && (
-                    <script
-                        dangerouslySetInnerHTML={{
-                            __html: designPanelScript(designControls),
-                        }}
-                    />
-                )}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
@@ -156,9 +146,6 @@ export default async function RootLayout({
                 </main>
                 <ThemeColorSync />
                 <ScrollbarWidthSync />
-                {designControls.length > 0 && (
-                    <DesignPanel controls={designControls} />
-                )}
             </body>
         </html>
     );

@@ -627,11 +627,3 @@ html:not(:has([data-page="home"])) .scrollbar-offset {
         transition-duration: 0.01ms !important;
     }
 }
-
-/* Development-only design panel, in the editor palette so it reads as tooling */
-.design-panel-surface {
-    background-color: var(--color-raised);
-    color: var(--color-fg);
-    border-color: var(--color-line);
-    font-family: var(--font-mono);
-}
