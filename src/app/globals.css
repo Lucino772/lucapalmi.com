@@ -91,15 +91,6 @@
     );
 }
 
-/* Horizontal scroll rows (mobile topic tabs): the fade is the affordance */
-.no-scrollbar {
-    scrollbar-width: none;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
 @layer base {
     *,
     ::after,
@@ -477,7 +468,7 @@
    outline in, then swaps the stroke for the fill. The lit screen settles
    at 50% in both modes. */
 .portrait .portrait-screen {
-    opacity: 0.5;
+    opacity: 0.38;
 }
 
 /* Lit screen: royal blue, slightly lighter at the top of the lid, no
@@ -490,7 +481,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .portrait path {
+    .portrait > path {
         stroke: currentColor;
         stroke-width: 1.25;
         vector-effect: non-scaling-stroke;
@@ -560,7 +551,7 @@
 
 @keyframes portrait-screen {
     to {
-        opacity: 0.5;
+        opacity: 0.38;
     }
 }
 

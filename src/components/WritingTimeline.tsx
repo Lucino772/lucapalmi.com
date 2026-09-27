@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { cn } from "@/lib/cn";
 import { topicLabel, topics, type TopicId } from "@/content/topics";
 import type { LogEntry } from "@/lib/writing";
@@ -54,15 +54,45 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
         ...available,
     ];
 
-    // Tabs and timeline share one centred 54rem column (all 8 tabs fit on one
-    // row)
+    // The timeline sits in a centred 54rem column; the topic filter above it
+    // uses the full page container
     const column = "mx-auto w-full max-w-[54rem]";
+
+    // From sm up the tabs show when they fit on one line; otherwise (and on
+    // phones) the native select does. A ResizeObserver compares the tab
+    // row's natural width with the space it has, so it keeps working as
+    // topics are added. Until it reports, the server's render stands: tabs
+    // from sm up, clipped rather than wrapped.
+    const slotRef = useRef<HTMLDivElement>(null);
+    const rowRef = useRef<HTMLDivElement>(null);
+    const [tabsOverflow, setTabsOverflow] = useState(false);
+    useEffect(() => {
+        const slot = slotRef.current;
+        const row = rowRef.current;
+        if (!slot || !row) return;
+        const observer = new ResizeObserver(() => {
+            setTabsOverflow(
+                row.getBoundingClientRect().right >
+                    slot.getBoundingClientRect().right + 0.5,
+            );
+        });
+        observer.observe(slot);
+        observer.observe(row);
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <div className="flex flex-col gap-10">
-            <div className="mx-auto w-full max-w-[54rem]">
+            <div className="w-full">
                 <h1 className="sr-only">Writing</h1>
-                {/* Phones: one native select, the OS picker does the rest */}
-                <div className="flex items-center gap-3 sm:hidden">
+                {/* Phones, or tabs that don't fit: one native select, the OS
+                    picker does the rest */}
+                <div
+                    className={cn(
+                        "flex items-center gap-3 sm:max-w-[22rem]",
+                        !tabsOverflow && "sm:hidden",
+                    )}
+                >
                     <label
                         htmlFor="topic-filter"
                         className="text-faint text-[0.875rem]"
@@ -108,13 +138,22 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                         </svg>
                     </div>
                 </div>
-                {/* From sm up: the topic tabs start the page, on the content's
-                    left edge */}
-                <div className="-mx-5 hidden items-start pl-5 sm:flex md:mx-0 md:pl-0">
+                {/* From sm up: the topic tabs on one line, the first tab's text
+                    on the content's left edge. When they don't fit, the slot
+                    collapses (still laid out, so it can be measured) */}
+                <div
+                    ref={slotRef}
+                    aria-hidden={tabsOverflow || undefined}
+                    className={cn(
+                        "hidden overflow-hidden sm:block",
+                        tabsOverflow ? "invisible h-0" : "min-h-11",
+                    )}
+                >
                     <div
+                        ref={rowRef}
                         role="group"
                         aria-label="Filter by topic"
-                        className="no-scrollbar -ml-3 flex min-w-0 flex-1 gap-1 overflow-x-auto overflow-y-hidden [mask-image:linear-gradient(to_right,black_calc(100%-2.5rem),transparent)] pr-8 md:flex-wrap md:overflow-visible md:[mask-image:none] md:pr-0"
+                        className="-ml-3 flex w-max gap-1"
                     >
                         {filters.map((filter) => {
                             const active = filter.id === selected;

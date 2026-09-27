@@ -3,6 +3,12 @@ import { portraitPaths } from "./portrait-paths";
 
 const HEIGHT = 2675;
 
+// The left hand's outer contour: subpath 56 of the traced drawing's main
+// compound path. Filled, it is the hand's silhouette (fingers included),
+// used to keep the lit screen behind the hand.
+const mainPath = portraitPaths[0];
+const handOutline = mainPath.d.split(/(?=M)/)[56];
+
 // Inline so the drawing inherits currentColor and can draw itself in.
 // `cropHeight` cuts the drawing at that height (drawing units), e.g. at the
 // desk, so the chair legs and lower desk never show.
@@ -37,6 +43,23 @@ export default function Portrait({
                     <stop offset="0%" className="portrait-lit-top" />
                     <stop offset="100%" className="portrait-lit-bottom" />
                 </linearGradient>
+                {/* Everything but the hand, so the screen sits behind it */}
+                <mask
+                    id="portrait-screen-mask"
+                    maskUnits="userSpaceOnUse"
+                    x="0"
+                    y="0"
+                    width="2000"
+                    height={HEIGHT}
+                >
+                    <rect width="2000" height={HEIGHT} fill="white" />
+                    <path
+                        d={handOutline}
+                        transform={mainPath.transform}
+                        fill="black"
+                        fillRule="nonzero"
+                    />
+                </mask>
             </defs>
             {/* Laptop screen, fitted to the bezel's inner edge (its lower
                 right corner sits under the hand); lights up once the drawing
@@ -45,6 +68,7 @@ export default function Portrait({
                 <polygon
                     points="388,886 601,916 774,1186 622,1229"
                     fill="url(#portrait-screen-lit)"
+                    mask="url(#portrait-screen-mask)"
                 />
             </g>
             {portraitPaths.map((path, i) => (

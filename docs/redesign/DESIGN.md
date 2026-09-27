@@ -117,7 +117,8 @@ follows the phone size), a hairline across the measure and a short 2px
 royal-blue segment at its start (the editor-tab accent edge). h3 steps down:
 1.25rem from 640px, 1.125rem on phones (still above the 1.0625rem phone
 body), weight 700, 0.8em below, without a rule. Both keep
-`scroll-margin-top` for the section rail.
+`scroll-margin-top` for the section rail. (Luca moved the two case studies'
+`###` sections to `##`, so no article uses h3 today.)
 
 **Units.** Type and layout sizes are rem; spacing that should follow its own
 element's size is em (heading margins). Raw px is kept only for hairlines,
@@ -220,11 +221,12 @@ fades are long and gradual: the bottom from 76% (the laptop base sits at
 74%) and the right edge over 13%. So the desk line reaches toward the text
 and dissolves without touching it. Strokes stay crisp in a muted
 ink (faint text eased 15% toward the page). The laptop screen is the only
-light: a quiet royal-blue wash at 50% opacity in both modes, a linear
+light: a quiet royal-blue wash at 38% opacity in both modes, a linear
 gradient running along the screen's length, a touch lighter at the top of
 the lid, with no highlight, spill or wide glow. The fill polygon is fitted
-to the bezel's inner edge (its lower right corner sits under the typing
-hand). It switches on 2.4s after the draw-in; reduced motion shows it lit. Tablets (640–1023px) show a small cropped drawing top right (20svh).
+to the bezel's inner edge and masked by the left hand's silhouette (the
+traced drawing's own outline, subpath 56 of its main path, filled), so the
+screen sits behind the fingers instead of tinting them. It switches on 2.4s after the draw-in; reduced motion shows it lit. Tablets (640–1023px) show a small cropped drawing top right (20svh).
 _Phones (below 640px):_ the text block is centred between the nav and the
 bottom of the screen (`100dvh`, so browser chrome can't break it), a touch
 above the true middle: two flexible spacers, the lower 1.25× the upper.
@@ -242,12 +244,12 @@ sentences live only in `metadata.description`. The other projects are
 introduced by a faint code comment, `// other projects` (13px Inconsolata),
 with a visually hidden `<h2>` "Other projects".
 
-**Writing (`/articles`).** The topic tabs and the timeline share one centred
-54rem (864px) column, the smallest width that keeps all eight tabs on one
-row from 1024px up; the first tab's text sits on the column's left edge, in
-line with the timeline spine and year markers. From 640 to 767px the tabs
-keep the full content width and scroll horizontally. Below 640px they are
-replaced by one native `<select>` (the OS picker), introduced by a faint mono
+**Writing (`/articles`).** The timeline sits in a centred 54rem column; the
+topic filter above it uses the full page container (70rem), the first tab's
+text on the content's left edge. The tabs stay on one line; when they don't
+fit (below about 936px with today's eight topics) and on phones, they are
+replaced by one native `<select>` (the OS picker, capped at 22rem from
+640px), introduced by a faint mono
 `topic` label: "All (6)", "Architecture (2)"…, 44px tall, 16px text (no iOS
 zoom), one hairline border, accent focus ring. A timeline in the language of
 `git log --graph`.
@@ -278,8 +280,10 @@ page stays statically prerendered and shows everything without JS. A
 visually hidden `aria-live` line announces "2 of 6 filed under
 Architecture"; there is no visible count or sort caption. Empty years are
 hidden; an unknown topic gets an empty state with a "Show all writing"
-button. Between 640 and 767px the tabs scroll horizontally, fading out at the
-right edge to show there is more; phones use the select.
+button. A ResizeObserver compares the tab row's natural width with its slot,
+so the switch follows new topics. The server renders the tabs from 640px
+(clipped, never wrapped) until the observer reports; the tab slot and the
+select are both 44px tall, so the swap causes no layout shift.
 
 **Article layout (one template for everything).** One centred column, nothing beside
 it. The measure is 726px (45.375rem, shared across variants; Literata 18px,
@@ -356,7 +360,7 @@ control to `src/design-controls.ts` brings it back.
 
 - Home drawing: each path's outline is stroked in with `stroke-dashoffset`
   (top to bottom, staggered, ~2.6 s total), fill fades in behind it, then the laptop screen
-  fades up to its 50% royal-blue wash. Runs once, never blocks reading.
+  fades up to its 38% royal-blue wash. Runs once, never blocks reading.
 - Hero text: 240 ms opacity fade only.
 - Hover: row background to `raised`, title to `accent` (120 ms colour only).
 - Collapsible: 200 ms height/opacity.
