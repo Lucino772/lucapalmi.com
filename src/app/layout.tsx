@@ -124,11 +124,13 @@ export default async function RootLayout({
         >
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: designPanelScript(designControls),
-                    }}
-                />
+                {designControls.length > 0 && (
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: designPanelScript(designControls),
+                        }}
+                    />
+                )}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
@@ -149,7 +151,9 @@ export default async function RootLayout({
                     {children}
                 </main>
                 <ThemeColorSync />
-                <DesignPanel controls={designControls} />
+                {designControls.length > 0 && (
+                    <DesignPanel controls={designControls} />
+                )}
             </body>
         </html>
     );

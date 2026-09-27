@@ -186,8 +186,8 @@ unchanged.
 **Home: a timeless calling card.** One job: a newcomer sees who Luca is,
 then gets pointed to one post or one project. No lists or cards, no
 focus-area line and no hobbies (Luca will write about those instead).
-Content: `~ $ whoami`, name and role, the headline (34px at most, sized with
-`svh`; the design panel's headline-size default is 34; on phones a fixed
+Content: `~ $ whoami`, name and role, the headline (at most 2.125rem, sized
+with `svh`; on phones a fixed
 `clamp(1.6875rem, 4.35svh, 2.1rem)`, 33.6px at 838px tall, five lines of
 about 22 characters), then "I tend to" as
 a faint label with three `-` lines at 15px (13px on phones), the
@@ -211,25 +211,27 @@ column (the headline capped at 29ch, so it always wraps into four lines) and
 a drawing column whose right edge is the container's right edge, the same
 as the nav icons. Text and drawing read as one scene: the drawing is cropped
 at the desk (`viewBox` height 1680 of 2675, so the chair legs and lower desk
-edges never show) and fades out just under the desk line. Its width is
+edges never show) and fades out below the laptop's base. Its width is
 `min(62svh × 2000/1680, column)`, so it follows the fold height but never
 grows into the text column. It slides 4rem under the text column's edge,
-where the left mask is fully transparent (0–6%) and ramps to opaque by 16%,
-before the laptop, which always stays whole. So the desk line reaches toward
-the text and dissolves without touching it. Strokes stay crisp in a muted
+where the left mask is fully transparent (0–2%) and ramps slowly to opaque
+by 18.5%, just before the laptop's lid (19%), which always stays whole. The
+fades are long and gradual: the bottom from 76% (the laptop base sits at
+74%) and the right edge over 13%. So the desk line reaches toward the text
+and dissolves without touching it. Strokes stay crisp in a muted
 ink (faint text eased 15% toward the page). The laptop screen is the only
-light: a radial gradient from a lighter royal blue at the centre to a
-translucent edge (no spill on the hands, no wide glow). It switches on
-exactly as before, fading in 2.4s after the draw-in; reduced motion shows
-it lit. Tablets (640–1023px) show a small cropped drawing top right (20svh).
+light: a quiet royal-blue wash at 50% opacity in both modes, a linear
+gradient running along the screen's length, a touch lighter at the top of
+the lid, with no highlight, spill or wide glow. The fill polygon is fitted
+to the bezel's inner edge (its lower right corner sits under the typing
+hand). It switches on 2.4s after the draw-in; reduced motion shows it lit. Tablets (640–1023px) show a small cropped drawing top right (20svh).
 _Phones (below 640px):_ the text block is centred between the nav and the
 bottom of the screen (`100dvh`, so browser chrome can't break it), a touch
 above the true middle: two flexible spacers, the lower 1.25× the upper.
 When the text is taller than the screen the spacers collapse and it starts
 right under the nav and scrolls. Phones show no drawing (a faint background
 drawing was tried and rejected). The drawing's edges are always soft (the
-fade masks above). Design panel (Home): drawing size (%, 100 = this size),
-drawing animation; "Laptop screen glow (%)" scales only the lit screen.
+fade masks above).
 
 **Page titles (Writing, Projects).** No visible title: the nav's active tab
 already says where you are. Each page keeps a visually hidden `<h1>`
@@ -343,23 +345,18 @@ top".
 
 ## Design panel (development only)
 
-A "Design" button bottom-right opens the shared review panel (surfaces in
-the editor palette: `raised`, `line`, Inconsolata). Every control defaults to the current look, and CSS
-carries the defaults as `var()` fallbacks, so production, which has no panel
-and no script, renders exactly the defaults.
-
-| Group | Control                | Drives                                                               | Range            | Default  |
-| ----- | ---------------------- | -------------------------------------------------------------------- | ---------------- | -------- |
-| Home  | Headline size (rem)    | `--home-headline-size` (caps the svh clamp from 768px)               | 1.75–3.5rem      | 2.125rem |
-| Home  | Drawing size (%)       | `--home-drawing-size` (scales the drawing height)                    | 50–110           | 100      |
-| Home  | Drawing animation      | `data-portrait-animation`                                            | draw in / static | draw in  |
-| Glow  | Laptop screen glow (%) | `--screen-glow`, scales the lit screen opacity (0.7 light, 0.9 dark) | 0–300            | 100      |
+The shared review panel (a "Design" button bottom-right) drives CSS custom
+properties and data attributes, with defaults living in CSS. Every V1
+decision is now locked (palette, surfaces, headings, writing list, home
+headline and drawing size, draw-in, screen glow), so `designControls` is
+empty and the panel and its pre-paint script are not rendered. Adding a
+control to `src/design-controls.ts` brings it back.
 
 ## Motion
 
 - Home drawing: each path's outline is stroked in with `stroke-dashoffset`
   (top to bottom, staggered, ~2.6 s total), fill fades in behind it, then the laptop screen
-  fades up to a 14 % accent glow. Runs once, never blocks reading.
+  fades up to its 50% royal-blue wash. Runs once, never blocks reading.
 - Hero text: 240 ms opacity fade only.
 - Hover: row background to `raised`, title to `accent` (120 ms colour only).
 - Collapsible: 200 ms height/opacity.

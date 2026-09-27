@@ -24,22 +24,26 @@ export default function Portrait({
             className={cn("portrait", className)}
         >
             <defs>
-                {/* A lit screen: brighter towards the centre, translucent */}
-                <radialGradient
+                {/* A lit screen: a quiet royal-blue wash, a touch lighter at
+                    the top of the lid, running along the screen's length */}
+                <linearGradient
                     id="portrait-screen-lit"
-                    cx="0.55"
-                    cy="0.5"
-                    r="0.65"
+                    gradientUnits="userSpaceOnUse"
+                    x1="420"
+                    y1="880"
+                    x2="700"
+                    y2="1220"
                 >
-                    <stop offset="0%" className="portrait-lit-core" />
-                    <stop offset="55%" className="portrait-lit-mid" />
-                    <stop offset="100%" className="portrait-lit-edge" />
-                </radialGradient>
+                    <stop offset="0%" className="portrait-lit-top" />
+                    <stop offset="100%" className="portrait-lit-bottom" />
+                </linearGradient>
             </defs>
-            {/* Laptop screen, lights up once the drawing is done */}
+            {/* Laptop screen, fitted to the bezel's inner edge (its lower
+                right corner sits under the hand); lights up once the drawing
+                is done */}
             <g className="portrait-screen">
                 <polygon
-                    points="377,877 607,900 760,1193 627,1227"
+                    points="388,886 601,916 774,1186 622,1229"
                     fill="url(#portrait-screen-lit)"
                 />
             </g>

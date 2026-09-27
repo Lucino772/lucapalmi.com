@@ -456,53 +456,37 @@
     color: color-mix(in oklab, var(--color-faint) 85%, var(--color-bg));
 }
 
-/* Soft edges: the cropped desk fades out just under its top surface, the
-   desk's left end dissolves where it slides under the text column (fully
-   transparent there) while the laptop stays whole, and the right edge
-   softens */
+/* Soft edges, long and gradual: the cropped desk fades out below the
+   laptop's base (which sits at 74% of the height), the desk's left end
+   dissolves where it slides under the text column and is fully opaque by
+   the laptop's lid (19% of the width), and the right edge softens */
 .portrait-fade {
     -webkit-mask-image:
-        linear-gradient(to bottom, #000 82%, transparent 100%),
-        linear-gradient(to right, transparent 0%, transparent 6%, #000 16%),
-        linear-gradient(to left, transparent 0%, #000 7%);
+        linear-gradient(to bottom, #000 76%, transparent 100%),
+        linear-gradient(to right, transparent 0%, transparent 2%, #000 18.5%),
+        linear-gradient(to left, transparent 0%, #000 13%);
     mask-image:
-        linear-gradient(to bottom, #000 82%, transparent 100%),
-        linear-gradient(to right, transparent 0%, transparent 6%, #000 16%),
-        linear-gradient(to left, transparent 0%, #000 7%);
+        linear-gradient(to bottom, #000 76%, transparent 100%),
+        linear-gradient(to right, transparent 0%, transparent 2%, #000 18.5%),
+        linear-gradient(to left, transparent 0%, #000 13%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
 }
 
 /* Final state is the plain filled drawing; the animation strokes each
-   outline in, then swaps the stroke for the fill. */
-/* --screen-glow (design panel) scales the per-mode glow, 100 = default */
-.portrait {
-    --screen-opacity: calc(0.7 * var(--screen-glow, 100) / 100);
-}
-
-.dark .portrait {
-    --screen-opacity: calc(0.9 * var(--screen-glow, 100) / 100);
-}
-
+   outline in, then swaps the stroke for the fill. The lit screen settles
+   at 50% in both modes. */
 .portrait .portrait-screen {
-    opacity: var(--screen-opacity);
+    opacity: 0.5;
 }
 
-/* Lit screen: a lighter royal blue at the centre, translucent at the edges */
-.portrait-lit-core {
-    stop-color: color-mix(in oklab, var(--color-accent) 50%, white);
-    stop-opacity: 0.85;
+/* Lit screen: royal blue, slightly lighter at the top of the lid, no
+   highlight */
+.portrait-lit-top {
+    stop-color: color-mix(in oklab, var(--color-accent) 80%, white);
 }
-.portrait-lit-mid {
+.portrait-lit-bottom {
     stop-color: var(--color-accent);
-    stop-opacity: 0.55;
-}
-.portrait-lit-edge {
-    stop-color: var(--color-accent);
-    stop-opacity: 0.3;
-}
-.dark .portrait-lit-core {
-    stop-color: color-mix(in oklab, var(--color-accent) 60%, white);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -533,18 +517,6 @@
     html:has([data-article-body]) {
         scroll-behavior: smooth;
     }
-}
-
-/* Design panel: show the finished drawing without the draw-in */
-html[data-portrait-animation="off"] .portrait path,
-html[data-portrait-animation="off"] .portrait .portrait-screen {
-    animation: none;
-    stroke: none;
-    fill-opacity: 1;
-}
-
-html[data-portrait-animation="off"] .portrait .portrait-screen {
-    opacity: var(--screen-opacity);
 }
 
 /* Phones (below sm): no drawing. The text sits between two flexible
@@ -588,7 +560,7 @@ html[data-portrait-animation="off"] .portrait .portrait-screen {
 
 @keyframes portrait-screen {
     to {
-        opacity: var(--screen-opacity);
+        opacity: 0.5;
     }
 }
 

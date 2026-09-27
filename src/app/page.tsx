@@ -42,7 +42,7 @@ export default async function Index() {
                             <span className="font-semibold">{about.name}</span>
                             <span className="text-muted">, {about.role}</span>
                         </h1>
-                        <p className="mt-2 max-w-[29ch] text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance max-sm:text-[clamp(1.6875rem,4.35svh,2.1rem)] md:mt-3 md:text-[clamp(1.375rem,3.8svh,var(--home-headline-size,2.125rem))] md:leading-[1.15]">
+                        <p className="mt-2 max-w-[29ch] text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance max-sm:text-[clamp(1.6875rem,4.35svh,2.1rem)] md:mt-3 md:text-[clamp(1.375rem,3.8svh,2.125rem)] md:leading-[1.15]">
                             {about.headline}
                         </p>
                         <div className="mt-3 text-[0.8125rem] leading-6 md:mt-[min(1.75rem,3svh)] md:text-[0.9375rem] md:leading-7">
@@ -111,7 +111,7 @@ export default async function Index() {
                     <div className="home-drawing portrait-tone relative z-0 order-first justify-self-end lg:order-none lg:-ml-16 lg:flex lg:justify-end lg:justify-self-stretch">
                         <Portrait
                             cropHeight={1680}
-                            className="portrait-fade block h-[calc(20svh*var(--home-drawing-size,100)/100)] w-auto lg:h-auto lg:w-[min(calc(min(62svh,42rem)*1.1905*var(--home-drawing-size,100)/100),100%)]"
+                            className="portrait-fade block h-[20svh] w-auto lg:h-auto lg:w-[min(calc(min(62svh,42rem)*1.1905),100%)]"
                         />
                     </div>
                 </div>
