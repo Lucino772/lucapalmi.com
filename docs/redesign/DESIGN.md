@@ -158,9 +158,9 @@ content, not chrome.
 together they are the home link (44px tall). The mark is the original
 logo traced into one single-colour inline SVG (`LogoMark`, `aria-hidden`,
 since the link has the name), 1.375rem tall, vertically centred on the
-name, 0.625rem before it; it replaced the earlier blue bar. By default it's
-the accent: royal blue in dark and the accent text colour on stone, which
-holds up better on thin strokes. Favicons and app icons keep the original
+name, 0.625rem before it; it replaced the earlier blue bar. It's always
+the accent (chosen over the header's text colour): royal blue in dark and
+the accent text colour on stone, which holds up better on thin strokes. Favicons and app icons keep the original
 logo (`src/app/favicon.ico`, unchanged from main). Right: `writing`, `projects` as
 editor tabs (active tab gets a 2 px accent underline), GitHub and LinkedIn
 icons with accessible names, theme toggle. Sticky, translucent `bg`, hairline
@@ -409,11 +409,9 @@ The shared review panel (a "Design" button bottom-right) drives CSS custom
 properties and data attributes, with defaults living in CSS. Every earlier
 V1 decision is locked (palette, surfaces, headings, writing list, home
 headline and drawing size, draw-in, screen glow). The panel is only rendered
-when `src/design-controls.ts` has controls; it currently has one:
-
-| Group  | Control     | Drives             | Options                                | Default |
-| ------ | ----------- | ------------------ | -------------------------------------- | ------- |
-| Header | Logo colour | `data-logo-colour` | accent / text (the header text colour) | accent  |
+when `src/design-controls.ts` has controls; it is empty again, so neither
+the panel nor its pre-paint script renders. (The last control, "Logo
+colour", was locked to accent.)
 
 ## Motion
 

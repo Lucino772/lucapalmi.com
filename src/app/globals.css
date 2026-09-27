@@ -91,18 +91,13 @@ html:not(:has([data-page="home"])) .scrollbar-offset {
 }
 
 /* Header "lp" mark: the accent (royal blue in dark, the accent text colour
-   on stone, which holds up better on thin strokes). Design panel "Logo
-   colour: text" draws it in the header's text colour instead */
+   on stone, which holds up better on thin strokes) */
 .logo-mark {
     color: var(--color-accent-text);
 }
 
 .dark .logo-mark {
     color: var(--color-accent);
-}
-
-html[data-logo-colour="text"] .logo-mark {
-    color: var(--color-fg);
 }
 
 /* Topic tabs that outgrow their row scroll sideways; the thin scrollbar
