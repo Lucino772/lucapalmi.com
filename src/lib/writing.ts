@@ -14,7 +14,7 @@ export type LogEntry = {
     cover?: { src: string; width: number; height: number };
 };
 
-// Newest first, flattened to plain data so it can cross into client components
+// Newest first, flattened to the plain data the writing timeline and home use
 export async function getWritingLog(): Promise<LogEntry[]> {
     const articles = await getArticles();
     return toSorted(articles, (a) => a.metadata.createdAt, false).map(
