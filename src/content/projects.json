@@ -1,17 +1,6 @@
 {
     "featured": [
         {
-            "title": "orka",
-            "type": "infrastructure",
-            "status": "active",
-            "year": 2026,
-            "links": {
-                "github": "https://github.com/Lucino772/orka"
-            },
-            "description": "Run GPU workloads across your own infrastructure.",
-            "tags": ["TypeScript"]
-        },
-        {
             "title": "envelop",
             "type": "tool",
             "status": "early",
@@ -33,20 +22,21 @@
             },
             "description": "Build Qt applications in a reactive, declarative and composable way: describe the UI as a tree of components driven by reactive state.",
             "tags": ["Python", "Qt"]
-        },
-        {
-            "title": "stillhead",
-            "type": "package",
-            "status": "early",
-            "year": 2026,
-            "links": {
-                "github": "https://github.com/Lucino772/stillhead"
-            },
-            "description": "Per-module database migrations on Alembic: each module owns its namespace, its version table and its revision lineage.",
-            "tags": ["Python", "Alembic"]
         }
     ],
     "others": [
+        {
+            "title": "Miss A Brick",
+            "description": "Search LEGO sets and export their full parts list, using Rebrickable data.",
+            "year": 2022,
+            "url": "https://github.com/Lucino772/missabrick"
+        },
+        {
+            "title": "stillhead",
+            "description": "Per-module database migrations on Alembic: each module owns its namespace, its version table and its revision lineage.",
+            "year": 2026,
+            "url": "https://github.com/Lucino772/stillhead"
+        },
         {
             "title": "bex",
             "description": "Bootstraps a reproducible Python environment with uv, then hands off to your entrypoint.",
@@ -60,18 +50,6 @@
             "url": "https://github.com/Lucino772/stdlibx"
         },
         {
-            "title": "proxyctx",
-            "description": "Global context for Python applications, inspired by Flask and built on contextvars.",
-            "year": 2023,
-            "url": "https://github.com/Lucino772/proxyctx"
-        },
-        {
-            "title": "liblora",
-            "description": "A portable C driver for LoRa radio modules, running on Arduino, PlatformIO and Linux.",
-            "year": 2022,
-            "url": "https://github.com/Lucino772/liblora"
-        },
-        {
             "title": "PyMojang",
             "description": "A Python wrapper around the Mojang API and Mojang Authentication API.",
             "year": 2021,
@@ -79,23 +57,10 @@
             "url": "https://github.com/Lucino772/pymojang"
         },
         {
-            "title": "Miss A Brick",
-            "description": "Search LEGO sets and export their full parts list, using Rebrickable data.",
-            "year": 2022,
-            "url": "https://github.com/Lucino772/missabrick"
-        },
-        {
-            "title": "brikk",
-            "description": "A modular Python namespace package of lightweight, composable building blocks.",
-            "year": 2025,
-            "url": "https://github.com/Lucino772/brikk"
-        },
-        {
-            "title": "lucapalmi.com",
-            "description": "This website: a static Next.js site, rebuilt and redesigned since 2020.",
-            "year": 2020,
-            "article": "lucapalmi-com-website",
-            "url": "https://github.com/Lucino772/lucapalmi.com"
+            "title": "proxyctx",
+            "description": "Global context for Python applications, inspired by Flask and built on contextvars.",
+            "year": 2023,
+            "url": "https://github.com/Lucino772/proxyctx"
         }
     ]
 }
