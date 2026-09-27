@@ -72,8 +72,8 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
         if (!slot || !row) return;
         const observer = new ResizeObserver(() => {
             setTabsOverflow(
-                row.getBoundingClientRect().right >
-                    slot.getBoundingClientRect().right + 0.5,
+                row.getBoundingClientRect().width >
+                    slot.getBoundingClientRect().width + 0.5,
             );
         });
         observer.observe(slot);
@@ -89,7 +89,7 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                     picker does the rest */}
                 <div
                     className={cn(
-                        "flex items-center gap-3 sm:max-w-[22rem]",
+                        "flex items-center gap-3 sm:mx-auto sm:max-w-[22rem]",
                         !tabsOverflow && "sm:hidden",
                     )}
                 >
@@ -138,9 +138,9 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                         </svg>
                     </div>
                 </div>
-                {/* From sm up: the topic tabs on one line, the first tab's text
-                    on the content's left edge. When they don't fit, the slot
-                    collapses (still laid out, so it can be measured) */}
+                {/* From sm up: the topic tabs on one line, centred in the
+                    page. When they don't fit, the slot collapses (still laid
+                    out, so it can be measured) */}
                 <div
                     ref={slotRef}
                     aria-hidden={tabsOverflow || undefined}
@@ -153,7 +153,7 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                         ref={rowRef}
                         role="group"
                         aria-label="Filter by topic"
-                        className="-ml-3 flex w-max gap-1"
+                        className="mx-auto flex w-max gap-1"
                     >
                         {filters.map((filter) => {
                             const active = filter.id === selected;

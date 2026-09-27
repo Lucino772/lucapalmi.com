@@ -245,11 +245,12 @@ introduced by a faint code comment, `// other projects` (13px Inconsolata),
 with a visually hidden `<h2>` "Other projects".
 
 **Writing (`/articles`).** The timeline sits in a centred 54rem column; the
-topic filter above it uses the full page container (70rem), the first tab's
-text on the content's left edge. The tabs stay on one line; when they don't
-fit (below about 936px with today's eight topics) and on phones, they are
-replaced by one native `<select>` (the OS picker, capped at 22rem from
-640px), introduced by a faint mono
+topic filter above it is centred in the page on the same axis (the locked
+"filter bar centred" choice), with the full page container (70rem) as its
+room. The tabs stay on one line; when they don't fit (below about 948px
+with today's eight topics) and on phones, they are replaced by one native
+`<select>` (the OS picker, capped at 22rem and centred from 640px),
+introduced by a faint mono
 `topic` label: "All (6)", "Architecture (2)"…, 44px tall, 16px text (no iOS
 zoom), one hairline border, accent focus ring. A timeline in the language of
 `git log --graph`.
