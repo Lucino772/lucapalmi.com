@@ -246,7 +246,7 @@ function TimelineEntry({ entry }: { entry: LogEntry }) {
         <li className="group relative pl-6 [--entry-gap:0.75rem] sm:[--entry-gap:1rem] md:pl-8">
             <span
                 aria-hidden
-                className="border-faint bg-bg group-hover:border-accent absolute top-[calc(var(--entry-gap)+0.5rem)] left-0 size-2 rounded-full border transition-colors duration-150 sm:top-[calc(var(--entry-gap)+0.9rem)] md:top-[calc(var(--entry-gap)+1.15rem)]"
+                className="border-faint bg-bg group-hover:border-accent absolute top-[calc(var(--entry-gap)+0.5rem)] left-0 size-2 rounded-full border transition-colors duration-150"
             />
             <div className="group-hover:bg-raised -mx-3 grid grid-cols-[minmax(0,1fr)] items-start gap-x-4 rounded-[6px] px-3 py-[var(--entry-gap)] transition-colors duration-150 sm:grid-cols-[6.25rem_minmax(0,1fr)] md:grid-cols-[12.5rem_minmax(0,1fr)] md:gap-x-6">
                 {/* No thumbnails on phones: titles get the full width */}

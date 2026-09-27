@@ -256,7 +256,8 @@ zoom), one hairline border, accent focus ring. A timeline in the language of
 `git log --graph`.
 One hairline spine runs down the left; each year is a small filled accent
 square on the spine followed by the year, and each entry hangs off the
-spine by a hollow node that turns accent on hover. Every entry gets the same
+spine by a hollow node, centred on its date line at every width, that turns
+accent on hover. Every entry gets the same
 treatment: a 16:10 thumbnail (12.5rem from 768px, 6.25rem from 640px,
 none on phones, where the title takes the full width), then date and
 reading time, title, Literata italic subtitle (hidden below 640px) and
