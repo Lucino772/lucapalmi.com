@@ -5,7 +5,7 @@ import ProjectIcon from "./ProjectIcon";
 type Featured = Projects["featured"][number];
 
 const linkClass =
-    "text-accent-text underline decoration-current/40 underline-offset-[3px] hover:decoration-current";
+    "text-accent-text -my-3 inline-block py-3 underline decoration-current/40 underline-offset-[3px] hover:decoration-current sm:my-0 sm:py-0";
 
 // Each featured project is an editor pane: the tab holds the project folder
 // (icon, name, wip) with the year on the right, the body is the description,
@@ -56,7 +56,7 @@ export default function FeaturedProjects({
                             {project.description}
                         </p>
 
-                        <footer className="border-line bg-bg flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t px-4 py-2 text-[0.8125rem]">
+                        <footer className="border-line bg-bg flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t px-4 py-3 text-[0.8125rem] sm:py-2">
                             <span className="flex flex-wrap gap-x-3.5">
                                 <a
                                     href={project.links.github}

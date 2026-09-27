@@ -61,8 +61,56 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
         <div className="flex flex-col gap-10">
             <div className="mx-auto w-full max-w-[54rem]">
                 <h1 className="sr-only">Writing</h1>
-                {/* The topic tabs start the page, on the content's left edge */}
-                <div className="-mx-5 flex items-start pl-5 md:mx-0 md:pl-0">
+                {/* Phones: one native select, the OS picker does the rest */}
+                <div className="flex items-center gap-3 sm:hidden">
+                    <label
+                        htmlFor="topic-filter"
+                        className="text-faint text-[0.875rem]"
+                    >
+                        topic
+                    </label>
+                    <div className="relative min-w-0 flex-1">
+                        <select
+                            id="topic-filter"
+                            value={selected ?? ""}
+                            onChange={(event) =>
+                                selectTopic(event.target.value || null)
+                            }
+                            className="border-line bg-raised text-fg focus-visible:outline-accent h-11 w-full cursor-pointer appearance-none rounded-[4px] border pr-9 pl-3 text-base focus-visible:outline-2 focus-visible:outline-offset-2"
+                        >
+                            {filters.map((filter) => (
+                                <option
+                                    key={filter.id ?? "all"}
+                                    value={filter.id ?? ""}
+                                >
+                                    {filter.label} ({filter.count})
+                                </option>
+                            ))}
+                            {/* An unknown ?topic= still shows what is filtered */}
+                            {selected &&
+                                !filters.some((f) => f.id === selected) && (
+                                    <option value={selected}>
+                                        {label} (0)
+                                    </option>
+                                )}
+                        </select>
+                        <svg
+                            aria-hidden
+                            viewBox="0 0 12 12"
+                            className="text-faint pointer-events-none absolute top-1/2 right-3 size-3 -translate-y-1/2"
+                        >
+                            <path
+                                d="M2.5 4.5 6 8l3.5-3.5"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                            />
+                        </svg>
+                    </div>
+                </div>
+                {/* From sm up: the topic tabs start the page, on the content's
+                    left edge */}
+                <div className="-mx-5 hidden items-start pl-5 sm:flex md:mx-0 md:pl-0">
                     <div
                         role="group"
                         aria-label="Filter by topic"
@@ -161,8 +209,13 @@ function TimelineEntry({ entry }: { entry: LogEntry }) {
                 aria-hidden
                 className="border-faint bg-bg group-hover:border-accent absolute top-[calc(var(--writing-entry-gap,16px)+0.9rem)] left-0 size-2 rounded-full border transition-colors duration-150 md:top-[calc(var(--writing-entry-gap,16px)+1.15rem)]"
             />
-            <div className="group-hover:bg-raised -mx-3 grid grid-cols-[calc(var(--writing-thumb-width,176px)/2)_minmax(0,1fr)] items-start gap-x-4 rounded-[6px] px-3 py-[var(--writing-entry-gap,16px)] transition-colors duration-150 md:grid-cols-[var(--writing-thumb-width,176px)_minmax(0,1fr)] md:gap-x-6">
-                <Thumb entry={entry} sizes="(min-width: 768px) 176px, 88px" />
+            <div className="group-hover:bg-raised -mx-3 grid grid-cols-[minmax(0,1fr)] items-start gap-x-4 rounded-[6px] px-3 py-[var(--writing-entry-gap,16px)] transition-colors duration-150 sm:grid-cols-[calc(var(--writing-thumb-width,176px)/2)_minmax(0,1fr)] md:grid-cols-[var(--writing-thumb-width,176px)_minmax(0,1fr)] md:gap-x-6">
+                {/* No thumbnails on phones: titles get the full width */}
+                <Thumb
+                    entry={entry}
+                    sizes="(min-width: 768px) 176px, 88px"
+                    className="hidden sm:block"
+                />
                 <div className="min-w-0">
                     <p className="text-faint flex flex-wrap gap-x-[2ch] text-[0.8125rem] leading-6 tabular-nums">
                         <time dateTime={entry.date}>{entry.date}</time>

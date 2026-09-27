@@ -80,7 +80,7 @@ export default function MobileNav({ open, close }: Props) {
                             href={about.links.github}
                             target="_blank"
                             rel="noreferrer"
-                            className="hover:text-fg py-2"
+                            className="hover:text-fg py-3"
                         >
                             GitHub
                         </a>
@@ -88,12 +88,12 @@ export default function MobileNav({ open, close }: Props) {
                             href={about.links.linkedin}
                             target="_blank"
                             rel="noreferrer"
-                            className="hover:text-fg py-2"
+                            className="hover:text-fg py-3"
                         >
                             LinkedIn
                         </a>
                     </div>
-                    <ThemeToggle className="size-10" />
+                    <ThemeToggle className="-mr-2 size-11" />
                 </div>
             </nav>
         </div>

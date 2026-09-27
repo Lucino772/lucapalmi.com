@@ -176,8 +176,17 @@ ink (faint text eased 15% toward the page). The laptop screen is the only
 light: a radial gradient from a lighter royal blue at the centre to a
 translucent edge (no spill on the hands, no wide glow). It switches on
 exactly as before, fading in 2.4s after the draw-in; reduced motion shows
-it lit. On phones a small cropped drawing sits top right (20svh). Design
-panel (Home): drawing size (%, 100 = this size), drawing animation,
+it lit. Tablets (640–1023px) show a small cropped drawing top right (20svh).
+_Phones (below 640px):_ the text block is centred between the nav and the
+bottom of the screen (`100dvh`, so browser chrome can't break it), a touch
+above the true middle: two flexible spacers, the lower 1.25× the upper.
+When the text is taller than the screen the spacers collapse and it starts
+right under the nav and scrolls. By default there is no drawing. The panel's
+"Drawing on phones: background" puts the finished drawing (no draw-in, no
+lit screen, no pointer events) at 4–25% opacity in the lower spacer,
+anchored bottom-right. It never overlaps text, so text contrast is
+unchanged at any opacity. Faint text over strokes at 25% would drop to
+3.9:1. Design panel (Home): drawing size (%, 100 = this size), drawing animation,
 "Drawing fade" (`data-drawing-fade="off"`); "Laptop screen glow (%)" scales
 only the lit screen.
 
@@ -193,13 +202,17 @@ with a visually hidden `<h2>` "Other projects".
 **Writing (`/articles`).** The topic tabs and the timeline share one centred
 54rem (864px) column, the smallest width that keeps all eight tabs on one
 row from 1024px up; the first tab's text sits on the column's left edge, in
-line with the timeline spine and year markers. Below 768px the tabs keep the
-full content width and scroll horizontally. A timeline in the language of
+line with the timeline spine and year markers. From 640 to 767px the tabs
+keep the full content width and scroll horizontally. Below 640px they are
+replaced by one native `<select>` (the OS picker), introduced by a faint mono
+`topic` label: "All (6)", "Architecture (2)"…, 44px tall, 16px text (no iOS
+zoom), one hairline border, accent focus ring. A timeline in the language of
 `git log --graph`.
 One hairline spine runs down the left; each year is a small filled accent
 square on the spine followed by the year, and each entry hangs off the
 spine by a hollow node that turns accent on hover. Every entry gets the same
-treatment: a 16:10 thumbnail (176px desktop, 88px mobile), then date and
+treatment: a 16:10 thumbnail (176px desktop, 88px from 640px, none on
+phones, where the title takes the full width), then date and
 reading time, title, Literata italic subtitle (hidden below 640px) and
 topics. Covers use `next/image` with `sizes` of 176px/88px.
 
@@ -220,8 +233,8 @@ page stays statically prerendered and shows everything without JS. A
 visually hidden `aria-live` line announces "2 of 6 filed under
 Architecture"; there is no visible count or sort caption. Empty years are
 hidden; an unknown topic gets an empty state with a "Show all writing"
-button. On mobile the `~/writing` title stays put and the tabs scroll
-horizontally beside it, fading out at the right edge to show there is more.
+button. Between 640 and 767px the tabs scroll horizontally, fading out at the
+right edge to show there is more; phones use the select.
 
 **Article layout (one template for everything).** One centred column, nothing beside
 it. The measure is 726px (45.375rem, shared across variants; Literata 18px,
@@ -230,7 +243,7 @@ line set like a timeline entry (`2026-01-02  6 min read`), the 40px title, the
 Literata italic subtitle, and topics as accent links to `/articles?topic=`.
 Technology tags stay as quiet `#tag` text in the end matter. Prose is Literata on the same 726px measure. The cover breaks out symmetrically to 52rem, and code blocks
 break out 20px on each side from 768px up (766px); both stay centred. On
-phones prose uses the full content width (24px side padding, 342px at 390) and code blocks run full-bleed with their text on the prose edge. The article
+phones prose uses the full content width (24px side padding, 342px at 390). Code blocks run full-bleed on tablets (640–767px). On phones they sit on the text edges like callouts, with the same border and radius and 12px inner padding. A code block is a frame (`.code-block`, from the MDX `pre` override) holding the language strip and the `<pre>`. Only the `<pre>` scrolls sideways, so the strip and its divider stay fixed and full width. The code keeps its end padding when scrolled to the end, and the scrollbar is thin in the block's muted greys. The article
 ends with a hairline and `../writing` / `Back to top`. (The first version put
 the file info in a left gutter; it became an empty column on long articles, so
 it moved into the header.)
@@ -281,7 +294,7 @@ with a blue address bar. Decorative (`aria-hidden`).
 
 **No site footer.** GitHub and LinkedIn live in the nav (and the mobile
 menu), so there is no global footer or © line. Pages end with their own
-bottom padding (96px desktop, 48px mobile). Articles keep their own end
+bottom padding (96px, also on phones so the last line clears the dev badges). Articles keep their own end
 matter inside the article: a hairline, `#tags`, `../writing` and "Back to
 top".
 
@@ -297,13 +310,15 @@ and no script, renders exactly the defaults.
 | Article headings | H2 size / weight / space below | `--h2-size`, `--h2-weight`, `--h2-space-below`                       | 18–36px / 400–800 / 8–48px | 26px / 700 / 26px |
 | Article headings | Heading font                   | `data-heading-font`                                                  | own / sans (IBM Plex Sans) | own               |
 | Article headings | H3 size                        | `--h3-size`                                                          | 14–28px                    | 20.7px            |
-| Writing list     | Thumbnail width                | `--writing-thumb-width` (mobile half)                                | 96–280px                   | 176px             |
+| Writing list     | Thumbnail width                | `--writing-thumb-width` (half from 640px, none below)                | 96–280px                   | 176px             |
 | Writing list     | Title size                     | `--writing-title-size` (mobile ≤16px)                                | 14–26px                    | 17px              |
 | Writing list     | Space between entries          | `--writing-entry-gap` (entry padding)                                | 0–64px                     | 16px              |
 | Home             | Headline size                  | `--home-headline-size` (caps the svh clamp from 768px)               | 28–56px                    | 40px              |
 | Home             | Drawing size (%)               | `--home-drawing-size` (scales the drawing height)                    | 50–110                     | 100               |
 | Home             | Drawing animation              | `data-portrait-animation`                                            | draw in / static           | draw in           |
 | Home             | Drawing fade                   | `data-drawing-fade`                                                  | on / off                   | on                |
+| Home             | Drawing on phones              | `data-home-drawing-mobile` (below 640px)                             | hidden / background        | hidden            |
+| Home             | Phone background opacity       | `--home-drawing-bg-opacity`                                          | 0.04–0.25                  | 0.08              |
 | Glow             | Laptop screen glow (%)         | `--screen-glow`, scales the lit screen opacity (0.7 light, 0.9 dark) | 0–300                      | 100               |
 
 ## Motion

@@ -15,7 +15,7 @@ export default async function Projects() {
     const others = toSorted(projects.others, (p) => p.year, false);
 
     return (
-        <div className="max-w-page mx-auto w-full px-5 pt-8 pb-12 md:px-6 md:pt-12 md:pb-24">
+        <div className="max-w-page mx-auto w-full px-5 pt-8 pb-24 md:px-6 md:pt-12">
             <div className="flex flex-col gap-10 md:gap-14">
                 <section aria-labelledby="featured">
                     <h1 className="sr-only">Projects</h1>
@@ -45,7 +45,7 @@ export default async function Projects() {
                                     href={project.url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="text-fg hover:text-accent-text min-w-0 justify-self-start font-semibold underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:decoration-current"
+                                    className="text-fg hover:text-accent-text -my-2 min-w-0 justify-self-start py-2 font-semibold underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:decoration-current sm:my-0 sm:py-0"
                                 >
                                     {project.title}
                                 </a>
@@ -59,7 +59,7 @@ export default async function Projects() {
                                     {project.article && (
                                         <Link
                                             href={`/articles/${project.article}`}
-                                            className="text-accent-text underline decoration-current/40 underline-offset-4 hover:decoration-current"
+                                            className="text-accent-text -my-3 inline-block py-3 leading-5 underline decoration-current/40 underline-offset-4 hover:decoration-current sm:my-0 sm:inline sm:py-0"
                                         >
                                             write-up
                                             <span className="sr-only">

@@ -299,21 +299,68 @@ html[data-heading-font="sans"] .prose :where(h3):not(:where(.not-prose *)) {
 
 /* ---------- code blocks ---------- */
 
-.prose :where(pre):not(:where(.not-prose *)) {
-    position: relative;
+/* .code-block (mdx-components) is the frame; its language strip stays
+   fixed and full width while only the <pre> inside scrolls sideways */
+.prose .code-block {
     font-family: var(--font-code);
     font-size: 0.8125rem;
     line-height: 1.7;
     background: var(--color-raised);
     border: 1px solid var(--color-line);
     border-radius: 6px;
-    padding: 2.25rem 0 1rem;
     margin: 1.75em 0;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
-.prose :where(pre code):not(:where(.not-prose *)) {
+/* A quiet language tab, like an editor's file header */
+.prose .code-block-lang {
+    padding: 0.35rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    color: var(--color-faint);
+    border-bottom: 1px solid var(--color-line);
+}
+
+.prose .code-block pre {
+    font: inherit;
+    color: var(--color-fg);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 1rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* Thin, in the block's own muted greys */
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(
+            in oklab,
+            var(--color-faint) 55%,
+            var(--color-raised)
+        )
+        transparent;
+}
+
+/* Safari */
+.prose .code-block pre::-webkit-scrollbar {
+    height: 6px;
+}
+.prose .code-block pre::-webkit-scrollbar-track {
+    background: transparent;
+}
+.prose .code-block pre::-webkit-scrollbar-thumb {
+    background: color-mix(
+        in oklab,
+        var(--color-faint) 55%,
+        var(--color-raised)
+    );
+    border-radius: 3px;
+}
+
+/* max-content + padding on both sides: the scroll area ends one padding
+   past the longest line */
+.prose .code-block pre code {
     display: block;
     padding: 0 1.25rem;
     background: transparent;
@@ -323,66 +370,33 @@ html[data-heading-font="sans"] .prose :where(h3):not(:where(.not-prose *)) {
 }
 
 /* Code breaks out of the 726px measure by 20px each side (766px); on
-   phones it runs full-bleed, edge to edge */
+   tablets it runs full-bleed, edge to edge; on phones it sits on the text
+   edges like every other block, with a tighter inner padding */
 @media (min-width: 48rem) {
-    .prose :where(pre):not(:where(.not-prose *)) {
+    .prose .code-block {
         margin-inline: -1.25rem;
     }
 }
 
-@media (max-width: 47.999rem) {
-    .prose :where(pre):not(:where(.not-prose *)) {
+@media (min-width: 40rem) and (max-width: 47.999rem) {
+    .prose .code-block {
         margin-inline: -1.5rem;
         border-radius: 0;
         border-inline-width: 0;
     }
 
     /* Keep the code and its language label on the text's left edge */
-    .prose :where(pre code):not(:where(.not-prose *)),
-    .prose pre::before {
+    .prose .code-block pre code,
+    .prose .code-block-lang {
         padding-inline: 1.5rem;
     }
 }
 
-/* A quiet language tab in the corner, like an editor's file header */
-.prose pre::before {
-    content: attr(data-lang);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 0.35rem 1.25rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    line-height: 1.25rem;
-    color: var(--color-faint);
-    border-bottom: 1px solid var(--color-line);
-}
-
-.prose pre:has(code.language-python)::before {
-    content: "python";
-}
-.prose pre:has(code.language-sh)::before,
-.prose pre:has(code.language-bash)::before,
-.prose pre:has(code.language-shell)::before {
-    content: "shell";
-}
-.prose pre:has(code.language-ts)::before,
-.prose pre:has(code.language-typescript)::before {
-    content: "typescript";
-}
-.prose pre:has(code.language-tsx)::before {
-    content: "tsx";
-}
-.prose pre:has(code.language-js)::before,
-.prose pre:has(code.language-javascript)::before {
-    content: "javascript";
-}
-.prose pre:has(code.language-json)::before {
-    content: "json";
-}
-.prose pre:has(code.language-go)::before {
-    content: "go";
+@media (max-width: 39.999rem) {
+    .prose .code-block pre code,
+    .prose .code-block-lang {
+        padding-inline: 0.75rem;
+    }
 }
 
 .hljs-keyword,
@@ -528,6 +542,68 @@ html[data-portrait-animation="off"] .portrait .portrait-screen {
 
 html[data-portrait-animation="off"] .portrait .portrait-screen {
     opacity: var(--screen-opacity);
+}
+
+/* Phones (below sm): the text sits between two flexible spacers, the lower
+   one 1.25x the upper, so it is centred slightly above the middle. When the
+   text is taller than the screen the spacers collapse to zero: it starts
+   right under the nav and the page scrolls.
+   No drawing by default. Design panel "background": the finished drawing,
+   faint, takes the lower spacer's place (anchored bottom-right, never under
+   any text, so text contrast is unaffected), with no pointer events and no
+   lit screen */
+@media (max-width: 39.999rem) {
+    .home-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .home-grid::before,
+    .home-grid::after {
+        content: "";
+        flex: 1 1 0;
+    }
+
+    .home-grid::after {
+        flex-grow: 1.25;
+    }
+
+    .home-drawing {
+        display: none;
+    }
+
+    html[data-home-drawing-mobile="background"] .home-grid::after {
+        display: none;
+    }
+
+    html[data-home-drawing-mobile="background"] .home-drawing {
+        display: block;
+        order: 1;
+        flex: 1.25 1 0;
+        min-height: 0;
+        margin: 1rem -1.25rem -1rem 0;
+        opacity: var(--home-drawing-bg-opacity, 0.08);
+        pointer-events: none;
+    }
+
+    html[data-home-drawing-mobile="background"] .home-drawing .portrait {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: min(100%, 24rem);
+        height: 100%;
+    }
+
+    html[data-home-drawing-mobile="background"] .home-drawing .portrait path {
+        animation: none;
+        stroke: none;
+        fill-opacity: 1;
+    }
+
+    html[data-home-drawing-mobile="background"] .home-drawing .portrait-screen {
+        display: none;
+    }
 }
 
 @keyframes portrait-draw {

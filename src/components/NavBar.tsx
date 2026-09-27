@@ -27,7 +27,7 @@ export default function NavBar() {
             <div className="max-w-page mx-auto flex h-14 w-full items-center justify-between px-5 md:px-6">
                 <Link
                     href="/"
-                    className="group -mx-1 flex items-center gap-2.5 px-1 text-[0.9375rem] font-semibold tracking-tight"
+                    className="group -mx-1 flex h-11 items-center gap-2.5 px-1 text-[0.9375rem] font-semibold tracking-tight"
                 >
                     <span
                         aria-hidden
@@ -94,7 +94,7 @@ export default function NavBar() {
 
                 <button
                     type="button"
-                    className="text-fg hover:text-accent-text -mr-1.5 inline-flex size-10 cursor-pointer items-center justify-center rounded-[4px] md:hidden"
+                    className="text-fg hover:text-accent-text -mr-2 inline-flex size-11 cursor-pointer items-center justify-center rounded-[4px] md:hidden"
                     aria-expanded={open}
                     aria-controls="mobile-nav"
                     aria-label={open ? "Close menu" : "Open menu"}

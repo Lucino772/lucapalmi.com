@@ -13,7 +13,7 @@ export default async function Articles() {
     const entries = await getWritingLog();
 
     return (
-        <div className="max-w-page mx-auto w-full px-5 pt-8 pb-12 md:px-6 md:pt-12 md:pb-24">
+        <div className="max-w-page mx-auto w-full px-5 pt-8 pb-24 md:px-6 md:pt-12">
             <WritingTimeline entries={entries} />
         </div>
     );
