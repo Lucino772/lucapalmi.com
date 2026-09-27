@@ -217,18 +217,24 @@ latest article (or `about.pinnedArticle`), and the flagship project
 its repo.
 
 Exactly one screen (`min-height: calc(100svh - header)`, content vertically
-centred with symmetric padding). The drawing is integrated into the page
-rather than placed on it: anchored right (on desktop it runs ~3vw past the
-column from 1280px up), `min(74svh, 48rem)` tall, 19% larger than before and
-vertically centred on the fold (21svh at the top right on phones). Its
-strokes use a muted ink (faint text eased 15% toward the page), the bottom
-fades out through the desk legs and chair, and the right edge softens (mask
-with `mask-composite: intersect`). The laptop screen still lights up
-exactly as before: the same royal-blue fill fading in after the draw-in
-(delay 2.4s), which stays the drawing's only light source. There is no wide
-glow behind the headline in V1. Design panel (Home): drawing size (%),
-drawing animation, "Drawing fade" (`data-drawing-fade="off"` for hard
-edges); "Laptop screen glow (%)" scales only the screen fill.
+centred with symmetric padding). Text and drawing read as one scene: the
+drawing is cropped at the desk (`viewBox` height 1680 of 2675, so the chair
+legs and the lower desk edges never show) and fades out just under the desk
+line; it is `min(62svh, 42rem)` tall (the figure about a third larger than
+the previous version), anchored right (~3vw past the column from 1280px),
+and slides 14rem under the text column. There a left mask keeps the desk's
+far end fully transparent before it reaches any text, so the desk line
+reaches toward the text and dissolves. The `~ $ ls` listing is capped at
+36rem so its rules stop short of the drawing. Strokes stay crisp in a
+muted ink (faint text eased 15% toward the page). The laptop screen is a
+light source rather than a flat fill: a radial gradient from a lighter royal
+blue at the centre to a translucent edge, plus a small contained spill onto
+the hands and keyboard (no wide glow in V1). It switches on exactly as
+before, fading in 2.4s after the draw-in; reduced motion shows it lit. On
+phones a small cropped drawing sits top right (20svh). Design panel
+(Home): drawing size (%, 100 = this size), drawing animation, "Drawing
+fade" (`data-drawing-fade="off"`); "Laptop screen glow (%)" scales only the
+lit screen.
 
 **Page titles (Writing, Projects).** No visible title: the nav's active tab
 already says where you are. Each page keeps a visually hidden `<h1>`

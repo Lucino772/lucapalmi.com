@@ -32,7 +32,7 @@ export default async function Index() {
                 className="flex min-h-[calc(100svh-3.5rem-1px)] flex-col py-4 md:py-[clamp(1.5rem,4svh,3rem)]"
             >
                 <div className="grid flex-1 content-center items-center gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,1fr)_auto]">
-                    <div className="fade-in max-w-[46rem] min-w-0">
+                    <div className="fade-in relative z-10 max-w-[46rem] min-w-0">
                         <p className="text-faint text-[0.875rem] md:text-[0.9375rem]">
                             <span aria-hidden>~ $ </span>whoami
                         </p>
@@ -70,7 +70,7 @@ export default async function Index() {
                             >
                                 ~ $ ls
                             </p>
-                            <ul className="border-line mt-1.5 border-t">
+                            <ul className="border-line mt-1.5 max-w-[36rem] border-t">
                                 <Entry
                                     href="/articles"
                                     name="writing/"
@@ -103,10 +103,14 @@ export default async function Index() {
                         </nav>
                     </div>
 
-                    {/* Muted ink, anchored right and slightly past the column,
-                        with the desk and chair fading into the page */}
-                    <div className="portrait-tone order-first justify-self-end lg:order-none xl:-mr-[3vw]">
-                        <Portrait className="portrait-fade block h-[calc(21svh*var(--home-drawing-size,100)/100)] w-auto lg:h-[calc(min(74svh,48rem)*var(--home-drawing-size,100)/100)]" />
+                    {/* One scene: cropped at the desk, anchored right, its
+                        desk line sliding under the text column where the mask
+                        has already faded it out */}
+                    <div className="portrait-tone relative z-0 order-first justify-self-end lg:order-none lg:-ml-[14rem] xl:-mr-[3vw]">
+                        <Portrait
+                            cropHeight={1680}
+                            className="portrait-fade block h-[calc(20svh*var(--home-drawing-size,100)/100)] w-auto lg:h-[calc(min(62svh,42rem)*var(--home-drawing-size,100)/100)]"
+                        />
                     </div>
                 </div>
             </section>

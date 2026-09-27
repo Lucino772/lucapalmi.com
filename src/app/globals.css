@@ -506,14 +506,17 @@ html[data-callout-style="bar"] .callout {
     color: color-mix(in oklab, var(--color-faint) 85%, var(--color-bg));
 }
 
-/* Soft edges: the desk and chair fade out at the bottom, and the right edge
-   softens where the drawing runs past the column */
+/* Soft edges: the cropped desk fades out just under its top surface, the
+   desk's left end dissolves before it reaches the text (fully transparent
+   there), and the right edge softens where the drawing runs past the column */
 .portrait-fade {
     -webkit-mask-image:
-        linear-gradient(to bottom, #000 70%, transparent 97%),
+        linear-gradient(to bottom, #000 82%, transparent 100%),
+        linear-gradient(to right, transparent 0%, transparent 18%, #000 44%),
         linear-gradient(to left, transparent 0%, #000 7%);
     mask-image:
-        linear-gradient(to bottom, #000 70%, transparent 97%),
+        linear-gradient(to bottom, #000 82%, transparent 100%),
+        linear-gradient(to right, transparent 0%, transparent 18%, #000 44%),
         linear-gradient(to left, transparent 0%, #000 7%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
@@ -529,16 +532,40 @@ html[data-drawing-fade="off"] .portrait-fade {
    outline in, then swaps the stroke for the fill. */
 /* --screen-glow (design panel) scales the per-mode glow, 100 = default */
 .portrait {
-    --screen-opacity: calc(0.12 * var(--screen-glow, 100) / 100);
+    --screen-opacity: calc(0.7 * var(--screen-glow, 100) / 100);
 }
 
 .dark .portrait {
-    --screen-opacity: calc(0.22 * var(--screen-glow, 100) / 100);
+    --screen-opacity: calc(0.9 * var(--screen-glow, 100) / 100);
 }
 
 .portrait .portrait-screen {
-    fill: var(--color-accent);
     opacity: var(--screen-opacity);
+}
+
+/* Lit screen: a lighter royal blue at the centre, translucent at the edges */
+.portrait-lit-core {
+    stop-color: color-mix(in oklab, var(--color-accent) 50%, white);
+    stop-opacity: 0.85;
+}
+.portrait-lit-mid {
+    stop-color: var(--color-accent);
+    stop-opacity: 0.55;
+}
+.portrait-lit-edge {
+    stop-color: var(--color-accent);
+    stop-opacity: 0.3;
+}
+.portrait-spill-core {
+    stop-color: var(--color-accent);
+    stop-opacity: 0.32;
+}
+.portrait-spill-edge {
+    stop-color: var(--color-accent);
+    stop-opacity: 0;
+}
+.dark .portrait-lit-core {
+    stop-color: color-mix(in oklab, var(--color-accent) 60%, white);
 }
 
 @media (prefers-reduced-motion: no-preference) {
