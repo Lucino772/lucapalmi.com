@@ -45,11 +45,8 @@
     --font-code: var(--font-cascadia-code), ui-monospace, monospace;
     --font-serif: var(--font-literata), Georgia, serif;
 
-    --text-2xs: 0.8125rem;
-    --text-2xs--line-height: 1.25rem;
-
     --container-page: 70rem;
-    --container-measure: 45.375rem; /* 726px, shared across variants */
+    --container-measure: 45.375rem; /* 726px */
 }
 
 .dark {

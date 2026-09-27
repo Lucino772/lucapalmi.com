@@ -100,7 +100,6 @@ const cascadiaCode = localFont({
     display: "swap",
     weight: "200 700",
 });
-// Only used when the design panel switches article headings to "Sans (V4)"
 const literata = localFont({
     src: "../fonts/literata-latin.woff2",
     variable: "--font-literata",

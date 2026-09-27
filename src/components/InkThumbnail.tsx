@@ -4,7 +4,6 @@ import { cn } from "@/lib/cn";
 // A generated thumbnail for pieces without a cover: a small pen sketch of the
 // first topic, with hatching and one mark in royal blue. Everything is derived
 // from the slug, so the same article always gets the same sketch.
-// Adapted from the Sketchbook variant, recoloured with Workstation tokens.
 
 const W = 160;
 const H = 100;

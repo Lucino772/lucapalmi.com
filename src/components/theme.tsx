@@ -25,7 +25,7 @@ function getTheme(): Theme {
         : "light";
 }
 
-export function useTheme() {
+function useTheme() {
     const theme = useSyncExternalStore<Theme | null>(
         subscribe,
         getTheme,
@@ -58,9 +58,9 @@ export function ThemeToggle({ className }: { className?: string }) {
             aria-label={label}
             title={label}
         >
-            {/* The Lamplight wall switch, same geometry and 24px size as
-                V6 (smaller, the lever shrinks to a stray dot); lever lit
-                royal blue when up (light), outline colour when down (dark) */}
+            {/* A wall switch, drawn 24px tall (smaller, the lever shrinks to
+                a stray dot); lever lit royal blue when up (light), outline
+                colour when down (dark) */}
             <svg
                 aria-hidden
                 viewBox="0 0 20 28"

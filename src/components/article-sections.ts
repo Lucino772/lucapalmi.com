@@ -8,7 +8,7 @@ export type ArticleSection = {
     level: 2 | 3;
 };
 
-export const ARTICLE_BODY_ATTRIBUTE = "data-article-body";
+const ARTICLE_BODY_ATTRIBUTE = "data-article-body";
 
 // A heading becomes active once its top crosses this share of the viewport
 const ACTIVE_LINE = 0.3;
