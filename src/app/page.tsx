@@ -133,40 +133,30 @@ function Entry({
     detail?: { href: string; text: string; external?: boolean } | false;
 }) {
     return (
-        <li
-            // Phones: the two links split the row into interlocking hit
-            // areas (see .ls-folder / .ls-detail), sized from the name and
-            // label lengths in Inconsolata's 0.5em advance
-            style={
-                {
-                    "--ls-name": `${name.length * 0.5625}rem`,
-                    "--ls-label": `${(label.length + 1) * 0.40625}rem`,
-                } as React.CSSProperties
-            }
-            className="border-line relative grid grid-cols-[minmax(0,1fr)] items-baseline gap-x-6 border-b py-2 sm:grid-cols-[8.5rem_minmax(0,1fr)] md:py-[min(1rem,1.6svh)]"
-        >
+        // Phones: no detail line, the whole row is the folder link
+        <li className="border-line relative grid grid-cols-[minmax(0,1fr)] items-baseline gap-x-6 border-b py-2.5 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:py-2 md:py-[min(1rem,1.6svh)]">
             <Link
                 href={href}
-                className={`${quietLink} ${detail ? "ls-folder" : ""} justify-self-start text-[1.125rem] leading-7 font-semibold md:text-[1.375rem]`}
+                className={`${quietLink} justify-self-start text-[1.125rem] leading-7 font-semibold max-sm:after:absolute max-sm:after:inset-0 max-sm:after:content-[''] md:text-[1.375rem]`}
             >
                 {name}
             </Link>
             {detail && (
-                <p className="min-w-0 truncate text-[0.8125rem] md:text-[0.875rem]">
+                <p className="hidden min-w-0 truncate text-[0.8125rem] sm:block md:text-[0.875rem]">
                     <span className="text-faint">{label} </span>
                     {detail.external ? (
                         <a
                             href={detail.href}
                             target="_blank"
                             rel="noreferrer"
-                            className={`ls-detail text-fg/90 ${quietLink}`}
+                            className={`text-fg/90 ${quietLink}`}
                         >
                             {detail.text}
                         </a>
                     ) : (
                         <Link
                             href={detail.href}
-                            className={`ls-detail text-fg/90 ${quietLink}`}
+                            className={`text-fg/90 ${quietLink}`}
                         >
                             {detail.text}
                         </Link>

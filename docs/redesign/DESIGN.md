@@ -169,11 +169,12 @@ The offset is capped by the free space beside the page container, so
 narrow windows with full-width content aren't pushed off-centre. It
 resolves to 0 with overlay scrollbars and during the menu's scroll lock.
 
-**Home `ls` rows on phones.** The folder name and the detail link sit on two
-tight lines, too close for stacked 44px targets. Each row (64px) is split
-into two interlocking L-shaped hit areas (`clip-path` on a pseudo-element),
-so both links get the full row height without overlapping and without any
-visual change.
+**Home `ls` rows on phones.** Below 640px the "latest …" / "flagship …"
+detail lines are hidden: each row is just the folder link (`writing/`,
+`projects/`), and the link's pseudo-element covers the whole row, a 48px
+hit area. Rows are 10px top and bottom (`py-2.5`) so the two single-line
+rows keep the list's rhythm. From 640px up the rows and details are
+unchanged.
 
 **Home: a timeless calling card.** One job: a newcomer sees who Luca is,
 then gets pointed to one post or one project. No lists or cards, no
