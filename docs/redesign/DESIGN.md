@@ -217,10 +217,18 @@ latest article (or `about.pinnedArticle`), and the flagship project
 its repo.
 
 Exactly one screen (`min-height: calc(100svh - header)`, content vertically
-centred with symmetric padding). The drawing sits on the right
-(height `min(62svh, 40rem)`); on phones it sits above the whoami block at
-18svh. This is the only home layout: the earlier scrolling and fit-first
-variants and their switch are retired.
+centred with symmetric padding). The drawing is integrated into the page
+rather than placed on it: anchored right (on desktop it runs ~3vw past the
+column from 1280px up), `min(74svh, 48rem)` tall, 19% larger than before and
+vertically centred on the fold (21svh at the top right on phones). Its
+strokes use a muted ink (faint text eased 15% toward the page), the bottom
+fades out through the desk legs and chair, and the right edge softens (mask
+with `mask-composite: intersect`). The laptop screen still lights up
+exactly as before: the same royal-blue fill fading in after the draw-in
+(delay 2.4s), which stays the drawing's only light source. There is no wide
+glow behind the headline in V1. Design panel (Home): drawing size (%),
+drawing animation, "Drawing fade" (`data-drawing-fade="off"` for hard
+edges); "Laptop screen glow (%)" scales only the screen fill.
 
 **Page titles (Writing, Projects).** No visible title: the nav's active tab
 already says where you are. Each page keeps a visually hidden `<h1>`
@@ -358,6 +366,7 @@ and no script, renders exactly the defaults.
 | Home             | Headline size                  | `--home-headline-size` (caps the svh clamp from 768px)                    | 28–56px                    | 40px              |
 | Home             | Drawing size (%)               | `--home-drawing-size` (scales the drawing height)                         | 50–110                     | 100               |
 | Home             | Drawing animation              | `data-portrait-animation`                                                 | draw in / static           | draw in           |
+| Home             | Drawing fade                   | `data-drawing-fade`                                                       | on / off                   | on                |
 | Glow             | Laptop screen glow (%)         | `--screen-glow`, scales the per-mode glow opacity (0.12 light, 0.22 dark) | 0–300                      | 100               |
 
 ## Motion

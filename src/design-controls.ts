@@ -115,6 +115,18 @@ export const designControls: DesignControl[] = [
         default: "on",
     },
     {
+        type: "choice",
+        key: "drawing-fade",
+        label: "Drawing fade",
+        group: "Home",
+        attribute: "data-drawing-fade",
+        options: [
+            { value: "on", label: "Soft edges" },
+            { value: "off", label: "Hard edges" },
+        ],
+        default: "on",
+    },
+    {
         type: "range",
         key: "screen-glow",
         label: "Laptop screen glow (%)",

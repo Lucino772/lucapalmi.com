@@ -500,6 +500,31 @@ html[data-callout-style="bar"] .callout {
 
 /* ---------- home drawing ---------- */
 
+/* Strokes in a muted ink (faint text eased toward the page), so the drawing
+   sits in the page rather than on it (the lit screen keeps its blue) */
+.portrait-tone {
+    color: color-mix(in oklab, var(--color-faint) 85%, var(--color-bg));
+}
+
+/* Soft edges: the desk and chair fade out at the bottom, and the right edge
+   softens where the drawing runs past the column */
+.portrait-fade {
+    -webkit-mask-image:
+        linear-gradient(to bottom, #000 70%, transparent 97%),
+        linear-gradient(to left, transparent 0%, #000 7%);
+    mask-image:
+        linear-gradient(to bottom, #000 70%, transparent 97%),
+        linear-gradient(to left, transparent 0%, #000 7%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+/* Design panel "Drawing fade: off" */
+html[data-drawing-fade="off"] .portrait-fade {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
 /* Final state is the plain filled drawing; the animation strokes each
    outline in, then swaps the stroke for the fill. */
 /* --screen-glow (design panel) scales the per-mode glow, 100 = default */

@@ -103,8 +103,10 @@ export default async function Index() {
                         </nav>
                     </div>
 
-                    <div className="text-muted order-first lg:order-none">
-                        <Portrait className="block h-[calc(18svh*var(--home-drawing-size,100)/100)] w-auto [mask-image:linear-gradient(to_bottom,black_82%,transparent)] lg:mx-auto lg:h-[calc(min(62svh,40rem)*var(--home-drawing-size,100)/100)]" />
+                    {/* Muted ink, anchored right and slightly past the column,
+                        with the desk and chair fading into the page */}
+                    <div className="portrait-tone order-first justify-self-end lg:order-none xl:-mr-[3vw]">
+                        <Portrait className="portrait-fade block h-[calc(21svh*var(--home-drawing-size,100)/100)] w-auto lg:h-[calc(min(74svh,48rem)*var(--home-drawing-size,100)/100)]" />
                     </div>
                 </div>
             </section>
