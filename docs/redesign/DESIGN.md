@@ -219,14 +219,15 @@ its repo.
 
 Exactly one screen (`min-height: calc(100svh - header)`, content vertically
 centred with symmetric padding). Everything lives inside the nav's
-container, so the composition is stable from 1024px to 2560px: a 31rem text
+container, so the composition is stable from 896px (56rem) to 2560px: a 31rem text
 column (the headline capped at 29ch, so it always wraps into four lines) and
 a drawing column whose right edge is the container's right edge, the same
 as the nav icons. Text and drawing read as one scene: the drawing is cropped
 at the desk (`viewBox` height 1680 of 2675, so the chair legs and lower desk
 edges never show) and fades out below the laptop's base. Its width is
 `min(62svh × 2000/1680, column)`, so it follows the fold height but never
-grows into the text column. It slides 4rem under the text column's edge,
+grows into the text column; toward 896px it scales down with its column
+(about 310px tall at 896, with the laptop 43px clear of the text). It slides 4rem under the text column's edge,
 where the left mask is fully transparent (0–2%) and ramps slowly to opaque
 by 18.5%, just before the laptop's lid (19%), which always stays whole. The
 fades are long and gradual: the bottom from 76% (the laptop base sits at
@@ -239,8 +240,12 @@ the lid, with no highlight, spill or wide glow. The fill polygon is fitted
 to the bezel's inner edge and masked by the left hand's silhouette (the
 traced drawing's own outline, subpath 56 of its main path, filled), so the
 screen sits behind the fingers instead of tinting them. It switches on 2.4s after the draw-in; reduced motion shows it lit.
-_Text-only home (below 1024px, and any viewport under 30rem tall, e.g.
-landscape phones):_ no drawing. The two-column scene needs `lg`, and the
+_Text-only home (below 56rem/896px, and any viewport under 30rem tall, e.g.
+landscape phones):_ no drawing. 56rem is the lowest width where the drawing
+still reads as a scene (about 300px tall, half the text block) next to an
+unchanged 31rem text column; below it the drawing would be a thumbnail. So
+portrait tablets (744–820) and phones stay text-only, while a 986px desktop
+window gets the scene. The
 old stacked layout (a small drawing above the text) was rejected. The text
 block is centred between the nav and the bottom of the screen (`100dvh`,
 so browser chrome can't break it), a touch above the true middle: two
@@ -267,8 +272,9 @@ topic filter above it is centred in the page on the same axis (the locked
 "filter bar centred" choice), with the full page container (70rem) as its
 room. The tabs stay on one line; when they don't fit (below about 948px
 with today's eight topics) and on phones, they are replaced by one native
-`<select>` (the OS picker, capped at 22rem and centred from 640px),
-introduced by a faint mono
+`<select>` that, like on phones, spans the timeline's 54rem column with its
+label (aligned with the list's left and right edges; the tabs stay
+centred), introduced by a faint mono
 `topic` label: "All (6)", "Architecture (2)"…, 44px tall, 16px text (no iOS
 zoom), one hairline border, accent focus ring. A timeline in the language of
 `git log --graph`.

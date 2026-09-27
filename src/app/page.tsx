@@ -31,10 +31,11 @@ export default async function Index() {
                 aria-label="About"
                 className="relative flex min-h-[calc(100dvh-3.5rem-1px)] flex-col py-4 md:py-[clamp(1.5rem,4svh,3rem)]"
             >
-                {/* Below lg and on short screens: no drawing; the text is
+                {/* Below 56rem and on short screens: no drawing; the text is
                     centred optically between the nav and the bottom (see
-                    .home-grid). From lg: the two-column scene */}
-                <div className="home-grid grid flex-1 content-center items-center gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,31rem)_minmax(0,1fr)]">
+                    .home-grid). From 56rem: the two-column scene, the
+                    drawing scaling down to its column */}
+                <div className="home-grid grid flex-1 content-center items-center gap-x-12 gap-y-2 min-[56rem]:grid-cols-[minmax(0,31rem)_minmax(0,1fr)]">
                     <div className="fade-in relative z-10 min-w-0">
                         <p className="text-faint text-[0.875rem] md:text-[0.9375rem]">
                             <span aria-hidden>~ $ </span>whoami
@@ -109,10 +110,10 @@ export default async function Index() {
                     {/* One scene: cropped at the desk, anchored right, its
                         desk line sliding under the text column where the mask
                         has already faded it out */}
-                    <div className="home-drawing portrait-tone relative z-0 order-first justify-self-end lg:order-none lg:-ml-16 lg:flex lg:justify-end lg:justify-self-stretch">
+                    <div className="home-drawing portrait-tone relative z-0 -ml-16 flex justify-end justify-self-stretch">
                         <Portrait
                             cropHeight={1680}
-                            className="portrait-fade block h-[20svh] w-auto lg:h-auto lg:w-[min(calc(min(62svh,42rem)*1.1905),100%)]"
+                            className="portrait-fade block h-auto w-[min(calc(min(62svh,42rem)*1.1905),100%)]"
                         />
                     </div>
                 </div>

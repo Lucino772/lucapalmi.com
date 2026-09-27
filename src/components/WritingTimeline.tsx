@@ -89,10 +89,11 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
             <div className="w-full">
                 <h1 className="sr-only">Writing</h1>
                 {/* Phones, or tabs that don't fit: one native select, the OS
-                    picker does the rest */}
+                    picker does the rest; label and select span the list
+                    column, on the timeline's edges */}
                 <div
                     className={cn(
-                        "flex items-center gap-3 sm:mx-auto sm:max-w-[22rem]",
+                        `${column} flex items-center gap-3`,
                         !tabsOverflow && "sm:hidden",
                     )}
                 >
