@@ -76,7 +76,7 @@
 
 /* Full-width bands (header, main) on pages with the permanent track: inset
    their content by the classic scrollbar's width (--scrollbar-width, set
-   before paint by scrollbar-width.tsx), so it lines up with the track-less
+   before paint by src/lib/pre-paint.ts), so it lines up with the track-less
    home. Capped by the free space beside the 70rem page container, so
    full-width content on narrow windows isn't pushed off-centre. 0 on the
    home, with overlay scrollbars, and without JavaScript */

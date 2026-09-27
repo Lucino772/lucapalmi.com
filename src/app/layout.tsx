@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import NavBar from "@/components/nav-bar";
-import ThemeColorSync from "@/components/theme-color-sync";
-import { themeScript } from "@/components/theme";
-import ScrollbarWidthSync from "@/components/scrollbar-width";
-import { scrollbarWidthScript } from "@/lib/scrollbar-width";
+import { prePaintScript, themeColors } from "@/lib/pre-paint";
 
 import localFont from "next/font/local";
 import { cn } from "@/lib/cn";
@@ -69,8 +66,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
     themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#e8e5de" },
-        { media: "(prefers-color-scheme: dark)", color: "#272727" },
+        { media: "(prefers-color-scheme: light)", color: themeColors.light },
+        { media: "(prefers-color-scheme: dark)", color: themeColors.dark },
     ],
 };
 
@@ -121,10 +118,7 @@ export default async function RootLayout({
             )}
         >
             <head>
-                <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-                <script
-                    dangerouslySetInnerHTML={{ __html: scrollbarWidthScript }}
-                />
+                <script dangerouslySetInnerHTML={{ __html: prePaintScript }} />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
@@ -144,8 +138,6 @@ export default async function RootLayout({
                 >
                     {children}
                 </main>
-                <ThemeColorSync />
-                <ScrollbarWidthSync />
             </body>
         </html>
     );

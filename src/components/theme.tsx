@@ -2,13 +2,13 @@
 
 import { useSyncExternalStore } from "react";
 import { cn } from "@/lib/cn";
+import { THEME_STORAGE_KEY, themeColors } from "@/lib/pre-paint";
+
+// The theme is resolved before first paint and follows the OS while nothing
+// is stored (src/lib/pre-paint.ts); this file is the toggle. The toggle
+// state is read from the .dark class, so both stay in step.
 
 type Theme = "light" | "dark";
-
-const STORAGE_KEY = "theme";
-
-// Runs before first paint: an explicit choice wins, otherwise follow the OS
-export const themeScript = `(function(){try{var t=localStorage.getItem("${STORAGE_KEY}");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.classList.toggle("dark",t==="dark")}catch(e){}})()`;
 
 function subscribe(callback: () => void) {
     const observer = new MutationObserver(callback);
@@ -34,7 +34,10 @@ function useTheme() {
 
     const setTheme = (next: Theme) => {
         document.documentElement.classList.toggle("dark", next === "dark");
-        localStorage.setItem(STORAGE_KEY, next);
+        localStorage.setItem(THEME_STORAGE_KEY, next);
+        document
+            .querySelectorAll('meta[name="theme-color"]')
+            .forEach((meta) => meta.setAttribute("content", themeColors[next]));
     };
 
     return { theme, setTheme };
