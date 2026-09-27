@@ -8,6 +8,7 @@ import { cn } from "@/lib/cn";
 import { about } from "@/content/about";
 import { ThemeToggle } from "./theme";
 import { GitHubIcon, LinkedInIcon } from "./icons";
+import LogoMark from "./LogoMark";
 import MobileNav from "./MobileNav";
 import { isActive, navItems } from "./nav-items";
 
@@ -39,10 +40,7 @@ export default function NavBar() {
                     href="/"
                     className="group -mx-1 flex h-11 items-center gap-2.5 px-1 text-[0.9375rem] font-semibold tracking-tight"
                 >
-                    <span
-                        aria-hidden
-                        className="bg-accent inline-block h-3.5 w-2"
-                    />
+                    <LogoMark className="logo-mark h-[1.375rem] w-auto shrink-0" />
                     <span className="group-hover:text-accent-text transition-colors duration-150">
                         {about.name.toLowerCase()}
                     </span>
