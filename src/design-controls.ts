@@ -56,18 +56,6 @@ export const designControls: DesignControl[] = [
     },
     {
         type: "range",
-        key: "home-phone-headline",
-        label: "Phone headline size (%)",
-        group: "Home",
-        property: "--home-phone-headline",
-        min: 100,
-        max: 150,
-        step: 5,
-        unit: "",
-        default: 100,
-    },
-    {
-        type: "range",
         key: "home-drawing-size",
         label: "Drawing size (%)",
         group: "Home",

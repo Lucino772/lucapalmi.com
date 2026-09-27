@@ -180,7 +180,9 @@ unchanged.
 then gets pointed to one post or one project. No lists or cards, no
 focus-area line and no hobbies (Luca will write about those instead).
 Content: `~ $ whoami`, name and role, the headline (34px at most, sized with
-`svh`; the design panel's headline-size default is 34), then "I tend to" as
+`svh`; the design panel's headline-size default is 34; on phones a fixed
+`clamp(1.6875rem, 4.35svh, 2.1rem)`, 33.6px at 838px tall, five lines of
+about 22 characters), then "I tend to" as
 a faint label with three `-` lines at 15px (13px on phones), the
 self-drawing portrait with the laptop glow, and `~ $ ls`:
 
@@ -345,7 +347,6 @@ and no script, renders exactly the defaults.
 | Writing list     | Title size                     | `--writing-title-size` (mobile ≤16px)                                | 14–26px                    | 17px              |
 | Writing list     | Space between entries          | `--writing-entry-gap` (entry padding; ×0.75 on phones)               | 0–64px                     | 16px              |
 | Home             | Headline size                  | `--home-headline-size` (caps the svh clamp from 768px)               | 28–56px                    | 40px              |
-| Home             | Phone headline size (%)        | `--home-phone-headline`, scales the phone clamp (below 640px)        | 100–150                    | 100               |
 | Home             | Drawing size (%)               | `--home-drawing-size` (scales the drawing height)                    | 50–110                     | 100               |
 | Home             | Drawing animation              | `data-portrait-animation`                                            | draw in / static           | draw in           |
 | Glow             | Laptop screen glow (%)         | `--screen-glow`, scales the lit screen opacity (0.7 light, 0.9 dark) | 0–300                      | 100               |
