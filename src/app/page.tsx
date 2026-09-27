@@ -43,7 +43,7 @@ export default async function Index() {
                             <span className="font-semibold">{about.name}</span>
                             <span className="text-muted">, {about.role}</span>
                         </h1>
-                        <p className="mt-2 max-w-[29ch] text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance max-[359px]:text-[1.375rem] max-sm:min-[360px]:text-[clamp(1.6875rem,4.35svh,2.1rem)] md:mt-3 md:text-[clamp(1.375rem,3.8svh,2.125rem)] md:leading-[1.15]">
+                        <p className="mt-2 max-w-[29ch] text-[clamp(1.125rem,2.9svh,1.4rem)] leading-[1.2] font-medium tracking-[-0.02em] text-balance max-[359px]:text-[1.375rem] max-sm:min-[360px]:text-[clamp(1.6875rem,4.35svh,2.1rem)] sm:text-[clamp(1.375rem,3.8svh,2.125rem)] sm:leading-[1.15] md:mt-3">
                             {about.headline}
                         </p>
                         <div className="mt-3 text-[0.8125rem] leading-6 md:mt-[min(1.75rem,3svh)] md:text-[0.9375rem] md:leading-7">

@@ -197,8 +197,10 @@ unchanged.
 **Home: a timeless calling card.** One job: a newcomer sees who Luca is,
 then gets pointed to one post or one project. No lists or cards, no
 focus-area line and no hobbies (Luca will write about those instead).
-Content: `~ $ whoami`, name and role, the headline (at most 2.125rem, sized
-with `svh`; on phones a fixed
+Content: `~ $ whoami`, name and role, the headline (from 640px
+`clamp(1.375rem, 3.8svh, 2.125rem)`: 34px on tablets and desktops, down to
+22px on short landscape screens, with no dip between phones and 768px; on
+phones a fixed
 `clamp(1.6875rem, 4.35svh, 2.1rem)`, 33.6px at 838px tall, five lines of
 about 22 characters), then "I tend to" as
 a faint label with three `-` lines at 15px (13px on phones), the
@@ -244,7 +246,7 @@ block is centred between the nav and the bottom of the screen (`100dvh`,
 so browser chrome can't break it), a touch above the true middle: two
 flexible spacers, the lower 1.25× the upper. When the text is taller than
 the screen the spacers collapse and it starts right under the nav and
-scrolls. Tablet widths keep the tablet/desktop headline and the
+scrolls. Tablet widths keep the desktop headline (34px from 640px) and the
 latest/flagship details; the phone-only rules (150% headline, single-link
 rows) stay below 640px, with a 1.375rem headline below 360px so it stays
 at 5 balanced lines. (A faint background drawing on phones was also tried
