@@ -85,7 +85,7 @@ export default function FeaturedProjects({
                                         href={`/articles/${project.article}`}
                                         className={linkClass}
                                     >
-                                        case study<span aria-hidden> ↗</span>
+                                        write-up
                                     </Link>
                                 )}
                             </span>
