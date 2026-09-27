@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
 import { about } from "@/content/about";
 import { ThemeToggle } from "./theme";
 import { GitHubIcon, LinkedInIcon } from "./icons";
-import { isActive, navItems } from "./nav-items";
+import { navItems } from "@/content/nav";
 
 type Props = {
     open: boolean;
@@ -72,9 +72,9 @@ export default function MobileNav({ open, close }: Props) {
                     <ul className="flex flex-col">
                         {items.map((item) => {
                             const active =
-                                item.href === "/"
-                                    ? pathname === "/"
-                                    : isActive(pathname, item.href);
+                                pathname === item.href ||
+                                (item.href !== "/" &&
+                                    pathname.startsWith(`${item.href}/`));
                             return (
                                 <li key={item.href}>
                                     <Link

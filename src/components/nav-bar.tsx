@@ -10,7 +10,7 @@ import { ThemeToggle } from "./theme";
 import { GitHubIcon, LinkedInIcon } from "./icons";
 import LogoMark from "./logo-mark";
 import MobileNav from "./mobile-nav";
-import { isActive, navItems } from "./nav-items";
+import { navItems } from "@/content/nav";
 
 // Touch screens (tablets get this nav from md): a 44px-tall, 36px-wide hit
 // area, the full pitch between icons, with no visual change
@@ -52,7 +52,9 @@ export default function NavBar() {
                 >
                     <ul className="flex h-full items-center">
                         {navItems.map((item) => {
-                            const active = isActive(pathname, item.href);
+                            const active =
+                                pathname === item.href ||
+                                pathname.startsWith(`${item.href}/`);
                             return (
                                 <li key={item.href} className="h-full">
                                     <Link

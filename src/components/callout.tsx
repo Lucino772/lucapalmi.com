@@ -1,5 +1,12 @@
 import React from "react";
-import { calloutLabels, type CalloutType } from "./callout-types";
+
+const calloutLabels = {
+    note: "Note",
+    tip: "Tip",
+    warning: "Warning",
+};
+
+type CalloutType = keyof typeof calloutLabels;
 
 // Tinted box: the type colour at 11% with a 1px border at 28% (see
 // .callout in globals.css)
