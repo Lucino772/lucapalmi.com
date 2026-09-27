@@ -270,11 +270,14 @@ with a visually hidden `<h2>` "Other projects".
 **Writing (`/articles`).** The timeline sits in a centred 54rem column; the
 topic filter above it is centred in the page on the same axis (the locked
 "filter bar centred" choice), with the full page container (70rem) as its
-room. The tabs stay on one line; when they don't fit (below about 948px
-with today's eight topics) and on phones, they are replaced by one native
-`<select>` that, like on phones, spans the timeline's 54rem column with its
-label (aligned with the list's left and right edges; the tabs stay
-centred), introduced by a faint mono
+room. The switch is a plain CSS breakpoint, with no measuring: below
+`lg` (1024px; phones in both orientations, portrait tablets, small windows)
+a native `<select>` that, like on phones, spans the timeline's 54rem column
+with its label (aligned with the list's left and right edges); from `lg`
+(landscape tablets, desktops) the tabs, on one line and centred. If topics
+ever outgrow the row, the tabs scroll sideways (starting at the left edge)
+and a thin scrollbar in muted greys appears; nothing wraps. The select is
+introduced by a faint mono
 `topic` label: "All (6)", "Architecture (2)"…, 44px tall, 16px text (no iOS
 zoom), one hairline border, accent focus ring. A timeline in the language of
 `git log --graph`.
@@ -306,12 +309,10 @@ page stays statically prerendered and shows everything without JS. A
 visually hidden `aria-live` line announces "2 of 6 filed under
 Architecture"; there is no visible count or sort caption. Empty years are
 hidden; an unknown topic gets an empty state with a "Show all writing"
-button, both centred under the filter. A ResizeObserver compares the tab row's natural width with its slot,
-so the switch follows new topics. The first entry with a cover preloads its
+button, both centred under the filter. The first entry with a cover preloads its
 thumbnail (it is the page's largest paint); phones, which hide thumbnails,
-only get a 1px candidate. The server renders the tabs from 640px
-(clipped, never wrapped) until the observer reports; the tab slot and the
-select are both 44px tall, so the swap causes no layout shift.
+only get a 1px candidate. The filter is pure CSS, so the server render is
+final: no swap after hydration.
 
 **Article layout (one template for everything).** One centred column, nothing beside
 it. The measure is 726px (45.375rem, shared across variants; Literata 18px,

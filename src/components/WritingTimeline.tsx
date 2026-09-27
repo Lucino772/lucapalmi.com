@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 import { cn } from "@/lib/cn";
 import { topicLabel, topics, type TopicId } from "@/content/topics";
 import type { LogEntry } from "@/lib/writing";
@@ -61,42 +61,14 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
     // uses the full page container
     const column = "mx-auto w-full max-w-[54rem]";
 
-    // From sm up the tabs show when they fit on one line; otherwise (and on
-    // phones) the native select does. A ResizeObserver compares the tab
-    // row's natural width with the space it has, so it keeps working as
-    // topics are added. Until it reports, the server's render stands: tabs
-    // from sm up, clipped rather than wrapped.
-    const slotRef = useRef<HTMLDivElement>(null);
-    const rowRef = useRef<HTMLDivElement>(null);
-    const [tabsOverflow, setTabsOverflow] = useState(false);
-    useEffect(() => {
-        const slot = slotRef.current;
-        const row = rowRef.current;
-        if (!slot || !row) return;
-        const observer = new ResizeObserver(() => {
-            setTabsOverflow(
-                row.getBoundingClientRect().width >
-                    slot.getBoundingClientRect().width + 0.5,
-            );
-        });
-        observer.observe(slot);
-        observer.observe(row);
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <div className="flex flex-col gap-10">
             <div className="w-full">
                 <h1 className="sr-only">Writing</h1>
-                {/* Phones, or tabs that don't fit: one native select, the OS
-                    picker does the rest; label and select span the list
-                    column, on the timeline's edges */}
-                <div
-                    className={cn(
-                        `${column} flex items-center gap-3`,
-                        !tabsOverflow && "sm:hidden",
-                    )}
-                >
+                {/* Below lg (phones, portrait tablets): one native select,
+                    the OS picker does the rest; label and select span the
+                    list column, on the timeline's edges */}
+                <div className={`${column} flex items-center gap-3 lg:hidden`}>
                     <label
                         htmlFor="topic-filter"
                         className="text-faint text-[0.875rem]"
@@ -142,19 +114,12 @@ export default function WritingTimeline({ entries }: { entries: LogEntry[] }) {
                         </svg>
                     </div>
                 </div>
-                {/* From sm up: the topic tabs on one line, centred in the
-                    page. When they don't fit, the slot collapses (still laid
-                    out, so it can be measured) */}
-                <div
-                    ref={slotRef}
-                    aria-hidden={tabsOverflow || undefined}
-                    className={cn(
-                        "hidden overflow-hidden sm:block",
-                        tabsOverflow ? "invisible h-0" : "min-h-11",
-                    )}
-                >
+                {/* From lg (landscape tablets, desktops): the topic tabs on
+                    one line, centred in the page; if they outgrow it they
+                    scroll sideways (the thin native scrollbar only appears
+                    then) */}
+                <div className="tab-scroller hidden overflow-x-auto overflow-y-hidden lg:block">
                     <div
-                        ref={rowRef}
                         role="group"
                         aria-label="Filter by topic"
                         className="mx-auto flex w-max gap-1"

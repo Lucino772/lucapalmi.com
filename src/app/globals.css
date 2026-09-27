@@ -91,6 +91,18 @@
     );
 }
 
+/* Topic tabs that outgrow their row scroll sideways; the thin scrollbar
+   (in the code blocks' muted greys) only appears when they do */
+.tab-scroller {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(
+            in oklab,
+            var(--color-faint) 55%,
+            var(--color-bg)
+        )
+        transparent;
+}
+
 @layer base {
     *,
     ::after,
