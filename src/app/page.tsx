@@ -26,7 +26,11 @@ export default async function Index() {
         : "/projects";
 
     return (
-        <div data-home className="max-w-page mx-auto w-full px-5 md:px-6">
+        <div
+            data-home
+            data-page="home"
+            className="max-w-page mx-auto w-full px-5 md:px-6"
+        >
             <section
                 aria-label="About"
                 className="relative flex min-h-[calc(100dvh-3.5rem-1px)] flex-col py-4 md:py-[clamp(1.5rem,4svh,3rem)]"

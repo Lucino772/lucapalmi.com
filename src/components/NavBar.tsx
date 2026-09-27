@@ -33,7 +33,7 @@ export default function NavBar() {
     };
 
     return (
-        <header className="border-line bg-bg sticky top-0 z-40 w-full border-b">
+        <header className="border-line bg-bg scrollbar-offset sticky top-0 z-40 w-full border-b">
             <div className="max-w-page mx-auto flex h-14 w-full items-center justify-between px-5 md:px-6">
                 <Link
                     href="/"

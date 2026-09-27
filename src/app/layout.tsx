@@ -3,6 +3,8 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import ThemeColorSync from "@/components/ThemeColorSync";
 import { themeScript } from "@/components/theme";
+import ScrollbarWidthSync from "@/components/scrollbar-width";
+import { scrollbarWidthScript } from "@/lib/scrollbar-width";
 import { DesignPanel } from "@/components/design-panel/DesignPanel";
 import { designPanelScript } from "@/components/design-panel/controls";
 import { designControls } from "@/design-controls";
@@ -124,6 +126,9 @@ export default async function RootLayout({
         >
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+                <script
+                    dangerouslySetInnerHTML={{ __html: scrollbarWidthScript }}
+                />
                 {designControls.length > 0 && (
                     <script
                         dangerouslySetInnerHTML={{
@@ -144,10 +149,14 @@ export default async function RootLayout({
                     Skip to content
                 </a>
                 <NavBar />
-                <main id="content" className="flex w-full flex-1 flex-col">
+                <main
+                    id="content"
+                    className="scrollbar-offset flex w-full flex-1 flex-col"
+                >
                     {children}
                 </main>
                 <ThemeColorSync />
+                <ScrollbarWidthSync />
                 {designControls.length > 0 && (
                     <DesignPanel controls={designControls} />
                 )}

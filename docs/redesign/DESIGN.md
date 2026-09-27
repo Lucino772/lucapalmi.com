@@ -182,14 +182,29 @@ track and nothing shifts sideways; closing restores the exact scroll
 position. The desktop nav uses the
 same icons at the same sizes.
 
-**Scrollbar.** `html { overflow-y: scroll }` always reserves the classic
-scrollbar track (disabled when there is nothing to scroll), so nothing
-shifts sideways between short and long pages, when a topic filter makes the
-writing list short, or when the menu opens. Luca chose this over padding
-compensation, which only covered widths with free space beside the 70rem
-container. The track follows `color-scheme` (a dark track in dark mode).
-Overlay-scrollbar platforms (macOS default, phones) are unaffected, and the
-one-screen home still fits exactly (the track is simply disabled).
+**Scrollbar.** Every page but the home has a permanent track: `html {
+overflow-y: scroll }` reserves the classic scrollbar (disabled when there
+is nothing to scroll), so nothing shifts when a topic filter shortens the
+writing list or between short and long pages. The home
+(`html:has([data-page="home"])`) uses `overflow-y: auto`: no track when it
+fits one screen, a normal scrollbar on short screens. The track follows
+`color-scheme` (dark in dark mode); overlay-scrollbar platforms (macOS
+default, phones) are unaffected.
+
+To line the pages with a track up with the track-less home, the header and
+`main` carry `.scrollbar-offset` (only when the home isn't on the page):
+`padding-inline-start: min(var(--scrollbar-width), max(0, 100% - 70rem))`.
+`100vw` can't provide the scrollbar width, since viewport units already
+exclude it when the root has `overflow: scroll`. So a pre-paint script
+(`src/lib/scrollbar-width.ts`) measures it once on an off-screen probe and
+sets `--scrollbar-width` on `html` (0px with overlay scrollbars). A small
+client effect re-measures after browser zoom (a resize with a new
+`devicePixelRatio`, at most once per frame). Without JavaScript the variable
+is unset and the compensation is 0. Home ↔ other pages is shift-free from
+1150px (70rem plus the track on each side; partial between 1135 and
+1150). Below that, the accepted trade-off: the header's right side moves
+15px, and centred content moves up to 7.5px where it doesn't fill the
+width.
 
 **Home `ls` rows on phones.** Below 640px the "latest …" / "flagship …"
 detail lines are hidden: each row is just the folder link (`writing/`,
